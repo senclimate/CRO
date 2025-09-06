@@ -1,5 +1,5 @@
 
-Fitting
+CRO equations and parameters
 ========================
 This section illustrates the RO master equations and parameters
 
