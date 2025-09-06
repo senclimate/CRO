@@ -168,6 +168,7 @@
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ug-installation.html">Installation</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../ug-solver.html">Solver</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Community Recharge Oscillator Model (CRO) v0.0 for Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="CRO_main.html">Community Recharge Oscillator Model (CRO) v0.0 for Python</a></li>
@@ -179,7 +180,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../ug-application.html">Application</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../ug-api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ug-api.html">API Reference</a></li>
 </ul>
 
     </div>
@@ -417,8 +418,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+  <div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%config IPCompleter.greedy = True
@@ -440,11 +441,18 @@ import calendar
 
 sys.path.append(os.path.abspath(&quot;../../&quot;))
 
-from pyCRO import RO_solver, RO_fitting, RO_analytic_std, RO_analytic_solver
-from pyCRO.utils import RO_BWJ, func_mon_std
-from pyCRO.par_load import par_load
-</pre></div>
+from pyCRO import RO_solver, RO_fitting, RO_analytic_std, RO_analytic_solver, RO_BWJ, func_mon_std, par_load
+<br/></pre></div>
 </div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+The autoreload extension is already loaded. To reload it, use:
+  %reload_ext autoreload
+</pre></div></div>
 </div>
 <p><img alt="CRO Logo" class="no-scaled-link" src="../_images/CRO_logo.png" style="width: 400px;" /></p>
 <section id="Community-Recharge-Oscillator-Model-(CRO)-v0.0-for-Python">
@@ -683,7 +691,7 @@ All steps successfully completed!
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/notebooks_pyCRO_main_10_1.png" class="no-scaled-link" src="../_images/notebooks_pyCRO_main_10_1.png" style="width: 565px; height: 432px;" />
+<img alt="../_images/notebooks_pyCRO_main_10_1.png" class="no-scaled-link" src="../_images/notebooks_pyCRO_main_10_1.png" style="width: 578px; height: 432px;" />
 </div>
 </div>
 </section>

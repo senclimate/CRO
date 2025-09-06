@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Solver &#8212; CRO  documentation</title>
+    <title>Fitting &#8212; CRO  documentation</title>
   
   
   
@@ -50,12 +50,10 @@
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'ug-solver';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ug-model';</script>
     <link rel="icon" href="_static/CRO_logo.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Community Recharge Oscillator Model (CRO) v0.0 for Python" href="notebooks/pyCRO_main.html" />
-    <link rel="prev" title="Installation" href="ug-installation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -118,6 +116,8 @@
       
       
       
+        
+      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -166,9 +166,9 @@
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">User Guide</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="ug-installation.html">Installation</a></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Solver</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="ug-solver.html">Solver</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="notebooks/pyCRO_main.html">Community Recharge Oscillator Model (CRO) v0.0 for Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="notebooks/CRO_main.html">Community Recharge Oscillator Model (CRO) v0.0 for Python</a></li>
 </ul>
@@ -251,7 +251,7 @@
       
       
       
-      <li><a href="https://github.com/senclimate/CRO/edit/main/ug-solver.rst" target="_blank"
+      <li><a href="https://github.com/senclimate/CRO/edit/main/ug-model.rst" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -268,7 +268,7 @@
       
       
       
-      <li><a href="https://github.com/senclimate/CRO/issues/new?title=Issue%20on%20page%20%2Fug-solver.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/senclimate/CRO/issues/new?title=Issue%20on%20page%20%2Fug-model.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -298,7 +298,7 @@
       
       
       
-      <li><a href="_sources/ug-solver.rst" target="_blank"
+      <li><a href="_sources/ug-model.rst" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -364,7 +364,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Solver</h1>
+    <h1>Fitting</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -378,13 +378,12 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="solver">
-<h1>Solver<a class="headerlink" href="#solver" title="Link to this heading">#</a></h1>
-<p>This section illustrates the solver features of <cite>pyCRO</cite></p>
+  <section id="fitting">
+<h1>Fitting<a class="headerlink" href="#fitting" title="Link to this heading">#</a></h1>
+<p>This section illustrates the core features of <cite>x4c</cite> as an Xarray extension.</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/pyCRO_main.html">Community Recharge Oscillator Model (CRO) v0.0 for Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/CRO_main.html">Community Recharge Oscillator Model (CRO) v0.0 for Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/pyCRO_model.html">CRO Model Code Design</a></li>
 </ul>
 </div>
 </section>
@@ -400,24 +399,6 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="ug-installation.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Installation</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="notebooks/pyCRO_main.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Community Recharge Oscillator Model (CRO) v0.0 for Python</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               

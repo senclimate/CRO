@@ -25,6 +25,15 @@ CRO: Community Recharge Oscillator Model
 
         Installation instructions.
 
+    .. grid-item-card::  CRO model formulation
+        :class-title: custom-title
+        :class-body: custom-body
+        :img-top: _static/setup.png
+        :link: ug-model
+        :link-type: doc
+
+        :code:`CRO` solver 
+
     .. grid-item-card::  Solver
         :class-title: custom-title
         :class-body: custom-body
