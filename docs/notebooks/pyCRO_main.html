@@ -1,0 +1,1640 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Community Recharge Oscillator Model (CRO) v0.0 for Python &#8212; CRO  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/theme_overrides.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/pyCRO_main';</script>
+    <link rel="icon" href="../_static/CRO_logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Community Recharge Oscillator Model (CRO) v0.0 for Python" href="CRO_main.html" />
+    <link rel="prev" title="Solver" href="../ug-solver.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/CRO_logo.png" class="logo__image only-light" alt="CRO  documentation - Home"/>
+    <script>document.write(`<img src="../_static/CRO_logo.png" class="logo__image only-dark" alt="CRO  documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../ug-solver.html">Solver</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Community Recharge Oscillator Model (CRO) v0.0 for Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CRO_main.html">Community Recharge Oscillator Model (CRO) v0.0 for Python</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ug-fitting.html">Fitting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ug-application.html">Application</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../ug-api.html">API</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/senclimate/CRO" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/senclimate/CRO/edit/main/notebooks/pyCRO_main.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/senclimate/CRO/issues/new?title=Issue%20on%20page%20%2Fnotebooks/pyCRO_main.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/pyCRO_main.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Community Recharge Oscillator Model (CRO) v0.0 for Python</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#1.-RO-Master-Equations">1. RO Master Equations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Linear-and-Nonlinear-Parameters:">Linear and Nonlinear Parameters:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Noise-Parameters:">Noise Parameters:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Noise-Option-Parameters:">Noise Option Parameters:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#2.-RO-Simulation-Setup">2. RO Simulation Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#3.-RO-Simulations">3. RO Simulations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Basic-Usage">Basic Usage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Advanced-Usage">Advanced Usage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Analytical-Solutions">Analytical Solutions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#4.-RO-Parameter-Fitting-Setup">4. RO Parameter Fitting Setup</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Input-T-and-h-Time-Series">Input T and h Time Series</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Specifiying-RO-Type">Specifiying RO Type</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Advanced-Usage-(optional)">Advanced Usage (optional)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#5.-RO-Parameter-Fitting-from-Time-Series">5. RO Parameter Fitting from Time Series</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Basic Usage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Advanced Usage</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#6.-RO-Parameter-Fitting-from-Observations-and-Reproducing">6. RO Parameter Fitting from Observations and Reproducing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#7.-Load-RO-Parameters-from-the-Library-&amp;-Solve">7. Load RO Parameters from the Library &amp; Solve</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Usage">Usage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Applications">Applications</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%config IPCompleter.greedy = True
+%matplotlib inline
+%config InlineBackend.figure_format=&#39;retina&#39;
+
+%load_ext autoreload
+%autoreload 2
+
+import warnings
+warnings.filterwarnings(&quot;ignore&quot;)
+
+import numpy as np
+import matplotlib.pyplot as plt
+from netCDF4 import Dataset
+import os
+import sys
+import calendar
+
+sys.path.append(os.path.abspath(&quot;../../&quot;))
+
+from pyCRO import RO_solver, RO_fitting, RO_analytic_std, RO_analytic_solver
+from pyCRO.utils import RO_BWJ, func_mon_std
+from pyCRO.par_load import par_load
+</pre></div>
+</div>
+</div>
+<p><img alt="CRO Logo" class="no-scaled-link" src="../_images/CRO_logo.png" style="width: 400px;" /></p>
+<section id="Community-Recharge-Oscillator-Model-(CRO)-v0.0-for-Python">
+<h1>Community Recharge Oscillator Model (CRO) v0.0 for Python<a class="headerlink" href="#Community-Recharge-Oscillator-Model-(CRO)-v0.0-for-Python" title="Link to this heading">#</a></h1>
+<section id="1.-RO-Master-Equations">
+<h2>1. RO Master Equations<a class="headerlink" href="#1.-RO-Master-Equations" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\displaystyle \frac{dT}{dt} = RT + F_{1}h + b_{T}T^{2} − c_{T}T^{3} + d_{T}T \cdot h + \sigma_{T}N_{T}(1+g_{T})+E_{T}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\displaystyle \frac{dh}{dt} = −\varepsilon{h} − F_{2}T − b_{h}T^{2} + \sigma_{h}N_{h}+E_{h}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\displaystyle \frac{d\xi_T}{dt} = -m_T \xi_T + \sqrt{2 m_T} w_T\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\displaystyle \frac{d\xi_h}{dt} = -m_h \xi_h + \sqrt{2 m_h} w_h\)</span></p></li>
+<li><dl class="simple">
+<dt>:math:<a href="#id1"><span class="problematic" id="id2">`</span></a>N_T = begin{cases}</dt><dd><p>xi_T, &amp; text{if } n_T = 0 quad text{(red noise)} \
+w_T, &amp; text{if } n_T = 1 quad text{(white noise)}
+end{cases}`</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>:math:<a href="#id3"><span class="problematic" id="id4">`</span></a>N_h = begin{cases}</dt><dd><p>xi_h, &amp; text{if } n_h = 0 quad text{(red noise)} \
+w_h, &amp; text{if } n_h = 1 quad text{(white noise)}
+end{cases}`</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>:math:<a href="#id5"><span class="problematic" id="id6">`</span></a>g_T = begin{cases}</dt><dd><p>B cdot T, &amp; text{if } n_g = 0 quad text{(linear multiplicative noise)} \
+B cdot H(T) cdot T, &amp; text{if } n_g = 1 quad text{(Heaviside-based multiplicative noise)} \
+0 &amp; text{if } n_g = 2 quad text{(additive noise)}
+end{cases}`</p>
+</dd>
+</dl>
+</li>
+<li><p><span class="math notranslate nohighlight">\(T\)</span> (K) and <span class="math notranslate nohighlight">\(h\)</span> (m) represent the monthly sea surface temperature (SST) and thermocline depth anomalies, respectively.</p></li>
+<li><p><span class="math notranslate nohighlight">\(w_T\)</span> and <span class="math notranslate nohighlight">\(w_h\)</span> are uncorrelated Gaussian white noise forcings with zero mean and unit variance, applied to the <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(h\)</span> equations, respectively.</p></li>
+<li><p><span class="math notranslate nohighlight">\(E_T\)</span> and <span class="math notranslate nohighlight">\(E_h\)</span> are external forcings applied to the <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(h\)</span> equations, respectively.</p></li>
+<li><p>The physical meaning and units of each parameter will be provided in the final version.</p></li>
+</ul>
+<section id="Linear-and-Nonlinear-Parameters:">
+<h3>Linear and Nonlinear Parameters:<a class="headerlink" href="#Linear-and-Nonlinear-Parameters:" title="Link to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(R\)</span> (<code class="docutils literal notranslate"><span class="pre">R</span></code>), <span class="math notranslate nohighlight">\(F_1\)</span> (<code class="docutils literal notranslate"><span class="pre">F1</span></code>), <span class="math notranslate nohighlight">\(F_2\)</span> (<code class="docutils literal notranslate"><span class="pre">F2</span></code>), <span class="math notranslate nohighlight">\(\varepsilon\)</span> (<code class="docutils literal notranslate"><span class="pre">epsilon</span></code>), <span class="math notranslate nohighlight">\(b_T\)</span> (<code class="docutils literal notranslate"><span class="pre">b_T</span></code>), <span class="math notranslate nohighlight">\(c_T\)</span> (<code class="docutils literal notranslate"><span class="pre">c_T</span></code>), <span class="math notranslate nohighlight">\(d_T\)</span> (<code class="docutils literal notranslate"><span class="pre">d_T</span></code>), <span class="math notranslate nohighlight">\(b_h\)</span> (<code class="docutils literal notranslate"><span class="pre">b_h</span></code>)</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">'parameter':</span> <span class="pre">[]</span></code> → interpreted as zero (e.g., <code class="docutils literal notranslate"><span class="pre">'R':</span> <span class="pre">[]</span></code> is the same as <code class="docutils literal notranslate"><span class="pre">'R':</span> <span class="pre">[0.0]</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'parameter':</span> <span class="pre">[value]</span></code> → only the annual mean is used (e.g., <code class="docutils literal notranslate"><span class="pre">'R':</span> <span class="pre">[-0.05]</span></code> means the annual mean value of –0.05 is used for R)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'parameter':</span> <span class="pre">[mean,</span> <span class="pre">amplitude,</span> <span class="pre">phase</span> <span class="pre">(in</span> <span class="pre">radians)]</span></code> → annual mean and annual seasonality are used (e.g., <code class="docutils literal notranslate"><span class="pre">'R':</span> <span class="pre">[-0.05,</span> <span class="pre">0.05,</span> <span class="pre">np.pi]</span></code> means R has an annual mean of –0.05 and a seasonal variation with amplitude 0.05 and phase shift <span class="math notranslate nohighlight">\(\pi\)</span>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'parameter':</span> <span class="pre">[mean,</span> <span class="pre">amp₁,</span> <span class="pre">phase₁</span> <span class="pre">(in</span> <span class="pre">radians),</span> <span class="pre">amp₂,</span> <span class="pre">phase₂</span> <span class="pre">(in</span> <span class="pre">radians)]</span></code> → annual mean, annual seasonality, and semi-annual seasonality are used (e.g., <code class="docutils literal notranslate"><span class="pre">'R':</span> <span class="pre">[-0.05,</span> <span class="pre">0.05,</span> <span class="pre">np.pi,</span> <span class="pre">0.01,</span> <span class="pre">np.pi/2]</span></code> means R has an annual mean of –0.05, annual amplitude 0.05 with phase <span class="math notranslate nohighlight">\(\pi\)</span>, and semi-annual amplitude 0.01 with phase <span class="math notranslate nohighlight">\(\pi/2\)</span>)</p></li>
+<li><p>Any other form → <strong>invalid</strong> (e.g., <code class="docutils literal notranslate"><span class="pre">'parameter':</span> <span class="pre">[mean,</span> <span class="pre">amp]</span></code> will raise an error)</p></li>
+</ul>
+</section>
+<section id="Noise-Parameters:">
+<h3>Noise Parameters:<a class="headerlink" href="#Noise-Parameters:" title="Link to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(\sigma_T\)</span> (<code class="docutils literal notranslate"><span class="pre">sigma_T</span></code>), <span class="math notranslate nohighlight">\(\sigma_h\)</span> (<code class="docutils literal notranslate"><span class="pre">sigma_h</span></code>), <span class="math notranslate nohighlight">\(B\)</span> (<code class="docutils literal notranslate"><span class="pre">B</span></code>), <span class="math notranslate nohighlight">\(m_T\)</span> (<code class="docutils literal notranslate"><span class="pre">m_T</span></code>), <span class="math notranslate nohighlight">\(m_h\)</span> (<code class="docutils literal notranslate"><span class="pre">m_h</span></code>)</p>
+<ul class="simple">
+<li><p>These follow the same format as the linear and nonlinear parameters, meaning that <strong>seasonality can be included for RO simulations</strong>.</p></li>
+<li><p>However, <strong>RO parameter fitting does not support seasonality</strong> in these parameters. Therefore, it is strongly recommended to use <strong>annual means only</strong> for consistency during RO fitting.</p></li>
+</ul>
+</section>
+<section id="Noise-Option-Parameters:">
+<h3>Noise Option Parameters:<a class="headerlink" href="#Noise-Option-Parameters:" title="Link to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(n_T\)</span> (<code class="docutils literal notranslate"><span class="pre">n_T</span></code>), <span class="math notranslate nohighlight">\(n_h\)</span> (<code class="docutils literal notranslate"><span class="pre">n_h</span></code>), <span class="math notranslate nohighlight">\(n_g\)</span> (<code class="docutils literal notranslate"><span class="pre">n_g</span></code>)</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">n_T</span></code> and <code class="docutils literal notranslate"><span class="pre">n_h</span></code> are flags that specify the noise type for the <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(h\)</span> equations, respectively:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code>: red noise</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1</span></code>: white noise</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n_g</span></code> is a flag for the <strong>multiplicative noise type</strong> in the <span class="math notranslate nohighlight">\(T\)</span> equation:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code>: linear multiplicative noise <span class="math notranslate nohighlight">\((1 + B \cdot T)\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1</span></code>: Heaviside-based multiplicative noise <span class="math notranslate nohighlight">\((1 + B \cdot H(T) \cdot T)\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">2</span></code>: no multiplicative noise (i.e., additive only)</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'parameter':</span> <span class="pre">[integer]</span></code> or <code class="docutils literal notranslate"><span class="pre">'parameter':</span> <span class="pre">integer</span></code> is a valid option; any other format will raise an error.</p></li>
+<li><p>Mixed noise types (e.g., <code class="docutils literal notranslate"><span class="pre">n_T</span> <span class="pre">=</span> <span class="pre">0</span></code>, <code class="docutils literal notranslate"><span class="pre">n_h</span> <span class="pre">=</span> <span class="pre">1</span></code>) are <strong>allowed</strong> in the solver but <strong>not allowed during parameter fitting</strong>. Therefore, it is strongly recommended to use a <strong>consistent noise type</strong> (either white or red) for both the <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(h\)</span> equations.</p></li>
+</ul>
+</section>
+</section>
+<section id="2.-RO-Simulation-Setup">
+<h2>2. RO Simulation Setup<a class="headerlink" href="#2.-RO-Simulation-Setup" title="Link to this heading">#</a></h2>
+<p>This is the simplest configuration for the RO model, using:</p>
+<ul class="simple">
+<li><p><strong>White noise</strong>: <code class="docutils literal notranslate"><span class="pre">n_T</span> <span class="pre">=</span> <span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">n_h</span> <span class="pre">=</span> <span class="pre">1</span></code>.</p></li>
+<li><p><strong>Linear system</strong>: nonlinear terms (<code class="docutils literal notranslate"><span class="pre">b_T</span></code>, <code class="docutils literal notranslate"><span class="pre">c_T</span></code>, <code class="docutils literal notranslate"><span class="pre">d_T</span></code>, <code class="docutils literal notranslate"><span class="pre">b_h</span></code>) are zero. Note that All unspecified parameters default to zero.</p></li>
+<li><p><strong>Additive noise only</strong>: no multiplicative component (<code class="docutils literal notranslate"><span class="pre">n_g</span> <span class="pre">=</span> <span class="pre">2</span></code>).</p></li>
+</ul>
+<p>The RO equation is written as:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\displaystyle \frac{dT}{dt} = RT + F_{1}h + \sigma_{T}w_{T}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\displaystyle \frac{dh}{dt} = −\varepsilon{h} − F_{2}T + \sigma_{h}w_{h}\)</span></p></li>
+</ul>
+<p>The following block sets parameters for the RO simulation.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>par = {&#39;R&#39;: [-0.05],       # dT/dt=R*T (unit: month^-1)
+       &#39;F1&#39;: [0.02],       # dT/dt=F1*h (unit: K m^-1 month^-1)
+       &#39;F2&#39;: [0.9],        # dh/dt=-F2*T (unit: m K^-1 month^-1)
+       &#39;epsilon&#39;: [0.03],  # dh/dt=-epsilon*h (unit: month^-1)
+       &#39;b_T&#39;: [],          # dT/dt=(b_T)*(T^2) (unit: K^-1 month^-1)
+       &#39;c_T&#39;: [],          # dT/dt=-(c_T)*(T^3) (unit: K^-2 month^-1)
+       &#39;d_T&#39;: [],          # dT/dt=(d_T)*(T*h) (unit: m^-1 month^-1)
+       &#39;b_h&#39;: [],          # dh/dt=-(b_h)*(T^2) (unit: K^-2 m month^-1)
+       &#39;sigma_T&#39;: [0.2],   # dT/dt=(sigma_T)*(N_T) (unit: K month^-0.5 if n_T=1, K month^-1 if n_T=0)
+       &#39;sigma_h&#39;: [1.2],   # dh/dt=(sigma_h)*(N_h) (unit: m month^-0.5 if n_h=1, m month^-1 if n_h=0)
+       &#39;B&#39;: [],            # T/dt=(sigma_T)*(1+B*T)*(N_T) or dT/dt=(sigma_T)*(1+B*H(T)*T)*(N_T) (unit: K^-1)
+       &#39;m_T&#39;: [],          # d(xi_T)/dt=-m*T*(xi_T); (unit: month^-1)
+       &#39;m_h&#39;: [],          # d(xi_h)/dt=-m*h*(xi_h); (unit: month^-1)
+       &#39;n_T&#39;: [1],         # noise type for T (0: red noise, 1: white noise) (unitless)
+       &#39;n_h&#39;: [1],         # noise type for h (0: red noise, 1: white noise) (unitless)
+       &#39;n_g&#39;: [2]}         # multiplicative noise type for T (0: linear, 1: Heaviside linear, 2: omit this option)
+                           # (note: only valid when B is not zero) (unitless)
+</pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>The following block sets additional options for the RO simulation.</p></li>
+</ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>IC = [1.0, 0.0]              # Initial conditions for T and h
+N = 12 * 100                 # Simulation length in months (e.g., 100 years)
+NE = 2                       # Number of ensemble members
+</pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>The RO simulation can be run by setting four settings set above: par, IC, N, and NE.</p></li>
+<li><p>The following block sets additional <strong>optional settings</strong> for the RO simulation.</p></li>
+<li><p>The user may skip specifying these options. If the user doesn’t specify these options, the RO simulation runs with the default settings.</p></li>
+</ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>NM = &quot;EH&quot;                    # Optional: Numerical integration method for
+                             #           RO solver &quot;EH&quot; (Euler–Heun, default)
+                             #           or &quot;EM&quot; (Euler–Maruyama)
+dt = 0.1                     # Optional: Time step for numerical integration
+                             #           in months. Default = 0.1
+saveat = 1.0                 # Optional: Interval for saving outputs in months.
+                             #           Default = 1.0
+savemethod = &quot;sampling&quot;      # Optional: Output method. &quot;sampling&quot; saves
+                             #           instantaneous values, &quot;mean&quot; saves
+                             #           time-averaged values over each save
+                             #           interval. Default = &quot;sampling&quot;
+EF = None                    # Optional: External forcing dictionary.
+                             #           If EF is None (or not specified),
+                             #           it defaults to:
+                             #           EF = {&#39;E_T&#39;: [0.0], &#39;E_h&#39;: [0.0]}
+                             #           Same format and interpretation as
+                             #           other RO parameters. Example:
+                             #           EF = {&#39;E_T&#39;: [-0.01, 0.02, np.pi],
+                             #                 &#39;E_h&#39;: [-0.01]}
+noise_custom = 999           # Optional: Noise specification.
+                             #   - If None or not provided:
+                             #     uses internally generated noise
+                             #     (different each run; Default)
+                             #   - If an integer: uses as the random seed for
+                             #     reproducible noise with the reference number
+                             #   - If ndarray: user-supplied noise
+                             #     (shape must be (int(N/dt) - 1, 4))
+                             #     The first two columns of the noise array are
+                             #     applied to the main T and h equations.
+                             #     The last two columns are used as noise terms
+                             #     for the red noise processes.
+</pre></div>
+</div>
+</div>
+</section>
+<section id="3.-RO-Simulations">
+<h2>3. RO Simulations<a class="headerlink" href="#3.-RO-Simulations" title="Link to this heading">#</a></h2>
+<section id="Basic-Usage">
+<h3>Basic Usage<a class="headerlink" href="#Basic-Usage" title="Link to this heading">#</a></h3>
+<p><strong>``T_ro, h_ro, _ = RO_solver(par, IC, N, NE)``</strong></p>
+<p>This is the simplest setup:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T_ro</span></code> and <code class="docutils literal notranslate"><span class="pre">h_ro</span></code> are arrays with shape <code class="docutils literal notranslate"><span class="pre">(N,</span> <span class="pre">NE)</span></code>, where <code class="docutils literal notranslate"><span class="pre">N</span></code> is the number of time steps and <code class="docutils literal notranslate"><span class="pre">NE</span></code> is the number of ensemble members.</p></li>
+<li><p>The third output (<code class="docutils literal notranslate"><span class="pre">_</span></code>) is the noise time series, with shape <code class="docutils literal notranslate"><span class="pre">(N,</span> <span class="pre">4,</span> <span class="pre">NE)</span></code>.</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Example 3-1. Solve RO with default settings
+T_ro, h_ro, _ = RO_solver(par, IC, N, NE)
+
+time_axis = np.arange(0, N, saveat)
+num_en = 0 # plot first ensemble member solution of T
+
+plt.figure()
+plt.plot(time_axis, T_ro[:, num_en],  label=&#39;Numerical sampling&#39;,  alpha=0.5)
+plt.xlabel(&quot;Time (months)&quot;)
+plt.ylabel(&quot;T&quot;)
+plt.legend()
+plt.grid()
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+---------------------------------------------------------------------------------
+Welcome to the CRO Solver! Your simulation setup is as follows:
+---------------------------------------------------------------------------------
+ - Total simulation length: N = 1200 months
+ - Number of ensemble members: NE = 2
+ - Numerical integration time step: dt = 0.1 months (default: 0.1)
+ - Data output interval: saveat = 1.0 months (default: 1.0)
+ - Initial conditions: IC = [T0, h0] = [1.0, 0.0]
+ - Input parameters have the expected shapes.
+ - &#39;n_T&#39; = 1: White noise forcing in T; &#39;m_T&#39; ignored.
+ - &#39;n_h&#39; = 1: White noise forcing in h; &#39;m_h&#39; ignored.
+ - &#39;n_g&#39; = 2: Additive noise is used in the T equation; &#39;B&#39; is ignored.
+ - Numerical integration method: NM = &#39;EH&#39; (Euler–Heun method; default)
+ - Data saving method: savemethod = sampling (default)
+ - External forcing is not given, therefore using
+   EF = {&#39;E_T&#39;: [0.0, 0.0, 0.0, 0.0, 0.0], &#39;E_h&#39;: [0.0, 0.0, 0.0, 0.0, 0.0]}.
+ - noise_custom = None: System-generated noise is used and changes at every run.
+---------------------------------------------------------------------------------
+Numerical integration starting:
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+All steps successfully completed!
+---------------------------------------------------------------------------------
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_pyCRO_main_10_1.png" class="no-scaled-link" src="../_images/notebooks_pyCRO_main_10_1.png" style="width: 565px; height: 432px;" />
+</div>
+</div>
+</section>
+<section id="Advanced-Usage">
+<h3>Advanced Usage<a class="headerlink" href="#Advanced-Usage" title="Link to this heading">#</a></h3>
+<p><strong>``T_ro, h_ro, _ = RO_solver(par, IC, N, NE, NM)``</strong></p>
+<p><strong>``T_ro, h_ro, _ = RO_solver(par, IC, N, NE, NM, dt)``</strong></p>
+<p><strong>``T_ro, h_ro, _ = RO_solver(par, IC, N, NE, NM, dt, saveat)``</strong></p>
+<p><strong>``T_ro, h_ro, _ = RO_solver(par, IC, N, NE, NM, dt, saveat, savemethod)``</strong></p>
+<p><strong>``T_ro, h_ro, _ = RO_solver(par, IC, N, NE, NM, dt, saveat, savemethod, EF)``</strong></p>
+<p><strong>``T_ro, h_ro, _ = RO_solver(par, IC, N, NE, NM, dt, saveat, savemethod, EF, noise_custom)``</strong></p>
+<ul class="simple">
+<li><p>Optional arguments allow for more control.</p></li>
+<li><p>Each additional argument gives more precise control over the solver.</p></li>
+<li><p>Refer to the previous section for details on each argument.</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Example 3-2. Solve RO with user-specified settings
+T_ro, h_ro, _ = RO_solver(par, IC, N, NE, NM, dt, saveat, savemethod, EF, noise_custom)
+
+time_axis = np.arange(0, N, saveat)
+num_en = 0 # plot first ensemble member solution of T
+
+plt.figure()
+plt.plot(time_axis, T_ro[:, num_en],  label=&#39;Numerical sampling&#39;,  alpha=0.5)
+plt.xlabel(&quot;Time (months)&quot;)
+plt.ylabel(&quot;T&quot;)
+plt.legend()
+plt.grid()
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+---------------------------------------------------------------------------------
+Welcome to the CRO Solver! Your simulation setup is as follows:
+---------------------------------------------------------------------------------
+ - Total simulation length: N = 1200 months
+ - Number of ensemble members: NE = 2
+ - Numerical integration time step: dt = 0.1 months (default: 0.1)
+ - Data output interval: saveat = 1.0 months (default: 1.0)
+ - Initial conditions: IC = [T0, h0] = [1.0, 0.0]
+ - Input parameters have the expected shapes.
+ - &#39;n_T&#39; = 1: White noise forcing in T; &#39;m_T&#39; ignored.
+ - &#39;n_h&#39; = 1: White noise forcing in h; &#39;m_h&#39; ignored.
+ - &#39;n_g&#39; = 2: Additive noise is used in the T equation; &#39;B&#39; is ignored.
+ - Numerical integration method: NM = &#39;EH&#39; (Euler–Heun method; default)
+ - Data saving method: savemethod = sampling (default)
+ - External forcing is not given, therefore using
+   EF = {&#39;E_T&#39;: [0.0, 0.0, 0.0, 0.0, 0.0], &#39;E_h&#39;: [0.0, 0.0, 0.0, 0.0, 0.0]}.
+ - noise_custom = 999: seeded same noise.
+---------------------------------------------------------------------------------
+Numerical integration starting:
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+All steps successfully completed!
+---------------------------------------------------------------------------------
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_pyCRO_main_12_1.png" class="no-scaled-link" src="../_images/notebooks_pyCRO_main_12_1.png" style="width: 565px; height: 437px;" />
+</div>
+</div>
+</section>
+<section id="Analytical-Solutions">
+<h3>Analytical Solutions<a class="headerlink" href="#Analytical-Solutions" title="Link to this heading">#</a></h3>
+<p><strong>``T_ref, h_ref, _ = RO_analytic_solver(par, IC, N, NE)``</strong></p>
+<p><strong>``T_ref, h_ref, _ = RO_analytic_solver(par, IC, N, NE, dt)``</strong></p>
+<p><strong>``T_ref, h_ref, _ = RO_analytic_solver(par, IC, N, NE, dt, saveat)``</strong></p>
+<p><strong>``T_ref, h_ref, _ = RO_analytic_solver(par, IC, N, NE, dt, saveat, savemethod)``</strong></p>
+<p><strong>``T_ref, h_ref, _ = RO_analytic_solver(par, IC, N, NE, dt, saveat, savemethod, noise_custom)``</strong></p>
+<ul>
+<li><div class="line-block">
+<div class="line">This function returns the <strong>analytical solution</strong> for the <strong>linear RO system</strong> without seasonality, using <strong>white additive noise</strong>.</div>
+<div class="line">Its usage is structurally similar to <code class="docutils literal notranslate"><span class="pre">RO_solver</span></code>, but with the following key differences: <code class="docutils literal notranslate"><span class="pre">'NM'</span></code> (numerical method) and <code class="docutils literal notranslate"><span class="pre">'EF'</span></code> (external forcing) are <strong>not required or accepted</strong>.</div>
+</div>
+</li>
+<li><p>To ensure a <strong>meaningful comparison</strong> with the numerical solution from <code class="docutils literal notranslate"><span class="pre">RO_solver</span></code>, use the <strong>same seed</strong> for <code class="docutils literal notranslate"><span class="pre">noise_custom</span></code> in both simulations.</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Example 3-3. Compare numerical and analyticla solution
+NE = 2
+T_ro, h_ro, _ = RO_solver(par, IC, N, NE, NM, dt, saveat, savemethod, EF, noise_custom)
+T_ref, h_ref, _ = RO_analytic_solver(par, IC, N, NE, dt, saveat, savemethod, noise_custom)
+
+time_axis = np.arange(0, N, saveat)
+num_en = 1 # plot first ensemble member solution of T
+
+plt.figure()
+plt.plot(time_axis, T_ro[:, num_en],  label=&#39;Numerical sampling&#39;,  alpha=0.5)
+plt.plot(time_axis, T_ref[:, num_en], label=&#39;Analytical sampling&#39;, alpha=0.5)
+plt.xlabel(&quot;Time (months)&quot;)
+plt.ylabel(&quot;T&quot;)
+plt.legend()
+plt.grid()
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+---------------------------------------------------------------------------------
+Welcome to the CRO Solver! Your simulation setup is as follows:
+---------------------------------------------------------------------------------
+ - Total simulation length: N = 1200 months
+ - Number of ensemble members: NE = 2
+ - Numerical integration time step: dt = 0.1 months (default: 0.1)
+ - Data output interval: saveat = 1.0 months (default: 1.0)
+ - Initial conditions: IC = [T0, h0] = [1.0, 0.0]
+ - Input parameters have the expected shapes.
+ - &#39;n_T&#39; = 1: White noise forcing in T; &#39;m_T&#39; ignored.
+ - &#39;n_h&#39; = 1: White noise forcing in h; &#39;m_h&#39; ignored.
+ - &#39;n_g&#39; = 2: Additive noise is used in the T equation; &#39;B&#39; is ignored.
+ - Numerical integration method: NM = &#39;EH&#39; (Euler–Heun method; default)
+ - Data saving method: savemethod = sampling (default)
+ - External forcing is not given, therefore using
+   EF = {&#39;E_T&#39;: [0.0, 0.0, 0.0, 0.0, 0.0], &#39;E_h&#39;: [0.0, 0.0, 0.0, 0.0, 0.0]}.
+ - noise_custom = 999: seeded same noise.
+---------------------------------------------------------------------------------
+Numerical integration starting:
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+All steps successfully completed!
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Welcome to the CRO Analytical Solver!
+Ensure that the same arguments are provided as for RO_solver,
+ except that &#39;NM&#39; and &#39;EF&#39; are not required.
+---------------------------------------------------------------------------------
+All steps are successfully completed!
+---------------------------------------------------------------------------------
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_pyCRO_main_14_1.png" class="no-scaled-link" src="../_images/notebooks_pyCRO_main_14_1.png" style="width: 565px; height: 432px;" />
+</div>
+</div>
+<p><strong>``RO_std_analytic(par)``</strong></p>
+<ul class="simple">
+<li><p>It returns the <strong>theoretical standard deviations</strong> for the <strong>linear-white-additive</strong> configuration based on the given parameter dictionary <code class="docutils literal notranslate"><span class="pre">par</span></code>.</p></li>
+</ul>
+<p><strong>``BWJ = RO_BWJ(par)``</strong></p>
+<ul class="simple">
+<li><p>It computes the expected <strong>BJ</strong> and <strong>Wyrtki</strong> indices, where the real part (<code class="docutils literal notranslate"><span class="pre">{BWJ.real}</span></code>) corresponds to the BJ index and the imaginary part (<code class="docutils literal notranslate"><span class="pre">{BWJ.imag}</span></code>) corresponds to the Wyrtki index, based on the given parameter dictionary <code class="docutils literal notranslate"><span class="pre">par</span></code>.</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Example 3-4. Compare standard deviation of numerical and analytial solutions
+T_ref_std, h_ref_std = RO_analytic_std(par) # calculate theoretical standard deviations
+
+T_ro, h_ro, _ = RO_solver(par, IC, N, NE, NM, dt, saveat, savemethod, noise_custom=None)
+T_ro_std = np.std(T_ro, axis=0); h_ro_std = np.std(h_ro, axis=0)
+T_ro_std_mean = np.mean(T_ro_std); h_ro_std_mean = np.mean(h_ro_std) # ensemble mean
+
+print(&quot;Standard drviations for T (analytical):&quot;)
+print(T_ref_std)
+print(&quot;Standard drviations for T (ensemble mean for numerical solutions):&quot;)
+print(T_ro_std_mean)
+print(&quot;Standard drviations for h (analytical):&quot;)
+print(h_ref_std)
+print(&quot;Standard drviations for h (ensemble mean for numerical solutions):&quot;)
+print(h_ro_std_mean)
+
+
+# Example 3-5. Calculate BWJ Index
+BWJ = RO_BWJ(par)
+print(f&quot;BJ index: {BWJ.real} [1/month]&quot;)
+print(f&quot;Wyrtki index: {BWJ.imag:.3f} [1/month]. &quot;
+      f&quot;This corresponds to a periodicity of {2*np.pi/BWJ.imag:.3f} months.&quot;)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+---------------------------------------------------------------------------------
+Welcome to the CRO Solver! Your simulation setup is as follows:
+---------------------------------------------------------------------------------
+ - Total simulation length: N = 1200 months
+ - Number of ensemble members: NE = 2
+ - Numerical integration time step: dt = 0.1 months (default: 0.1)
+ - Data output interval: saveat = 1.0 months (default: 1.0)
+ - Initial conditions: IC = [T0, h0] = [1.0, 0.0]
+ - Input parameters have the expected shapes.
+ - &#39;n_T&#39; = 1: White noise forcing in T; &#39;m_T&#39; ignored.
+ - &#39;n_h&#39; = 1: White noise forcing in h; &#39;m_h&#39; ignored.
+ - &#39;n_g&#39; = 2: Additive noise is used in the T equation; &#39;B&#39; is ignored.
+ - Numerical integration method: NM = &#39;EH&#39; (Euler–Heun method; default)
+ - Data saving method: savemethod = sampling (default)
+ - External forcing is not given, therefore using
+   EF = {&#39;E_T&#39;: [0.0, 0.0, 0.0, 0.0, 0.0], &#39;E_h&#39;: [0.0, 0.0, 0.0, 0.0, 0.0]}.
+ - noise_custom = None: System-generated noise is used and changes at every run.
+---------------------------------------------------------------------------------
+Numerical integration starting:
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+All steps successfully completed!
+---------------------------------------------------------------------------------
+Standard drviations for T (analytical):
+0.6679474875720741
+Standard drviations for T (ensemble mean for numerical solutions):
+0.6661314788743358
+Standard drviations for h (analytical):
+4.531937945124749
+Standard drviations for h (ensemble mean for numerical solutions):
+4.610590240926274
+BJ index: -0.04 [1/month]
+Wyrtki index: 0.134 [1/month]. This corresponds to a periodicity of 46.963 months.
+</pre></div></div>
+</div>
+</section>
+</section>
+<section id="4.-RO-Parameter-Fitting-Setup">
+<h2>4. RO Parameter Fitting Setup<a class="headerlink" href="#4.-RO-Parameter-Fitting-Setup" title="Link to this heading">#</a></h2>
+<section id="Input-T-and-h-Time-Series">
+<h3>Input T and h Time Series<a class="headerlink" href="#Input-T-and-h-Time-Series" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>T and h are input timeseries used for the fitting.</p></li>
+<li><p>T and h must be 1D time series arrays with a uniform time step.</p></li>
+</ul>
+</section>
+<section id="Specifiying-RO-Type">
+<h3>Specifiying RO Type<a class="headerlink" href="#Specifiying-RO-Type" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>These options define the RO model type used for fitting.</p></li>
+<li><p>par_option_T specifies the linear and nonlinear terms in dT/dt</p></li>
+<li><p>par_option_h specifies the linear and nonlinear terms in dh/dt</p></li>
+<li><p>The following example shows how to set the RO type as linear-white-additive RO for the fitting.</p></li>
+</ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>par_option_T = {&quot;R&quot;: 1, &quot;F1&quot;: 1, &quot;b_T&quot;: 0, &quot;c_T&quot;: 0, &quot;d_T&quot;: 0}
+par_option_h = {&quot;F2&quot;: 1, &quot;epsilon&quot;: 1, &quot;b_h&quot;: 0}
+</pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>For keys in <code class="docutils literal notranslate"><span class="pre">par_option_T</span></code> and <code class="docutils literal notranslate"><span class="pre">par_option_h</span></code>, allowed values are:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> — Do not estimate</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1</span></code> — Estimate only the annual mean</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">3</span></code> — Estimate annual mean + annual seasonality</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">5</span></code> — Estimate annual mean + annual + semi-annual seasonality</p></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li><p>par_option_noise specifies the noise type</p></li>
+</ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>par_option_noise = {&quot;T&quot;: &quot;white&quot;, &quot;h&quot;: &quot;white&quot;, &quot;T_type&quot;: &quot;multiplicative&quot;}
+</pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Valid options for <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(h\)</span> are:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;white&quot;</span></code>: white noise forcing</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;red&quot;</span></code>: red noise forcing</p></li>
+</ul>
+</li>
+<li><p>Both <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(h\)</span> <strong>must use the same noise type</strong>; otherwise, an error is raised.</p></li>
+<li><p>Valid options for <code class="docutils literal notranslate"><span class="pre">T-type</span></code> (noise structure for <span class="math notranslate nohighlight">\(T\)</span>) are:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;additive&quot;</span></code>: T noise forcing is additive</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;multiplicative&quot;</span></code>: T noise forcing is multiplicative</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;multiplicative-H&quot;</span></code>: T noise forcing is Heaviside based-multiplicative noise</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="Advanced-Usage-(optional)">
+<h3>Advanced Usage (optional)<a class="headerlink" href="#Advanced-Usage-(optional)" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>The following block sets additional <strong>optional settings</strong> for the RO parameter fitting.</p></li>
+<li><p>The user may skip specifying these options. If the user doesn’t specify these options, the RO parameter fitting runs with the default settings.</p></li>
+<li><p>method_fitting specifies the parameter fitting method:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;LR-F&quot;</span></code>: Linear regression (tendency with forward differencing scheme)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;LR-C&quot;</span></code>: Linear regression (tendency with central differencing scheme)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;LR-F-MAC&quot;</span></code>: Linear regression (tendency with forward differencing scheme) with Moments Analytical Constraints estimation for T noise parameters</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;MLE&quot;</span></code>: Maximum Likelihood Estimation (tendency with forward differencing scheme)</p></li>
+</ul>
+</li>
+<li><p>dt specifies time interval of input T and h time series in month (default = 1.0).</p></li>
+<li><p>The default method depends on the specified RO type, as indicated in <code class="docutils literal notranslate"><span class="pre">&quot;table_default_fitting_method.txt&quot;</span></code>.</p></li>
+<li><p>Details of the fitting methods are documented in the manual and the accompanying paper.</p></li>
+</ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>method_fitting=&quot;MLE&quot;
+dt = 1.0
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="5.-RO-Parameter-Fitting-from-Time-Series">
+<h2>5. RO Parameter Fitting from Time Series<a class="headerlink" href="#5.-RO-Parameter-Fitting-from-Time-Series" title="Link to this heading">#</a></h2>
+<section id="id7">
+<h3>Basic Usage<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<p><strong>``par_fitted = RO_fitting(T, h, par_option_T, par_option_h, par_option_noise)``</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">par_fitted</span></code> has the same format as <code class="docutils literal notranslate"><span class="pre">par</span></code> in the section 2.</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Example 5-1. RO parameter fitting with default settings
+# using simulated T and h.
+T_ro, h_ro, _ = RO_solver(par, IC, N, NE, NM, dt, saveat, savemethod, EF, noise_custom)
+num_en = 0
+
+par_option_T = {&quot;R&quot;: 1, &quot;F1&quot;: 1, &quot;b_T&quot;: 0, &quot;c_T&quot;: 0, &quot;d_T&quot;: 0}
+par_option_h = {&quot;F2&quot;: 1, &quot;epsilon&quot;: 1, &quot;b_h&quot;: 0}
+par_option_noise = {&quot;T&quot;: &quot;white&quot;, &quot;h&quot;: &quot;white&quot;, &quot;T_type&quot;: &quot;additive&quot;}
+
+par_fitted = RO_fitting(T_ro[:,num_en], h_ro[:,num_en], par_option_T, par_option_h, par_option_noise)
+
+print(&quot;The fitting results are:&quot;)
+print(par_fitted)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+---------------------------------------------------------------------------------
+Welcome to the CRO Solver! Your simulation setup is as follows:
+---------------------------------------------------------------------------------
+ - Total simulation length: N = 1200 months
+ - Number of ensemble members: NE = 2
+ - Numerical integration time step: dt = 1.0 months (default: 0.1)
+ - Data output interval: saveat = 1.0 months (default: 1.0)
+ - Initial conditions: IC = [T0, h0] = [1.0, 0.0]
+ - Input parameters have the expected shapes.
+ - &#39;n_T&#39; = 1: White noise forcing in T; &#39;m_T&#39; ignored.
+ - &#39;n_h&#39; = 1: White noise forcing in h; &#39;m_h&#39; ignored.
+ - &#39;n_g&#39; = 2: Additive noise is used in the T equation; &#39;B&#39; is ignored.
+ - Numerical integration method: NM = &#39;EH&#39; (Euler–Heun method; default)
+ - Data saving method: savemethod = sampling (default)
+ - External forcing is not given, therefore using
+   EF = {&#39;E_T&#39;: [0.0, 0.0, 0.0, 0.0, 0.0], &#39;E_h&#39;: [0.0, 0.0, 0.0, 0.0, 0.0]}.
+ - noise_custom = 999: seeded same noise.
+---------------------------------------------------------------------------------
+Numerical integration starting:
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+All steps successfully completed!
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Welcome to CRO Fitting! Your fitting setups:
+---------------------------------------------------------------------------------
+ - Data time step is not given, defaulting to: dt = 1.0 months.
+ - Time series length: N = len(T)*dt = 1200.0 months.
+ - Prescribed terms: {&#39;R&#39;: 1, &#39;F1&#39;: 1, &#39;b_T&#39;: 0, &#39;c_T&#39;: 0, &#39;d_T&#39;: 0}.
+                     {&#39;F2&#39;: 1, &#39;epsilon&#39;: 1, &#39;b_h&#39;: 0}.
+   0 - Do not prescribe.
+   1 - Prescribe only the annual mean.
+   3 - Prescribe the annual mean and annual seasonality.
+   5 - Prescribe the annual mean, annual seasonality, and semi-annual seasonality.
+ - Noise options: {&#39;T&#39;: &#39;white&#39;, &#39;h&#39;: &#39;white&#39;, &#39;T_type&#39;: &#39;additive&#39;}.
+ - Fitting method for T and h main equations: None.
+Referring to table_default_fitting_method.txt and using LR-F
+---------------------------------------------------------------------------------
+All steps are successfully completed!
+---------------------------------------------------------------------------------
+The fitting results are:
+{&#39;R&#39;: [-0.06774813730861758], &#39;F1&#39;: [0.02143722538526271], &#39;F2&#39;: [0.9057477927380535], &#39;epsilon&#39;: [0.04363254842000738], &#39;b_T&#39;: [], &#39;c_T&#39;: [], &#39;d_T&#39;: [], &#39;b_h&#39;: [], &#39;sigma_T&#39;: [0.20526711331969716], &#39;sigma_h&#39;: [1.1575097256050515], &#39;B&#39;: [], &#39;m_T&#39;: [], &#39;m_h&#39;: [], &#39;n_T&#39;: [1], &#39;n_h&#39;: [1], &#39;n_g&#39;: [2]}
+</pre></div></div>
+</div>
+</section>
+<section id="id8">
+<h3>Advanced Usage<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<p><strong>``par_fitted = RO_fitting(T, h, par_option_T, par_option_h, par_option_noise, method_fitting)``</strong></p>
+<p><strong>``par_fitted = RO_fitting(T, h, par_option_T, par_option_h, par_option_noise, method_fitting, dt)``</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Example 5-2. RO parameter fitting with user-specified settings
+# using simulated T and h
+T_ro, h_ro, _ = RO_solver(par, IC, N, NE, NM, dt, saveat, savemethod, EF, noise_custom)
+num_en = 0
+
+par_option_T = {&quot;R&quot;: 1, &quot;F1&quot;: 1, &quot;b_T&quot;: 0, &quot;c_T&quot;: 0, &quot;d_T&quot;: 0}
+par_option_h = {&quot;F2&quot;: 1, &quot;epsilon&quot;: 1, &quot;b_h&quot;: 0}
+par_option_noise = {&quot;T&quot;: &quot;white&quot;, &quot;h&quot;: &quot;white&quot;, &quot;T_type&quot;: &quot;additive&quot;}
+
+par_fitted = RO_fitting(T_ro[:,num_en], h_ro[:,num_en], par_option_T, par_option_h, par_option_noise, method_fitting, dt)
+
+print(&quot;The fitting results are:&quot;)
+print(par_fitted)
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+---------------------------------------------------------------------------------
+Welcome to the CRO Solver! Your simulation setup is as follows:
+---------------------------------------------------------------------------------
+ - Total simulation length: N = 1200 months
+ - Number of ensemble members: NE = 2
+ - Numerical integration time step: dt = 1.0 months (default: 0.1)
+ - Data output interval: saveat = 1.0 months (default: 1.0)
+ - Initial conditions: IC = [T0, h0] = [1.0, 0.0]
+ - Input parameters have the expected shapes.
+ - &#39;n_T&#39; = 1: White noise forcing in T; &#39;m_T&#39; ignored.
+ - &#39;n_h&#39; = 1: White noise forcing in h; &#39;m_h&#39; ignored.
+ - &#39;n_g&#39; = 2: Additive noise is used in the T equation; &#39;B&#39; is ignored.
+ - Numerical integration method: NM = &#39;EH&#39; (Euler–Heun method; default)
+ - Data saving method: savemethod = sampling (default)
+ - External forcing is not given, therefore using
+   EF = {&#39;E_T&#39;: [0.0, 0.0, 0.0, 0.0, 0.0], &#39;E_h&#39;: [0.0, 0.0, 0.0, 0.0, 0.0]}.
+ - noise_custom = 999: seeded same noise.
+---------------------------------------------------------------------------------
+Numerical integration starting:
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+All steps successfully completed!
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Welcome to CRO Fitting! Your fitting setups:
+---------------------------------------------------------------------------------
+ - Time series length: N = len(T)*dt = 1200.0 months.
+ - Prescribed terms: {&#39;R&#39;: 1, &#39;F1&#39;: 1, &#39;b_T&#39;: 0, &#39;c_T&#39;: 0, &#39;d_T&#39;: 0}.
+                     {&#39;F2&#39;: 1, &#39;epsilon&#39;: 1, &#39;b_h&#39;: 0}.
+   0 - Do not prescribe.
+   1 - Prescribe only the annual mean.
+   3 - Prescribe the annual mean and annual seasonality.
+   5 - Prescribe the annual mean, annual seasonality, and semi-annual seasonality.
+ - Noise options: {&#39;T&#39;: &#39;white&#39;, &#39;h&#39;: &#39;white&#39;, &#39;T_type&#39;: &#39;additive&#39;}.
+ - Fitting method for T and h main equations: MLE.
+---------------------------------------------------------------------------------
+All steps are successfully completed!
+---------------------------------------------------------------------------------
+The fitting results are:
+{&#39;R&#39;: [-0.06784981819928827], &#39;F1&#39;: [0.021414463058241254], &#39;F2&#39;: [0.904274847000367], &#39;epsilon&#39;: [0.04330281416664912], &#39;b_T&#39;: [], &#39;c_T&#39;: [], &#39;d_T&#39;: [], &#39;b_h&#39;: [], &#39;sigma_T&#39;: [0.20546292006504124], &#39;sigma_h&#39;: [1.1578894982127184], &#39;B&#39;: [], &#39;m_T&#39;: [], &#39;m_h&#39;: [], &#39;n_T&#39;: [1], &#39;n_h&#39;: [1], &#39;n_g&#39;: [2]}
+</pre></div></div>
+</div>
+</section>
+</section>
+<section id="6.-RO-Parameter-Fitting-from-Observations-and-Reproducing">
+<h2>6. RO Parameter Fitting from Observations and Reproducing<a class="headerlink" href="#6.-RO-Parameter-Fitting-from-Observations-and-Reproducing" title="Link to this heading">#</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># load observations
+fpath = os.path.join(os.getcwd(), &quot;../../data&quot;, &quot;XRO_indices_oras5.nc&quot;)
+nc_oras5 = Dataset(fpath, mode=&#39;r&#39;)
+T_oras5 = nc_oras5.variables[&#39;Nino34&#39;][:]  # Nino 3.4 since 1979-01-01
+h_oras5 = nc_oras5.variables[&#39;WWV&#39;][:]     # WWV since 1979-01-01
+time_oras5 = nc_oras5.variables[&#39;time&#39;][:] # Days since 1979-01-01
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># setting fitting options and print the fitted parameters
+par_option_T = {&quot;R&quot;: 5, &quot;F1&quot;: 5, &quot;b_T&quot;: 0, &quot;c_T&quot;: 0, &quot;d_T&quot;: 0}
+par_option_h = {&quot;F2&quot;: 5, &quot;epsilon&quot;: 5, &quot;b_h&quot;: 0}
+par_option_noise = {&quot;T&quot;: &quot;red&quot;, &quot;h&quot;: &quot;red&quot;, &quot;T_type&quot;: &quot;additive&quot;}
+
+par_fitted_obs = RO_fitting(T_oras5, h_oras5, par_option_T, par_option_h, par_option_noise)
+print(par_fitted_obs)#, sort_dicts=False)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+---------------------------------------------------------------------------------
+Welcome to CRO Fitting! Your fitting setups:
+---------------------------------------------------------------------------------
+ - Data time step is not given, defaulting to: dt = 1.0 months.
+ - Time series length: N = len(T)*dt = 552.0 months.
+ - Prescribed terms: {&#39;R&#39;: 5, &#39;F1&#39;: 5, &#39;b_T&#39;: 0, &#39;c_T&#39;: 0, &#39;d_T&#39;: 0}.
+                     {&#39;F2&#39;: 5, &#39;epsilon&#39;: 5, &#39;b_h&#39;: 0}.
+   0 - Do not prescribe.
+   1 - Prescribe only the annual mean.
+   3 - Prescribe the annual mean and annual seasonality.
+   5 - Prescribe the annual mean, annual seasonality, and semi-annual seasonality.
+ - Noise options: {&#39;T&#39;: &#39;red&#39;, &#39;h&#39;: &#39;red&#39;, &#39;T_type&#39;: &#39;additive&#39;}.
+ - Fitting method for T and h red noises: ARn.
+   This option is defined internally within fit.py.
+   Options available are: LR or AR1 or ARn.
+ - Fitting method for T and h main equations: None.
+Referring to table_default_fitting_method.txt and using LR-F
+---------------------------------------------------------------------------------
+All steps are successfully completed!
+---------------------------------------------------------------------------------
+{&#39;R&#39;: [-0.05010900876953246, 0.13840597531543639, -2.608339099625428, 0.03450575279020817, -2.118528018143053], &#39;F1&#39;: [0.013458891427639808, 0.010725274221021881, -0.9199414559762609, 0.008899668089169683, -2.517396201144086], &#39;F2&#39;: [1.1458986989806124, 0.8214626458774328, 0.8207533980809775, 0.4736954591050402, 3.0446135434089285], &#39;epsilon&#39;: [0.021296089257346138, 0.031966026879537805, -0.08173522644584263, 0.027550299986507504, -3.059774899570745], &#39;b_T&#39;: [], &#39;c_T&#39;: [], &#39;d_T&#39;: [], &#39;b_h&#39;: [], &#39;sigma_T&#39;: [0.1946249583408544], &#39;sigma_h&#39;: [1.4684258321934496], &#39;B&#39;: [], &#39;m_T&#39;: [1.6958782102110523], &#39;m_h&#39;: [1.1376975544156558], &#39;n_T&#39;: [0], &#39;n_h&#39;: [0], &#39;n_g&#39;: [2]}
+</pre></div></div>
+</div>
+<p><strong>``func_mon_std(T)``</strong> returns the <strong>monthly standard deviations</strong> of the input time series <code class="docutils literal notranslate"><span class="pre">T</span></code>, calculated separately for each calendar month from <strong>January to December</strong>.</p>
+<ul class="simple">
+<li><p>Be aware that the reproducibility of monthly standard deviations can vary depending on the RO type specified by the user.</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># RO simulations using the fitted parameters
+T_ro_obs_based, h_ro_obs_based, _ = RO_solver(par_fitted_obs, IC, N, NE, NM, dt, saveat, savemethod, EF, noise_custom)
+num_en = 0
+time_axis_ro = np.arange(0, N, saveat)
+
+# compare observationanal and RO time series
+fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(12, 6), sharex=True)
+
+ax1.plot(time_oras5 / 30, T_oras5, label=&#39;Obs.&#39;, alpha=0.5)
+ax1.set_ylabel(&quot;T&quot;)
+ax1.legend()
+ax1.set_xlim(0,550)
+ax1.set_ylim(-3,3)
+ax1.grid(True)
+
+ax2.plot(time_axis_ro, T_ro_obs_based[:, num_en], label=&#39;RO&#39;, alpha=0.5)
+ax2.set_xlabel(&quot;Time (months)&quot;)
+ax2.set_ylabel(&quot;T&quot;)
+ax2.legend()
+ax2.set_xlim(0,550)
+ax2.set_ylim(-3,3)
+ax2.grid(True)
+
+plt.tight_layout()
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+---------------------------------------------------------------------------------
+Welcome to the CRO Solver! Your simulation setup is as follows:
+---------------------------------------------------------------------------------
+ - Total simulation length: N = 1200 months
+ - Number of ensemble members: NE = 2
+ - Numerical integration time step: dt = 1.0 months (default: 0.1)
+ - Data output interval: saveat = 1.0 months (default: 1.0)
+ - Initial conditions: IC = [T0, h0] = [1.0, 0.0]
+ - Input parameters have the expected shapes.
+ - &#39;n_T&#39; = 0: Red noise forcing in T with m_T = [1.6958782102110523, 0.0, 0.0, 0.0, 0.0].
+ - &#39;n_h&#39; = 0: Red noise forcing in h with m_h = [1.1376975544156558, 0.0, 0.0, 0.0, 0.0].
+ - &#39;n_g&#39; = 2: Additive noise is used in the T equation; &#39;B&#39; is ignored.
+ - Numerical integration method: NM = &#39;EH&#39; (Euler–Heun method; default)
+ - Data saving method: savemethod = sampling (default)
+ - External forcing is not given, therefore using
+   EF = {&#39;E_T&#39;: [0.0, 0.0, 0.0, 0.0, 0.0], &#39;E_h&#39;: [0.0, 0.0, 0.0, 0.0, 0.0]}.
+ - noise_custom = 999: seeded same noise.
+---------------------------------------------------------------------------------
+Numerical integration starting:
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+All steps successfully completed!
+---------------------------------------------------------------------------------
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_pyCRO_main_33_1.png" class="no-scaled-link" src="../_images/notebooks_pyCRO_main_33_1.png" style="width: 1189px; height: 589px;" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># compare monthly standard deviations
+monthly_std_obs = func_mon_std(T_oras5)
+monthly_std_ro = func_mon_std(T_ro_obs_based[:, num_en])
+months = list(calendar.month_abbr[1:])  # [&#39;Jan&#39;, &#39;Feb&#39;, ..., &#39;Dec&#39;]
+
+plt.figure(figsize=(10, 5))
+plt.plot(months, monthly_std_obs, marker=&#39;o&#39;, linewidth=2, label=&quot;Obs.&quot;)
+plt.plot(months, monthly_std_ro, marker=&#39;o&#39;, linewidth=2, label=&quot;RO&quot;)
+plt.title(&quot;Monthly Standard Deviation (Jan–Dec)&quot;)
+plt.xlabel(&quot;Month&quot;)
+plt.ylabel(&quot;Standard Deviation&quot;)
+plt.grid(True)
+plt.tight_layout()
+plt.legend()
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_pyCRO_main_34_0.png" class="no-scaled-link" src="../_images/notebooks_pyCRO_main_34_0.png" style="width: 989px; height: 491px;" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>nc_oras5.close()
+</pre></div>
+</div>
+</div>
+</section>
+<section id="7.-Load-RO-Parameters-from-the-Library-&amp;-Solve">
+<h2>7. Load RO Parameters from the Library &amp; Solve<a class="headerlink" href="#7.-Load-RO-Parameters-from-the-Library-&-Solve" title="Link to this heading">#</a></h2>
+<p>You can load pre-fitted RO parameters from the CRO parameter library. The library includes parameters estimated from observations and from 48 CMIP6 historical simulations, for multiple RO types.</p>
+<section id="Usage">
+<h3>Usage<a class="headerlink" href="#Usage" title="Link to this heading">#</a></h3>
+<p><strong>``par = RO_solver(data_name, RO_type)``</strong></p>
+<ul class="simple">
+<li><p><strong>``data_name``</strong>: data source for the parameter set.</p>
+<ul>
+<li><p>Options include the observational dataset <strong>``ORAS5``</strong> and <strong>``CMIP6-historical-1``</strong> … <strong>``CMIP6-historical-48``</strong>.</p></li>
+<li><p>Use <strong>``CMIP6-historical-all``</strong> to load all available CMIP6 members (shape <code class="docutils literal notranslate"><span class="pre">(48,</span> <span class="pre">16)</span></code>).</p></li>
+</ul>
+</li>
+<li><p><strong>``RO_type``</strong>: the RO equation type used in the parameter fitting (see CRO manual for the full list).</p></li>
+<li><p>See the CRO manual for complete option lists and definitions.</p></li>
+<li><p>The example below shows how to load parameter values for a Linear-White-Additive type RO equation.</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Example 7-1. ORAS5 reanalysis (1958-2022)
+data_name = &quot;ORAS5&quot;
+RO_type = &quot;Linear-White-Additive&quot;
+par = par_load(data_name,RO_type)
+par
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;R&#39;: [-0.0731702636710546],
+ &#39;F1&#39;: [0.017938268057197594],
+ &#39;F2&#39;: [1.2939079422481348],
+ &#39;epsilon&#39;: [0.008754185790444461],
+ &#39;b_T&#39;: [],
+ &#39;c_T&#39;: [],
+ &#39;d_T&#39;: [],
+ &#39;b_h&#39;: [],
+ &#39;sigma_T&#39;: [0.21698921132838628],
+ &#39;sigma_h&#39;: [1.5547824185851542],
+ &#39;B&#39;: [],
+ &#39;m_T&#39;: [],
+ &#39;m_h&#39;: [],
+ &#39;n_T&#39;: [1],
+ &#39;n_h&#39;: [1],
+ &#39;n_g&#39;: [2]}
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Example 7-2. CMIP6 CESM2 historial simulation (ensemble number 8)
+data_name = &quot;CMIP6-historical-8&quot;
+RO_type = &quot;Linear-White-Additive&quot;
+par = par_load(data_name,RO_type)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Example 7-3. All 48 CMIP6 historial simulations in the libarary
+# In this case, par.shape == (48, 16), i.e. 48 rows of parameter sets.
+# Use par[i] (0 ≤ i &lt; 48) to extract parameters from the ensemble member of your choice.
+# Be careful with indexing: i = 0..(47) extract CMIP6-historical-1..(48).
+data_name = &quot;CMIP6-historical-all&quot;
+RO_type = &quot;Linear-White-Additive&quot;
+par = par_load(data_name,RO_type)
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Applications">
+<h3>Applications<a class="headerlink" href="#Applications" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Using the parameter library, users can quickly set up parameters for solving the CRO model.</p></li>
+<li><p>The example below shows how to load the parameter set fitted for the <strong>CMIP6 CESM2 historical simulation</strong> with the <strong>Seasonal–Linear–White–Additive</strong> RO type, and then solve it.</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Example 7-4. Solving RO using CMIP6 historical CESM2 parameter
+data_name = &quot;CMIP6-historical-8&quot;;
+RO_type = &quot;Seasonal-Linear-White-Additive&quot;
+par = par_load(data_name, RO_type)
+
+IC = [1.0, 0.0] # % Initial conditions for T (K) and h (m)
+N = 12*100;    # Simulation length (month)
+NE = 2          # Number of ensemble members
+
+
+T_CESM2_en, h_CESM2_en, _ = RO_solver(par, IC, N, NE)
+num_en = 0
+
+time_axis_ro = np.arange(0, N)
+plt.plot(time_axis_ro, T_CESM2_en[:,num_en])
+plt.xlabel(&quot;Time (months)&quot;)
+plt.ylabel(&quot;T (K)&quot;)
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+---------------------------------------------------------------------------------
+Welcome to the CRO Solver! Your simulation setup is as follows:
+---------------------------------------------------------------------------------
+ - Total simulation length: N = 1200 months
+ - Number of ensemble members: NE = 2
+ - Numerical integration time step: dt = 0.1 months (default: 0.1)
+ - Data output interval: saveat = 1.0 months (default: 1.0)
+ - Initial conditions: IC = [T0, h0] = [1.0, 0.0]
+ - Input parameters have the expected shapes.
+ - &#39;n_T&#39; = 1: White noise forcing in T; &#39;m_T&#39; ignored.
+ - &#39;n_h&#39; = 1: White noise forcing in h; &#39;m_h&#39; ignored.
+ - &#39;n_g&#39; = 2: Additive noise is used in the T equation; &#39;B&#39; is ignored.
+ - Numerical integration method: NM = &#39;EH&#39; (Euler–Heun method; default)
+ - Data saving method: savemethod = sampling (default)
+ - External forcing is not given, therefore using
+   EF = {&#39;E_T&#39;: [0.0, 0.0, 0.0, 0.0, 0.0], &#39;E_h&#39;: [0.0, 0.0, 0.0, 0.0, 0.0]}.
+ - noise_custom = None: System-generated noise is used and changes at every run.
+---------------------------------------------------------------------------------
+Numerical integration starting:
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+All steps successfully completed!
+---------------------------------------------------------------------------------
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Text(0, 0.5, &#39;T (K)&#39;)
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_pyCRO_main_41_2.png" class="no-scaled-link" src="../_images/notebooks_pyCRO_main_41_2.png" style="width: 565px; height: 432px;" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../ug-solver.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Solver</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="CRO_main.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Community Recharge Oscillator Model (CRO) v0.0 for Python</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#1.-RO-Master-Equations">1. RO Master Equations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Linear-and-Nonlinear-Parameters:">Linear and Nonlinear Parameters:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Noise-Parameters:">Noise Parameters:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Noise-Option-Parameters:">Noise Option Parameters:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#2.-RO-Simulation-Setup">2. RO Simulation Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#3.-RO-Simulations">3. RO Simulations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Basic-Usage">Basic Usage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Advanced-Usage">Advanced Usage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Analytical-Solutions">Analytical Solutions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#4.-RO-Parameter-Fitting-Setup">4. RO Parameter Fitting Setup</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Input-T-and-h-Time-Series">Input T and h Time Series</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Specifiying-RO-Type">Specifiying RO Type</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Advanced-Usage-(optional)">Advanced Usage (optional)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#5.-RO-Parameter-Fitting-from-Time-Series">5. RO Parameter Fitting from Time Series</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Basic Usage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Advanced Usage</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#6.-RO-Parameter-Fitting-from-Observations-and-Reproducing">6. RO Parameter Fitting from Observations and Reproducing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#7.-Load-RO-Parameters-from-the-Library-&amp;-Solve">7. Load RO Parameters from the Library &amp; Solve</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Usage">Usage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Applications">Applications</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By CLIVAR CRO (Soong-Ki Kim, Sen Zhao, et al.)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <em>CLIVAR CRO group.</em>
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
