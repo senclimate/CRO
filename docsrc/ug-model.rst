@@ -1,7 +1,7 @@
 
 Fitting
 ========================
-This section illustrates the core features of `x4c` as an Xarray extension.
+This section illustrates the RO master equations and parameters
 
 .. toctree::
     :maxdepth: 1

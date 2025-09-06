@@ -32,7 +32,7 @@ CRO: Community Recharge Oscillator Model
         :link: ug-model
         :link-type: doc
 
-        :code:`CRO` solver 
+        :code:`CRO` model and parameters 
 
     .. grid-item-card::  Solver
         :class-title: custom-title
