@@ -1,0 +1,26 @@
+seasonal_type  det_type    noise_color_type  noise_amp_type     fitting_method
+constant       linear      white             additive           LR-F
+constant       linear      white             multiplicative     MLE
+constant       linear      white             multiplicative-H   MLE
+constant       linear      red               additive           LR-F
+constant       linear      red               multiplicative     LR-F-MAC
+constant       linear      red               multiplicative-H   LR-F
+constant       nonlinear   white             additive           LR-F
+constant       nonlinear   white             multiplicative     LR-F-MAC
+constant       nonlinear   white             multiplicative-H   MLE
+constant       nonlinear   red               additive           LR-F
+constant       nonlinear   red               multiplicative     LR-F-MAC
+constant       nonlinear   red               multiplicative-H   LR-F
+seasonal       linear      white             additive           LR-F
+seasonal       linear      white             multiplicative     MLE
+seasonal       linear      white             multiplicative-H   MLE
+seasonal       linear      red               additive           LR-F
+seasonal       linear      red               multiplicative     LR-F-MAC
+seasonal       linear      red               multiplicative-H   LR-F
+seasonal       nonlinear   white             additive           LR-F
+seasonal       nonlinear   white             multiplicative     LR-F-MAC
+seasonal       nonlinear   white             multiplicative-H   MLE
+seasonal       nonlinear   red               additive           LR-F
+seasonal       nonlinear   red               multiplicative     LR-F-MAC
+seasonal       nonlinear   red               multiplicative-H   LR-F
+
