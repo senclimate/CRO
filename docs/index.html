@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>CRO: Community Recharge Oscillator Model &#8212; CRO  documentation</title>
+    <title>CRO: Community Recharge Oscillator &#8212; CLIVAR Working Group Community Recharge Oscillator (CRO) project  documentation</title>
   
   
   
@@ -48,8 +48,6 @@
     <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
     <link rel="icon" href="_static/CRO_logo.png"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -148,8 +146,8 @@
       
     
     
-    <img src="_static/CRO_logo.png" class="logo__image only-light" alt="CRO  documentation - Home"/>
-    <script>document.write(`<img src="_static/CRO_logo.png" class="logo__image only-dark" alt="CRO  documentation - Home"/>`);</script>
+    <img src="_static/CRO_logo.png" class="logo__image only-light" alt="CLIVAR Working Group Community Recharge Oscillator (CRO) project  documentation - Home"/>
+    <script>document.write(`<img src="_static/CRO_logo.png" class="logo__image only-dark" alt="CLIVAR Working Group Community Recharge Oscillator (CRO) project  documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -169,8 +167,7 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="ug-installation.html">Installation</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="ug-solver.html">Solver</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/pyCRO_main.html">Community Recharge Oscillator Model (CRO) v0.0 for Python</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="ug-solver.html">Solver</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="ug-fitting.html">Fitting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
@@ -335,6 +332,22 @@
 
 
 
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
 <script>
 document.write(`
   <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -364,7 +377,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>CRO: Community Recharge Oscillator Model</h1>
+    <h1>CRO: Community Recharge Oscillator</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -378,13 +391,15 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="cro-community-recharge-oscillator-model">
-<h1>CRO: Community Recharge Oscillator Model<a class="headerlink" href="#cro-community-recharge-oscillator-model" title="Link to this heading">#</a></h1>
-<p><code class="code docutils literal notranslate"><span class="pre">pyCRO</span></code> is a python version of CRO</p>
+  <section id="cro-community-recharge-oscillator">
+<h1>CRO: Community Recharge Oscillator<a class="headerlink" href="#cro-community-recharge-oscillator" title="Link to this heading">#</a></h1>
+<p><code class="code docutils literal notranslate"><span class="pre">CRO</span></code> is an open-source Python and MATLAB package for solving, parameter fitting, and practical applications of the El Niño-Southern Oscillation (ENSO) recharge oscillator.</p>
+<p><code class="code docutils literal notranslate"><span class="pre">CRO</span></code> is an open-source Python and MATLAB package for modeling the El Niño–Southern Oscillation (ENSO) using the recharge oscillator (RO) framework (Jin).  It provides tools for solving the RO equations, fitting parameters to data, and applying the model in research and forecasting.</p>
+<p><strong>Key Features</strong></p>
 <ul class="simple">
-<li><p><strong>Solver</strong> features:</p></li>
-<li><p><strong>Fitting</strong> features:</p></li>
-<li><p><strong>Application</strong> features:</p></li>
+<li><p><strong>Solver</strong>: Numerical and analytical solvers for the recharge oscillator equations.</p></li>
+<li><p><strong>Fitting</strong>: Parameter estimation from observations, reanalysis, or climate model data.</p></li>
+<li><p><strong>Applications</strong>: simulations, sensitivity experiments, and analysis of ENSO changes.</p></li>
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -496,10 +511,6 @@ API</div>
   
   <div class="footer-item">
     
-<p class="component-author">
-By CLIVAR CRO (Soong-Ki Kim, Sen Zhao, et al.)
-</p>
-
   </div>
   
   <div class="footer-item">
@@ -521,7 +532,7 @@ By CLIVAR CRO (Soong-Ki Kim, Sen Zhao, et al.)
   <div class="footer-item">
     
 <div class="extra_footer">
-  <em>CLIVAR CRO group.</em>
+  <em>CLIVAR Working Group Community Recharge Oscillator (CRO) project</em>
 </div>
   </div>
   

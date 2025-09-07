@@ -14,12 +14,11 @@ import os
 import sys
 
 sys.path.insert(0, os.path.abspath('..'))
-# sys.path.insert(0, os.path.abspath('../pyCRO'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'CRO'
-author = 'CLIVAR CRO (Soong-Ki Kim, Sen Zhao, et al.)'
+project = 'CLIVAR Working Group Community Recharge Oscillator (CRO) project'
+author  = ''
 copyright = '2025'
 
 
@@ -79,8 +78,8 @@ html_theme_options = {
     'use_edit_page_button': True,
     'use_repository_button': True,
     'use_issues_button': True,
-    'use_fullscreen_button': False,
-    'extra_footer': '<em>CLIVAR CRO group.</em>',
+    'use_fullscreen_button': True,
+    'extra_footer': '<em>CLIVAR Working Group Community Recharge Oscillator (CRO) project</em>',
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
