@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>CRO equations and parameters &#8212; CLIVAR Working Group Community Recharge Oscillator (CRO) project  documentation</title>
+    <title>Model &#8212; CLIVAR Working Group Community Recharge Oscillator (CRO) project  documentation</title>
   
   
   
@@ -48,6 +48,8 @@
     <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'ug-model';</script>
     <link rel="icon" href="_static/CRO_logo.png"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -166,13 +168,15 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="ug-installation.html">Installation</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="ug-solver.html">Solver</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+<li class="toctree-l1 has-children"><a class="reference internal" href="ug-solver.html">Solver</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/CRO_solver.html">Community Recharge Oscillator Model (CRO) v0.0 for Python</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="ug-fitting.html">Fitting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="ug-application.html">Application</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+<li class="toctree-l1 has-children"><a class="reference internal" href="ug-application.html">Application</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/CRO_application.html">CRO Model Code Design</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="ug-api.html">API Reference</a></li>
@@ -376,7 +380,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>CRO equations and parameters</h1>
+    <h1>Model</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -390,10 +394,13 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="cro-equations-and-parameters">
-<h1>CRO equations and parameters<a class="headerlink" href="#cro-equations-and-parameters" title="Link to this heading">#</a></h1>
+  <section id="model">
+<h1>Model<a class="headerlink" href="#model" title="Link to this heading">#</a></h1>
 <p>This section illustrates the RO master equations and parameters</p>
 <div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/CRO_model.html">CRO Model Code Design</a></li>
+</ul>
 </div>
 </section>
 

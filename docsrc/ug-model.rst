@@ -1,5 +1,5 @@
 
-CRO equations and parameters
+Model
 =============================
 This section illustrates the RO master equations and parameters
 
