@@ -10,7 +10,6 @@ CRO: Community Recharge Oscillator
 - **Fitting**: Parameter estimation from observations, reanalysis, or climate model data.  
 - **Applications**: simulations, sensitivity experiments, and analysis of ENSO changes.  
 
-
 .. warning ::
     This package is still in its early stage and under active development, and its API could be changed frequently.
 
@@ -28,7 +27,7 @@ CRO: Community Recharge Oscillator
 
         Installation instructions.
 
-    .. grid-item-card::  CRO model formulation
+    .. grid-item-card::  Model
         :class-title: custom-title
         :class-body: custom-body
         :img-top: _static/setup.png
@@ -74,7 +73,7 @@ CRO: Community Recharge Oscillator
         The essential API.
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :hidden:
    :caption: User Guide
 

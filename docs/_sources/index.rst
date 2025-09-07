@@ -2,8 +2,6 @@
 CRO: Community Recharge Oscillator
 ************************************
 
-:code:`CRO` is an open-source Python and MATLAB package for solving, parameter fitting, and practical applications of the El Niño-Southern Oscillation (ENSO) recharge oscillator. 
-
 :code:`CRO` is an open-source Python and MATLAB package for modeling the El Niño–Southern Oscillation (ENSO) using the recharge oscillator (RO) framework (Jin).  It provides tools for solving the RO equations, fitting parameters to data, and applying the model in research and forecasting.
 
 **Key Features**
@@ -11,7 +9,6 @@ CRO: Community Recharge Oscillator
 - **Solver**: Numerical and analytical solvers for the recharge oscillator equations.  
 - **Fitting**: Parameter estimation from observations, reanalysis, or climate model data.  
 - **Applications**: simulations, sensitivity experiments, and analysis of ENSO changes.  
-
 
 .. warning ::
     This package is still in its early stage and under active development, and its API could be changed frequently.
@@ -30,7 +27,7 @@ CRO: Community Recharge Oscillator
 
         Installation instructions.
 
-    .. grid-item-card::  CRO model formulation
+    .. grid-item-card::  Model
         :class-title: custom-title
         :class-body: custom-body
         :img-top: _static/setup.png
@@ -76,7 +73,7 @@ CRO: Community Recharge Oscillator
         The essential API.
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :hidden:
    :caption: User Guide
 
