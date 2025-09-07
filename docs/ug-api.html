@@ -169,7 +169,8 @@
 <li class="toctree-l2"><a class="reference internal" href="notebooks/CRO_solver.html">Community Recharge Oscillator Model (CRO) v0.0 for Python</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="ug-fitting.html">Fitting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+<li class="toctree-l1 has-children"><a class="reference internal" href="ug-fitting.html">Fitting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/CRO_fitting.html">Fitting</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="ug-application.html">Application</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -389,10 +390,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.solver.RO_solver"><code class="docutils literal notranslate"><span class="pre">RO_solver()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.fitting.RO_fitting"><code class="docutils literal notranslate"><span class="pre">RO_fitting()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.analytic.RO_analytic_solver"><code class="docutils literal notranslate"><span class="pre">RO_analytic_solver()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.analytic.RO_analytic_std"><code class="docutils literal notranslate"><span class="pre">RO_analytic_std()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-pyCRO.solver">Solver</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.solver.RO_solver"><code class="docutils literal notranslate"><span class="pre">RO_solver()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.analytic.RO_analytic_solver"><code class="docutils literal notranslate"><span class="pre">RO_analytic_solver()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.analytic.RO_analytic_std"><code class="docutils literal notranslate"><span class="pre">RO_analytic_std()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-pyCRO.fitting">Fitting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.fitting.RO_fitting"><code class="docutils literal notranslate"><span class="pre">RO_fitting()</span></code></a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -404,8 +411,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="module-pyCRO.solver">
-<span id="api-reference"></span><h1>API Reference<a class="headerlink" href="#module-pyCRO.solver" title="Link to this heading">#</a></h1>
+  <section id="api-reference">
+<h1>API Reference<a class="headerlink" href="#api-reference" title="Link to this heading">#</a></h1>
+<section id="module-pyCRO.solver">
+<span id="solver"></span><h2>Solver<a class="headerlink" href="#module-pyCRO.solver" title="Link to this heading">#</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="pyCRO.solver.RO_solver">
 <span class="sig-prename descclassname"><span class="pre">pyCRO.solver.</span></span><span class="sig-name descname"><span class="pre">RO_solver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">par</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">IC</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NM</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'EH'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saveat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">savemethod</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sampling'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">EF</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_custom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCRO.solver.RO_solver" title="Link to this definition">#</a></dt>
@@ -545,57 +554,6 @@ T.shape, h.shape
 ((51, 5), (51, 5))</p>
 </dd></dl>
 
-<dl class="py function" id="module-pyCRO.fitting">
-<dt class="sig sig-object py" id="pyCRO.fitting.RO_fitting">
-<span class="sig-prename descclassname"><span class="pre">pyCRO.fitting.</span></span><span class="sig-name descname"><span class="pre">RO_fitting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">par_option_T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">par_option_h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">par_option_noise</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method_fitting</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCRO.fitting.RO_fitting" title="Link to this definition">#</a></dt>
-<dd><p>Fit the CRO (Community Recharge Oscillator) model parameters to T and h time series.</p>
-<p>This function performs parameter fitting for the RO system, using the specified
-prescribed parameter options and noise characteristics. Fitting can be done
-via linear regression (LR) or maximum likelihood estimation (MLE), with optional
-handling for multiplicative or additive noise. It can automatically select a
-default fitting method based on parameter options.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>T</strong> (<em>ndarray</em>) – Time series of SST anomalies (1D array).</p></li>
-<li><p><strong>h</strong> (<em>ndarray</em>) – Time series of thermocline anomalies (1D array).</p></li>
-<li><p><strong>par_option_T</strong> (<em>dict</em>) – Prescribed options for SST equation parameters.</p></li>
-<li><p><strong>par_option_h</strong> (<em>dict</em>) – Prescribed options for thermocline equation parameters.</p></li>
-<li><p><strong>par_option_noise</strong> (<em>dict</em>) – Noise settings, e.g., {‘T’: ‘red’, ‘h’: ‘red’, ‘T_type’: ‘multiplicative’}.</p></li>
-<li><p><strong>method_fitting</strong> (<em>str</em><em>, </em><em>optional</em>) – Fitting method to use: ‘LR-F’, ‘LR-C’, ‘LR-F-MAC’, or ‘MLE’.
-If None, the method is determined automatically.</p></li>
-<li><p><strong>dt</strong> (<em>float</em><em>, </em><em>optional</em>) – Time step of the input time series. Default is 1.0 (months).</p></li>
-<li><p><strong>verbose</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, prints fitting information and progress.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Dictionary of fitted CRO parameters:
-Keys include:
-‘R’, ‘F1’, ‘F2’, ‘epsilon’, ‘b_T’, ‘c_T’, ‘d_T’, ‘b_h’,
-‘sigma_T’, ‘sigma_h’, ‘B’, ‘m_T’, ‘m_h’, ‘n_T’, ‘n_h’, ‘n_g’.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>dict</p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<ul class="simple">
-<li><p>Automatically removes mean from input time series.</p></li>
-<li><p>Applies Ito-to-Stratonovich correction for multiplicative noise.</p></li>
-<li><p>Negligible seasonal amplitudes are rounded to zero.</p></li>
-<li><p>Ensures consistent noise settings for T and h equations.</p></li>
-<li><p>Prints a summary of the fitting process if <cite>verbose</cite> is True.</p></li>
-</ul>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">par_option_T</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;mean&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;seasonal&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;semi_annual&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="o">...</span><span class="p">}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">par_option_h</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;mean&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;seasonal&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;semi_annual&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="o">...</span><span class="p">}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">par_option_noise</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;T&#39;</span><span class="p">:</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">:</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;T_type&#39;</span><span class="p">:</span> <span class="s1">&#39;multiplicative&#39;</span><span class="p">}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fitted_params</span> <span class="o">=</span> <span class="n">RO_fitting</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">par_option_T</span><span class="p">,</span> <span class="n">par_option_h</span><span class="p">,</span> <span class="n">par_option_noise</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">fitted_params</span><span class="p">[</span><span class="s1">&#39;sigma_T&#39;</span><span class="p">])</span>
-</pre></div>
-</div>
-</dd></dl>
-
 <dl class="py function" id="module-pyCRO.analytic">
 <dt class="sig sig-object py" id="pyCRO.analytic.RO_analytic_solver">
 <span class="sig-prename descclassname"><span class="pre">pyCRO.analytic.</span></span><span class="sig-name descname"><span class="pre">RO_analytic_solver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">par</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">IC</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saveat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">savemethod</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sampling'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_custom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCRO.analytic.RO_analytic_solver" title="Link to this definition">#</a></dt>
@@ -719,6 +677,61 @@ NumPy broadcasting, avoiding explicit Python loops.</p>
 </dd></dl>
 
 </section>
+<section id="module-pyCRO.fitting">
+<span id="fitting"></span><h2>Fitting<a class="headerlink" href="#module-pyCRO.fitting" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyCRO.fitting.RO_fitting">
+<span class="sig-prename descclassname"><span class="pre">pyCRO.fitting.</span></span><span class="sig-name descname"><span class="pre">RO_fitting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">par_option_T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">par_option_h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">par_option_noise</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method_fitting</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCRO.fitting.RO_fitting" title="Link to this definition">#</a></dt>
+<dd><p>Fit the CRO (Community Recharge Oscillator) model parameters to T and h time series.</p>
+<p>This function performs parameter fitting for the RO system, using the specified
+prescribed parameter options and noise characteristics. Fitting can be done
+via linear regression (LR) or maximum likelihood estimation (MLE), with optional
+handling for multiplicative or additive noise. It can automatically select a
+default fitting method based on parameter options.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> (<em>ndarray</em>) – Time series of SST anomalies (1D array).</p></li>
+<li><p><strong>h</strong> (<em>ndarray</em>) – Time series of thermocline anomalies (1D array).</p></li>
+<li><p><strong>par_option_T</strong> (<em>dict</em>) – Prescribed options for SST equation parameters.</p></li>
+<li><p><strong>par_option_h</strong> (<em>dict</em>) – Prescribed options for thermocline equation parameters.</p></li>
+<li><p><strong>par_option_noise</strong> (<em>dict</em>) – Noise settings, e.g., {‘T’: ‘red’, ‘h’: ‘red’, ‘T_type’: ‘multiplicative’}.</p></li>
+<li><p><strong>method_fitting</strong> (<em>str</em><em>, </em><em>optional</em>) – Fitting method to use: ‘LR-F’, ‘LR-C’, ‘LR-F-MAC’, or ‘MLE’.
+If None, the method is determined automatically.</p></li>
+<li><p><strong>dt</strong> (<em>float</em><em>, </em><em>optional</em>) – Time step of the input time series. Default is 1.0 (months).</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, prints fitting information and progress.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary of fitted CRO parameters:
+Keys include:
+‘R’, ‘F1’, ‘F2’, ‘epsilon’, ‘b_T’, ‘c_T’, ‘d_T’, ‘b_h’,
+‘sigma_T’, ‘sigma_h’, ‘B’, ‘m_T’, ‘m_h’, ‘n_T’, ‘n_h’, ‘n_g’.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>Automatically removes mean from input time series.</p></li>
+<li><p>Applies Ito-to-Stratonovich correction for multiplicative noise.</p></li>
+<li><p>Negligible seasonal amplitudes are rounded to zero.</p></li>
+<li><p>Ensures consistent noise settings for T and h equations.</p></li>
+<li><p>Prints a summary of the fitting process if <cite>verbose</cite> is True.</p></li>
+</ul>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">par_option_T</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;mean&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;seasonal&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;semi_annual&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="o">...</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">par_option_h</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;mean&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;seasonal&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;semi_annual&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="o">...</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">par_option_noise</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;T&#39;</span><span class="p">:</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">:</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;T_type&#39;</span><span class="p">:</span> <span class="s1">&#39;multiplicative&#39;</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fitted_params</span> <span class="o">=</span> <span class="n">RO_fitting</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">par_option_T</span><span class="p">,</span> <span class="n">par_option_h</span><span class="p">,</span> <span class="n">par_option_noise</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">fitted_params</span><span class="p">[</span><span class="s1">&#39;sigma_T&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+</section>
 
 
                 </article>
@@ -756,10 +769,16 @@ NumPy broadcasting, avoiding explicit Python loops.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.solver.RO_solver"><code class="docutils literal notranslate"><span class="pre">RO_solver()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.fitting.RO_fitting"><code class="docutils literal notranslate"><span class="pre">RO_fitting()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.analytic.RO_analytic_solver"><code class="docutils literal notranslate"><span class="pre">RO_analytic_solver()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.analytic.RO_analytic_std"><code class="docutils literal notranslate"><span class="pre">RO_analytic_std()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-pyCRO.solver">Solver</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.solver.RO_solver"><code class="docutils literal notranslate"><span class="pre">RO_solver()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.analytic.RO_analytic_solver"><code class="docutils literal notranslate"><span class="pre">RO_analytic_solver()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.analytic.RO_analytic_std"><code class="docutils literal notranslate"><span class="pre">RO_analytic_std()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-pyCRO.fitting">Fitting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.fitting.RO_fitting"><code class="docutils literal notranslate"><span class="pre">RO_fitting()</span></code></a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

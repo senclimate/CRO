@@ -1,6 +1,5 @@
-
 Model
-=============================
+========================
 This section illustrates the RO master equations and parameters
 
 .. toctree::

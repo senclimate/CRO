@@ -1,5 +1,5 @@
 Installation
-===============
+========================
 
 
 Install the Conda environment

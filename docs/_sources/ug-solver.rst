@@ -1,4 +1,3 @@
-
 Solver
 ========================
 This section illustrates the solver features of `pyCRO` 
