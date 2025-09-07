@@ -18,7 +18,7 @@ sys.path.insert(0, os.path.abspath('..'))
 # -- Project information -----------------------------------------------------
 
 project = 'CLIVAR Working Group Community Recharge Oscillator (CRO) project'
-author  = ''
+author  = 'CLIVAR CRO Team (lead by Soong-Ki Kim and Sen Zhao)'
 copyright = '2025'
 
 
@@ -47,6 +47,7 @@ extensions = [
     'sphinx.ext.napoleon',
     'sphinx_copybutton',
     'sphinx_design',
+    'sphinxcontrib.bibtex',
     # 'sphinx.ext.mathjax',
     # 'sphinxcontrib.bibtex',
     # 'sphinxcontrib.rsvgconverter',
@@ -58,6 +59,14 @@ nbsphinx_codecell_lexer = 'python3'
 
 html_logo = 'CRO_logo.png'
 html_favicon = 'CRO_logo.png'
+
+
+# Point to your .bib file(s)
+bibtex_bibfiles = ["refs.bib"]
+
+# Optional: APA style
+bibtex_default_style = "apa"   # APA via citeproc-py
+bibtex_reference_style = "author_year"
 
 # -- Options for HTML output -------------------------------------------------
 

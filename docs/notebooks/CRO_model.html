@@ -6,9 +6,9 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>CRO Model Code Design &#8212; CLIVAR Working Group Community Recharge Oscillator (CRO) project  documentation</title>
+    <title>RO Master Equations &#8212; CLIVAR Working Group Community Recharge Oscillator (CRO) project  documentation</title>
   
   
   
@@ -33,7 +33,6 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/theme_overrides.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
     <link rel="stylesheet" type="text/css" href="../_static/style.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -42,7 +41,7 @@
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
@@ -170,7 +169,9 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../ug-installation.html">Installation</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../ug-model.html">Model</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">CRO Model Code Design</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">RO Master Equations</a></li>
+
+
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../ug-solver.html">Solver</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -388,7 +389,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>CRO Model Code Design</h1>
+    <h1>RO Master Equations</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -398,14 +399,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#1.-RO-Master-Equations">1. RO Master Equations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#2.-RO-parameters">2. RO parameters</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Linear-and-Nonlinear-Parameters:">Linear and Nonlinear Parameters:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Noise-Parameters:">Noise Parameters:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Noise-Option-Parameters:">Noise Option Parameters:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">RO Master Equations</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#RO-Parameters">RO Parameters</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Linear-and-Nonlinear-Parameters:">Linear and Nonlinear Parameters:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Noise-Parameters:">Noise Parameters:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Noise-Option-Parameters:">Noise Option Parameters:</a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#RO-Types-and-Variants">RO Types and Variants</a></li>
 </ul>
+
             </nav>
         </div>
     </div>
@@ -416,10 +419,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="CRO-Model-Code-Design">
-<h1>CRO Model Code Design<a class="headerlink" href="#CRO-Model-Code-Design" title="Link to this heading">#</a></h1>
-<section id="1.-RO-Master-Equations">
-<h2>1. RO Master Equations<a class="headerlink" href="#1.-RO-Master-Equations" title="Link to this heading">#</a></h2>
+  <section id="RO-Master-Equations">
+<h1>RO Master Equations<a class="headerlink" href="#RO-Master-Equations" title="Link to this heading">#</a></h1>
 <p>The CRO code package is a Python/MATLAB software package for solving and fitting the ENSO RO model. Here, we introduce the master RO equation, which can consider various types of RO models. The master RO equation is given as:</p>
 <div class="math notranslate nohighlight">
 \[\displaystyle \frac{dT}{dt} = RT + F_{1}h + b_{T}T^{2} − c_{T}T^{3} + d_{T}T \cdot h + \sigma_{T}N_{T}(1+g_{T})+E_{T}\]</div>
@@ -449,17 +450,17 @@ document.write(`
 <li><p><span class="math notranslate nohighlight">\(T\)</span> (K) and <span class="math notranslate nohighlight">\(h\)</span> (m) represent the ENSO sea surface temperature (SST) and thermocline depth anomalies, respectively.</p></li>
 <li><p><span class="math notranslate nohighlight">\(w_T\)</span> and <span class="math notranslate nohighlight">\(w_h\)</span> are uncorrelated Gaussian white noise forcings with zero mean and unit variance, applied to the <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(h\)</span> equations, respectively.</p></li>
 <li><p><span class="math notranslate nohighlight">\(E_T\)</span> and <span class="math notranslate nohighlight">\(E_h\)</span> are external forcings applied to the <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(h\)</span> equations, respectively.</p></li>
-<li><p>The physical meaning and units of each parameter will be provided in the final version.</p></li>
 </ul>
 </section>
-<section id="2.-RO-parameters">
-<h2>2. RO parameters<a class="headerlink" href="#2.-RO-parameters" title="Link to this heading">#</a></h2>
+<section id="RO-Parameters">
+<h1>RO Parameters<a class="headerlink" href="#RO-Parameters" title="Link to this heading">#</a></h1>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Class</p></th>
 <th class="head"><p>Parameter (equation)</p></th>
 <th class="head"><p>Parameter (code)</p></th>
 <th class="head"><p>Unit</p></th>
+<th class="head"><p>Physical meaning</p></th>
 </tr>
 </thead>
 <tbody>
@@ -467,29 +468,37 @@ document.write(`
 <td><p><strong>Linear parameters</strong></p></td>
 <td></td>
 <td></td>
+<td></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td><p><span class="math notranslate nohighlight">\(R\)</span></p></td>
 <td><p>R</p></td>
 <td><p>month<span class="math notranslate nohighlight">\(^{-1}\)</span></p></td>
+<td><p>Bjerknes feedback</p></td>
 </tr>
 <tr class="row-even"><td></td>
 <td><p><span class="math notranslate nohighlight">\(F_1\)</span></p></td>
 <td><p>F1</p></td>
-<td><p>K m<span class="math notranslate nohighlight">\(^{-1}\)</span> month<span class="math notranslate nohighlight">\(^{-1}\)</span></p></td>
+<td><p>K m<span class="math notranslate nohighlight">\(^{-1}\)</span>
+month<span class="math notranslate nohighlight">\(^{-1}\)</span></p></td>
+<td><p>Delayed oceanic feedback efficiency</p></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td><p><span class="math notranslate nohighlight">\(F_2\)</span></p></td>
 <td><p>F2</p></td>
-<td><p>m K<span class="math notranslate nohighlight">\(^{-1}\)</span> month<span class="math notranslate nohighlight">\(^{-1}\)</span></p></td>
+<td><p>m K<span class="math notranslate nohighlight">\(^{-1}\)</span>
+month<span class="math notranslate nohighlight">\(^{-1}\)</span></p></td>
+<td><p>Recharge/discharge efficiency</p></td>
 </tr>
 <tr class="row-even"><td></td>
 <td><p><span class="math notranslate nohighlight">\(\varepsilon\)</span></p></td>
 <td><p>epsilon</p></td>
 <td><p>month<span class="math notranslate nohighlight">\(^{-1}\)</span></p></td>
+<td><p>Basin adjustment</p></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td><p><strong>Nonlinear parameters</strong></p></td>
+<td></td>
 <td></td>
 <td></td>
 </tr>
@@ -497,110 +506,130 @@ document.write(`
 <td><p><span class="math notranslate nohighlight">\(b_T\)</span></p></td>
 <td><p>b_T</p></td>
 <td><p>K<span class="math notranslate nohighlight">\(^{-1}\)</span> month<span class="math notranslate nohighlight">\(^{-1}\)</span></p></td>
+<td><p>Deterministic quadratic nonlinearities</p></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td><p><span class="math notranslate nohighlight">\(c_T\)</span></p></td>
 <td><p>c_T</p></td>
 <td><p>K<span class="math notranslate nohighlight">\(^{-2}\)</span> month<span class="math notranslate nohighlight">\(^{-1}\)</span></p></td>
+<td><p>Deterministic cubic nonlinearities</p></td>
 </tr>
 <tr class="row-even"><td></td>
 <td><p><span class="math notranslate nohighlight">\(d_T\)</span></p></td>
 <td><p>d_T</p></td>
 <td><p>m<span class="math notranslate nohighlight">\(^{-1}\)</span> month<span class="math notranslate nohighlight">\(^{-1}\)</span></p></td>
+<td><p>Deterministic quadratic nonlinearities</p></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td><p><span class="math notranslate nohighlight">\(b_h\)</span></p></td>
 <td><p>b_h</p></td>
-<td><p>K<span class="math notranslate nohighlight">\(^{-2}\)</span> m month<span class="math notranslate nohighlight">\(^{-1}\)</span></p></td>
+<td><p>K<span class="math notranslate nohighlight">\(^{-2}\)</span> m
+month<span class="math notranslate nohighlight">\(^{-1}\)</span></p></td>
+<td><p>Deterministic quadratic nonlinearities</p></td>
 </tr>
 <tr class="row-even"><td><p>Noise parameters</p></td>
 <td><p><span class="math notranslate nohighlight">\(\sigma_T\)</span></p></td>
 <td><p>sigma_T</p></td>
-<td><p>K month<span class="math notranslate nohighlight">\(^{-\frac{1}{2}}\)</span> (n_T =
-1)K month<span class="math notranslate nohighlight">\(^{-1}\)</span> (n_T = 0)</p></td>
+<td><p>K month<span class="math notranslate nohighlight">\(^{-\frac{1}{2}}\)</span> (n_T
+= 1)K month<span class="math notranslate nohighlight">\(^{-1}\)</span> (n_T = 0)</p></td>
+<td><p>Stochastic forcing amplitude</p></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td><p><span class="math notranslate nohighlight">\(\sigma_h\)</span></p></td>
 <td><p>sigma_h</p></td>
-<td><p>m month<span class="math notranslate nohighlight">\(^{-\frac{1}{2}}\)</span> (n_h =
-1)m month⁻¹ (n_h = 0)</p></td>
+<td><p>m month<span class="math notranslate nohighlight">\(^{-\frac{1}{2}}\)</span> (n_h
+= 1)m month⁻¹ (n_h = 0)</p></td>
+<td><p>Stochastic forcing amplitude</p></td>
 </tr>
 <tr class="row-even"><td></td>
 <td><p><span class="math notranslate nohighlight">\(B\)</span></p></td>
 <td><p>B</p></td>
 <td><p>K⁻¹</p></td>
+<td><p>State-dependence noise</p></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td><p><span class="math notranslate nohighlight">\(m_T\)</span></p></td>
 <td><p>m_T</p></td>
 <td><p>month⁻¹</p></td>
+<td><p>red noise decorrelation rate</p></td>
 </tr>
 <tr class="row-even"><td></td>
 <td><p><span class="math notranslate nohighlight">\(m_h\)</span></p></td>
 <td><p>m_h</p></td>
 <td><p>month⁻¹</p></td>
+<td><p>red noise decorrelation rate</p></td>
 </tr>
 <tr class="row-odd"><td><p>Noise option parameters</p></td>
 <td><p><span class="math notranslate nohighlight">\(n_T\)</span></p></td>
 <td><p>n_T</p></td>
 <td><p>no unit</p></td>
+<td><p>noise option</p></td>
 </tr>
 <tr class="row-even"><td></td>
 <td><p><span class="math notranslate nohighlight">\(n_h\)</span></p></td>
 <td><p>n_h</p></td>
 <td><p>no unit</p></td>
+<td><p>noise option</p></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td><p><span class="math notranslate nohighlight">\(n_g\)</span></p></td>
 <td><p>n_g</p></td>
 <td><p>no unit</p></td>
+<td><p>noise option</p></td>
 </tr>
 <tr class="row-even"><td><p>Noise forcing</p></td>
 <td><p><span class="math notranslate nohighlight">\(\xi_T\)</span></p></td>
 <td><p>xi_T</p></td>
 <td><p>no unit</p></td>
+<td><p>red noise</p></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td><p><span class="math notranslate nohighlight">\(\xi_h\)</span></p></td>
 <td><p>xi_h</p></td>
 <td><p>no unit</p></td>
+<td><p>red noise</p></td>
 </tr>
 <tr class="row-even"><td></td>
 <td><p><span class="math notranslate nohighlight">\(w_T\)</span></p></td>
 <td><p>w_T</p></td>
 <td><p>month<span class="math notranslate nohighlight">\(^{-\frac{1}{2}}\)</span></p></td>
+<td><p>white noise</p></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td><p><span class="math notranslate nohighlight">\(w_h\)</span></p></td>
 <td><p>w_h</p></td>
 <td><p>month<span class="math notranslate nohighlight">\(^{-\frac{1}{2}}\)</span></p></td>
+<td><p>white noise</p></td>
 </tr>
 <tr class="row-even"><td><p>External forcing</p></td>
 <td><p><span class="math notranslate nohighlight">\(E_T\)</span></p></td>
 <td><p>E_T</p></td>
 <td><p>K month⁻¹</p></td>
+<td><p>extental forcing</p></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td><p><span class="math notranslate nohighlight">\(E_h\)</span></p></td>
 <td><p>E_h</p></td>
 <td><p>m month⁻¹</p></td>
+<td><p>extental forcing</p></td>
 </tr>
 <tr class="row-even"><td><p>Variable</p></td>
 <td><p><span class="math notranslate nohighlight">\(T\)</span></p></td>
 <td><p>T</p></td>
 <td><p>K</p></td>
+<td><p>ENSO SST anomaly</p></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td><p><span class="math notranslate nohighlight">\(h\)</span></p></td>
 <td><p>h</p></td>
 <td><p>m</p></td>
+<td><p>ENSO therocline anomaly</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>The different combinations of parameter choices above allow us to consider a total of 24 types of RO by varying the deterministic terms (linear or nonlinear), noise coefficient (additive or multiplicative), noise color (white or red), and inclusion of seasonality in parameters (fixed or seasonal).</p>
 <section id="Linear-and-Nonlinear-Parameters:">
-<h3>Linear and Nonlinear Parameters:<a class="headerlink" href="#Linear-and-Nonlinear-Parameters:" title="Link to this heading">#</a></h3>
+<h2>Linear and Nonlinear Parameters:<a class="headerlink" href="#Linear-and-Nonlinear-Parameters:" title="Link to this heading">#</a></h2>
 <p><span class="math notranslate nohighlight">\(R\)</span> (<code class="docutils literal notranslate"><span class="pre">R</span></code>), <span class="math notranslate nohighlight">\(F_1\)</span> (<code class="docutils literal notranslate"><span class="pre">F1</span></code>), <span class="math notranslate nohighlight">\(F_2\)</span> (<code class="docutils literal notranslate"><span class="pre">F2</span></code>), <span class="math notranslate nohighlight">\(\varepsilon\)</span> (<code class="docutils literal notranslate"><span class="pre">epsilon</span></code>), <span class="math notranslate nohighlight">\(b_T\)</span> (<code class="docutils literal notranslate"><span class="pre">b_T</span></code>), <span class="math notranslate nohighlight">\(c_T\)</span> (<code class="docutils literal notranslate"><span class="pre">c_T</span></code>), <span class="math notranslate nohighlight">\(d_T\)</span> (<code class="docutils literal notranslate"><span class="pre">d_T</span></code>), <span class="math notranslate nohighlight">\(b_h\)</span> (<code class="docutils literal notranslate"><span class="pre">b_h</span></code>)</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">'parameter':</span> <span class="pre">[]</span></code> → interpreted as zero (e.g., <code class="docutils literal notranslate"><span class="pre">'R':</span> <span class="pre">[]</span></code> is the same as <code class="docutils literal notranslate"><span class="pre">'R':</span> <span class="pre">[0.0]</span></code>)</p></li>
@@ -611,7 +640,7 @@ document.write(`
 </ul>
 </section>
 <section id="Noise-Parameters:">
-<h3>Noise Parameters:<a class="headerlink" href="#Noise-Parameters:" title="Link to this heading">#</a></h3>
+<h2>Noise Parameters:<a class="headerlink" href="#Noise-Parameters:" title="Link to this heading">#</a></h2>
 <p><span class="math notranslate nohighlight">\(\sigma_T\)</span> (<code class="docutils literal notranslate"><span class="pre">sigma_T</span></code>), <span class="math notranslate nohighlight">\(\sigma_h\)</span> (<code class="docutils literal notranslate"><span class="pre">sigma_h</span></code>), <span class="math notranslate nohighlight">\(B\)</span> (<code class="docutils literal notranslate"><span class="pre">B</span></code>), <span class="math notranslate nohighlight">\(m_T\)</span> (<code class="docutils literal notranslate"><span class="pre">m_T</span></code>), <span class="math notranslate nohighlight">\(m_h\)</span> (<code class="docutils literal notranslate"><span class="pre">m_h</span></code>)</p>
 <ul class="simple">
 <li><p>These follow the same format as the linear and nonlinear parameters, meaning that <strong>seasonality can be included for RO simulations</strong>.</p></li>
@@ -619,7 +648,7 @@ document.write(`
 </ul>
 </section>
 <section id="Noise-Option-Parameters:">
-<h3>Noise Option Parameters:<a class="headerlink" href="#Noise-Option-Parameters:" title="Link to this heading">#</a></h3>
+<h2>Noise Option Parameters:<a class="headerlink" href="#Noise-Option-Parameters:" title="Link to this heading">#</a></h2>
 <p><span class="math notranslate nohighlight">\(n_T\)</span> (<code class="docutils literal notranslate"><span class="pre">n_T</span></code>), <span class="math notranslate nohighlight">\(n_h\)</span> (<code class="docutils literal notranslate"><span class="pre">n_h</span></code>), <span class="math notranslate nohighlight">\(n_g\)</span> (<code class="docutils literal notranslate"><span class="pre">n_g</span></code>)</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">n_T</span></code> and <code class="docutils literal notranslate"><span class="pre">n_h</span></code> are flags that specify the noise type for the <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(h\)</span> equations, respectively:</p>
@@ -638,16 +667,11 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">'parameter':</span> <span class="pre">[integer]</span></code> or <code class="docutils literal notranslate"><span class="pre">'parameter':</span> <span class="pre">integer</span></code> is a valid option; any other format will raise an error.</p></li>
 <li><p>Mixed noise types (e.g., <code class="docutils literal notranslate"><span class="pre">n_T</span> <span class="pre">=</span> <span class="pre">0</span></code>, <code class="docutils literal notranslate"><span class="pre">n_h</span> <span class="pre">=</span> <span class="pre">1</span></code>) are <strong>allowed</strong> in the solver but <strong>not allowed during parameter fitting</strong>. Therefore, it is strongly recommended to use a <strong>consistent noise type</strong> (either white or red) for both the <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(h\)</span> equations.</p></li>
 </ul>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-</div>
 </section>
 </section>
+<section id="RO-Types-and-Variants">
+<h1>RO Types and Variants<a class="headerlink" href="#RO-Types-and-Variants" title="Link to this heading">#</a></h1>
+<p>The different combinations of parameter choices above allow us to consider a total of 24 types of RO by varying the deterministic terms (linear or nonlinear), noise coefficient (additive or multiplicative), noise color (white or red), and inclusion of seasonality in parameters (fixed or seasonal).</p>
 </section>
 
 
@@ -695,14 +719,16 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#1.-RO-Master-Equations">1. RO Master Equations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#2.-RO-parameters">2. RO parameters</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Linear-and-Nonlinear-Parameters:">Linear and Nonlinear Parameters:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Noise-Parameters:">Noise Parameters:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Noise-Option-Parameters:">Noise Option Parameters:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">RO Master Equations</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#RO-Parameters">RO Parameters</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Linear-and-Nonlinear-Parameters:">Linear and Nonlinear Parameters:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Noise-Parameters:">Noise Parameters:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Noise-Option-Parameters:">Noise Option Parameters:</a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#RO-Types-and-Variants">RO Types and Variants</a></li>
 </ul>
+
   </nav></div>
 
 </div></div>
@@ -715,6 +741,10 @@ document.write(`
   
   <div class="footer-item">
     
+<p class="component-author">
+By CLIVAR CRO Team (lead by Soong-Ki Kim and Sen Zhao)
+</p>
+
   </div>
   
   <div class="footer-item">

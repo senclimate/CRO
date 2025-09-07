@@ -308,14 +308,14 @@ def RO_solver(par, IC, N, NE, NM="EH", dt=0.1, saveat=1.0, savemethod="sampling"
 
     Examples
     --------
-    par = {
+    >>> par = {
     ...     'R':[0.5], 'F1':[1.2], 'epsilon':[0.3], 'F2':[0.8],
     ...     'sigma_T':[0.2], 'sigma_h':[0.1], 'B':[0.05],
     ...     'n_T':[1], 'm_T':[0], 'n_h':[1], 'm_h':[0], 'n_g':[0]
     ... }
-    IC = (0.1, -0.2)
-    T, h, noise = RO_solver(par, IC, N=50, NE=5, dt=0.1, saveat=1.0)
-    T.shape, h.shape
+    >>> IC = (0.1, -0.2)
+    >>> T, h, noise = RO_solver(par, IC, N=50, NE=5, dt=0.1, saveat=1.0)
+    >>> T.shape, h.shape
     ((51, 5), (51, 5))
     """
     

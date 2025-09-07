@@ -6,7 +6,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>API Reference &#8212; CLIVAR Working Group Community Recharge Oscillator (CRO) project  documentation</title>
   
@@ -41,7 +41,7 @@
   <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
@@ -166,7 +166,9 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="ug-installation.html">Installation</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="ug-model.html">Model</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/CRO_model.html">CRO Model Code Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/CRO_model.html">RO Master Equations</a></li>
+
+
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="ug-solver.html">Solver</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -394,10 +396,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.solver.RO_solver"><code class="docutils literal notranslate"><span class="pre">RO_solver()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.analytic.RO_analytic_solver"><code class="docutils literal notranslate"><span class="pre">RO_analytic_solver()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.analytic.RO_analytic_std"><code class="docutils literal notranslate"><span class="pre">RO_analytic_std()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.fitting.RO_fitting"><code class="docutils literal notranslate"><span class="pre">RO_fitting()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-pyCRO.solver">Solver</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.solver.RO_solver"><code class="docutils literal notranslate"><span class="pre">RO_solver()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.analytic.RO_analytic_solver"><code class="docutils literal notranslate"><span class="pre">RO_analytic_solver()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.analytic.RO_analytic_std"><code class="docutils literal notranslate"><span class="pre">RO_analytic_std()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-pyCRO.fitting">Fitting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.fitting.RO_fitting"><code class="docutils literal notranslate"><span class="pre">RO_fitting()</span></code></a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -409,8 +417,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="module-pyCRO.solver">
-<span id="api-reference"></span><h1>API Reference<a class="headerlink" href="#module-pyCRO.solver" title="Link to this heading">#</a></h1>
+  <section id="api-reference">
+<h1>API Reference<a class="headerlink" href="#api-reference" title="Link to this heading">#</a></h1>
+<section id="module-pyCRO.solver">
+<span id="solver"></span><h2>Solver<a class="headerlink" href="#module-pyCRO.solver" title="Link to this heading">#</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="pyCRO.solver.RO_solver">
 <span class="sig-prename descclassname"><span class="pre">pyCRO.solver.</span></span><span class="sig-name descname"><span class="pre">RO_solver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">par</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">IC</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NM</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'EH'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saveat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">savemethod</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sampling'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">EF</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_custom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCRO.solver.RO_solver" title="Link to this definition">#</a></dt>
@@ -539,15 +549,17 @@ at user-specified output intervals.</p>
 an Ito-to-Stratonovich correction is applied automatically.</p></li>
 </ul>
 <p class="rubric">Examples</p>
-<p>par = {
-…     ‘R’:[0.5], ‘F1’:[1.2], ‘epsilon’:[0.3], ‘F2’:[0.8],
-…     ‘sigma_T’:[0.2], ‘sigma_h’:[0.1], ‘B’:[0.05],
-…     ‘n_T’:[1], ‘m_T’:[0], ‘n_h’:[1], ‘m_h’:[0], ‘n_g’:[0]
-… }
-IC = (0.1, -0.2)
-T, h, noise = RO_solver(par, IC, N=50, NE=5, dt=0.1, saveat=1.0)
-T.shape, h.shape
-((51, 5), (51, 5))</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">par</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">... </span>    <span class="s1">&#39;R&#39;</span><span class="p">:[</span><span class="mf">0.5</span><span class="p">],</span> <span class="s1">&#39;F1&#39;</span><span class="p">:[</span><span class="mf">1.2</span><span class="p">],</span> <span class="s1">&#39;epsilon&#39;</span><span class="p">:[</span><span class="mf">0.3</span><span class="p">],</span> <span class="s1">&#39;F2&#39;</span><span class="p">:[</span><span class="mf">0.8</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="s1">&#39;sigma_T&#39;</span><span class="p">:[</span><span class="mf">0.2</span><span class="p">],</span> <span class="s1">&#39;sigma_h&#39;</span><span class="p">:[</span><span class="mf">0.1</span><span class="p">],</span> <span class="s1">&#39;B&#39;</span><span class="p">:[</span><span class="mf">0.05</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="s1">&#39;n_T&#39;</span><span class="p">:[</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;m_T&#39;</span><span class="p">:[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;n_h&#39;</span><span class="p">:[</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;m_h&#39;</span><span class="p">:[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;n_g&#39;</span><span class="p">:[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">... </span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">IC</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">T</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">noise</span> <span class="o">=</span> <span class="n">RO_solver</span><span class="p">(</span><span class="n">par</span><span class="p">,</span> <span class="n">IC</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">NE</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">saveat</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">T</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">h</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">((51, 5), (51, 5))</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py function" id="module-pyCRO.analytic">
@@ -672,7 +684,10 @@ NumPy broadcasting, avoiding explicit Python loops.</p>
 </dl>
 </dd></dl>
 
-<dl class="py function" id="module-pyCRO.fitting">
+</section>
+<section id="module-pyCRO.fitting">
+<span id="fitting"></span><h2>Fitting<a class="headerlink" href="#module-pyCRO.fitting" title="Link to this heading">#</a></h2>
+<dl class="py function">
 <dt class="sig sig-object py" id="pyCRO.fitting.RO_fitting">
 <span class="sig-prename descclassname"><span class="pre">pyCRO.fitting.</span></span><span class="sig-name descname"><span class="pre">RO_fitting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">par_option_T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">par_option_h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">par_option_noise</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method_fitting</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCRO.fitting.RO_fitting" title="Link to this definition">#</a></dt>
 <dd><p>Fit the CRO (Community Recharge Oscillator) model parameters to T and h time series.</p>
@@ -724,6 +739,7 @@ Keys include:
 </dd></dl>
 
 <span class="target" id="module-pyCRO.fit_MLE"><span id="module-pyCRO.fit_LR"></span></span></section>
+</section>
 
 
                 </article>
@@ -761,10 +777,16 @@ Keys include:
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.solver.RO_solver"><code class="docutils literal notranslate"><span class="pre">RO_solver()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.analytic.RO_analytic_solver"><code class="docutils literal notranslate"><span class="pre">RO_analytic_solver()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.analytic.RO_analytic_std"><code class="docutils literal notranslate"><span class="pre">RO_analytic_std()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.fitting.RO_fitting"><code class="docutils literal notranslate"><span class="pre">RO_fitting()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-pyCRO.solver">Solver</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.solver.RO_solver"><code class="docutils literal notranslate"><span class="pre">RO_solver()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.analytic.RO_analytic_solver"><code class="docutils literal notranslate"><span class="pre">RO_analytic_solver()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.analytic.RO_analytic_std"><code class="docutils literal notranslate"><span class="pre">RO_analytic_std()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-pyCRO.fitting">Fitting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.fitting.RO_fitting"><code class="docutils literal notranslate"><span class="pre">RO_fitting()</span></code></a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
@@ -778,6 +800,10 @@ Keys include:
   
   <div class="footer-item">
     
+<p class="component-author">
+By CLIVAR CRO Team (lead by Soong-Ki Kim and Sen Zhao)
+</p>
+
   </div>
   
   <div class="footer-item">
