@@ -375,7 +375,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -391,6 +393,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -402,12 +412,13 @@ document.write(`
                   
   <section id="cro-community-recharge-oscillator">
 <h1>CRO: Community Recharge Oscillator<a class="headerlink" href="#cro-community-recharge-oscillator" title="Link to this heading">#</a></h1>
-<p><code class="code docutils literal notranslate"><span class="pre">CRO</span></code> is an open-source Python and MATLAB package for modeling the El Niño–Southern Oscillation (ENSO) using the recharge oscillator (RO) framework (Jin).  It provides tools for solving the RO equations, fitting parameters to data, and applying the model in teaching, research and even forecasting.</p>
+<p><code class="code docutils literal notranslate"><span class="pre">CRO</span></code> is an open-source Python and MATLAB package for modeling the El Niño–Southern Oscillation (ENSO) using the recharge oscillator (RO) framework (see Jin, 1997; Zhao et al., 2024;
+Kim et al., in preparation).  It provides tools for solving the RO equations, fitting parameters to data, and applying the model in teaching, research and even forecasting.</p>
 <p><strong>Key Features</strong></p>
 <ul class="simple">
-<li><p><strong>Solver</strong>: Numerical and analytical solvers for the recharge oscillator equations.</p></li>
+<li><p><strong>Solver</strong>: Numerical and analytical solvers for the RO equations.</p></li>
 <li><p><strong>Fitting</strong>: Parameter estimation from observations, reanalysis, or climate model data.</p></li>
-<li><p><strong>Applications</strong>: simulations, sensitivity experiments, and analysis of ENSO changes.</p></li>
+<li><p><strong>Applications</strong>: Simulations, sensitivity experiments, and analysis of ENSO changes.</p></li>
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -482,6 +493,17 @@ API</div>
 </div>
 <div class="toctree-wrapper compound">
 </div>
+<section id="references">
+<span id="id1"></span><h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<p id="ref-jin1997">Jin, F.-F. (1997). An equatorial ocean recharge paradigm for ENSO.
+<em>Part I: Conceptual model</em>. Journal of the Atmospheric Sciences, 54(7), 811–829.
+<a class="reference external" href="https://doi.org/10.1175/1520-0469(1997">https://doi.org/10.1175/1520-0469(1997</a>)054&lt;0811:AEORPF&gt;2.0.CO;2</p>
+<p id="ref-zhao2024">Zhao, S., Stevenson, S., Kim, S.-K., Fedorov, A. V., &amp; Vecchi, G. A. (2024).
+Pantropical interactions and predictability of ENSO in a nonlinear recharge oscillator framework.
+<em>Nature</em>, 626, 543–549. <a class="reference external" href="https://doi.org/10.1038/s41586-024-07009-1">https://doi.org/10.1038/s41586-024-07009-1</a></p>
+<p id="ref-cro">Kim, S.-K., Zhao, S., et al. (in preparation).
+<em>Community Recharge Oscillator (CRO) v1.0: an open-source Python and MATLAB package for solving, parameter fitting, and practical applications of the ENSO recharge oscillator.</em></p>
+</section>
 </section>
 
 
@@ -510,6 +532,21 @@ API</div>
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
