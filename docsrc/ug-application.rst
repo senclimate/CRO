@@ -1,9 +1,9 @@
 Application
 ========================
 
-This section illustrates the core features of `x4c` as an Xarray extension.
+This section illustrates the application features of `pyCRO` 
 
 .. toctree::
     :maxdepth: 1
 
-    notebooks/CRO_application
+    notebooks/application

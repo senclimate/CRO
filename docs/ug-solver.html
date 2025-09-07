@@ -33,7 +33,7 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="_static/style.css?v=12e6e2b2" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -48,14 +48,12 @@
     <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'ug-solver';</script>
     <link rel="icon" href="_static/CRO_logo.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Community Recharge Oscillator Model (CRO) v0.0 for Python" href="notebooks/CRO_solver.html" />
-    <link rel="prev" title="RO Master Equations" href="notebooks/CRO_model.html" />
+    <link rel="next" title="Fitting" href="ug-fitting.html" />
+    <link rel="prev" title="RO Types and Variants" href="notebooks/model_types.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -169,21 +167,18 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="ug-installation.html">Installation</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="ug-model.html">Model</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/CRO_model.html">RO Master Equations</a></li>
-
-
+<li class="toctree-l2"><a class="reference internal" href="notebooks/model_equations.html">RO Master Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/model_parameters.html">RO Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/model_types.html">RO Types and Variants</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Solver</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/CRO_solver.html">Community Recharge Oscillator Model (CRO) v0.0 for Python</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Solver</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="ug-fitting.html">Fitting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/CRO_fitting.html">Fitting</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="ug-fitting.html">Fitting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="ug-application.html">Application</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/CRO_application.html">CRO Model Code Design</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="ug-application.html">Application</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="ug-api.html">API Reference</a></li>
@@ -405,9 +400,6 @@ document.write(`
 <h1>Solver<a class="headerlink" href="#solver" title="Link to this heading">#</a></h1>
 <p>This section illustrates the solver features of <cite>pyCRO</cite></p>
 <div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/CRO_solver.html">Community Recharge Oscillator Model (CRO) v0.0 for Python</a></li>
-</ul>
 </div>
 </section>
 
@@ -423,20 +415,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="notebooks/CRO_model.html"
+       href="notebooks/model_types.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">RO Master Equations</p>
+        <p class="prev-next-title">RO Types and Variants</p>
       </div>
     </a>
     <a class="right-next"
-       href="notebooks/CRO_solver.html"
+       href="ug-fitting.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Community Recharge Oscillator Model (CRO) v0.0 for Python</p>
+        <p class="prev-next-title">Fitting</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

@@ -33,7 +33,7 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="_static/style.css?v=12e6e2b2" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -167,21 +167,18 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Installation</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="ug-model.html">Model</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/CRO_model.html">RO Master Equations</a></li>
-
-
+<li class="toctree-l2"><a class="reference internal" href="notebooks/model_equations.html">RO Master Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/model_parameters.html">RO Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/model_types.html">RO Types and Variants</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="ug-solver.html">Solver</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/CRO_solver.html">Community Recharge Oscillator Model (CRO) v0.0 for Python</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="ug-solver.html">Solver</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="ug-fitting.html">Fitting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/CRO_fitting.html">Fitting</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="ug-fitting.html">Fitting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="ug-application.html">Application</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/CRO_application.html">CRO Model Code Design</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="ug-application.html">Application</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="ug-api.html">API Reference</a></li>
@@ -397,8 +394,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-the-conda-environment">Install the Conda environment</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-download-the-installation-script-for-miniconda3">Step 1: Download the installation script for miniconda3</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-the-mamba-environment">Install the Mamba environment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-download-the-installation-script-for-miniconda3">Step 1: Download the installation script for Miniconda3</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#macos-intel">macOS (Intel)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#macos-apple-silicon">macOS (Apple Silicon)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#linux">Linux</a></li>
@@ -408,7 +405,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-test-your-installation">Step 3: Test your Installation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-x4c">Install <cite>x4c</cite></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-python-version-of-cro">Install Python version of <cite>CRO</cite></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-matlab-version-of-cro">Install Matlab version of <cite>CRO</cite></a></li>
 </ul>
             </nav>
         </div>
@@ -422,11 +420,11 @@ document.write(`
                   
   <section id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h1>
-<section id="install-the-conda-environment">
-<h2>Install the Conda environment<a class="headerlink" href="#install-the-conda-environment" title="Link to this heading">#</a></h2>
-<p>You may skip this step if your Conda environment has been installed already.</p>
+<section id="install-the-mamba-environment">
+<h2>Install the Mamba environment<a class="headerlink" href="#install-the-mamba-environment" title="Link to this heading">#</a></h2>
+<p>You may skip this step if your Mamba environment has been installed already.</p>
 <section id="step-1-download-the-installation-script-for-miniconda3">
-<h3>Step 1: Download the installation script for miniconda3<a class="headerlink" href="#step-1-download-the-installation-script-for-miniconda3" title="Link to this heading">#</a></h3>
+<h3>Step 1: Download the installation script for Miniconda3<a class="headerlink" href="#step-1-download-the-installation-script-for-miniconda3" title="Link to this heading">#</a></h3>
 <section id="macos-intel">
 <h4>macOS (Intel)<a class="headerlink" href="#macos-intel" title="Link to this heading">#</a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
@@ -451,8 +449,8 @@ document.write(`
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>chmod<span class="w"> </span>+x<span class="w"> </span>Miniconda3-latest-*.sh<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>./Miniconda3-latest-*.sh
 </pre></div>
 </div>
-<p>During the installation, a path <code class="code docutils literal notranslate"><span class="pre">&lt;base-path&gt;</span></code> needs to be specified as the base location of the python environment.
-After the installation is done, we need to add the two lines into your shell environment (e.g., <code class="code docutils literal notranslate"><span class="pre">~/.bashrc</span></code> or <code class="code docutils literal notranslate"><span class="pre">~/.zshrc</span></code>) as below to enable the <code class="code docutils literal notranslate"><span class="pre">conda</span></code> package manager (remember to change <code class="code docutils literal notranslate"><span class="pre">&lt;base-path&gt;</span></code> with your real location):</p>
+<p>During the installation, a path <code class="code docutils literal notranslate"><span class="pre">&lt;base-path&gt;</span></code> needs to be specified as the base location of the Python environment.
+After the installation is done, add the following lines into your shell environment (e.g., <code class="code docutils literal notranslate"><span class="pre">~/.bashrc</span></code> or <code class="code docutils literal notranslate"><span class="pre">~/.zshrc</span></code>) to enable the <code class="code docutils literal notranslate"><span class="pre">mamba</span></code> package manager (remember to replace <code class="code docutils literal notranslate"><span class="pre">&lt;base-path&gt;</span></code> with your actual installation path):</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;&lt;base-path&gt;/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
 .<span class="w"> </span>&lt;base-path&gt;/etc/profile.d/conda.sh
 </pre></div>
@@ -461,32 +459,42 @@ After the installation is done, we need to add the two lines into your shell env
 <section id="step-3-test-your-installation">
 <h3>Step 3: Test your Installation<a class="headerlink" href="#step-3-test-your-installation" title="Link to this heading">#</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>~/.bashrc<span class="w">  </span><span class="c1"># assume you are using Bash shell</span>
-which<span class="w"> </span>python<span class="w">  </span><span class="c1"># should return a path under &lt;base-path&gt;</span>
-which<span class="w"> </span>conda<span class="w">  </span><span class="c1"># should return a path under &lt;base-path&gt;</span>
+which<span class="w"> </span>python<span class="w">      </span><span class="c1"># should return a path under &lt;base-path&gt;</span>
+which<span class="w"> </span>mamba<span class="w">       </span><span class="c1"># should return a path under &lt;base-path&gt;</span>
 </pre></div>
 </div>
 </section>
 </section>
-<section id="install-x4c">
-<h2>Install <cite>x4c</cite><a class="headerlink" href="#install-x4c" title="Link to this heading">#</a></h2>
-<p>Taking a clean installation as example, first let’s create a new environment named <code class="code docutils literal notranslate"><span class="pre">x4c-env</span></code> via <code class="code docutils literal notranslate"><span class="pre">conda</span></code></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>x4c-env<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.13<span class="w">   </span><span class="c1"># supports Python 3.12 and 3.13</span>
-conda<span class="w"> </span>activate<span class="w"> </span>x4c-env
+<section id="install-python-version-of-cro">
+<h2>Install Python version of <cite>CRO</cite><a class="headerlink" href="#install-python-version-of-cro" title="Link to this heading">#</a></h2>
+<p>For a clean installation, first create a new environment named <code class="code docutils literal notranslate"><span class="pre">env_pyCRO</span></code> via <code class="code docutils literal notranslate"><span class="pre">mamba</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>env_pyCRO<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.13<span class="w">   </span><span class="c1"># supports Python 3.12 and 3.13</span>
+mamba<span class="w"> </span>activate<span class="w"> </span>env_pyCRO
 </pre></div>
 </div>
-<p>Then install some dependencies via <code class="code docutils literal notranslate"><span class="pre">conda</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>jupyter<span class="w"> </span>notebook<span class="w"> </span>xesmf<span class="w"> </span>cartopy<span class="w"> </span>geocat-comp
+<p>Then install required dependencies via <code class="code docutils literal notranslate"><span class="pre">mamba</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>numpy<span class="w"> </span>xarray<span class="w"> </span>statsmodels<span class="w"> </span>netcdf4
 </pre></div>
 </div>
-<p>Once the above dependencies have been installed, simply</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>x4c
+<p>Once the above dependencies are installed, simply install pyCRO via <code class="code docutils literal notranslate"><span class="pre">pip</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>pyCRO
 </pre></div>
 </div>
-<p>and you are ready to</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">x4c</span>
+<p>You are now ready to import pyCRO in Python:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pyCRO</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 </pre></div>
 </div>
-<p>in Python.</p>
+</section>
+<section id="install-matlab-version-of-cro">
+<h2>Install Matlab version of <cite>CRO</cite><a class="headerlink" href="#install-matlab-version-of-cro" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Download the Matlab version from the official repository or release page.</p></li>
+<li><p>Extract the contents to a preferred location, e.g., <code class="code docutils literal notranslate"><span class="pre">~/mCRO</span></code>.</p></li>
+<li><p>Open Matlab and add the extracted folder to the Matlab path:</p></li>
+</ol>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">addpath</span><span class="p">(</span><span class="nb">genpath</span><span class="p">(</span><span class="s">&#39;~/mCRO&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -535,8 +543,8 @@ conda<span class="w"> </span>activate<span class="w"> </span>x4c-env
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-the-conda-environment">Install the Conda environment</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-download-the-installation-script-for-miniconda3">Step 1: Download the installation script for miniconda3</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-the-mamba-environment">Install the Mamba environment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-download-the-installation-script-for-miniconda3">Step 1: Download the installation script for Miniconda3</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#macos-intel">macOS (Intel)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#macos-apple-silicon">macOS (Apple Silicon)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#linux">Linux</a></li>
@@ -546,7 +554,8 @@ conda<span class="w"> </span>activate<span class="w"> </span>x4c-env
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-test-your-installation">Step 3: Test your Installation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-x4c">Install <cite>x4c</cite></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-python-version-of-cro">Install Python version of <cite>CRO</cite></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-matlab-version-of-cro">Install Matlab version of <cite>CRO</cite></a></li>
 </ul>
   </nav></div>
 

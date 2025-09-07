@@ -1,0 +1,20 @@
+/* Only adjust cards with :img-top: */
+.sd-card {
+    display: block;   /* ensure normal block layout */
+    padding: 8px;     /* optional: some inner space for the whole card */
+}
+
+/* Make image + text share a row */
+.sd-card .sd-card-img-top {
+    float: left;
+    width: 60px;           /* control PNG size */
+    height: auto;
+    margin: 12px 12px 12px 12px; /* top, right, bottom, left spacing */
+}
+
+/* Ensure title + body align nicely next to the image */
+.sd-card .sd-card-body {
+    display: block;
+    overflow: hidden;       /* prevents text wrapping under the image */
+    padding-top: 4px;       /* optional: spacing from top of card */
+}

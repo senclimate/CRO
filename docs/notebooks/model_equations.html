@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Fitting &#8212; CLIVAR Working Group Community Recharge Oscillator (CRO) project  documentation</title>
+    <title>RO Master Equations &#8212; CLIVAR Working Group Community Recharge Oscillator (CRO) project  documentation</title>
   
   
   
@@ -33,8 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/theme_overrides.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
-    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=12e6e2b2" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -51,12 +50,12 @@
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/CRO_fitting';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/model_equations';</script>
     <link rel="icon" href="../_static/CRO_logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Application" href="../ug-application.html" />
-    <link rel="prev" title="Fitting" href="../ug-fitting.html" />
+    <link rel="next" title="RO Parameters" href="model_parameters.html" />
+    <link rel="prev" title="Model" href="../ug-model.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -169,22 +168,19 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../ug-installation.html">Installation</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ug-model.html">Model</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="CRO_model.html">RO Master Equations</a></li>
-
-
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../ug-model.html">Model</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">RO Master Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_parameters.html">RO Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_types.html">RO Types and Variants</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ug-solver.html">Solver</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="CRO_solver.html">Community Recharge Oscillator Model (CRO) v0.0 for Python</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ug-solver.html">Solver</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../ug-fitting.html">Fitting</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Fitting</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ug-fitting.html">Fitting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ug-application.html">Application</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="CRO_application.html">CRO Model Code Design</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ug-application.html">Application</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../ug-api.html">API Reference</a></li>
@@ -259,7 +255,7 @@
       
       
       
-      <li><a href="https://github.com/senclimate/CRO/edit/main/notebooks/CRO_fitting.ipynb" target="_blank"
+      <li><a href="https://github.com/senclimate/CRO/edit/main/notebooks/model_equations.ipynb" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -276,7 +272,7 @@
       
       
       
-      <li><a href="https://github.com/senclimate/CRO/issues/new?title=Issue%20on%20page%20%2Fnotebooks/CRO_fitting.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/senclimate/CRO/issues/new?title=Issue%20on%20page%20%2Fnotebooks/model_equations.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -306,7 +302,7 @@
       
       
       
-      <li><a href="../_sources/notebooks/CRO_fitting.ipynb" target="_blank"
+      <li><a href="../_sources/notebooks/model_equations.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -388,7 +384,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Fitting</h1>
+    <h1>RO Master Equations</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -402,127 +398,38 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="Fitting">
-<h1>Fitting<a class="headerlink" href="#Fitting" title="Link to this heading">#</a></h1>
-<p>Author: Sen Zhao</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
-import matplotlib.pyplot as plt
-from netCDF4 import Dataset
-import os
-import sys
-import calendar
-
-sys.path.append(os.path.abspath(&quot;./Code&quot;))
-sys.path.append(os.path.abspath(&quot;./Data&quot;))
-
-from RO_solver import *
-from RO_solver_analytic import *
-from RO_std_analytic import *
-from RO_BWJ import *
-from RO_fitting import *
-from func_mon_std import *
-from par_load import *
-</pre></div>
-</div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># load observations
-fpath = os.path.join(os.getcwd(), &quot;Data&quot;, &quot;XRO_indices_oras5.nc&quot;)
-nc_oras5 = Dataset(fpath, mode=&#39;r&#39;)
-T_oras5 = nc_oras5.variables[&#39;Nino34&#39;][:]  # Nino 3.4 since 1979-01-01
-h_oras5 = nc_oras5.variables[&#39;WWV&#39;][:]     # WWV since 1979-01-01
-time_oras5 = nc_oras5.variables[&#39;time&#39;][:] # Days since 1979-01-01
-</pre></div>
-</div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># setting fitting options and print the fitted parameters
-par_option_T = {&quot;R&quot;: 5, &quot;F1&quot;: 5, &quot;b_T&quot;: 0, &quot;c_T&quot;: 0, &quot;d_T&quot;: 0}
-par_option_h = {&quot;F2&quot;: 5, &quot;epsilon&quot;: 5, &quot;b_h&quot;: 0}
-par_option_noise = {&quot;T&quot;: &quot;red&quot;, &quot;h&quot;: &quot;red&quot;, &quot;T_type&quot;: &quot;additive&quot;}
-
-par_fitted_obs = RO_fitting(T_oras5, h_oras5, par_option_T, par_option_h, par_option_noise)
-print(par_fitted_obs)
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
----------------------------------------------------------------------------------
-Welcome to CRO Fitting! Your fitting setups:
----------------------------------------------------------------------------------
- - Data time step is not given, defaulting to: dt = 1.0 months.
- - Time series length: N = len(T)*dt = 552.0 months.
- - Prescribed terms: {&#39;R&#39;: 5, &#39;F1&#39;: 5, &#39;b_T&#39;: 0, &#39;c_T&#39;: 0, &#39;d_T&#39;: 0}.
-                     {&#39;F2&#39;: 5, &#39;epsilon&#39;: 5, &#39;b_h&#39;: 0}.
-   0 - Do not prescribe.
-   1 - Prescribe only the annual mean.
-   3 - Prescribe the annual mean and annual seasonality.
-   5 - Prescribe the annual mean, annual seasonality, and semi-annual seasonality.
- - Noise options: {&#39;T&#39;: &#39;red&#39;, &#39;h&#39;: &#39;red&#39;, &#39;T_type&#39;: &#39;additive&#39;}.
- - Fitting method for T and h red noises: ARn.
-   This option is defined internally within RO_fitting.py.
-   Options available are: LR or AR1 or ARn.
- - Fitting method for T and h main equations: None.
-Referring to table_default_fitting_method.txt and using LR-F
----------------------------------------------------------------------------------
-All steps are successfully completed!
----------------------------------------------------------------------------------
-{&#39;R&#39;: [-0.05010900876953235,
-       0.13840597531543616,
-       -2.6083390996254265,
-       0.034505752790208455,
-       -2.118528018143058],
- &#39;F1&#39;: [0.013458891427639825,
-        0.010725274221021902,
-        -0.9199414559762591,
-        0.008899668089169683,
-        -2.5173962011440882],
- &#39;F2&#39;: [1.1458986989806124,
-        0.8214626458774326,
-        0.820753398080978,
-        0.4736954591050396,
-        3.04461354340893],
- &#39;epsilon&#39;: [0.021296089257346145,
-             0.031966026879537895,
-             -0.08173522644584352,
-             0.027550299986507508,
-             -3.0597748995707454],
- &#39;b_T&#39;: [],
- &#39;c_T&#39;: [],
- &#39;d_T&#39;: [],
- &#39;b_h&#39;: [],
- &#39;sigma_T&#39;: [0.1946249583408544],
- &#39;sigma_h&#39;: [1.4684258321934496],
- &#39;B&#39;: [],
- &#39;m_T&#39;: [1.695878210211052],
- &#39;m_h&#39;: [1.1376975544156567],
- &#39;n_T&#39;: [0],
- &#39;n_h&#39;: [0],
- &#39;n_g&#39;: [2]}
-</pre></div></div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>nc_oras5.close()
-</pre></div>
-</div>
-</div>
+  <section id="RO-Master-Equations">
+<h1>RO Master Equations<a class="headerlink" href="#RO-Master-Equations" title="Link to this heading">#</a></h1>
+<p>The CRO code package is a Python/MATLAB software package for solving and fitting the ENSO RO model. Here, we introduce the master RO equation, which can consider various types of RO models. The master RO equation is given as:</p>
+<div class="math notranslate nohighlight">
+\[\displaystyle \frac{dT}{dt} = RT + F_{1}h + b_{T}T^{2} − c_{T}T^{3} + d_{T}T \cdot h + \sigma_{T}N_{T}(1+g_{T})+E_{T}\]</div>
+<div class="math notranslate nohighlight">
+\[\displaystyle \frac{dh}{dt} = −\varepsilon{h} − F_{2}T − b_{h}T^{2} + \sigma_{h}N_{h}+E_{h}\]</div>
+<div class="math notranslate nohighlight">
+\[\displaystyle \frac{d\xi_T}{dt} = -m_T \xi_T + \sqrt{2 m_T} w_T\]</div>
+<div class="math notranslate nohighlight">
+\[\displaystyle \frac{d\xi_h}{dt} = -m_h \xi_h + \sqrt{2 m_h} w_h\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}N_T = \begin{cases}
+         \xi_T, &amp; \text{if } n_T = 0 \quad \text{(red noise)} \\
+         w_T, &amp; \text{if } n_T = 1 \quad \text{(white noise)}
+         \end{cases}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}N_h = \begin{cases}
+         \xi_h, &amp; \text{if } n_h = 0 \quad \text{(red noise)} \\
+         w_h, &amp; \text{if } n_h = 1 \quad \text{(white noise)}
+         \end{cases}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}g_T = \begin{cases}
+         B \cdot T, &amp; \text{if } n_g = 0 \quad \text{(linear multiplicative noise)} \\
+         B \cdot H(T) \cdot T, &amp; \text{if } n_g = 1 \quad \text{(Heaviside-based multiplicative noise)} \\
+         0 &amp; \text{if } n_g = 2 \quad \text{(additive noise)}
+         \end{cases}\end{split}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(T\)</span> (K) and <span class="math notranslate nohighlight">\(h\)</span> (m) represent the ENSO sea surface temperature (SST) and thermocline depth anomalies, respectively.</p></li>
+<li><p><span class="math notranslate nohighlight">\(w_T\)</span> and <span class="math notranslate nohighlight">\(w_h\)</span> are uncorrelated Gaussian white noise forcings with zero mean and unit variance, applied to the <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(h\)</span> equations, respectively.</p></li>
+<li><p><span class="math notranslate nohighlight">\(E_T\)</span> and <span class="math notranslate nohighlight">\(E_h\)</span> are external forcings applied to the <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(h\)</span> equations, respectively.</p></li>
+</ul>
 </section>
 
 
@@ -537,20 +444,20 @@ All steps are successfully completed!
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../ug-fitting.html"
+       href="../ug-model.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Fitting</p>
+        <p class="prev-next-title">Model</p>
       </div>
     </a>
     <a class="right-next"
-       href="../ug-application.html"
+       href="model_parameters.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Application</p>
+        <p class="prev-next-title">RO Parameters</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

@@ -2,17 +2,18 @@
 CRO: Community Recharge Oscillator
 ************************************
 
-:code:`CRO` is an open-source Python and MATLAB package for modeling the El Niño–Southern Oscillation (ENSO) using the recharge oscillator (RO) framework :cite:`jin1997, jin2020, vialard2025, zhao2024`. It provides tools for solving the RO equations, fitting parameters to data, and applying the model in teaching and research.
+What is CRO?
+============
 
+The recharge oscillator (RO) model is one of the leading theories for the El Niño–Southern Oscillation (ENSO) :cite:`jin1997, jin2020, vialard2025`. While the literature contains many RO variants and implementations, :code:`CRO` is an open-source Python and MATLAB package for solving the RO equations, fitting parameters to observational or model data, and applying the model in teaching and research :cite:`kim2025`. 
 
-:cite:`kim2025`
-
-
-**Key Features**
+Key Features
+------------
 
 - **Solver**: Numerical and analytical solvers for the RO equations.  
 - **Fitting**: Parameter estimation from observations, reanalysis, or climate model data.  
-- **Applications**: Simulations, sensitivity experiments, and analysis of ENSO changes.  
+- **Applications**: Simulations, sensitivity experiments, and analysis of ENSO dynamics.  
+
 
 .. warning ::
     This package is still in its early stage and under active development, and its API could be changed frequently.
@@ -34,16 +35,16 @@ CRO: Community Recharge Oscillator
     .. grid-item-card::  Model
         :class-title: custom-title
         :class-body: custom-body
-        :img-top: _static/setup.png
+        :img-top: _static/model.png
         :link: ug-model
         :link-type: doc
 
-        :code:`CRO` model and parameters 
+        :code:`CRO` equations and parameters 
 
     .. grid-item-card::  Solver
         :class-title: custom-title
         :class-body: custom-body
-        :img-top: _static/setup.png
+        :img-top: _static/solver.png
         :link: ug-solver
         :link-type: doc
 
@@ -52,7 +53,7 @@ CRO: Community Recharge Oscillator
     .. grid-item-card::  Fitting
         :class-title: custom-title
         :class-body: custom-body
-        :img-top: _static/postprocessing.png
+        :img-top: _static/fitting.png
         :link: ug-fitting
         :link-type: doc
 
@@ -61,7 +62,7 @@ CRO: Community Recharge Oscillator
     .. grid-item-card::  Application
         :class-title: custom-title
         :class-body: custom-body
-        :img-top: _static/diags.png
+        :img-top: _static/application.png
         :link: ug-application
         :link-type: doc
 
@@ -77,7 +78,7 @@ CRO: Community Recharge Oscillator
         The essential API.
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
    :hidden:
    :caption: User Guide
 
@@ -87,6 +88,18 @@ CRO: Community Recharge Oscillator
    ug-fitting
    ug-application
    ug-api
+
+
+
+
+Relationship with XRO
+=====================
+
+The eXtended nonlinear Recharge Oscillator :code:`XRO` (https://github.com/senclimate/XRO) was developed to study interactions between ENSO and other climate modes, providing advanced predictive capabilities :cite:`zhao2024`.
+
+:code:`CRO`, in contrast, focuses on the core features and flexibility of the RO framework. It offers multiple fitting methods and supports varying degrees of seasonality in individual parameters.
+
+Both models share the same theoretical RO foundation and belong to the same RO family.
 
 
 References

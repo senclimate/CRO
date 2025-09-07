@@ -1,8 +1,10 @@
 Model
 ========================
-This section illustrates the RO master equations and parameters
+This section introduces the RO master equations, parameters and various variants
 
 .. toctree::
     :maxdepth: 1
 
-    notebooks/CRO_model
+    notebooks/model_equations
+    notebooks/model_parameters
+    notebooks/model_types

@@ -12,8 +12,11 @@
 #
 import os
 import sys
+from pygments.lexers import PythonLexer
+from sphinx.highlighting import lexers
 
 sys.path.insert(0, os.path.abspath('..'))
+lexers['ipython3'] = PythonLexer()
 
 # -- Project information -----------------------------------------------------
 
@@ -55,7 +58,7 @@ extensions = [
     # 'sphinx_gallery.load_style',
 ]
 nbsphinx_allow_errors = True
-nbsphinx_codecell_lexer = 'python3'
+
 
 html_logo = 'CRO_logo.png'
 html_favicon = 'CRO_logo.png'

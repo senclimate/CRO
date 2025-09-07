@@ -1,13 +1,12 @@
 Installation
 ========================
 
-
-Install the Conda environment
+Install the Mamba environment
 -----------------------------
 
-You may skip this step if your Conda environment has been installed already.
+You may skip this step if your Mamba environment has been installed already.
 
-Step 1: Download the installation script for miniconda3
+Step 1: Download the installation script for Miniconda3
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 macOS (Intel)
@@ -18,14 +17,15 @@ macOS (Intel)
   wget https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
 
 macOS (Apple Silicon)
-'''''''''''''''''''''
+'''''''''''''''''''''''
 
 .. code-block:: bash
 
   wget https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh
 
 Linux
-'''''
+''''''''
+
 .. code-block:: bash
 
   wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
@@ -37,8 +37,8 @@ Step 2: Install Miniconda3
 
   chmod +x Miniconda3-latest-*.sh && ./Miniconda3-latest-*.sh
 
-During the installation, a path :code:`<base-path>` needs to be specified as the base location of the python environment.
-After the installation is done, we need to add the two lines into your shell environment (e.g., :code:`~/.bashrc` or :code:`~/.zshrc`) as below to enable the :code:`conda` package manager (remember to change :code:`<base-path>` with your real location):
+During the installation, a path :code:`<base-path>` needs to be specified as the base location of the Python environment.
+After the installation is done, add the following lines into your shell environment (e.g., :code:`~/.bashrc` or :code:`~/.zshrc`) to enable the :code:`mamba` package manager (remember to replace :code:`<base-path>` with your actual installation path):
 
 .. code-block:: bash
 
@@ -51,37 +51,46 @@ Step 3: Test your Installation
 .. code-block:: bash
 
   source ~/.bashrc  # assume you are using Bash shell
-  which python  # should return a path under <base-path>
-  which conda  # should return a path under <base-path>
+  which python      # should return a path under <base-path>
+  which mamba       # should return a path under <base-path>
 
 
-Install `x4c`
----------------
+Install Python version of `CRO`
+--------------------------------
 
-
-Taking a clean installation as example, first let's create a new environment named :code:`x4c-env` via :code:`conda`
-
-.. code-block:: bash
-
-    conda create -n x4c-env python=3.13   # supports Python 3.12 and 3.13
-    conda activate x4c-env
-
-Then install some dependencies via :code:`conda`:
+For a clean installation, first create a new environment named :code:`env_pyCRO` via :code:`mamba`:
 
 .. code-block:: bash
 
-    conda install -c conda-forge jupyter notebook xesmf cartopy geocat-comp
+    mamba create -n env_pyCRO python=3.13   # supports Python 3.12 and 3.13
+    mamba activate env_pyCRO
 
-Once the above dependencies have been installed, simply
+Then install required dependencies via :code:`mamba`:
 
 .. code-block:: bash
 
-    pip install x4c
+    mamba install -c conda-forge numpy xarray statsmodels netcdf4
 
-and you are ready to
+Once the above dependencies are installed, simply install pyCRO via :code:`pip`:
+
+.. code-block:: bash
+
+    pip install pyCRO
+
+You are now ready to import pyCRO in Python:
 
 .. code-block:: python
 
-    import x4c
+    from pyCRO import *
 
-in Python.
+
+Install Matlab version of `CRO`
+--------------------------------
+
+1. Download the Matlab version from the official repository or release page.  
+2. Extract the contents to a preferred location, e.g., :code:`~/mCRO`.  
+3. Open Matlab and add the extracted folder to the Matlab path:
+
+.. code-block:: matlab
+
+    addpath(genpath('~/mCRO'))

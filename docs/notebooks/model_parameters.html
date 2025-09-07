@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>RO Master Equations &#8212; CLIVAR Working Group Community Recharge Oscillator (CRO) project  documentation</title>
+    <title>RO Parameters &#8212; CLIVAR Working Group Community Recharge Oscillator (CRO) project  documentation</title>
   
   
   
@@ -33,7 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/theme_overrides.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=12e6e2b2" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -50,12 +50,12 @@
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/CRO_model';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/model_parameters';</script>
     <link rel="icon" href="../_static/CRO_logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Solver" href="../ug-solver.html" />
-    <link rel="prev" title="Model" href="../ug-model.html" />
+    <link rel="next" title="RO Types and Variants" href="model_types.html" />
+    <link rel="prev" title="RO Master Equations" href="model_equations.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -169,21 +169,18 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../ug-installation.html">Installation</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../ug-model.html">Model</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">RO Master Equations</a></li>
-
-
+<li class="toctree-l2"><a class="reference internal" href="model_equations.html">RO Master Equations</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">RO Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_types.html">RO Types and Variants</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ug-solver.html">Solver</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="CRO_solver.html">Community Recharge Oscillator Model (CRO) v0.0 for Python</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ug-solver.html">Solver</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ug-fitting.html">Fitting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="CRO_fitting.html">Fitting</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ug-fitting.html">Fitting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ug-application.html">Application</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="CRO_application.html">CRO Model Code Design</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ug-application.html">Application</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../ug-api.html">API Reference</a></li>
@@ -258,7 +255,7 @@
       
       
       
-      <li><a href="https://github.com/senclimate/CRO/edit/main/notebooks/CRO_model.ipynb" target="_blank"
+      <li><a href="https://github.com/senclimate/CRO/edit/main/notebooks/model_parameters.ipynb" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -275,7 +272,7 @@
       
       
       
-      <li><a href="https://github.com/senclimate/CRO/issues/new?title=Issue%20on%20page%20%2Fnotebooks/CRO_model.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/senclimate/CRO/issues/new?title=Issue%20on%20page%20%2Fnotebooks/model_parameters.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -305,7 +302,7 @@
       
       
       
-      <li><a href="../_sources/notebooks/CRO_model.ipynb" target="_blank"
+      <li><a href="../_sources/notebooks/model_parameters.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -389,7 +386,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>RO Master Equations</h1>
+    <h1>RO Parameters</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -399,16 +396,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">RO Master Equations</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#RO-Parameters">RO Parameters</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Linear-and-Nonlinear-Parameters:">Linear and Nonlinear Parameters:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Noise-Parameters:">Noise Parameters:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Noise-Option-Parameters:">Noise Option Parameters:</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#RO-Types-and-Variants">RO Types and Variants</a></li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -419,40 +410,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="RO-Master-Equations">
-<h1>RO Master Equations<a class="headerlink" href="#RO-Master-Equations" title="Link to this heading">#</a></h1>
-<p>The CRO code package is a Python/MATLAB software package for solving and fitting the ENSO RO model. Here, we introduce the master RO equation, which can consider various types of RO models. The master RO equation is given as:</p>
-<div class="math notranslate nohighlight">
-\[\displaystyle \frac{dT}{dt} = RT + F_{1}h + b_{T}T^{2} − c_{T}T^{3} + d_{T}T \cdot h + \sigma_{T}N_{T}(1+g_{T})+E_{T}\]</div>
-<div class="math notranslate nohighlight">
-\[\displaystyle \frac{dh}{dt} = −\varepsilon{h} − F_{2}T − b_{h}T^{2} + \sigma_{h}N_{h}+E_{h}\]</div>
-<div class="math notranslate nohighlight">
-\[\displaystyle \frac{d\xi_T}{dt} = -m_T \xi_T + \sqrt{2 m_T} w_T\]</div>
-<div class="math notranslate nohighlight">
-\[\displaystyle \frac{d\xi_h}{dt} = -m_h \xi_h + \sqrt{2 m_h} w_h\]</div>
-<div class="math notranslate nohighlight">
-\[\begin{split}N_T = \begin{cases}
-         \xi_T, &amp; \text{if } n_T = 0 \quad \text{(red noise)} \\
-         w_T, &amp; \text{if } n_T = 1 \quad \text{(white noise)}
-         \end{cases}\end{split}\]</div>
-<div class="math notranslate nohighlight">
-\[\begin{split}N_h = \begin{cases}
-         \xi_h, &amp; \text{if } n_h = 0 \quad \text{(red noise)} \\
-         w_h, &amp; \text{if } n_h = 1 \quad \text{(white noise)}
-         \end{cases}\end{split}\]</div>
-<div class="math notranslate nohighlight">
-\[\begin{split}g_T = \begin{cases}
-         B \cdot T, &amp; \text{if } n_g = 0 \quad \text{(linear multiplicative noise)} \\
-         B \cdot H(T) \cdot T, &amp; \text{if } n_g = 1 \quad \text{(Heaviside-based multiplicative noise)} \\
-         0 &amp; \text{if } n_g = 2 \quad \text{(additive noise)}
-         \end{cases}\end{split}\]</div>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(T\)</span> (K) and <span class="math notranslate nohighlight">\(h\)</span> (m) represent the ENSO sea surface temperature (SST) and thermocline depth anomalies, respectively.</p></li>
-<li><p><span class="math notranslate nohighlight">\(w_T\)</span> and <span class="math notranslate nohighlight">\(w_h\)</span> are uncorrelated Gaussian white noise forcings with zero mean and unit variance, applied to the <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(h\)</span> equations, respectively.</p></li>
-<li><p><span class="math notranslate nohighlight">\(E_T\)</span> and <span class="math notranslate nohighlight">\(E_h\)</span> are external forcings applied to the <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(h\)</span> equations, respectively.</p></li>
-</ul>
-</section>
-<section id="RO-Parameters">
+  <section id="RO-Parameters">
 <h1>RO Parameters<a class="headerlink" href="#RO-Parameters" title="Link to this heading">#</a></h1>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -669,10 +627,6 @@ month<span class="math notranslate nohighlight">\(^{-1}\)</span></p></td>
 </ul>
 </section>
 </section>
-<section id="RO-Types-and-Variants">
-<h1>RO Types and Variants<a class="headerlink" href="#RO-Types-and-Variants" title="Link to this heading">#</a></h1>
-<p>The different combinations of parameter choices above allow us to consider a total of 24 types of RO by varying the deterministic terms (linear or nonlinear), noise coefficient (additive or multiplicative), noise color (white or red), and inclusion of seasonality in parameters (fixed or seasonal).</p>
-</section>
 
 
                 </article>
@@ -686,20 +640,20 @@ month<span class="math notranslate nohighlight">\(^{-1}\)</span></p></td>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../ug-model.html"
+       href="model_equations.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Model</p>
+        <p class="prev-next-title">RO Master Equations</p>
       </div>
     </a>
     <a class="right-next"
-       href="../ug-solver.html"
+       href="model_types.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Solver</p>
+        <p class="prev-next-title">RO Types and Variants</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -719,16 +673,10 @@ month<span class="math notranslate nohighlight">\(^{-1}\)</span></p></td>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">RO Master Equations</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#RO-Parameters">RO Parameters</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Linear-and-Nonlinear-Parameters:">Linear and Nonlinear Parameters:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Noise-Parameters:">Noise Parameters:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Noise-Option-Parameters:">Noise Option Parameters:</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#RO-Types-and-Variants">RO Types and Variants</a></li>
-</ul>
-
   </nav></div>
 
 </div></div>
