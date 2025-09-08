@@ -3,7 +3,7 @@ import numpy as np
 
 def RO_analytic_std(par):
     """
-    Compute analytical standard deviation of T and h for the RO model.
+    Compute analytical standard deviation of T and h for the Recharge Oscillator (RO) model.
 
     Parameters
     ----------
@@ -51,7 +51,7 @@ def RO_analytic_solver(par, IC, N, NE, dt=0.1, saveat=1.0, savemethod="sampling"
     Parameters
     ----------
     par : dict
-        Dictionary of model parameters, each as a one-element array:
+        Dictionary of model parameters, each as at least a one-element array:
         
         - ``'R'`` : float
             Damping parameter.

@@ -52,7 +52,7 @@
     <link rel="icon" href="_static/CRO_logo.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="CRO Model Code Design" href="notebooks/application.html" />
+    <link rel="prev" title="CRO reproduces the simulated ENSO characteristics in climate models" href="notebooks/application_climatemodel.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -176,11 +176,12 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="ug-fitting.html">Fitting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/fitting.html">RO fitting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/fitting.html"><code class="docutils literal notranslate"><span class="pre">CRO</span></code> fitting</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="ug-application.html">Application</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/application.html">CRO Model Code Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/application_obs.html"><code class="docutils literal notranslate"><span class="pre">CRO</span></code> reproduces the ENSO characteristics in observations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/application_climatemodel.html"><code class="docutils literal notranslate"><span class="pre">CRO</span></code> reproduces the simulated ENSO characteristics in climate models</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">API Reference</a></li>
@@ -400,6 +401,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.analytic.RO_analytic_solver"><code class="docutils literal notranslate"><span class="pre">RO_analytic_solver()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.analytic.RO_analytic_std"><code class="docutils literal notranslate"><span class="pre">RO_analytic_std()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.fitting.RO_fitting"><code class="docutils literal notranslate"><span class="pre">RO_fitting()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.fit_LR.fit_LR"><code class="docutils literal notranslate"><span class="pre">fit_LR()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.fit_MLE.fit_MLE"><code class="docutils literal notranslate"><span class="pre">fit_MLE()</span></code></a></li>
 </ul>
             </nav>
         </div>
@@ -565,7 +568,7 @@ The stochastic integrals are evaluated using vectorized convolution like summati
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>par</strong> (<em>dict</em>) – <p>Dictionary of model parameters, each as a one-element array:</p>
+<li><p><strong>par</strong> (<em>dict</em>) – <p>Dictionary of model parameters, each as at least a one-element array:</p>
 <ul>
 <li><dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">'R'</span></code><span class="classifier">float</span></dt><dd><p>Damping parameter.</p>
@@ -660,7 +663,7 @@ NumPy broadcasting, avoiding explicit Python loops.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="pyCRO.analytic.RO_analytic_std">
 <span class="sig-prename descclassname"><span class="pre">pyCRO.analytic.</span></span><span class="sig-name descname"><span class="pre">RO_analytic_std</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">par</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCRO.analytic.RO_analytic_std" title="Link to this definition">#</a></dt>
-<dd><p>Compute analytical standard deviation of T and h for the RO model.</p>
+<dd><p>Compute analytical standard deviation of T and h for the Recharge Oscillator (RO) model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>par</strong> (<em>dict</em>) – Dictionary containing parameter arrays:
@@ -679,7 +682,7 @@ NumPy broadcasting, avoiding explicit Python loops.</p>
 <dl class="py function" id="module-pyCRO.fitting">
 <dt class="sig sig-object py" id="pyCRO.fitting.RO_fitting">
 <span class="sig-prename descclassname"><span class="pre">pyCRO.fitting.</span></span><span class="sig-name descname"><span class="pre">RO_fitting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">par_option_T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">par_option_h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">par_option_noise</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method_fitting</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCRO.fitting.RO_fitting" title="Link to this definition">#</a></dt>
-<dd><p>Fit the CRO (Community Recharge Oscillator) model parameters to T and h time series.</p>
+<dd><p>Fit the Recharge Oscillator (RO) model parameters to T and h time series.</p>
 <p>This function performs parameter fitting for the RO system, using the specified
 prescribed parameter options and noise characteristics. Fitting can be done
 via linear regression (LR) or maximum likelihood estimation (MLE), with optional
@@ -727,7 +730,145 @@ Keys include:
 </div>
 </dd></dl>
 
-<span class="target" id="module-pyCRO.fit_MLE"><span id="module-pyCRO.fit_LR"></span></span></section>
+<dl class="py function" id="module-pyCRO.fit_LR">
+<dt class="sig sig-object py" id="pyCRO.fit_LR.fit_LR">
+<span class="sig-prename descclassname"><span class="pre">pyCRO.fit_LR.</span></span><span class="sig-name descname"><span class="pre">fit_LR</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">par_option_T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">par_option_h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">par_option_noise</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tend_option</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fitting_option_B</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fitting_option_red</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCRO.fit_LR.fit_LR" title="Link to this definition">#</a></dt>
+<dd><p>Estimates Recharge Oscillator (RO) parameters with linear regression (LR)
+given ENSO SST (T) and thermocline depth (h) anomaly time series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> (<em>array_like</em>) – Time series of SST anomalies (1D).</p></li>
+<li><p><strong>h</strong> (<em>array_like</em>) – Time series of thermocline depth anomalies (1D).</p></li>
+<li><p><strong>par_option_T</strong> (<em>array_like</em>) – <p>Seasonal fitting options for the T-equation terms.
+Values must be one of:</p>
+<blockquote>
+<div><ul>
+<li><p>0 : constant zero</p></li>
+<li><p>1 : constant non-zero</p></li>
+<li><p>3 : annual variation</p></li>
+<li><p>5 : annual + semi-annual variation</p></li>
+</ul>
+</div></blockquote>
+</p></li>
+<li><p><strong>par_option_h</strong> (<em>array_like</em>) – Seasonal fitting options for the h-equation terms (same coding as above).</p></li>
+<li><p><strong>par_option_noise</strong> (<em>array_like</em><em> of </em><em>length 3</em>) – <dl class="simple">
+<dt>Noise fitting options [n_T, n_h, n_g]:</dt><dd><ul>
+<li><p>n_T : 0 = red, 1 = white</p></li>
+<li><p>n_h : 0 = red, 1 = white</p></li>
+<li><dl class="simple">
+<dt>n_g<span class="classifier">0 = multiplicative (full),</span></dt><dd><p>1 = multiplicative (Heaviside),
+2 = additive</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Time step (in months).</p></li>
+<li><p><strong>tend_option</strong> (<em>{&quot;F&quot;</em><em>, </em><em>&quot;C&quot;}</em>) – <dl class="simple">
+<dt>Option for numerical derivative:</dt><dd><ul>
+<li><p>”F” : forward difference</p></li>
+<li><p>”C” : centered difference</p></li>
+</ul>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>fitting_option_B</strong> (<em>{&quot;MAC&quot;</em><em>, </em><em>&quot;LR&quot;}</em>) – <dl class="simple">
+<dt>Method for estimating multiplicative noise amplitude <cite>B</cite>:</dt><dd><ul>
+<li><p>”MAC” : Moment Approximation Calibration</p></li>
+<li><p>”LR” : Linear regression</p></li>
+</ul>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>fitting_option_red</strong> (<em>{&quot;LR&quot;</em><em>, </em><em>&quot;AR1&quot;</em><em>, </em><em>&quot;ARn&quot;}</em>) – <dl class="simple">
+<dt>Method for fitting red noise memory:</dt><dd><ul>
+<li><p>”LR”  : regression of residual derivative</p></li>
+<li><p>”AR1” : lag-1 autocorrelation</p></li>
+<li><p>”ARn” : regression using autocorrelation decay</p></li>
+</ul>
+</dd>
+</dl>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p><strong>final_par</strong> –</p>
+<dl class="simple">
+<dt>Stacked parameter array including:</dt><dd><ul class="simple">
+<li><p>Deterministic T-equation parameters (seasonalized)</p></li>
+<li><p>Deterministic h-equation parameters (seasonalized)</p></li>
+<li><dl class="simple">
+<dt>Noise parameters:</dt><dd><p>[sigma_T, sigma_h, B, m_T, m_h, n_T, n_h, n_g]</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray, shape (N, 5)</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>Seasonal terms are expanded into constant, annual, and semi-annual
+components depending on the fitting options.</p></li>
+<li><p>Noise fitting can handle white/red and additive/multiplicative cases.</p></li>
+<li><p>If multiplicative noise is selected and <cite>fitting_option_B=”MAC”</cite>,
+the MAC method overwrites <cite>sigma_T</cite> and <cite>B</cite>.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function" id="module-pyCRO.fit_MLE">
+<dt class="sig sig-object py" id="pyCRO.fit_MLE.fit_MLE">
+<span class="sig-prename descclassname"><span class="pre">pyCRO.fit_MLE.</span></span><span class="sig-name descname"><span class="pre">fit_MLE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">par_option_T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">par_option_h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">par_option_noise</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCRO.fit_MLE.fit_MLE" title="Link to this definition">#</a></dt>
+<dd><p>Estimate recharge oscillator (RO)  parameters using <strong>Maximum Likelihood Estimation (MLE)</strong></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> (<em>array_like</em>) – Time series of SST anomalies (1D).</p></li>
+<li><p><strong>h</strong> (<em>array_like</em>) – Time series of thermocline depth anomalies (1D).</p></li>
+<li><p><strong>par_option_T</strong> (<em>array_like</em>) – Switches for which SST-related parameters to include
+(0=off, 1=on, 3=annual, 5=annual+semiannual).</p></li>
+<li><p><strong>par_option_h</strong> (<em>array_like</em>) – Switches for which h-related parameters to include (same coding).</p></li>
+<li><p><strong>par_option_noise</strong> (<em>array_like</em><em> of </em><em>length 3</em>) – <p>Noise structure options <cite>[n_T, n_h, n_g]</cite>:
+- n_T : noise option for T-equation
+- n_h : noise option for h-equation
+- n_g : type of multiplicative noise term</p>
+<blockquote>
+<div><ul>
+<li><p>0 = linear multiplicative (<cite>B*T</cite>)</p></li>
+<li><p>1 = Heaviside multiplicative (<cite>B*H(T)*T</cite>)</p></li>
+<li><p>2 = additive (<cite>B=0</cite>)</p></li>
+</ul>
+</div></blockquote>
+</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Time step (months).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>par</strong> – Final estimated parameter set including deterministic RO parameters,
+seasonal amplitudes/phases, and red noise variances.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>Implements iterative forward filtering and backward smoothing
+to estimate hidden noise states.</p></li>
+<li><p>This function may take a long time to converge (default 10 iterations,
+could be increased for accuracy).</p></li>
+</ul>
+</dd></dl>
+
+</section>
 
 
                 </article>
@@ -741,12 +882,12 @@ Keys include:
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="notebooks/application.html"
+       href="notebooks/application_climatemodel.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">CRO Model Code Design</p>
+        <p class="prev-next-title"><code class="docutils literal notranslate"><span class="pre">CRO</span></code> reproduces the simulated ENSO characteristics in climate models</p>
       </div>
     </a>
 </div>
@@ -769,6 +910,8 @@ Keys include:
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.analytic.RO_analytic_solver"><code class="docutils literal notranslate"><span class="pre">RO_analytic_solver()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.analytic.RO_analytic_std"><code class="docutils literal notranslate"><span class="pre">RO_analytic_std()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.fitting.RO_fitting"><code class="docutils literal notranslate"><span class="pre">RO_fitting()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.fit_LR.fit_LR"><code class="docutils literal notranslate"><span class="pre">fit_LR()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.fit_MLE.fit_MLE"><code class="docutils literal notranslate"><span class="pre">fit_MLE()</span></code></a></li>
 </ul>
   </nav></div>
 

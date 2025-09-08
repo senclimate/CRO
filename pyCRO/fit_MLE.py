@@ -683,6 +683,45 @@ def fit_MLE_red(T, h, par_option_T, par_option_h, par_option_noise, dt):
 
 
 def fit_MLE(T, h, par_option_T, par_option_h, par_option_noise, dt):
+    """
+    Estimate recharge oscillator (RO)  parameters using **Maximum Likelihood Estimation (MLE)**
+
+    Parameters
+    ----------
+    T : array_like
+        Time series of SST anomalies (1D).
+    h : array_like
+        Time series of thermocline depth anomalies (1D).
+    par_option_T : array_like
+        Switches for which SST-related parameters to include  
+        (0=off, 1=on, 3=annual, 5=annual+semiannual).
+    par_option_h : array_like
+        Switches for which h-related parameters to include (same coding).
+    par_option_noise : array_like of length 3
+        Noise structure options `[n_T, n_h, n_g]`:  
+        - n_T : noise option for T-equation  
+        - n_h : noise option for h-equation  
+        - n_g : type of multiplicative noise term  
+            * 0 = linear multiplicative (`B*T`)  
+            * 1 = Heaviside multiplicative (`B*H(T)*T`)  
+            * 2 = additive (`B=0`)
+    dt : float
+        Time step (months).
+
+    Returns
+    -------
+    par : ndarray
+        Final estimated parameter set including deterministic RO parameters,
+        seasonal amplitudes/phases, and red noise variances.
+
+    Notes
+    -----
+    - Implements iterative forward filtering and backward smoothing 
+      to estimate hidden noise states.  
+    - This function may take a long time to converge (default 10 iterations, 
+      could be increased for accuracy).  
+    """
+    
     n_T = par_option_noise[0]
     n_h = par_option_noise[1]
 

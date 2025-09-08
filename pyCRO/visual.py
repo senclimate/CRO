@@ -1,3 +1,4 @@
+
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -37,6 +38,7 @@ def _seasonal_cycle(param):
 
 # Mapping parameter -> LaTeX label
 _PARAM_LABELS = {
+    "BJ":       r"BJ (month$^{-1}$)",  
     "R":       r"$R$ (month$^{-1}$)",  
     "F1":      r"$F_1$ (K m$^{-1}$ month$^{-1}$)",  
     "F2":      r"$F_2$ (m K$^{-1}$ month$^{-1}$)",  
@@ -49,7 +51,6 @@ _PARAM_LABELS = {
     "sigma_h": r"$\sigma_h$ (m month$^{-1/2}$ or m month$^{-1}$)",  
     "B":       r"$B$ (K$^{-1}$)",  
 }
-
 
 
 def plot_RO_par(par, ax=None, keys=None, ncol=4, label=None):
@@ -69,28 +70,34 @@ def plot_RO_par(par, ax=None, keys=None, ncol=4, label=None):
         Number of columns for subplot layout.
     """
     if keys is None:
-        keys = ['R', 'epsilon', 'F1', 'F2', 'b_T', 'c_T', 'd_T', 'b_h']
+        keys = ['BJ', 'R', 'epsilon', 'F1', 'F2', 'b_T', 'c_T', 'd_T', 'b_h']
     n = len(keys)
     nrow = int(np.ceil(n / ncol))
 
     if ax is None:
-        fig, axs = plt.subplots(nrow, ncol, figsize=(4*ncol, 2*nrow), sharex=True, layout='compressed')
+        fig, axs = plt.subplots(nrow, ncol, figsize=(3.5*ncol, 2*nrow), layout='compressed')
         axs = np.array(axs).reshape(-1)
     else:
         axs = np.atleast_1d(ax)
 
     for i, k in enumerate(keys):
-        seasonal = _seasonal_cycle(np.atleast_1d(par.get(k, [])))
+        if k == 'BJ':
+            sea_R = _seasonal_cycle(np.atleast_1d(par.get('R', [])))
+            sea_Eps = _seasonal_cycle(np.atleast_1d(par.get('Eps', [])))
+            seasonal = (sea_R - sea_Eps)/2
+        else:
+            seasonal = _seasonal_cycle(np.atleast_1d(par.get(k, [])))
+
         if label is None:
             lb = k
         else:
             lb = label
             
-        axs[i].plot(np.arange(1, 13), seasonal, marker="o", label=lb)
+        axs[i].plot(np.arange(1, 13), seasonal, marker=".", label=lb)
         axs[i].set_ylabel(_PARAM_LABELS[k])
         axs[i].set_xticks(range(1, 13))
-        axs[i].set_xticklabels(["Jan","Feb","Mar","Apr","May","Jun",
-                                "Jul","Aug","Sep","Oct","Nov","Dec"])
+        # axs[i].set_xticklabels(["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"])
+        axs[i].set_xticklabels(["J","F","M","A","M","J","J","A","S","O","N","D"])
         axs[i].grid(True, linestyle="--", alpha=0.5)
         axs[i].legend()
 

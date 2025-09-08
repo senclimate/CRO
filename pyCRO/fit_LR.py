@@ -3,7 +3,69 @@ import numpy as np
 from .utils import wrap_to_pi, regress_std, heaviside
 from .fit_MAC import fit_MAC
 
-def fit_LR(T, h, par_option_T, par_option_h, par_option_noise, dt, tend_option, fitting_option_B, fitting_option_red):
+def fit_LR(T, h, par_option_T, par_option_h, par_option_noise, dt, 
+           tend_option, fitting_option_B, fitting_option_red):
+    """
+    Estimates Recharge Oscillator (RO) parameters with linear regression (LR) 
+    given ENSO SST (T) and thermocline depth (h) anomaly time series.
+
+    Parameters
+    ----------
+    T : array_like
+        Time series of SST anomalies (1D).
+    h : array_like
+        Time series of thermocline depth anomalies (1D).
+    par_option_T : array_like
+        Seasonal fitting options for the T-equation terms.
+        Values must be one of:
+            - 0 : constant zero
+            - 1 : constant non-zero
+            - 3 : annual variation
+            - 5 : annual + semi-annual variation
+    par_option_h : array_like
+        Seasonal fitting options for the h-equation terms (same coding as above).
+    par_option_noise : array_like of length 3
+        Noise fitting options [n_T, n_h, n_g]:
+            - n_T : 0 = red, 1 = white
+            - n_h : 0 = red, 1 = white
+            - n_g : 0 = multiplicative (full),
+                    1 = multiplicative (Heaviside),
+                    2 = additive
+    dt : float
+        Time step (in months).
+    tend_option : {"F", "C"}
+        Option for numerical derivative:
+            - "F" : forward difference
+            - "C" : centered difference
+    fitting_option_B : {"MAC", "LR"}
+        Method for estimating multiplicative noise amplitude `B`:
+            - "MAC" : Moment Approximation Calibration
+            - "LR" : Linear regression
+    fitting_option_red : {"LR", "AR1", "ARn"}
+        Method for fitting red noise memory:
+            - "LR"  : regression of residual derivative
+            - "AR1" : lag-1 autocorrelation
+            - "ARn" : regression using autocorrelation decay
+
+    Returns
+    -------
+    final_par : ndarray, shape (N, 5)
+        Stacked parameter array including:
+            - Deterministic T-equation parameters (seasonalized)
+            - Deterministic h-equation parameters (seasonalized)
+            - Noise parameters:
+                [sigma_T, sigma_h, B, m_T, m_h, n_T, n_h, n_g]
+
+    Notes
+    -----
+    - Seasonal terms are expanded into constant, annual, and semi-annual
+      components depending on the fitting options.
+    - Noise fitting can handle white/red and additive/multiplicative cases.
+    - If multiplicative noise is selected and `fitting_option_B="MAC"`, 
+      the MAC method overwrites `sigma_T` and `B`.
+
+    """
+
     T = np.ravel(T)
     h = np.ravel(h)
 

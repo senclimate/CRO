@@ -67,7 +67,7 @@ def func_default_fitting_method(par_option_T, par_option_h, par_option_noise, ta
         noise_amp_type = "additive"
 
     # Load the method lookup table from a tab-delimited text file
-    df = pd.read_csv(table_path, sep='\s+')
+    df = pd.read_csv(table_path, sep='\\s+')
 
     # Filter for matching row
     matched = df[
@@ -88,7 +88,7 @@ def func_default_fitting_method(par_option_T, par_option_h, par_option_noise, ta
 
 def RO_fitting(T, h, par_option_T, par_option_h, par_option_noise, method_fitting=None, dt=None, verbose=True):
     """
-    Fit the CRO (Community Recharge Oscillator) model parameters to T and h time series.
+    Fit the Recharge Oscillator (RO) model parameters to T and h time series.
 
     This function performs parameter fitting for the RO system, using the specified
     prescribed parameter options and noise characteristics. Fitting can be done 
