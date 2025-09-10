@@ -1,0 +1,1311 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Solver &#8212; CLIVAR Working Group Community Recharge Oscillator (CRO) project  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/theme_overrides.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=c3144ee3" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/solver';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = '../switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'Python';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="icon" href="../_static/CRO_logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Fitting" href="../ug-fitting.html" />
+    <link rel="prev" title="Solver" href="../ug-solver.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/CRO_logo.png" class="logo__image only-light" alt="CLIVAR Working Group Community Recharge Oscillator (CRO) project  documentation - Home"/>
+    <img src="../_static/CRO_logo.png" class="logo__image only-dark pst-js-only" alt="CLIVAR Working Group Community Recharge Oscillator (CRO) project  documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-model.html">
+    Model
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../ug-solver.html">
+    Solver
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-fitting.html">
+    Fitting
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-application.html">
+    Application
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../ug-api.html">
+    API Reference
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-model.html">
+    Model
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../ug-solver.html">
+    Solver
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-fitting.html">
+    Fitting
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-application.html">
+    Application
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-api.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Solver</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../ug-solver.html" class="nav-link">Solver</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Solver</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p><img alt="CRO Logo" class="no-scaled-link" src="../data/CRO_logo.png" style="width: 400px;" /></p>
+<section id="Solver">
+<h1>Solver<a class="headerlink" href="#Solver" title="Link to this heading">#</a></h1>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">config</span> <span class="n">IPCompleter</span><span class="o">.</span><span class="n">greedy</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="o">%</span><span class="n">config</span> <span class="n">InlineBackend</span><span class="o">.</span><span class="n">figure_format</span><span class="o">=</span><span class="s1">&#39;retina&#39;</span>
+
+<span class="o">%</span><span class="n">load_ext</span> <span class="n">autoreload</span>
+<span class="o">%</span><span class="n">autoreload</span> <span class="mi">2</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">calendar</span>
+
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s2">&quot;../../&quot;</span><span class="p">))</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyCRO</span><span class="w"> </span><span class="kn">import</span> <span class="n">RO_solver</span><span class="p">,</span> <span class="n">RO_fitting</span><span class="p">,</span> <span class="n">RO_analytic_std</span><span class="p">,</span> <span class="n">RO_analytic_solver</span><span class="p">,</span> <span class="n">RO_BWJ</span><span class="p">,</span> <span class="n">func_mon_std</span><span class="p">,</span> <span class="n">par_load</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+The autoreload extension is already loaded. To reload it, use:
+  %reload_ext autoreload
+</pre></div></div>
+</div>
+<section id="RO-Simulation-Setup">
+<h2>RO Simulation Setup<a class="headerlink" href="#RO-Simulation-Setup" title="Link to this heading">#</a></h2>
+<p>This is the simplest configuration for the RO model, using:</p>
+<ul class="simple">
+<li><p><strong>White noise</strong>: <code class="docutils literal notranslate"><span class="pre">n_T</span> <span class="pre">=</span> <span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">n_h</span> <span class="pre">=</span> <span class="pre">1</span></code>.</p></li>
+<li><p><strong>Linear system</strong>: nonlinear terms (<code class="docutils literal notranslate"><span class="pre">b_T</span></code>, <code class="docutils literal notranslate"><span class="pre">c_T</span></code>, <code class="docutils literal notranslate"><span class="pre">d_T</span></code>, <code class="docutils literal notranslate"><span class="pre">b_h</span></code>) are zero. Note that All unspecified parameters default to zero.</p></li>
+<li><p><strong>Additive noise only</strong>: no multiplicative component (<code class="docutils literal notranslate"><span class="pre">n_g</span> <span class="pre">=</span> <span class="pre">2</span></code>).</p></li>
+</ul>
+<p>The RO equation is written as:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\displaystyle \frac{dT}{dt} = RT + F_{1}h + \sigma_{T}w_{T}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\displaystyle \frac{dh}{dt} = −\varepsilon{h} − F_{2}T + \sigma_{h}w_{h}\)</span></p></li>
+</ul>
+<p>The following block sets parameters for the RO simulation.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">par</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;R&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.05</span><span class="p">],</span>       <span class="c1"># dT/dt=R*T (unit: month^-1)</span>
+       <span class="s1">&#39;F1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.02</span><span class="p">],</span>       <span class="c1"># dT/dt=F1*h (unit: K m^-1 month^-1)</span>
+       <span class="s1">&#39;F2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.9</span><span class="p">],</span>        <span class="c1"># dh/dt=-F2*T (unit: m K^-1 month^-1)</span>
+       <span class="s1">&#39;epsilon&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.03</span><span class="p">],</span>  <span class="c1"># dh/dt=-epsilon*h (unit: month^-1)</span>
+       <span class="s1">&#39;b_T&#39;</span><span class="p">:</span> <span class="p">[],</span>          <span class="c1"># dT/dt=(b_T)*(T^2) (unit: K^-1 month^-1)</span>
+       <span class="s1">&#39;c_T&#39;</span><span class="p">:</span> <span class="p">[],</span>          <span class="c1"># dT/dt=-(c_T)*(T^3) (unit: K^-2 month^-1)</span>
+       <span class="s1">&#39;d_T&#39;</span><span class="p">:</span> <span class="p">[],</span>          <span class="c1"># dT/dt=(d_T)*(T*h) (unit: m^-1 month^-1)</span>
+       <span class="s1">&#39;b_h&#39;</span><span class="p">:</span> <span class="p">[],</span>          <span class="c1"># dh/dt=-(b_h)*(T^2) (unit: K^-2 m month^-1)</span>
+       <span class="s1">&#39;sigma_T&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">],</span>   <span class="c1"># dT/dt=(sigma_T)*(N_T) (unit: K month^-0.5 if n_T=1, K month^-1 if n_T=0)</span>
+       <span class="s1">&#39;sigma_h&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.2</span><span class="p">],</span>   <span class="c1"># dh/dt=(sigma_h)*(N_h) (unit: m month^-0.5 if n_h=1, m month^-1 if n_h=0)</span>
+       <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[],</span>            <span class="c1"># T/dt=(sigma_T)*(1+B*T)*(N_T) or dT/dt=(sigma_T)*(1+B*H(T)*T)*(N_T) (unit: K^-1)</span>
+       <span class="s1">&#39;m_T&#39;</span><span class="p">:</span> <span class="p">[],</span>          <span class="c1"># d(xi_T)/dt=-m*T*(xi_T); (unit: month^-1)</span>
+       <span class="s1">&#39;m_h&#39;</span><span class="p">:</span> <span class="p">[],</span>          <span class="c1"># d(xi_h)/dt=-m*h*(xi_h); (unit: month^-1)</span>
+       <span class="s1">&#39;n_T&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span>         <span class="c1"># noise type for T (0: red noise, 1: white noise) (unitless)</span>
+       <span class="s1">&#39;n_h&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span>         <span class="c1"># noise type for h (0: red noise, 1: white noise) (unitless)</span>
+       <span class="s1">&#39;n_g&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">]}</span>         <span class="c1"># multiplicative noise type for T (0: linear, 1: Heaviside linear, 2: omit this option)</span>
+                           <span class="c1"># (note: only valid when B is not zero) (unitless)</span>
+</pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>The following block sets additional options for the RO simulation.</p></li>
+</ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">IC</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span>              <span class="c1"># Initial conditions for T and h</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">12</span> <span class="o">*</span> <span class="mi">100</span>                 <span class="c1"># Simulation length in months (e.g., 100 years)</span>
+<span class="n">NE</span> <span class="o">=</span> <span class="mi">2</span>                       <span class="c1"># Number of ensemble members</span>
+</pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>The RO simulation can be run by setting four settings set above: par, IC, N, and NE.</p></li>
+<li><p>The following block sets additional <strong>optional settings</strong> for the RO simulation.</p></li>
+<li><p>The user may skip specifying these options. If the user doesn’t specify these options, the RO simulation runs with the default settings.</p></li>
+</ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">NM</span> <span class="o">=</span> <span class="s2">&quot;EH&quot;</span>                    <span class="c1"># Optional: Numerical integration method for</span>
+                             <span class="c1">#           RO solver &quot;EH&quot; (Euler–Heun, default)</span>
+                             <span class="c1">#           or &quot;EM&quot; (Euler–Maruyama)</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.1</span>                     <span class="c1"># Optional: Time step for numerical integration</span>
+                             <span class="c1">#           in months. Default = 0.1</span>
+<span class="n">saveat</span> <span class="o">=</span> <span class="mf">1.0</span>                 <span class="c1"># Optional: Interval for saving outputs in months.</span>
+                             <span class="c1">#           Default = 1.0</span>
+<span class="n">savemethod</span> <span class="o">=</span> <span class="s2">&quot;sampling&quot;</span>      <span class="c1"># Optional: Output method. &quot;sampling&quot; saves</span>
+                             <span class="c1">#           instantaneous values, &quot;mean&quot; saves</span>
+                             <span class="c1">#           time-averaged values over each save</span>
+                             <span class="c1">#           interval. Default = &quot;sampling&quot;</span>
+<span class="n">EF</span> <span class="o">=</span> <span class="kc">None</span>                    <span class="c1"># Optional: External forcing dictionary.</span>
+                             <span class="c1">#           If EF is None (or not specified),</span>
+                             <span class="c1">#           it defaults to:</span>
+                             <span class="c1">#           EF = {&#39;E_T&#39;: [0.0], &#39;E_h&#39;: [0.0]}</span>
+                             <span class="c1">#           Same format and interpretation as</span>
+                             <span class="c1">#           other RO parameters. Example:</span>
+                             <span class="c1">#           EF = {&#39;E_T&#39;: [-0.01, 0.02, np.pi],</span>
+                             <span class="c1">#                 &#39;E_h&#39;: [-0.01]}</span>
+<span class="n">noise_custom</span> <span class="o">=</span> <span class="mi">999</span>           <span class="c1"># Optional: Noise specification.</span>
+                             <span class="c1">#   - If None or not provided:</span>
+                             <span class="c1">#     uses internally generated noise</span>
+                             <span class="c1">#     (different each run; Default)</span>
+                             <span class="c1">#   - If an integer: uses as the random seed for</span>
+                             <span class="c1">#     reproducible noise with the reference number</span>
+                             <span class="c1">#   - If ndarray: user-supplied noise</span>
+                             <span class="c1">#     (shape must be (int(N/dt) - 1, 4))</span>
+                             <span class="c1">#     The first two columns of the noise array are</span>
+                             <span class="c1">#     applied to the main T and h equations.</span>
+                             <span class="c1">#     The last two columns are used as noise terms</span>
+                             <span class="c1">#     for the red noise processes.</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="RO-Simulations">
+<h2>RO Simulations<a class="headerlink" href="#RO-Simulations" title="Link to this heading">#</a></h2>
+<section id="Basic-Usage">
+<h3>Basic Usage<a class="headerlink" href="#Basic-Usage" title="Link to this heading">#</a></h3>
+<p><strong>``T_ro, h_ro, _ = RO_solver(par, IC, N, NE)``</strong></p>
+<p>This is the simplest setup:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T_ro</span></code> and <code class="docutils literal notranslate"><span class="pre">h_ro</span></code> are arrays with shape <code class="docutils literal notranslate"><span class="pre">(N,</span> <span class="pre">NE)</span></code>, where <code class="docutils literal notranslate"><span class="pre">N</span></code> is the number of time steps and <code class="docutils literal notranslate"><span class="pre">NE</span></code> is the number of ensemble members.</p></li>
+<li><p>The third output (<code class="docutils literal notranslate"><span class="pre">_</span></code>) is the noise time series, with shape <code class="docutils literal notranslate"><span class="pre">(N,</span> <span class="pre">4,</span> <span class="pre">NE)</span></code>.</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example 3-1. Solve RO with default settings</span>
+<span class="n">T_ro</span><span class="p">,</span> <span class="n">h_ro</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">RO_solver</span><span class="p">(</span><span class="n">par</span><span class="p">,</span> <span class="n">IC</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">NE</span><span class="p">)</span>
+
+<span class="n">time_axis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">saveat</span><span class="p">)</span>
+<span class="n">num_en</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># plot first ensemble member solution of T</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_axis</span><span class="p">,</span> <span class="n">T_ro</span><span class="p">[:,</span> <span class="n">num_en</span><span class="p">],</span>  <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Numerical sampling&#39;</span><span class="p">,</span>  <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time (months)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+---------------------------------------------------------------------------------
+Welcome to the CRO Solver! Your simulation setup is as follows:
+---------------------------------------------------------------------------------
+ - Total simulation length: N = 1200 months
+ - Number of ensemble members: NE = 2
+ - Numerical integration time step: dt = 0.1 months (default: 0.1)
+ - Data output interval: saveat = 1.0 months (default: 1.0)
+ - Initial conditions: IC = [T0, h0] = [1.0, 0.0]
+ - Input parameters have the expected shapes.
+ - &#39;n_T&#39; = 1: White noise forcing in T; &#39;m_T&#39; ignored.
+ - &#39;n_h&#39; = 1: White noise forcing in h; &#39;m_h&#39; ignored.
+ - &#39;n_g&#39; = 2: Additive noise is used in the T equation; &#39;B&#39; is ignored.
+ - Numerical integration method: NM = &#39;EH&#39; (Euler–Heun method; default)
+ - Data saving method: savemethod = sampling (default)
+ - External forcing is not given, therefore using
+   EF = {&#39;E_T&#39;: [0.0, 0.0, 0.0, 0.0, 0.0], &#39;E_h&#39;: [0.0, 0.0, 0.0, 0.0, 0.0]}.
+ - noise_custom = None: System-generated noise is used and changes at every run.
+---------------------------------------------------------------------------------
+Numerical integration starting:
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+All steps successfully completed!
+---------------------------------------------------------------------------------
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_solver_10_1.png" class="no-scaled-link" src="../_images/notebooks_solver_10_1.png" style="width: 578px; height: 432px;" />
+</div>
+</div>
+</section>
+<section id="Advanced-Usage">
+<h3>Advanced Usage<a class="headerlink" href="#Advanced-Usage" title="Link to this heading">#</a></h3>
+<p><strong>``T_ro, h_ro, _ = RO_solver(par, IC, N, NE, NM)``</strong></p>
+<p><strong>``T_ro, h_ro, _ = RO_solver(par, IC, N, NE, NM, dt)``</strong></p>
+<p><strong>``T_ro, h_ro, _ = RO_solver(par, IC, N, NE, NM, dt, saveat)``</strong></p>
+<p><strong>``T_ro, h_ro, _ = RO_solver(par, IC, N, NE, NM, dt, saveat, savemethod)``</strong></p>
+<p><strong>``T_ro, h_ro, _ = RO_solver(par, IC, N, NE, NM, dt, saveat, savemethod, EF)``</strong></p>
+<p><strong>``T_ro, h_ro, _ = RO_solver(par, IC, N, NE, NM, dt, saveat, savemethod, EF, noise_custom)``</strong></p>
+<ul class="simple">
+<li><p>Optional arguments allow for more control.</p></li>
+<li><p>Each additional argument gives more precise control over the solver.</p></li>
+<li><p>Refer to the previous section for details on each argument.</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example 3-2. Solve RO with user-specified settings</span>
+<span class="n">T_ro</span><span class="p">,</span> <span class="n">h_ro</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">RO_solver</span><span class="p">(</span><span class="n">par</span><span class="p">,</span> <span class="n">IC</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">NE</span><span class="p">,</span> <span class="n">NM</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">saveat</span><span class="p">,</span> <span class="n">savemethod</span><span class="p">,</span> <span class="n">EF</span><span class="p">,</span> <span class="n">noise_custom</span><span class="p">)</span>
+
+<span class="n">time_axis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">saveat</span><span class="p">)</span>
+<span class="n">num_en</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># plot first ensemble member solution of T</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_axis</span><span class="p">,</span> <span class="n">T_ro</span><span class="p">[:,</span> <span class="n">num_en</span><span class="p">],</span>  <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Numerical sampling&#39;</span><span class="p">,</span>  <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time (months)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+---------------------------------------------------------------------------------
+Welcome to the CRO Solver! Your simulation setup is as follows:
+---------------------------------------------------------------------------------
+ - Total simulation length: N = 1200 months
+ - Number of ensemble members: NE = 2
+ - Numerical integration time step: dt = 0.1 months (default: 0.1)
+ - Data output interval: saveat = 1.0 months (default: 1.0)
+ - Initial conditions: IC = [T0, h0] = [1.0, 0.0]
+ - Input parameters have the expected shapes.
+ - &#39;n_T&#39; = 1: White noise forcing in T; &#39;m_T&#39; ignored.
+ - &#39;n_h&#39; = 1: White noise forcing in h; &#39;m_h&#39; ignored.
+ - &#39;n_g&#39; = 2: Additive noise is used in the T equation; &#39;B&#39; is ignored.
+ - Numerical integration method: NM = &#39;EH&#39; (Euler–Heun method; default)
+ - Data saving method: savemethod = sampling (default)
+ - External forcing is not given, therefore using
+   EF = {&#39;E_T&#39;: [0.0, 0.0, 0.0, 0.0, 0.0], &#39;E_h&#39;: [0.0, 0.0, 0.0, 0.0, 0.0]}.
+ - noise_custom = 999: seeded same noise.
+---------------------------------------------------------------------------------
+Numerical integration starting:
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+All steps successfully completed!
+---------------------------------------------------------------------------------
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_solver_12_1.png" class="no-scaled-link" src="../_images/notebooks_solver_12_1.png" style="width: 565px; height: 437px;" />
+</div>
+</div>
+</section>
+<section id="Analytical-Solutions">
+<h3>Analytical Solutions<a class="headerlink" href="#Analytical-Solutions" title="Link to this heading">#</a></h3>
+<p><strong>``T_ref, h_ref, _ = RO_analytic_solver(par, IC, N, NE)``</strong></p>
+<p><strong>``T_ref, h_ref, _ = RO_analytic_solver(par, IC, N, NE, dt)``</strong></p>
+<p><strong>``T_ref, h_ref, _ = RO_analytic_solver(par, IC, N, NE, dt, saveat)``</strong></p>
+<p><strong>``T_ref, h_ref, _ = RO_analytic_solver(par, IC, N, NE, dt, saveat, savemethod)``</strong></p>
+<p><strong>``T_ref, h_ref, _ = RO_analytic_solver(par, IC, N, NE, dt, saveat, savemethod, noise_custom)``</strong></p>
+<ul>
+<li><div class="line-block">
+<div class="line">This function returns the <strong>analytical solution</strong> for the <strong>linear RO system</strong> without seasonality, using <strong>white additive noise</strong>.</div>
+<div class="line">Its usage is structurally similar to <code class="docutils literal notranslate"><span class="pre">RO_solver</span></code>, but with the following key differences: <code class="docutils literal notranslate"><span class="pre">'NM'</span></code> (numerical method) and <code class="docutils literal notranslate"><span class="pre">'EF'</span></code> (external forcing) are <strong>not required or accepted</strong>.</div>
+</div>
+</li>
+<li><p>To ensure a <strong>meaningful comparison</strong> with the numerical solution from <code class="docutils literal notranslate"><span class="pre">RO_solver</span></code>, use the <strong>same seed</strong> for <code class="docutils literal notranslate"><span class="pre">noise_custom</span></code> in both simulations.</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example 3-3. Compare numerical and analyticla solution</span>
+<span class="n">NE</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">T_ro</span><span class="p">,</span> <span class="n">h_ro</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">RO_solver</span><span class="p">(</span><span class="n">par</span><span class="p">,</span> <span class="n">IC</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">NE</span><span class="p">,</span> <span class="n">NM</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">saveat</span><span class="p">,</span> <span class="n">savemethod</span><span class="p">,</span> <span class="n">EF</span><span class="p">,</span> <span class="n">noise_custom</span><span class="p">)</span>
+<span class="n">T_ref</span><span class="p">,</span> <span class="n">h_ref</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">RO_analytic_solver</span><span class="p">(</span><span class="n">par</span><span class="p">,</span> <span class="n">IC</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">NE</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">saveat</span><span class="p">,</span> <span class="n">savemethod</span><span class="p">,</span> <span class="n">noise_custom</span><span class="p">)</span>
+
+<span class="n">time_axis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">saveat</span><span class="p">)</span>
+<span class="n">num_en</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># plot first ensemble member solution of T</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_axis</span><span class="p">,</span> <span class="n">T_ro</span><span class="p">[:,</span> <span class="n">num_en</span><span class="p">],</span>  <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Numerical sampling&#39;</span><span class="p">,</span>  <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_axis</span><span class="p">,</span> <span class="n">T_ref</span><span class="p">[:,</span> <span class="n">num_en</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Analytical sampling&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time (months)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+---------------------------------------------------------------------------------
+Welcome to the CRO Solver! Your simulation setup is as follows:
+---------------------------------------------------------------------------------
+ - Total simulation length: N = 1200 months
+ - Number of ensemble members: NE = 1
+ - Numerical integration time step: dt = 0.1 months (default: 0.1)
+ - Data output interval: saveat = 1.0 months (default: 1.0)
+ - Initial conditions: IC = [T0, h0] = [1.0, 0.0]
+ - Input parameters have the expected shapes.
+ - &#39;n_T&#39; = 1: White noise forcing in T; &#39;m_T&#39; ignored.
+ - &#39;n_h&#39; = 1: White noise forcing in h; &#39;m_h&#39; ignored.
+ - &#39;n_g&#39; = 2: Additive noise is used in the T equation; &#39;B&#39; is ignored.
+ - Numerical integration method: NM = &#39;EH&#39; (Euler–Heun method; default)
+ - Data saving method: savemethod = sampling (default)
+ - External forcing is not given, therefore using
+   EF = {&#39;E_T&#39;: [0.0, 0.0, 0.0, 0.0, 0.0], &#39;E_h&#39;: [0.0, 0.0, 0.0, 0.0, 0.0]}.
+ - noise_custom = 999: seeded same noise.
+---------------------------------------------------------------------------------
+Numerical integration starting:
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+All steps successfully completed!
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Welcome to the CRO Analytical Solver!
+Ensure that the same arguments are provided as for RO_solver,
+ except that &#39;NM&#39; and &#39;EF&#39; are not required.
+---------------------------------------------------------------------------------
+All steps are successfully completed!
+---------------------------------------------------------------------------------
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_solver_14_1.png" class="no-scaled-link" src="../_images/notebooks_solver_14_1.png" style="width: 999px; height: 294px;" />
+</div>
+</div>
+<p><strong>``RO_std_analytic(par)``</strong></p>
+<ul class="simple">
+<li><p>It returns the <strong>theoretical standard deviations</strong> for the <strong>linear-white-additive</strong> configuration based on the given parameter dictionary <code class="docutils literal notranslate"><span class="pre">par</span></code>.</p></li>
+</ul>
+<p><strong>``BWJ = RO_BWJ(par)``</strong></p>
+<ul class="simple">
+<li><p>It computes the expected <strong>BJ</strong> and <strong>Wyrtki</strong> indices, where the real part (<code class="docutils literal notranslate"><span class="pre">{BWJ.real}</span></code>) corresponds to the BJ index and the imaginary part (<code class="docutils literal notranslate"><span class="pre">{BWJ.imag}</span></code>) corresponds to the Wyrtki index, based on the given parameter dictionary <code class="docutils literal notranslate"><span class="pre">par</span></code>.</p></li>
+</ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example 3-4. Compare standard deviation of numerical and analytial solutions</span>
+<span class="n">T_ref_std</span><span class="p">,</span> <span class="n">h_ref_std</span> <span class="o">=</span> <span class="n">RO_analytic_std</span><span class="p">(</span><span class="n">par</span><span class="p">)</span> <span class="c1"># calculate theoretical standard deviations</span>
+
+<span class="n">T_ro</span><span class="p">,</span> <span class="n">h_ro</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">RO_solver</span><span class="p">(</span><span class="n">par</span><span class="p">,</span> <span class="n">IC</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">NE</span><span class="p">,</span> <span class="n">NM</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">saveat</span><span class="p">,</span> <span class="n">savemethod</span><span class="p">,</span> <span class="n">noise_custom</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">T_ro_std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">T_ro</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span> <span class="n">h_ro_std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">h_ro</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">T_ro_std_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">T_ro_std</span><span class="p">);</span> <span class="n">h_ro_std_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">h_ro_std</span><span class="p">)</span> <span class="c1"># ensemble mean</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Standard drviations for T (analytical):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">T_ref_std</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Standard drviations for T (ensemble mean for numerical solutions):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">T_ro_std_mean</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Standard drviations for h (analytical):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">h_ref_std</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Standard drviations for h (ensemble mean for numerical solutions):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">h_ro_std_mean</span><span class="p">)</span>
+
+
+<span class="c1"># Example 3-5. Calculate BWJ Index</span>
+<span class="n">BWJ</span> <span class="o">=</span> <span class="n">RO_BWJ</span><span class="p">(</span><span class="n">par</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;BJ index: </span><span class="si">{</span><span class="n">BWJ</span><span class="o">.</span><span class="n">real</span><span class="si">}</span><span class="s2"> [1/month]&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Wyrtki index: </span><span class="si">{</span><span class="n">BWJ</span><span class="o">.</span><span class="n">imag</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> [1/month]. &quot;</span>
+      <span class="sa">f</span><span class="s2">&quot;This corresponds to a periodicity of </span><span class="si">{</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="n">BWJ</span><span class="o">.</span><span class="n">imag</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> months.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="4.-RO-Parameter-Fitting-Setup">
+<h2>4. RO Parameter Fitting Setup<a class="headerlink" href="#4.-RO-Parameter-Fitting-Setup" title="Link to this heading">#</a></h2>
+<section id="Input-T-and-h-Time-Series">
+<h3>Input T and h Time Series<a class="headerlink" href="#Input-T-and-h-Time-Series" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>T and h are input timeseries used for the fitting.</p></li>
+<li><p>T and h must be 1D time series arrays with a uniform time step.</p></li>
+</ul>
+</section>
+<section id="Specifiying-RO-Type">
+<h3>Specifiying RO Type<a class="headerlink" href="#Specifiying-RO-Type" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>These options define the RO model type used for fitting.</p></li>
+<li><p>par_option_T specifies the linear and nonlinear terms in dT/dt</p></li>
+<li><p>par_option_h specifies the linear and nonlinear terms in dh/dt</p></li>
+<li><p>The following example shows how to set the RO type as linear-white-additive RO for the fitting.</p></li>
+</ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">par_option_T</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;R&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;F1&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;b_T&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;c_T&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;d_T&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="n">par_option_h</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;F2&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;epsilon&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;b_h&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>For keys in <code class="docutils literal notranslate"><span class="pre">par_option_T</span></code> and <code class="docutils literal notranslate"><span class="pre">par_option_h</span></code>, allowed values are:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> — Do not estimate</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1</span></code> — Estimate only the annual mean</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">3</span></code> — Estimate annual mean + annual seasonality</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">5</span></code> — Estimate annual mean + annual + semi-annual seasonality</p></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li><p>par_option_noise specifies the noise type</p></li>
+</ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">par_option_noise</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;T&quot;</span><span class="p">:</span> <span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="s2">&quot;h&quot;</span><span class="p">:</span> <span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="s2">&quot;T_type&quot;</span><span class="p">:</span> <span class="s2">&quot;multiplicative&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Valid options for <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(h\)</span> are:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;white&quot;</span></code>: white noise forcing</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;red&quot;</span></code>: red noise forcing</p></li>
+</ul>
+</li>
+<li><p>Both <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(h\)</span> <strong>must use the same noise type</strong>; otherwise, an error is raised.</p></li>
+<li><p>Valid options for <code class="docutils literal notranslate"><span class="pre">T-type</span></code> (noise structure for <span class="math notranslate nohighlight">\(T\)</span>) are:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;additive&quot;</span></code>: T noise forcing is additive</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;multiplicative&quot;</span></code>: T noise forcing is multiplicative</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;multiplicative-H&quot;</span></code>: T noise forcing is Heaviside based-multiplicative noise</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="Advanced-Usage-(optional)">
+<h3>Advanced Usage (optional)<a class="headerlink" href="#Advanced-Usage-(optional)" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>The following block sets additional <strong>optional settings</strong> for the RO parameter fitting.</p></li>
+<li><p>The user may skip specifying these options. If the user doesn’t specify these options, the RO parameter fitting runs with the default settings.</p></li>
+<li><p>method_fitting specifies the parameter fitting method:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;LR-F&quot;</span></code>: Linear regression (tendency with forward differencing scheme)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;LR-C&quot;</span></code>: Linear regression (tendency with central differencing scheme)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;LR-F-MAC&quot;</span></code>: Linear regression (tendency with forward differencing scheme) with Moments Analytical Constraints estimation for T noise parameters</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;MLE&quot;</span></code>: Maximum Likelihood Estimation (tendency with forward differencing scheme)</p></li>
+</ul>
+</li>
+<li><p>dt specifies time interval of input T and h time series in month (default = 1.0).</p></li>
+<li><p>The default method depends on the specified RO type, as indicated in <code class="docutils literal notranslate"><span class="pre">&quot;table_default_fitting_method.txt&quot;</span></code>.</p></li>
+<li><p>Details of the fitting methods are documented in the manual and the accompanying paper.</p></li>
+</ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">method_fitting</span><span class="o">=</span><span class="s2">&quot;MLE&quot;</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">1.0</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="5.-RO-Parameter-Fitting-from-Time-Series">
+<h2>5. RO Parameter Fitting from Time Series<a class="headerlink" href="#5.-RO-Parameter-Fitting-from-Time-Series" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h3>Basic Usage<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p><strong>``par_fitted = RO_fitting(T, h, par_option_T, par_option_h, par_option_noise)``</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">par_fitted</span></code> has the same format as <code class="docutils literal notranslate"><span class="pre">par</span></code> in the section 2.</p></li>
+</ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example 5-1. RO parameter fitting with default settings</span>
+<span class="c1"># using simulated T and h.</span>
+<span class="n">T_ro</span><span class="p">,</span> <span class="n">h_ro</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">RO_solver</span><span class="p">(</span><span class="n">par</span><span class="p">,</span> <span class="n">IC</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">NE</span><span class="p">,</span> <span class="n">NM</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">saveat</span><span class="p">,</span> <span class="n">savemethod</span><span class="p">,</span> <span class="n">EF</span><span class="p">,</span> <span class="n">noise_custom</span><span class="p">)</span>
+<span class="n">num_en</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">par_option_T</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;R&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;F1&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;b_T&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;c_T&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;d_T&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="n">par_option_h</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;F2&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;epsilon&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;b_h&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="n">par_option_noise</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;T&quot;</span><span class="p">:</span> <span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="s2">&quot;h&quot;</span><span class="p">:</span> <span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="s2">&quot;T_type&quot;</span><span class="p">:</span> <span class="s2">&quot;additive&quot;</span><span class="p">}</span>
+
+<span class="n">par_fitted</span> <span class="o">=</span> <span class="n">RO_fitting</span><span class="p">(</span><span class="n">T_ro</span><span class="p">[:,</span><span class="n">num_en</span><span class="p">],</span> <span class="n">h_ro</span><span class="p">[:,</span><span class="n">num_en</span><span class="p">],</span> <span class="n">par_option_T</span><span class="p">,</span> <span class="n">par_option_h</span><span class="p">,</span> <span class="n">par_option_noise</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The fitting results are:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">par_fitted</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="id2">
+<h3>Advanced Usage<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p><strong>``par_fitted = RO_fitting(T, h, par_option_T, par_option_h, par_option_noise, method_fitting)``</strong></p>
+<p><strong>``par_fitted = RO_fitting(T, h, par_option_T, par_option_h, par_option_noise, method_fitting, dt)``</strong></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example 5-2. RO parameter fitting with user-specified settings</span>
+<span class="c1"># using simulated T and h</span>
+<span class="n">T_ro</span><span class="p">,</span> <span class="n">h_ro</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">RO_solver</span><span class="p">(</span><span class="n">par</span><span class="p">,</span> <span class="n">IC</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">NE</span><span class="p">,</span> <span class="n">NM</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">saveat</span><span class="p">,</span> <span class="n">savemethod</span><span class="p">,</span> <span class="n">EF</span><span class="p">,</span> <span class="n">noise_custom</span><span class="p">)</span>
+<span class="n">num_en</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">par_option_T</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;R&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;F1&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;b_T&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;c_T&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;d_T&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="n">par_option_h</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;F2&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;epsilon&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;b_h&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="n">par_option_noise</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;T&quot;</span><span class="p">:</span> <span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="s2">&quot;h&quot;</span><span class="p">:</span> <span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="s2">&quot;T_type&quot;</span><span class="p">:</span> <span class="s2">&quot;additive&quot;</span><span class="p">}</span>
+
+<span class="n">par_fitted</span> <span class="o">=</span> <span class="n">RO_fitting</span><span class="p">(</span><span class="n">T_ro</span><span class="p">[:,</span><span class="n">num_en</span><span class="p">],</span> <span class="n">h_ro</span><span class="p">[:,</span><span class="n">num_en</span><span class="p">],</span> <span class="n">par_option_T</span><span class="p">,</span> <span class="n">par_option_h</span><span class="p">,</span> <span class="n">par_option_noise</span><span class="p">,</span> <span class="n">method_fitting</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The fitting results are:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">par_fitted</span><span class="p">)</span>
+<br/></pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="6.-RO-Parameter-Fitting-from-Observations-and-Reproducing">
+<h2>6. RO Parameter Fitting from Observations and Reproducing<a class="headerlink" href="#6.-RO-Parameter-Fitting-from-Observations-and-Reproducing" title="Link to this heading">#</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load observations</span>
+<span class="n">fpath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="s2">&quot;../../data&quot;</span><span class="p">,</span> <span class="s2">&quot;XRO_indices_oras5.nc&quot;</span><span class="p">)</span>
+<span class="n">nc_oras5</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">T_oras5</span> <span class="o">=</span> <span class="n">nc_oras5</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;Nino34&#39;</span><span class="p">][:]</span>  <span class="c1"># Nino 3.4 since 1979-01-01</span>
+<span class="n">h_oras5</span> <span class="o">=</span> <span class="n">nc_oras5</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;WWV&#39;</span><span class="p">][:]</span>     <span class="c1"># WWV since 1979-01-01</span>
+<span class="n">time_oras5</span> <span class="o">=</span> <span class="n">nc_oras5</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">][:]</span> <span class="c1"># Days since 1979-01-01</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># setting fitting options and print the fitted parameters</span>
+<span class="n">par_option_T</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;R&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;F1&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;b_T&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;c_T&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;d_T&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="n">par_option_h</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;F2&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;epsilon&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;b_h&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="n">par_option_noise</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;T&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;h&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;T_type&quot;</span><span class="p">:</span> <span class="s2">&quot;additive&quot;</span><span class="p">}</span>
+
+<span class="n">par_fitted_obs</span> <span class="o">=</span> <span class="n">RO_fitting</span><span class="p">(</span><span class="n">T_oras5</span><span class="p">,</span> <span class="n">h_oras5</span><span class="p">,</span> <span class="n">par_option_T</span><span class="p">,</span> <span class="n">par_option_h</span><span class="p">,</span> <span class="n">par_option_noise</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">par_fitted_obs</span><span class="p">)</span><span class="c1">#, sort_dicts=False)</span>
+</pre></div>
+</div>
+</div>
+<p><strong>``func_mon_std(T)``</strong> returns the <strong>monthly standard deviations</strong> of the input time series <code class="docutils literal notranslate"><span class="pre">T</span></code>, calculated separately for each calendar month from <strong>January to December</strong>.</p>
+<ul class="simple">
+<li><p>Be aware that the reproducibility of monthly standard deviations can vary depending on the RO type specified by the user.</p></li>
+</ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># RO simulations using the fitted parameters</span>
+<span class="n">T_ro_obs_based</span><span class="p">,</span> <span class="n">h_ro_obs_based</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">RO_solver</span><span class="p">(</span><span class="n">par_fitted_obs</span><span class="p">,</span> <span class="n">IC</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">NE</span><span class="p">,</span> <span class="n">NM</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">saveat</span><span class="p">,</span> <span class="n">savemethod</span><span class="p">,</span> <span class="n">EF</span><span class="p">,</span> <span class="n">noise_custom</span><span class="p">)</span>
+<span class="n">num_en</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">time_axis_ro</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">saveat</span><span class="p">)</span>
+
+<span class="c1"># compare observationanal and RO time series</span>
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_oras5</span> <span class="o">/</span> <span class="mi">30</span><span class="p">,</span> <span class="n">T_oras5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Obs.&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">550</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_axis_ro</span><span class="p">,</span> <span class="n">T_ro_obs_based</span><span class="p">[:,</span> <span class="n">num_en</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;RO&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Time (months)&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">550</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># compare monthly standard deviations</span>
+<span class="n">monthly_std_obs</span> <span class="o">=</span> <span class="n">func_mon_std</span><span class="p">(</span><span class="n">T_oras5</span><span class="p">)</span>
+<span class="n">monthly_std_ro</span> <span class="o">=</span> <span class="n">func_mon_std</span><span class="p">(</span><span class="n">T_ro_obs_based</span><span class="p">[:,</span> <span class="n">num_en</span><span class="p">])</span>
+<span class="n">months</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">calendar</span><span class="o">.</span><span class="n">month_abbr</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>  <span class="c1"># [&#39;Jan&#39;, &#39;Feb&#39;, ..., &#39;Dec&#39;]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">months</span><span class="p">,</span> <span class="n">monthly_std_obs</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Obs.&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">months</span><span class="p">,</span> <span class="n">monthly_std_ro</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;RO&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Monthly Standard Deviation (Jan–Dec)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Month&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Standard Deviation&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nc_oras5</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="7.-Load-RO-Parameters-from-the-Library-&amp;-Solve">
+<h2>7. Load RO Parameters from the Library &amp; Solve<a class="headerlink" href="#7.-Load-RO-Parameters-from-the-Library-&-Solve" title="Link to this heading">#</a></h2>
+<p>You can load pre-fitted RO parameters from the CRO parameter library. The library includes parameters estimated from observations and from 48 CMIP6 historical simulations, for multiple RO types.</p>
+<section id="Usage">
+<h3>Usage<a class="headerlink" href="#Usage" title="Link to this heading">#</a></h3>
+<p><strong>``par = RO_solver(data_name, RO_type)``</strong></p>
+<ul class="simple">
+<li><p><strong>``data_name``</strong>: data source for the parameter set.</p>
+<ul>
+<li><p>Options include the observational dataset <strong>``ORAS5``</strong> and <strong>``CMIP6-historical-1``</strong> … <strong>``CMIP6-historical-48``</strong>.</p></li>
+<li><p>Use <strong>``CMIP6-historical-all``</strong> to load all available CMIP6 members (shape <code class="docutils literal notranslate"><span class="pre">(48,</span> <span class="pre">16)</span></code>).</p></li>
+</ul>
+</li>
+<li><p><strong>``RO_type``</strong>: the RO equation type used in the parameter fitting (see CRO manual for the full list).</p></li>
+<li><p>See the CRO manual for complete option lists and definitions.</p></li>
+<li><p>The example below shows how to load parameter values for a Linear-White-Additive type RO equation.</p></li>
+</ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example 7-1. ORAS5 reanalysis (1958-2022)</span>
+<span class="n">data_name</span> <span class="o">=</span> <span class="s2">&quot;ORAS5&quot;</span>
+<span class="n">RO_type</span> <span class="o">=</span> <span class="s2">&quot;Linear-White-Additive&quot;</span>
+<span class="n">par</span> <span class="o">=</span> <span class="n">par_load</span><span class="p">(</span><span class="n">data_name</span><span class="p">,</span><span class="n">RO_type</span><span class="p">)</span>
+<span class="n">par</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example 7-2. CMIP6 CESM2 historial simulation (ensemble number 8)</span>
+<span class="n">data_name</span> <span class="o">=</span> <span class="s2">&quot;CMIP6-historical-8&quot;</span>
+<span class="n">RO_type</span> <span class="o">=</span> <span class="s2">&quot;Linear-White-Additive&quot;</span>
+<span class="n">par</span> <span class="o">=</span> <span class="n">par_load</span><span class="p">(</span><span class="n">data_name</span><span class="p">,</span><span class="n">RO_type</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example 7-3. All 48 CMIP6 historial simulations in the libarary</span>
+<span class="c1"># In this case, par.shape == (48, 16), i.e. 48 rows of parameter sets.</span>
+<span class="c1"># Use par[i] (0 ≤ i &lt; 48) to extract parameters from the ensemble member of your choice.</span>
+<span class="c1"># Be careful with indexing: i = 0..(47) extract CMIP6-historical-1..(48).</span>
+<span class="n">data_name</span> <span class="o">=</span> <span class="s2">&quot;CMIP6-historical-all&quot;</span>
+<span class="n">RO_type</span> <span class="o">=</span> <span class="s2">&quot;Linear-White-Additive&quot;</span>
+<span class="n">par</span> <span class="o">=</span> <span class="n">par_load</span><span class="p">(</span><span class="n">data_name</span><span class="p">,</span><span class="n">RO_type</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Applications">
+<h3>Applications<a class="headerlink" href="#Applications" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Using the parameter library, users can quickly set up parameters for solving the CRO model.</p></li>
+<li><p>The example below shows how to load the parameter set fitted for the <strong>CMIP6 CESM2 historical simulation</strong> with the <strong>Seasonal–Linear–White–Additive</strong> RO type, and then solve it.</p></li>
+</ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example 7-4. Solving RO using CMIP6 historical CESM2 parameter</span>
+<span class="n">data_name</span> <span class="o">=</span> <span class="s2">&quot;CMIP6-historical-8&quot;</span><span class="p">;</span>
+<span class="n">RO_type</span> <span class="o">=</span> <span class="s2">&quot;Seasonal-Linear-White-Additive&quot;</span>
+<span class="n">par</span> <span class="o">=</span> <span class="n">par_load</span><span class="p">(</span><span class="n">data_name</span><span class="p">,</span> <span class="n">RO_type</span><span class="p">)</span>
+
+<span class="n">IC</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span> <span class="c1"># % Initial conditions for T (K) and h (m)</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">12</span><span class="o">*</span><span class="mi">100</span><span class="p">;</span>    <span class="c1"># Simulation length (month)</span>
+<span class="n">NE</span> <span class="o">=</span> <span class="mi">2</span>          <span class="c1"># Number of ensemble members</span>
+
+
+<span class="n">T_CESM2_en</span><span class="p">,</span> <span class="n">h_CESM2_en</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">RO_solver</span><span class="p">(</span><span class="n">par</span><span class="p">,</span> <span class="n">IC</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">NE</span><span class="p">)</span>
+<span class="n">num_en</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">time_axis_ro</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_axis_ro</span><span class="p">,</span> <span class="n">T_CESM2_en</span><span class="p">[:,</span><span class="n">num_en</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time (months)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;T (K)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../ug-solver.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Solver</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../ug-fitting.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Fitting</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RO-Simulation-Setup">RO Simulation Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RO-Simulations">RO Simulations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Basic-Usage">Basic Usage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Advanced-Usage">Advanced Usage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Analytical-Solutions">Analytical Solutions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#4.-RO-Parameter-Fitting-Setup">4. RO Parameter Fitting Setup</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Input-T-and-h-Time-Series">Input T and h Time Series</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Specifiying-RO-Type">Specifiying RO Type</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Advanced-Usage-(optional)">Advanced Usage (optional)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#5.-RO-Parameter-Fitting-from-Time-Series">5. RO Parameter Fitting from Time Series</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Basic Usage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Advanced Usage</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#6.-RO-Parameter-Fitting-from-Observations-and-Reproducing">6. RO Parameter Fitting from Observations and Reproducing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#7.-Load-RO-Parameters-from-the-Library-&amp;-Solve">7. Load RO Parameters from the Library &amp; Solve</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Usage">Usage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Applications">Applications</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/notebooks/solver.ipynb.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.3.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
