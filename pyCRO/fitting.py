@@ -6,7 +6,7 @@ import pandas as pd
 from .fit_LR import fit_LR
 from .fit_MLE import fit_MLE
 
-def func_default_fitting_method(par_option_T, par_option_h, par_option_noise, table_path='table_default_fitting_method.txt'):
+def func_default_fitting_method(par_option_T, par_option_h, par_option_noise, table_path='table_default_fitting_method.txt', verbose=True):
     """
     Determine the default fitting method for the CRO (Community Recharge Oscillator) 
     model based on prescribed parameter and noise options.
@@ -78,7 +78,8 @@ def func_default_fitting_method(par_option_T, par_option_h, par_option_noise, ta
     ]
 
     if not matched.empty:
-        print("Referring to table_default_fitting_method.txt and using "+matched["fitting_method"].iloc[0])
+        if verbose:
+            print("Referring to table_default_fitting_method.txt and using "+matched["fitting_method"].iloc[0])
         return matched["fitting_method"].iloc[0]
     else:
         print("Warning: No matching fitting method found. Defaulting to 'LR-F'.")
@@ -193,7 +194,7 @@ def RO_fitting(T, h, par_option_T, par_option_h, par_option_noise, method_fittin
         print(f" - Fitting method for T and h main equations: {method_fitting}.")
 
     if method_fitting is None:
-        method_fitting = func_default_fitting_method(par_option_T_vals, par_option_h_vals, par_option_noise_array)
+        method_fitting = func_default_fitting_method(par_option_T_vals, par_option_h_vals, par_option_noise_array, verbose=verbose)
 
     # Perform fitting
     if method_fitting == "LR-F":

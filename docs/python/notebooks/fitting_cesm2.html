@@ -1,0 +1,1193 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>CRO fitting with CESM2 &#8212; Project name not set  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/theme_overrides.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=c3144ee3" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/fitting_cesm2';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = '../switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'Python';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="icon" href="../_static/CRO_logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="CRO fitting with CMIP6 models" href="fitting_cmip6.html" />
+    <link rel="prev" title="CRO fitting with observation" href="fitting_obs.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/CRO_logo.png" class="logo__image only-light" alt="Project name not set  documentation - Home"/>
+    <img src="../_static/CRO_logo.png" class="logo__image only-dark pst-js-only" alt="Project name not set  documentation - Home"/>
+  
+  
+</a></div>
+    
+      <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-model.html">
+    Model
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-solver.html">
+    Solver
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../ug-fitting.html">
+    Fitting
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-application.html">
+    Application
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../ug-api.html">
+    API Reference
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/senclimate/CRO" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-model.html">
+    Model
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-solver.html">
+    Solver
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../ug-fitting.html">
+    Fitting
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-application.html">
+    Application
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-api.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/senclimate/CRO" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="fitting_obs.html"><code class="docutils literal notranslate"><span class="pre">CRO</span></code> fitting with observation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">CRO</span></code> fitting with CESM2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fitting_cmip6.html"><code class="docutils literal notranslate"><span class="pre">CRO</span></code> fitting with CMIP6 models</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../ug-fitting.html" class="nav-link">Fitting</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis"><code class="docutils literal notranslate"><span class="pre">CRO</span></code> fitting with CESM2</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="CRO-fitting-with-CESM2">
+<h1><code class="docutils literal notranslate"><span class="pre">CRO</span></code> fitting with CESM2<a class="headerlink" href="#CRO-fitting-with-CESM2" title="Link to this heading">#</a></h1>
+<p>This tutorial illustrates how to use the <code class="docutils literal notranslate"><span class="pre">pyCRO</span></code> to estimate RO parameters from CESM2</p>
+<p>Contact:</p>
+<ul class="simple">
+<li><p>Sen Zhao (<a class="reference external" href="mailto:zhaos&#37;&#52;&#48;hawaii&#46;edu">zhaos<span>&#64;</span>hawaii<span>&#46;</span>edu</a>)</p></li>
+</ul>
+<section id="Load-library">
+<h2>Load library<a class="headerlink" href="#Load-library" title="Link to this heading">#</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">config</span> <span class="n">IPCompleter</span><span class="o">.</span><span class="n">greedy</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="o">%</span><span class="n">config</span> <span class="n">InlineBackend</span><span class="o">.</span><span class="n">figure_format</span><span class="o">=</span><span class="s1">&#39;retina&#39;</span>
+
+<span class="o">%</span><span class="n">load_ext</span> <span class="n">autoreload</span>
+<span class="o">%</span><span class="n">autoreload</span> <span class="mi">2</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1">## comment this if you install pyCRO already</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s2">&quot;../../../&quot;</span><span class="p">))</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pyCRO</span>
+
+<span class="c1"># from pyCRO import RO_fitting, RO_solver, RO_analytic_std, RO_analytic_solver, RO_BWJ, func_mon_std, par_load</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Fitting-RO-to-the-CESM2-simulation">
+<h2>Fitting RO to the CESM2 simulation<a class="headerlink" href="#Fitting-RO-to-the-CESM2-simulation" title="Link to this heading">#</a></h2>
+<section id="Load-observed-ENSO-timeseries-from-CESM2">
+<h3>Load observed ENSO timeseries from CESM2<a class="headerlink" href="#Load-observed-ENSO-timeseries-from-CESM2" title="Link to this heading">#</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load observations</span>
+<span class="n">file_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="s2">&quot;../../../data&quot;</span><span class="p">,</span> <span class="s2">&quot;CROdata_timeseries_CMIP6.nc&quot;</span><span class="p">)</span>
+<span class="n">xr_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s1">&#39;CESM2&#39;</span><span class="p">)</span>
+<span class="n">T_oras5</span> <span class="o">=</span> <span class="n">xr_ds</span><span class="p">[</span><span class="s1">&#39;Nino34&#39;</span><span class="p">][:]</span>
+<span class="n">h_oras5</span> <span class="o">=</span> <span class="n">xr_ds</span><span class="p">[</span><span class="s1">&#39;Hm&#39;</span><span class="p">][:]</span>
+<span class="n">time_oras5</span> <span class="o">=</span> <span class="n">xr_ds</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">][:]</span>
+
+<span class="n">T_oras5</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">h_oras5</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&lt;matplotlib.lines.Line2D at 0x14be1fb60&gt;]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_fitting_cesm2_5_1.png" class="no-scaled-link" src="../_images/notebooks_fitting_cesm2_5_1.png" style="width: 689px; height: 315px;" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_fitting_cesm2_5_2.png" class="no-scaled-link" src="../_images/notebooks_fitting_cesm2_5_2.png" style="width: 698px; height: 315px;" />
+</div>
+</div>
+</section>
+<section id="Type-Linear-White-Additive">
+<h3>Type Linear-White-Additive<a class="headerlink" href="#Type-Linear-White-Additive" title="Link to this heading">#</a></h3>
+<p>Fit linear RO with white and additive noise</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">par_option_T</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;R&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;F1&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;b_T&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;c_T&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;d_T&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="n">par_option_h</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;F2&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;epsilon&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;b_h&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="n">par_option_noise</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;T&quot;</span><span class="p">:</span> <span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="s2">&quot;h&quot;</span><span class="p">:</span> <span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="s2">&quot;T_type&quot;</span><span class="p">:</span> <span class="s2">&quot;additive&quot;</span><span class="p">}</span>
+
+<span class="n">par_obs_LWA</span> <span class="o">=</span> <span class="n">pyCRO</span><span class="o">.</span><span class="n">RO_fitting</span><span class="p">(</span><span class="n">T_oras5</span><span class="p">,</span> <span class="n">h_oras5</span><span class="p">,</span> <span class="n">par_option_T</span><span class="p">,</span> <span class="n">par_option_h</span><span class="p">,</span> <span class="n">par_option_noise</span><span class="p">)</span>
+<span class="n">par_obs_LWA</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+---------------------------------------------------------------------------------
+Welcome to CRO Fitting! Your fitting setups:
+---------------------------------------------------------------------------------
+ - Data time step is not given, defaulting to: dt = 1.0 months.
+ - Time series length: N = len(T)*dt = 1332.0 months.
+ - Prescribed terms: {&#39;R&#39;: 1, &#39;F1&#39;: 1, &#39;b_T&#39;: 0, &#39;c_T&#39;: 0, &#39;d_T&#39;: 0}.
+                     {&#39;F2&#39;: 1, &#39;epsilon&#39;: 1, &#39;b_h&#39;: 0}.
+   0 - Do not prescribe.
+   1 - Prescribe only the annual mean.
+   3 - Prescribe the annual mean and annual seasonality.
+   5 - Prescribe the annual mean, annual seasonality, and semi-annual seasonality.
+ - Noise options: {&#39;T&#39;: &#39;white&#39;, &#39;h&#39;: &#39;white&#39;, &#39;T_type&#39;: &#39;additive&#39;}.
+ - Fitting method for T and h main equations: None.
+Referring to table_default_fitting_method.txt and using LR-F
+---------------------------------------------------------------------------------
+All steps are successfully completed!
+---------------------------------------------------------------------------------
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;R&#39;: [0.04881091747701985],
+ &#39;F1&#39;: [0.024283288277694492],
+ &#39;F2&#39;: [1.3178655726966424],
+ &#39;epsilon&#39;: [0.11864589240712925],
+ &#39;b_T&#39;: [],
+ &#39;c_T&#39;: [],
+ &#39;d_T&#39;: [],
+ &#39;b_h&#39;: [],
+ &#39;sigma_T&#39;: [0.24270275808076133],
+ &#39;sigma_h&#39;: [1.2333409188611724],
+ &#39;B&#39;: [],
+ &#39;m_T&#39;: [],
+ &#39;m_h&#39;: [],
+ &#39;n_T&#39;: [1],
+ &#39;n_h&#39;: [1],
+ &#39;n_g&#39;: [2]}
+</pre></div></div>
+</div>
+</section>
+<section id="Type-Seasonal-Linear-White-Additive">
+<h3>Type Seasonal-Linear-White-Additive<a class="headerlink" href="#Type-Seasonal-Linear-White-Additive" title="Link to this heading">#</a></h3>
+<p>Fit seasonal linear RO with white and additive noise</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">par_option_T</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;R&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;F1&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;b_T&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;c_T&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;d_T&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="n">par_option_h</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;F2&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;epsilon&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;b_h&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="n">par_option_noise</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;T&quot;</span><span class="p">:</span> <span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="s2">&quot;h&quot;</span><span class="p">:</span> <span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="s2">&quot;T_type&quot;</span><span class="p">:</span> <span class="s2">&quot;additive&quot;</span><span class="p">}</span>
+
+<span class="n">par_obs_SLWA</span> <span class="o">=</span> <span class="n">pyCRO</span><span class="o">.</span><span class="n">RO_fitting</span><span class="p">(</span><span class="n">T_oras5</span><span class="p">,</span> <span class="n">h_oras5</span><span class="p">,</span> <span class="n">par_option_T</span><span class="p">,</span> <span class="n">par_option_h</span><span class="p">,</span> <span class="n">par_option_noise</span><span class="p">)</span>
+<span class="n">par_obs_SLWA</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+---------------------------------------------------------------------------------
+Welcome to CRO Fitting! Your fitting setups:
+---------------------------------------------------------------------------------
+ - Data time step is not given, defaulting to: dt = 1.0 months.
+ - Time series length: N = len(T)*dt = 1332.0 months.
+ - Prescribed terms: {&#39;R&#39;: 3, &#39;F1&#39;: 3, &#39;b_T&#39;: 0, &#39;c_T&#39;: 0, &#39;d_T&#39;: 0}.
+                     {&#39;F2&#39;: 3, &#39;epsilon&#39;: 3, &#39;b_h&#39;: 0}.
+   0 - Do not prescribe.
+   1 - Prescribe only the annual mean.
+   3 - Prescribe the annual mean and annual seasonality.
+   5 - Prescribe the annual mean, annual seasonality, and semi-annual seasonality.
+ - Noise options: {&#39;T&#39;: &#39;white&#39;, &#39;h&#39;: &#39;white&#39;, &#39;T_type&#39;: &#39;additive&#39;}.
+ - Fitting method for T and h main equations: None.
+Referring to table_default_fitting_method.txt and using LR-F
+---------------------------------------------------------------------------------
+All steps are successfully completed!
+---------------------------------------------------------------------------------
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;R&#39;: [0.06821355461159952, 0.11815205611540278, -2.2264238967859242],
+ &#39;F1&#39;: [0.019431596621856555, 0.011232682934059287, -0.7066440257470248],
+ &#39;F2&#39;: [1.291632870677509, 0.7887253573047012, 0.7123461019220622],
+ &#39;epsilon&#39;: [0.14311725144916565, 0.021279778962859812, 1.0243072860145828],
+ &#39;b_T&#39;: [],
+ &#39;c_T&#39;: [],
+ &#39;d_T&#39;: [],
+ &#39;b_h&#39;: [],
+ &#39;sigma_T&#39;: [0.21860827658456902],
+ &#39;sigma_h&#39;: [1.0861175365249358],
+ &#39;B&#39;: [],
+ &#39;m_T&#39;: [],
+ &#39;m_h&#39;: [],
+ &#39;n_T&#39;: [1],
+ &#39;n_h&#39;: [1],
+ &#39;n_g&#39;: [2]}
+</pre></div></div>
+</div>
+</section>
+<section id="Type-Seasonal-Nonlinear-White-Additive">
+<h3>Type Seasonal-Nonlinear-White-Additive<a class="headerlink" href="#Type-Seasonal-Nonlinear-White-Additive" title="Link to this heading">#</a></h3>
+<p>Fit seasonal nonlinear RO with white and additive noise</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">par_option_T</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;R&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;F1&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;b_T&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;c_T&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;d_T&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="n">par_option_h</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;F2&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;epsilon&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;b_h&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="n">par_option_noise</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;T&quot;</span><span class="p">:</span> <span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="s2">&quot;h&quot;</span><span class="p">:</span> <span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="s2">&quot;T_type&quot;</span><span class="p">:</span> <span class="s2">&quot;additive&quot;</span><span class="p">}</span>
+
+<span class="n">par_obs_SNWA</span> <span class="o">=</span> <span class="n">pyCRO</span><span class="o">.</span><span class="n">RO_fitting</span><span class="p">(</span><span class="n">T_oras5</span><span class="p">,</span> <span class="n">h_oras5</span><span class="p">,</span> <span class="n">par_option_T</span><span class="p">,</span> <span class="n">par_option_h</span><span class="p">,</span> <span class="n">par_option_noise</span><span class="p">)</span>
+<span class="n">par_obs_SNWA</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+---------------------------------------------------------------------------------
+Welcome to CRO Fitting! Your fitting setups:
+---------------------------------------------------------------------------------
+ - Data time step is not given, defaulting to: dt = 1.0 months.
+ - Time series length: N = len(T)*dt = 1332.0 months.
+ - Prescribed terms: {&#39;R&#39;: 3, &#39;F1&#39;: 3, &#39;b_T&#39;: 3, &#39;c_T&#39;: 3, &#39;d_T&#39;: 3}.
+                     {&#39;F2&#39;: 3, &#39;epsilon&#39;: 3, &#39;b_h&#39;: 3}.
+   0 - Do not prescribe.
+   1 - Prescribe only the annual mean.
+   3 - Prescribe the annual mean and annual seasonality.
+   5 - Prescribe the annual mean, annual seasonality, and semi-annual seasonality.
+ - Noise options: {&#39;T&#39;: &#39;white&#39;, &#39;h&#39;: &#39;white&#39;, &#39;T_type&#39;: &#39;additive&#39;}.
+ - Fitting method for T and h main equations: None.
+Referring to table_default_fitting_method.txt and using LR-F
+---------------------------------------------------------------------------------
+All steps are successfully completed!
+---------------------------------------------------------------------------------
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;R&#39;: [0.09707048406918742, 0.11012442769298772, -2.0306432694917085],
+ &#39;F1&#39;: [0.021277834303133937, 0.00997545116054638, -0.8327255009690342],
+ &#39;F2&#39;: [1.2907375505480336, 0.7901917793505685, 0.7125171172391725],
+ &#39;epsilon&#39;: [0.1445065222649436, 0.022332186589528364, 1.0951424359162376],
+ &#39;b_T&#39;: [0.02425479532652171, 0.01706492738653012, -0.532527517237404],
+ &#39;c_T&#39;: [0.0076096798999189365, 0.008759968631317429, -0.7409628684661591],
+ &#39;d_T&#39;: [0.005719540545050865, 0.0019814927173935734, -0.5442851394087933],
+ &#39;b_h&#39;: [0.006545379318198074, 0.03422975970193124, 2.0493931259479363],
+ &#39;sigma_T&#39;: [0.21299186191318356],
+ &#39;sigma_h&#39;: [1.08356377862314],
+ &#39;B&#39;: [],
+ &#39;m_T&#39;: [],
+ &#39;m_h&#39;: [],
+ &#39;n_T&#39;: [1],
+ &#39;n_h&#39;: [1],
+ &#39;n_g&#39;: [2]}
+</pre></div></div>
+</div>
+</section>
+<section id="Type-Seasonal-Nonlinear-Red-Additive">
+<h3>Type Seasonal-Nonlinear-Red-Additive<a class="headerlink" href="#Type-Seasonal-Nonlinear-Red-Additive" title="Link to this heading">#</a></h3>
+<p>Fit seasonal nonlinear RO with red and additive noise</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">par_option_T</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;R&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;F1&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;b_T&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;c_T&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;d_T&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="n">par_option_h</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;F2&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;epsilon&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;b_h&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="n">par_option_noise</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;T&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;h&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;T_type&quot;</span><span class="p">:</span> <span class="s2">&quot;additive&quot;</span><span class="p">}</span>
+
+<span class="n">par_obs_SNRA</span> <span class="o">=</span> <span class="n">pyCRO</span><span class="o">.</span><span class="n">RO_fitting</span><span class="p">(</span><span class="n">T_oras5</span><span class="p">,</span> <span class="n">h_oras5</span><span class="p">,</span> <span class="n">par_option_T</span><span class="p">,</span> <span class="n">par_option_h</span><span class="p">,</span> <span class="n">par_option_noise</span><span class="p">)</span>
+<span class="n">par_obs_SNRA</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+---------------------------------------------------------------------------------
+Welcome to CRO Fitting! Your fitting setups:
+---------------------------------------------------------------------------------
+ - Data time step is not given, defaulting to: dt = 1.0 months.
+ - Time series length: N = len(T)*dt = 1332.0 months.
+ - Prescribed terms: {&#39;R&#39;: 3, &#39;F1&#39;: 3, &#39;b_T&#39;: 3, &#39;c_T&#39;: 3, &#39;d_T&#39;: 3}.
+                     {&#39;F2&#39;: 3, &#39;epsilon&#39;: 3, &#39;b_h&#39;: 3}.
+   0 - Do not prescribe.
+   1 - Prescribe only the annual mean.
+   3 - Prescribe the annual mean and annual seasonality.
+   5 - Prescribe the annual mean, annual seasonality, and semi-annual seasonality.
+ - Noise options: {&#39;T&#39;: &#39;red&#39;, &#39;h&#39;: &#39;red&#39;, &#39;T_type&#39;: &#39;additive&#39;}.
+ - Fitting method for T and h red noises: ARn.
+   This option is defined internally within fit.py.
+   Options available are: LR or AR1 or ARn.
+ - Fitting method for T and h main equations: None.
+Referring to table_default_fitting_method.txt and using LR-F
+---------------------------------------------------------------------------------
+All steps are successfully completed!
+---------------------------------------------------------------------------------
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;R&#39;: [0.09707048406918742, 0.11012442769298772, -2.0306432694917085],
+ &#39;F1&#39;: [0.021277834303133937, 0.00997545116054638, -0.8327255009690342],
+ &#39;F2&#39;: [1.2907375505480336, 0.7901917793505685, 0.7125171172391725],
+ &#39;epsilon&#39;: [0.1445065222649436, 0.022332186589528364, 1.0951424359162376],
+ &#39;b_T&#39;: [0.02425479532652171, 0.01706492738653012, -0.532527517237404],
+ &#39;c_T&#39;: [0.0076096798999189365, 0.008759968631317429, -0.7409628684661591],
+ &#39;d_T&#39;: [0.005719540545050865, 0.0019814927173935734, -0.5442851394087933],
+ &#39;b_h&#39;: [0.006545379318198074, 0.03422975970193124, 2.0493931259479363],
+ &#39;sigma_T&#39;: [0.21299186191318356],
+ &#39;sigma_h&#39;: [1.08356377862314],
+ &#39;B&#39;: [],
+ &#39;m_T&#39;: [1.48264737187866],
+ &#39;m_h&#39;: [1.420543455816845],
+ &#39;n_T&#39;: [0],
+ &#39;n_h&#39;: [0],
+ &#39;n_g&#39;: [2]}
+</pre></div></div>
+</div>
+</section>
+<section id="Visualize-the-deterministic-RO-parameters">
+<h3>Visualize the deterministic RO parameters<a class="headerlink" href="#Visualize-the-deterministic-RO-parameters" title="Link to this heading">#</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">axes</span> <span class="o">=</span> <span class="n">pyCRO</span><span class="o">.</span><span class="n">plot_RO_par</span><span class="p">(</span><span class="n">par_obs_LWA</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Linear-White-Additive&#39;</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">axes</span> <span class="o">=</span> <span class="n">pyCRO</span><span class="o">.</span><span class="n">plot_RO_par</span><span class="p">(</span><span class="n">par_obs_SLWA</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Seasonal-Linear-White-Additive&#39;</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">)</span>
+<span class="n">axes</span> <span class="o">=</span> <span class="n">pyCRO</span><span class="o">.</span><span class="n">plot_RO_par</span><span class="p">(</span><span class="n">par_obs_SNWA</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Seasonal-Nonlinear-White-Additive&#39;</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib.legend.Legend at 0x14be85280&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_fitting_cesm2_15_1.png" class="no-scaled-link" src="../_images/notebooks_fitting_cesm2_15_1.png" style="width: 1061px; height: 611px;" />
+</div>
+</div>
+</section>
+</section>
+<section id="Simulating-ENSO-with-observed-RO-parameters">
+<h2>Simulating ENSO with observed RO parameters<a class="headerlink" href="#Simulating-ENSO-with-observed-RO-parameters" title="Link to this heading">#</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">CRO_simulate</span><span class="p">(</span><span class="n">par</span><span class="p">,</span> <span class="n">IC</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">N</span><span class="o">=</span><span class="mi">12</span><span class="o">*</span><span class="mi">200</span><span class="p">,</span> <span class="n">NE</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        CRO simulation (solver) with defined parameters</span>
+
+<span class="sd">            default: 100 member with 200 yrs each member</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">T_out</span><span class="p">,</span> <span class="n">h_out</span><span class="p">,</span> <span class="n">noise_out</span> <span class="o">=</span> <span class="n">pyCRO</span><span class="o">.</span><span class="n">RO_solver</span><span class="p">(</span><span class="n">par</span><span class="p">,</span> <span class="n">IC</span><span class="o">=</span><span class="n">IC</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="n">N</span><span class="p">,</span> <span class="n">NE</span><span class="o">=</span><span class="n">NE</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
+    <span class="n">xtime</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;0001-01&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="n">N</span><span class="p">,</span> <span class="n">freq</span> <span class="o">=</span> <span class="s1">&#39;MS&#39;</span><span class="p">,</span> <span class="n">use_cftime</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">member</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">NE</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">T_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">T_out</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;member&#39;</span><span class="p">},</span> <span class="n">coords</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="n">xtime</span><span class="p">,</span> <span class="s1">&#39;member&#39;</span><span class="p">:</span> <span class="n">member</span><span class="p">})</span>
+    <span class="n">h_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">h_out</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;member&#39;</span><span class="p">},</span> <span class="n">coords</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="n">xtime</span><span class="p">,</span> <span class="s1">&#39;member&#39;</span><span class="p">:</span> <span class="n">member</span><span class="p">})</span>
+    <span class="n">RO_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">({</span><span class="s1">&#39;Nino34&#39;</span><span class="p">:</span> <span class="n">T_ds</span><span class="p">,</span> <span class="s1">&#39;Hm&#39;</span><span class="p">:</span> <span class="n">h_ds</span><span class="p">})</span>
+    <span class="k">return</span> <span class="n">RO_ds</span>
+<br/></pre></div>
+</div>
+</div>
+<section id="simulation-with-LWA-type">
+<h3>simulation with LWA type<a class="headerlink" href="#simulation-with-LWA-type" title="Link to this heading">#</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">time</span>
+<span class="n">RO_obs_LWA</span> <span class="o">=</span> <span class="n">CRO_simulate</span><span class="p">(</span><span class="n">par_obs_LWA</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+---------------------------------------------------------------------------------
+Welcome to the CRO Solver! Your simulation setup is as follows:
+---------------------------------------------------------------------------------
+ - Total simulation length: N = 2400 months
+ - Number of ensemble members: NE = 100
+ - Numerical integration time step: dt = 0.1 months (default: 0.1)
+ - Data output interval: saveat = 1.0 months (default: 1.0)
+ - Initial conditions: IC = [T0, h0] = [0, 0]
+ - Input parameters have the expected shapes.
+ - &#39;n_T&#39; = 1: White noise forcing in T; &#39;m_T&#39; ignored.
+ - &#39;n_h&#39; = 1: White noise forcing in h; &#39;m_h&#39; ignored.
+ - &#39;n_g&#39; = 2: Additive noise is used in the T equation; &#39;B&#39; is ignored.
+ - Numerical integration method: NM = &#39;EH&#39; (Euler–Heun method; default)
+ - Data saving method: savemethod = sampling (default)
+ - External forcing is not given, therefore using
+   EF = {&#39;E_T&#39;: [0.0, 0.0, 0.0, 0.0, 0.0], &#39;E_h&#39;: [0.0, 0.0, 0.0, 0.0, 0.0]}.
+ - noise_custom = None: System-generated noise is used and changes at every run.
+---------------------------------------------------------------------------------
+Numerical integration starting:
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+All steps successfully completed!
+---------------------------------------------------------------------------------
+CPU times: user 2.15 s, sys: 59.7 ms, total: 2.21 s
+Wall time: 2.33 s
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">time</span>
+
+<span class="n">RO_obs_SLWA</span> <span class="o">=</span> <span class="n">CRO_simulate</span><span class="p">(</span><span class="n">par_obs_SLWA</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">RO_obs_SNWA</span> <span class="o">=</span> <span class="n">CRO_simulate</span><span class="p">(</span><span class="n">par_obs_SNWA</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">RO_obs_SNRA</span> <span class="o">=</span> <span class="n">CRO_simulate</span><span class="p">(</span><span class="n">par_obs_SNRA</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+CPU times: user 6.57 s, sys: 72.6 ms, total: 6.64 s
+Wall time: 6.68 s
+</pre></div></div>
+</div>
+<p>calculation of seasonal standard deivation</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">time</span>
+
+<span class="n">seaSD_obs</span> <span class="o">=</span> <span class="n">xr_ds</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;time.month&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">seaSD_obsRO_LWA</span> <span class="o">=</span> <span class="n">RO_obs_LWA</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;time.month&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">seaSD_obsRO_SLWA</span> <span class="o">=</span> <span class="n">RO_obs_SLWA</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;time.month&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">seaSD_obsRO_SNWA</span> <span class="o">=</span> <span class="n">RO_obs_SNWA</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;time.month&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">seaSD_obsRO_SNRA</span> <span class="o">=</span> <span class="n">RO_obs_SNRA</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;time.month&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+CPU times: user 45.2 ms, sys: 10.1 ms, total: 55.4 ms
+Wall time: 55.6 ms
+</pre></div></div>
+</div>
+</section>
+<section id="Effect-of-seasonal-cycle-of-RO-linear-parameters">
+<h3>Effect of seasonal cycle of RO linear parameters<a class="headerlink" href="#Effect-of-seasonal-cycle-of-RO-linear-parameters" title="Link to this heading">#</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sel_var</span> <span class="o">=</span> <span class="s1">&#39;Nino34&#39;</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">seaSD_obs</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">seaSD_obs</span><span class="p">[</span><span class="n">sel_var</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;ORAS5&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">seaSD_obsRO_LWA</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">seaSD_obsRO_LWA</span><span class="p">[</span><span class="n">sel_var</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;member&#39;</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Linear-White-Additive&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">seaSD_obsRO_LWA</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">seaSD_obsRO_LWA</span><span class="p">[</span><span class="n">sel_var</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="s1">&#39;member&#39;</span><span class="p">),</span> <span class="n">seaSD_obsRO_LWA</span><span class="p">[</span><span class="n">sel_var</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="s1">&#39;member&#39;</span><span class="p">),</span> <span class="n">fc</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">seaSD_obsRO_SLWA</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">seaSD_obsRO_SLWA</span><span class="p">[</span><span class="n">sel_var</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;member&#39;</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Seasonal-Linear-White-Additive&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">seaSD_obsRO_SLWA</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">seaSD_obsRO_SLWA</span><span class="p">[</span><span class="n">sel_var</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="s1">&#39;member&#39;</span><span class="p">),</span> <span class="n">seaSD_obsRO_SLWA</span><span class="p">[</span><span class="n">sel_var</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="s1">&#39;member&#39;</span><span class="p">),</span> <span class="n">fc</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="s2">&quot;J&quot;</span><span class="p">,</span><span class="s2">&quot;F&quot;</span><span class="p">,</span><span class="s2">&quot;M&quot;</span><span class="p">,</span><span class="s2">&quot;A&quot;</span><span class="p">,</span><span class="s2">&quot;M&quot;</span><span class="p">,</span><span class="s2">&quot;J&quot;</span><span class="p">,</span><span class="s2">&quot;J&quot;</span><span class="p">,</span><span class="s2">&quot;A&quot;</span><span class="p">,</span><span class="s2">&quot;S&quot;</span><span class="p">,</span><span class="s2">&quot;O&quot;</span><span class="p">,</span><span class="s2">&quot;N&quot;</span><span class="p">,</span><span class="s2">&quot;D&quot;</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib.legend.Legend at 0x14ffa8710&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_fitting_cesm2_24_1.png" class="no-scaled-link" src="../_images/notebooks_fitting_cesm2_24_1.png" style="width: 516px; height: 357px;" />
+</div>
+</div>
+</section>
+<section id="Effect-of-RO-nonlinear-parameters">
+<h3>Effect of RO nonlinear parameters<a class="headerlink" href="#Effect-of-RO-nonlinear-parameters" title="Link to this heading">#</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sel_var</span> <span class="o">=</span> <span class="s1">&#39;Nino34&#39;</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">seaSD_obs</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">seaSD_obs</span><span class="p">[</span><span class="n">sel_var</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;ORAS5&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">seaSD_obsRO_SLWA</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">seaSD_obsRO_SLWA</span><span class="p">[</span><span class="n">sel_var</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;member&#39;</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Seasonal-Linear-White-Additive&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">seaSD_obsRO_SLWA</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">seaSD_obsRO_SLWA</span><span class="p">[</span><span class="n">sel_var</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="s1">&#39;member&#39;</span><span class="p">),</span> <span class="n">seaSD_obsRO_SLWA</span><span class="p">[</span><span class="n">sel_var</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="s1">&#39;member&#39;</span><span class="p">),</span> <span class="n">fc</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">seaSD_obsRO_SNWA</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">seaSD_obsRO_SNWA</span><span class="p">[</span><span class="n">sel_var</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;member&#39;</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Seasonal-Nonlinear-White-Additive&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">seaSD_obsRO_SNWA</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">seaSD_obsRO_SNWA</span><span class="p">[</span><span class="n">sel_var</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="s1">&#39;member&#39;</span><span class="p">),</span> <span class="n">seaSD_obsRO_SNWA</span><span class="p">[</span><span class="n">sel_var</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="s1">&#39;member&#39;</span><span class="p">),</span> <span class="n">fc</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="s2">&quot;J&quot;</span><span class="p">,</span><span class="s2">&quot;F&quot;</span><span class="p">,</span><span class="s2">&quot;M&quot;</span><span class="p">,</span><span class="s2">&quot;A&quot;</span><span class="p">,</span><span class="s2">&quot;M&quot;</span><span class="p">,</span><span class="s2">&quot;J&quot;</span><span class="p">,</span><span class="s2">&quot;J&quot;</span><span class="p">,</span><span class="s2">&quot;A&quot;</span><span class="p">,</span><span class="s2">&quot;S&quot;</span><span class="p">,</span><span class="s2">&quot;O&quot;</span><span class="p">,</span><span class="s2">&quot;N&quot;</span><span class="p">,</span><span class="s2">&quot;D&quot;</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib.legend.Legend at 0x14ffe3a70&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_fitting_cesm2_26_1.png" class="no-scaled-link" src="../_images/notebooks_fitting_cesm2_26_1.png" style="width: 516px; height: 357px;" />
+</div>
+</div>
+</section>
+<section id="Red-noise-vs-White-noise">
+<h3>Red noise vs White noise<a class="headerlink" href="#Red-noise-vs-White-noise" title="Link to this heading">#</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sel_var</span> <span class="o">=</span> <span class="s1">&#39;Nino34&#39;</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">seaSD_obs</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">seaSD_obs</span><span class="p">[</span><span class="n">sel_var</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;ORAS5&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">seaSD_obsRO_SNWA</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">seaSD_obsRO_SNWA</span><span class="p">[</span><span class="n">sel_var</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;member&#39;</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Seasonal-Nonlinear-White-Additive&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">seaSD_obsRO_SNWA</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">seaSD_obsRO_SNWA</span><span class="p">[</span><span class="n">sel_var</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="s1">&#39;member&#39;</span><span class="p">),</span> <span class="n">seaSD_obsRO_SNWA</span><span class="p">[</span><span class="n">sel_var</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="s1">&#39;member&#39;</span><span class="p">),</span> <span class="n">fc</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">seaSD_obsRO_SNRA</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">seaSD_obsRO_SNRA</span><span class="p">[</span><span class="n">sel_var</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;member&#39;</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;magenta&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Seasonal-Nonlinear-Red-Additive&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">seaSD_obsRO_SNRA</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">seaSD_obsRO_SNRA</span><span class="p">[</span><span class="n">sel_var</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="s1">&#39;member&#39;</span><span class="p">),</span> <span class="n">seaSD_obsRO_SNRA</span><span class="p">[</span><span class="n">sel_var</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="s1">&#39;member&#39;</span><span class="p">),</span> <span class="n">fc</span><span class="o">=</span><span class="s1">&#39;magenta&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="s2">&quot;J&quot;</span><span class="p">,</span><span class="s2">&quot;F&quot;</span><span class="p">,</span><span class="s2">&quot;M&quot;</span><span class="p">,</span><span class="s2">&quot;A&quot;</span><span class="p">,</span><span class="s2">&quot;M&quot;</span><span class="p">,</span><span class="s2">&quot;J&quot;</span><span class="p">,</span><span class="s2">&quot;J&quot;</span><span class="p">,</span><span class="s2">&quot;A&quot;</span><span class="p">,</span><span class="s2">&quot;S&quot;</span><span class="p">,</span><span class="s2">&quot;O&quot;</span><span class="p">,</span><span class="s2">&quot;N&quot;</span><span class="p">,</span><span class="s2">&quot;D&quot;</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib.legend.Legend at 0x15937be30&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_fitting_cesm2_28_1.png" class="no-scaled-link" src="../_images/notebooks_fitting_cesm2_28_1.png" style="width: 516px; height: 357px;" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="fitting_obs.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><code class="docutils literal notranslate"><span class="pre">CRO</span></code> fitting with observation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="fitting_cmip6.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><code class="docutils literal notranslate"><span class="pre">CRO</span></code> fitting with CMIP6 models</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Load-library">Load library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Fitting-RO-to-the-CESM2-simulation">Fitting RO to the CESM2 simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Load-observed-ENSO-timeseries-from-CESM2">Load observed ENSO timeseries from CESM2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Type-Linear-White-Additive">Type Linear-White-Additive</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Type-Seasonal-Linear-White-Additive">Type Seasonal-Linear-White-Additive</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Type-Seasonal-Nonlinear-White-Additive">Type Seasonal-Nonlinear-White-Additive</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Type-Seasonal-Nonlinear-Red-Additive">Type Seasonal-Nonlinear-Red-Additive</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Visualize-the-deterministic-RO-parameters">Visualize the deterministic RO parameters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Simulating-ENSO-with-observed-RO-parameters">Simulating ENSO with observed RO parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-with-LWA-type">simulation with LWA type</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Effect-of-seasonal-cycle-of-RO-linear-parameters">Effect of seasonal cycle of RO linear parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Effect-of-RO-nonlinear-parameters">Effect of RO nonlinear parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Red-noise-vs-White-noise">Red noise vs White noise</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.3.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, CLIVAR CRO Team (lead by Soong-Ki Kim and Sen Zhao).
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

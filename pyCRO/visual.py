@@ -99,7 +99,7 @@ def plot_RO_par(par, ax=None, keys=None, ncol=4, label=None):
         # axs[i].set_xticklabels(["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"])
         axs[i].set_xticklabels(["J","F","M","A","M","J","J","A","S","O","N","D"])
         axs[i].grid(True, linestyle="--", alpha=0.5)
-        axs[i].legend()
+        # axs[i].legend()
 
     # Hide unused subplots if n < nrow*ncol
     for j in range(n, len(axs)):

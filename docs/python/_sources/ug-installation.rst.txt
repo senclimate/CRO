@@ -1,10 +1,40 @@
 Installation
 ========================
 
-Install the Mamba environment
------------------------------
+Install :code:`pyCRO`
+--------------------------------
 
-You may skip this step if your Mamba environment has been installed already.
+For a clean installation, first create a new environment named :code:`env_pyCRO` via :code:`mamba` (see how to install :code:`mamba` environment):
+
+.. code-block:: bash
+
+    mamba create -n env_pyCRO python=3.12   # supports Python 3.12 and onwards
+    mamba activate env_pyCRO
+
+Then install required dependencies via :code:`mamba`:
+
+.. code-block:: bash
+
+    mamba install -c conda-forge numpy xarray statsmodels netcdf4 matplotlib
+
+Once the above dependencies are installed, simply install pyCRO via :code:`pip`:
+
+.. code-block:: bash
+
+    pip install pyCRO
+
+You are now ready to import pyCRO in Python:
+
+.. code-block:: python
+
+    from pyCRO import *
+
+
+
+Install the :code:`mamba` environment
+-------------------------------------
+
+You may skip this step if your :code:`mamba` environment has been installed already.
 
 Step 1: Download the installation script for Miniconda3
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -53,33 +83,3 @@ Step 3: Test your Installation
   source ~/.bashrc  # assume you are using Bash shell
   which python      # should return a path under <base-path>
   which mamba       # should return a path under <base-path>
-
-
-Install Python version of `CRO`
---------------------------------
-
-For a clean installation, first create a new environment named :code:`env_pyCRO` via :code:`mamba`:
-
-.. code-block:: bash
-
-    mamba create -n env_pyCRO python=3.12   # supports Python 3.12 and onwards
-    mamba activate env_pyCRO
-
-Then install required dependencies via :code:`mamba`:
-
-.. code-block:: bash
-
-    mamba install -c conda-forge numpy xarray statsmodels netcdf4
-
-Once the above dependencies are installed, simply install pyCRO via :code:`pip`:
-
-.. code-block:: bash
-
-    pip install pyCRO
-
-You are now ready to import pyCRO in Python:
-
-.. code-block:: python
-
-    from pyCRO import *
-

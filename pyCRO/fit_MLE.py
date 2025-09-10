@@ -684,7 +684,7 @@ def fit_MLE_red(T, h, par_option_T, par_option_h, par_option_noise, dt):
 
 def fit_MLE(T, h, par_option_T, par_option_h, par_option_noise, dt):
     """
-    Estimate recharge oscillator (RO)  parameters using **Maximum Likelihood Estimation (MLE)**
+    Estimate recharge oscillator (RO) parameters using **Maximum Likelihood Estimation (MLE)**
 
     Parameters
     ----------

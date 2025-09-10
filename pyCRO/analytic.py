@@ -4,6 +4,7 @@ import numpy as np
 def RO_analytic_std(par):
     """
     Compute analytical standard deviation of T and h for the Recharge Oscillator (RO) model.
+    ONLY for linear RO model with white noise (annual mean parameters only)
 
     Parameters
     ----------
@@ -42,11 +43,7 @@ def RO_analytic_std(par):
 def RO_analytic_solver(par, IC, N, NE, dt=0.1, saveat=1.0, savemethod="sampling", noise_custom=None):
     """
     Analytical solution of the Recharge Oscillator (RO) model with deterministic and stochastic forcing.
-
-    This function computes the analytical solution of the Recharge Oscillator (RO)
-    model for a given parameter set, initial condition, and noise realization(s).
-    Both deterministic and stochastic contributions are included. 
-    The stochastic integrals are evaluated using vectorized convolution like summations across all ensemble members.
+    ONLY for linear RO model with white noise (annual mean parameters only)
 
     Parameters
     ----------
