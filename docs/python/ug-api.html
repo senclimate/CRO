@@ -429,8 +429,10 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="module-pyCRO.solver">
-<span id="api-reference"></span><h1>API Reference<a class="headerlink" href="#module-pyCRO.solver" title="Link to this heading">#</a></h1>
+  <section id="api-reference">
+<h1>API Reference<a class="headerlink" href="#api-reference" title="Link to this heading">#</a></h1>
+<section id="module-pyCRO.solver">
+<span id="solver"></span><h2>Solver<a class="headerlink" href="#module-pyCRO.solver" title="Link to this heading">#</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="pyCRO.solver.RO_solver">
 <span class="sig-prename descclassname"><span class="pre">pyCRO.solver.</span></span><span class="sig-name descname"><span class="pre">RO_solver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">par</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">IC</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NM</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'EH'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saveat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">savemethod</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sampling'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">EF</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_custom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCRO.solver.RO_solver" title="Link to this definition">#</a></dt>
@@ -692,7 +694,10 @@ ONLY for linear RO model with white noise (annual mean parameters only)</p>
 </dl>
 </dd></dl>
 
-<dl class="py function" id="module-pyCRO.fitting">
+</section>
+<section id="module-pyCRO.fitting">
+<span id="fitting"></span><h2>Fitting<a class="headerlink" href="#module-pyCRO.fitting" title="Link to this heading">#</a></h2>
+<dl class="py function">
 <dt class="sig sig-object py" id="pyCRO.fitting.RO_fitting">
 <span class="sig-prename descclassname"><span class="pre">pyCRO.fitting.</span></span><span class="sig-name descname"><span class="pre">RO_fitting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">par_option_T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">par_option_h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">par_option_noise</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method_fitting</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCRO.fitting.RO_fitting" title="Link to this definition">#</a></dt>
 <dd><p>Fit the Recharge Oscillator (RO) model parameters to T and h time series.</p>
@@ -882,6 +887,27 @@ could be increased for accuracy).</p></li>
 </dd></dl>
 
 </section>
+<section id="module-pyCRO.visual">
+<span id="visualization"></span><h2>Visualization<a class="headerlink" href="#module-pyCRO.visual" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyCRO.visual.plot_RO_par">
+<span class="sig-prename descclassname"><span class="pre">pyCRO.visual.</span></span><span class="sig-name descname"><span class="pre">plot_RO_par</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">par</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCRO.visual.plot_RO_par" title="Link to this definition">#</a></dt>
+<dd><p>Plot deterministic RO parameter seasonal cycles.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>par</strong> (<em>dict</em>) – Dictionary of fitted CRO parameters. Each key (e.g., ‘R’, ‘F1’, etc.)
+maps to an array of length 1, 3, or 5.</p></li>
+<li><p><strong>ax</strong> (<em>matplotlib axis</em><em> or </em><em>array-like</em><em>, </em><em>optional</em>) – Axis or array of axes to plot on. If None, creates a new figure/axes.</p></li>
+<li><p><strong>keys</strong> (<em>list</em><em> of </em><em>str</em><em>, </em><em>optional</em>) – Which parameters to plot. If None, uses a default set.</p></li>
+<li><p><strong>ncol</strong> (<em>int</em><em>, </em><em>default=4</em>) – Number of columns for subplot layout.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
 
 
                 </article>
@@ -921,12 +947,22 @@ could be increased for accuracy).</p></li>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.solver.RO_solver"><code class="docutils literal notranslate"><span class="pre">RO_solver()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.analytic.RO_analytic_solver"><code class="docutils literal notranslate"><span class="pre">RO_analytic_solver()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.analytic.RO_analytic_std"><code class="docutils literal notranslate"><span class="pre">RO_analytic_std()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.fitting.RO_fitting"><code class="docutils literal notranslate"><span class="pre">RO_fitting()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.fit_LR.fit_LR"><code class="docutils literal notranslate"><span class="pre">fit_LR()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.fit_MLE.fit_MLE"><code class="docutils literal notranslate"><span class="pre">fit_MLE()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-pyCRO.solver">Solver</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.solver.RO_solver"><code class="docutils literal notranslate"><span class="pre">RO_solver()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.analytic.RO_analytic_solver"><code class="docutils literal notranslate"><span class="pre">RO_analytic_solver()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.analytic.RO_analytic_std"><code class="docutils literal notranslate"><span class="pre">RO_analytic_std()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-pyCRO.fitting">Fitting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.fitting.RO_fitting"><code class="docutils literal notranslate"><span class="pre">RO_fitting()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.fit_LR.fit_LR"><code class="docutils literal notranslate"><span class="pre">fit_LR()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.fit_MLE.fit_MLE"><code class="docutils literal notranslate"><span class="pre">fit_MLE()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-pyCRO.visual">Visualization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.visual.plot_RO_par"><code class="docutils literal notranslate"><span class="pre">plot_RO_par()</span></code></a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

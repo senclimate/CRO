@@ -50,6 +50,8 @@
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/fitting_obs';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
@@ -470,18 +472,150 @@
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s2">&quot;../../../&quot;</span><span class="p">))</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">pyCRO</span>
-
-<span class="c1"># from pyCRO import RO_fitting, RO_solver, RO_analytic_std, RO_analytic_solver, RO_BWJ, func_mon_std, par_load</span>
 </pre></div>
 </div>
 </div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pyCRO</span><span class="o">.</span><span class="n">RO_fitting</span><span class="err">?</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">Signature:</span>
+pyCRO.RO_fitting(
+    T,
+    h,
+    par_option_T,
+    par_option_h,
+    par_option_noise,
+    method_fitting=<span class="ansi-bold" style="color: rgb(0,135,0)">None</span>,
+    dt=<span class="ansi-bold" style="color: rgb(0,135,0)">None</span>,
+    verbose=<span class="ansi-bold" style="color: rgb(0,135,0)">True</span>,
+)
+<span class="ansi-red-fg">Docstring:</span>
+Fit the Recharge Oscillator (RO) model parameters to T and h time series.
+
+This function performs parameter fitting for the RO system, using the specified
+prescribed parameter options and noise characteristics. Fitting can be done
+via linear regression (LR) or maximum likelihood estimation (MLE), with optional
+handling for multiplicative or additive noise. It can automatically select a
+default fitting method based on parameter options.
+
+Parameters
+----------
+T : ndarray
+    Time series of SST anomalies (1D array).
+h : ndarray
+    Time series of thermocline anomalies (1D array).
+par_option_T : dict
+    Prescribed options for SST equation parameters.
+par_option_h : dict
+    Prescribed options for thermocline equation parameters.
+par_option_noise : dict
+    Noise settings, e.g., {&#39;T&#39;: &#39;red&#39;, &#39;h&#39;: &#39;red&#39;, &#39;T_type&#39;: &#39;multiplicative&#39;}.
+method_fitting : str, optional
+    Fitting method to use: &#39;LR-F&#39;, &#39;LR-C&#39;, &#39;LR-F-MAC&#39;, or &#39;MLE&#39;.
+    If None, the method is determined automatically.
+dt : float, optional
+    Time step of the input time series. Default is 1.0 (months).
+verbose : bool, optional
+    If True, prints fitting information and progress.
+
+Returns
+-------
+dict
+    Dictionary of fitted CRO parameters:
+    Keys include:
+    &#39;R&#39;, &#39;F1&#39;, &#39;F2&#39;, &#39;epsilon&#39;, &#39;b_T&#39;, &#39;c_T&#39;, &#39;d_T&#39;, &#39;b_h&#39;,
+    &#39;sigma_T&#39;, &#39;sigma_h&#39;, &#39;B&#39;, &#39;m_T&#39;, &#39;m_h&#39;, &#39;n_T&#39;, &#39;n_h&#39;, &#39;n_g&#39;.
+
+Notes
+-----
+- Automatically removes mean from input time series.
+- Applies Ito-to-Stratonovich correction for multiplicative noise.
+- Negligible seasonal amplitudes are rounded to zero.
+- Ensures consistent noise settings for T and h equations.
+- Prints a summary of the fitting process if `verbose` is True.
+
+Examples
+--------
+&gt;&gt;&gt; par_option_T = {&#39;mean&#39;: 1, &#39;seasonal&#39;: 3, &#39;semi_annual&#39;: 0, ...}
+&gt;&gt;&gt; par_option_h = {&#39;mean&#39;: 1, &#39;seasonal&#39;: 3, &#39;semi_annual&#39;: 0, ...}
+&gt;&gt;&gt; par_option_noise = {&#39;T&#39;: &#39;red&#39;, &#39;h&#39;: &#39;red&#39;, &#39;T_type&#39;: &#39;multiplicative&#39;}
+&gt;&gt;&gt; fitted_params = RO_fitting(T, h, par_option_T, par_option_h, par_option_noise)
+&gt;&gt;&gt; print(fitted_params[&#39;sigma_T&#39;])
+<span class="ansi-red-fg">File:</span>      ~/codes/CRO/pyCRO/fitting.py
+<span class="ansi-red-fg">Type:</span>      function
+</pre></div></div>
+</div>
+</section>
+<section id="RO-Parameter-Fitting-Usage">
+<h2>RO Parameter Fitting Usage<a class="headerlink" href="#RO-Parameter-Fitting-Usage" title="Link to this heading">#</a></h2>
+<p><strong>``par_fitted = pyCRO.RO_fitting(T, h, par_option_T, par_option_h, par_option_noise)``</strong></p>
+<section id="Input-T-and-h-Time-Series">
+<h3>Input T and h Time Series<a class="headerlink" href="#Input-T-and-h-Time-Series" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>T and h are input timeseries used for the fitting.</p></li>
+<li><p>T and h must be 1D time series arrays with a uniform time step.</p></li>
+</ul>
+</section>
+<section id="Specifiying-RO-Type">
+<h3>Specifiying RO Type<a class="headerlink" href="#Specifiying-RO-Type" title="Link to this heading">#</a></h3>
+<p>These options define the RO model type used for fitting.</p>
+<ul class="simple">
+<li><p><strong>par_option_T</strong> specifies the linear and nonlinear terms in dT/dt</p></li>
+<li><p><strong>par_option_h</strong> specifies the linear and nonlinear terms in dh/dt</p></li>
+<li><p><strong>par_option_noise</strong> specifies the noise type</p></li>
+</ul>
+<p>The following example shows how to set the RO type as linear-white-additive RO for the fitting.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">par_option_T</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;R&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;F1&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;b_T&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;c_T&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;d_T&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="n">par_option_h</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;F2&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;epsilon&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;b_h&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>For keys in <code class="docutils literal notranslate"><span class="pre">par_option_T</span></code> and <code class="docutils literal notranslate"><span class="pre">par_option_h</span></code>, allowed values are:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> — Do not estimate</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1</span></code> — Estimate only the annual mean</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">3</span></code> — Estimate annual mean + annual seasonality</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">5</span></code> — Estimate annual mean + annual + semi-annual seasonality</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">par_option_noise</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;T&quot;</span><span class="p">:</span> <span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="s2">&quot;h&quot;</span><span class="p">:</span> <span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="s2">&quot;T_type&quot;</span><span class="p">:</span> <span class="s2">&quot;multiplicative&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Valid options for <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(h\)</span> are:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;white&quot;</span></code>: white noise forcing</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;red&quot;</span></code>: red noise forcing</p></li>
+</ul>
+</li>
+<li><p>Both <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(h\)</span> <strong>must use the same noise type</strong>; otherwise, an error is raised.</p></li>
+<li><p>Valid options for <code class="docutils literal notranslate"><span class="pre">T-type</span></code> (noise structure for <span class="math notranslate nohighlight">\(T\)</span>) are:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;additive&quot;</span></code>: T noise forcing is additive</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;multiplicative&quot;</span></code>: T noise forcing is multiplicative</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;multiplicative-H&quot;</span></code>: T noise forcing is Heaviside based-multiplicative noise</p></li>
+</ul>
+</li>
+</ul>
+</section>
 </section>
 <section id="Fitting-RO-to-the-observation/reanalysis">
 <h2>Fitting RO to the observation/reanalysis<a class="headerlink" href="#Fitting-RO-to-the-observation/reanalysis" title="Link to this heading">#</a></h2>
 <section id="Load-observed-ENSO-timeseries-from-ORAS5">
 <h3>Load observed ENSO timeseries from ORAS5<a class="headerlink" href="#Load-observed-ENSO-timeseries-from-ORAS5" title="Link to this heading">#</a></h3>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load observations</span>
@@ -497,26 +631,26 @@
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[&lt;matplotlib.lines.Line2D at 0x14b721100&gt;]
+[&lt;matplotlib.lines.Line2D at 0x15466d310&gt;]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/notebooks_fitting_obs_5_1.png" class="no-scaled-link" src="../_images/notebooks_fitting_obs_5_1.png" style="width: 689px; height: 298px;" />
+<img alt="../_images/notebooks_fitting_obs_7_1.png" class="no-scaled-link" src="../_images/notebooks_fitting_obs_7_1.png" style="width: 689px; height: 298px;" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/notebooks_fitting_obs_5_2.png" class="no-scaled-link" src="../_images/notebooks_fitting_obs_5_2.png" style="width: 698px; height: 294px;" />
+<img alt="../_images/notebooks_fitting_obs_7_2.png" class="no-scaled-link" src="../_images/notebooks_fitting_obs_7_2.png" style="width: 698px; height: 294px;" />
 </div>
 </div>
 </section>
@@ -524,7 +658,7 @@
 <h3>Type Linear-White-Additive<a class="headerlink" href="#Type-Linear-White-Additive" title="Link to this heading">#</a></h3>
 <p>Fit linear RO with white and additive noise</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">par_option_T</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;R&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;F1&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;b_T&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;c_T&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;d_T&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
@@ -561,7 +695,7 @@ All steps are successfully completed!
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -589,7 +723,7 @@ All steps are successfully completed!
 <h3>Type Seasonal-Linear-White-Additive<a class="headerlink" href="#Type-Seasonal-Linear-White-Additive" title="Link to this heading">#</a></h3>
 <p>Fit seasonal linear RO with white and additive noise</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">par_option_T</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;R&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;F1&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;b_T&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;c_T&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;d_T&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
@@ -626,7 +760,7 @@ All steps are successfully completed!
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -654,7 +788,7 @@ All steps are successfully completed!
 <h3>Type Seasonal-Nonlinear-White-Additive<a class="headerlink" href="#Type-Seasonal-Nonlinear-White-Additive" title="Link to this heading">#</a></h3>
 <p>Fit seasonal nonlinear RO with white and additive noise</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">par_option_T</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;R&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;F1&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;b_T&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;c_T&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;d_T&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
@@ -691,7 +825,7 @@ All steps are successfully completed!
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -719,7 +853,7 @@ All steps are successfully completed!
 <h3>Type Seasonal-Nonlinear-Red-Additive<a class="headerlink" href="#Type-Seasonal-Nonlinear-Red-Additive" title="Link to this heading">#</a></h3>
 <p>Fit seasonal nonlinear RO with red and additive noise</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">par_option_T</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;R&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;F1&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;b_T&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;c_T&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;d_T&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
@@ -759,7 +893,7 @@ All steps are successfully completed!
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -786,7 +920,7 @@ All steps are successfully completed!
 <section id="Visualize-the-deterministic-RO-parameters">
 <h3>Visualize the deterministic RO parameters<a class="headerlink" href="#Visualize-the-deterministic-RO-parameters" title="Link to this heading">#</a></h3>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">axes</span> <span class="o">=</span> <span class="n">pyCRO</span><span class="o">.</span><span class="n">plot_RO_par</span><span class="p">(</span><span class="n">par_obs_LWA</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Linear-White-Additive&#39;</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
@@ -797,19 +931,19 @@ All steps are successfully completed!
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.legend.Legend at 0x14b76cf20&gt;
+&lt;matplotlib.legend.Legend at 0x10977f560&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/notebooks_fitting_obs_15_1.png" class="no-scaled-link" src="../_images/notebooks_fitting_obs_15_1.png" style="width: 1061px; height: 611px;" />
+<img alt="../_images/notebooks_fitting_obs_17_1.png" class="no-scaled-link" src="../_images/notebooks_fitting_obs_17_1.png" style="width: 1061px; height: 611px;" />
 </div>
 </div>
 </section>
@@ -817,7 +951,7 @@ All steps are successfully completed!
 <section id="Simulating-ENSO-with-observed-RO-parameters">
 <h2>Simulating ENSO with observed RO parameters<a class="headerlink" href="#Simulating-ENSO-with-observed-RO-parameters" title="Link to this heading">#</a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">CRO_simulate</span><span class="p">(</span><span class="n">par</span><span class="p">,</span> <span class="n">IC</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">N</span><span class="o">=</span><span class="mi">12</span><span class="o">*</span><span class="mi">200</span><span class="p">,</span> <span class="n">NE</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -839,7 +973,7 @@ All steps are successfully completed!
 <section id="simulation-with-LWA-type">
 <h3>simulation with LWA type<a class="headerlink" href="#simulation-with-LWA-type" title="Link to this heading">#</a></h3>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">time</span>
@@ -875,12 +1009,12 @@ Numerical integration starting:
 ---------------------------------------------------------------------------------
 All steps successfully completed!
 ---------------------------------------------------------------------------------
-CPU times: user 2.16 s, sys: 29.3 ms, total: 2.19 s
-Wall time: 2.2 s
+CPU times: user 2.12 s, sys: 56.5 ms, total: 2.17 s
+Wall time: 2.18 s
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">time</span>
@@ -896,13 +1030,13 @@ Wall time: 2.2 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 6.69 s, sys: 50.6 ms, total: 6.74 s
-Wall time: 6.75 s
+CPU times: user 6.62 s, sys: 69.3 ms, total: 6.69 s
+Wall time: 6.69 s
 </pre></div></div>
 </div>
 <p>calculation of seasonal standard deivation</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">time</span>
@@ -920,15 +1054,15 @@ Wall time: 6.75 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 54.4 ms, sys: 8.21 ms, total: 62.6 ms
-Wall time: 65.9 ms
+CPU times: user 55.1 ms, sys: 7.33 ms, total: 62.4 ms
+Wall time: 64.4 ms
 </pre></div></div>
 </div>
 </section>
 <section id="Effect-of-seasonal-cycle-of-RO-linear-parameters">
 <h3>Effect of seasonal cycle of RO linear parameters<a class="headerlink" href="#Effect-of-seasonal-cycle-of-RO-linear-parameters" title="Link to this heading">#</a></h3>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sel_var</span> <span class="o">=</span> <span class="s1">&#39;Nino34&#39;</span>
@@ -951,26 +1085,26 @@ Wall time: 65.9 ms
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.legend.Legend at 0x14f6ac050&gt;
+&lt;matplotlib.legend.Legend at 0x1546e30e0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/notebooks_fitting_obs_24_1.png" class="no-scaled-link" src="../_images/notebooks_fitting_obs_24_1.png" style="width: 516px; height: 357px;" />
+<img alt="../_images/notebooks_fitting_obs_26_1.png" class="no-scaled-link" src="../_images/notebooks_fitting_obs_26_1.png" style="width: 516px; height: 357px;" />
 </div>
 </div>
 </section>
 <section id="Effect-of-RO-nonlinear-parameters">
 <h3>Effect of RO nonlinear parameters<a class="headerlink" href="#Effect-of-RO-nonlinear-parameters" title="Link to this heading">#</a></h3>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sel_var</span> <span class="o">=</span> <span class="s1">&#39;Nino34&#39;</span>
@@ -993,26 +1127,26 @@ Wall time: 65.9 ms
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.legend.Legend at 0x14f6c1b20&gt;
+&lt;matplotlib.legend.Legend at 0x157c72810&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/notebooks_fitting_obs_26_1.png" class="no-scaled-link" src="../_images/notebooks_fitting_obs_26_1.png" style="width: 516px; height: 357px;" />
+<img alt="../_images/notebooks_fitting_obs_28_1.png" class="no-scaled-link" src="../_images/notebooks_fitting_obs_28_1.png" style="width: 516px; height: 357px;" />
 </div>
 </div>
 </section>
 <section id="Red-noise-vs-White-noise">
 <h3>Red noise vs White noise<a class="headerlink" href="#Red-noise-vs-White-noise" title="Link to this heading">#</a></h3>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sel_var</span> <span class="o">=</span> <span class="s1">&#39;Nino34&#39;</span>
@@ -1035,22 +1169,50 @@ Wall time: 65.9 ms
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.legend.Legend at 0x14c6c2e40&gt;
+&lt;matplotlib.legend.Legend at 0x157d08830&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/notebooks_fitting_obs_28_1.png" class="no-scaled-link" src="../_images/notebooks_fitting_obs_28_1.png" style="width: 516px; height: 357px;" />
+<img alt="../_images/notebooks_fitting_obs_30_1.png" class="no-scaled-link" src="../_images/notebooks_fitting_obs_30_1.png" style="width: 516px; height: 357px;" />
 </div>
 </div>
 </section>
+</section>
+<section id="Advanced-Usage-(optional)">
+<h2>Advanced Usage (optional)<a class="headerlink" href="#Advanced-Usage-(optional)" title="Link to this heading">#</a></h2>
+<p><strong>``par_fitted = pyCRO.RO_fitting(T, h, par_option_T, par_option_h, par_option_noise, method_fitting)``</strong></p>
+<p><strong>``par_fitted = pyCRO.RO_fitting(T, h, par_option_T, par_option_h, par_option_noise, method_fitting, dt)``</strong></p>
+<ul class="simple">
+<li><p>The following block sets additional <strong>optional settings</strong> for the RO parameter fitting.</p></li>
+<li><p>The user may skip specifying these options. If the user doesn’t specify these options, the RO parameter fitting runs with the default settings.</p></li>
+<li><p>method_fitting specifies the parameter fitting method:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;LR-F&quot;</span></code>: Linear regression (tendency with forward differencing scheme)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;LR-C&quot;</span></code>: Linear regression (tendency with central differencing scheme)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;LR-F-MAC&quot;</span></code>: Linear regression (tendency with forward differencing scheme) with Moments Analytical Constraints estimation for T noise parameters</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;MLE&quot;</span></code>: Maximum Likelihood Estimation (tendency with forward differencing scheme)</p></li>
+</ul>
+</li>
+<li><p>dt specifies time interval of input T and h time series in month (default = 1.0).</p></li>
+<li><p>The default method depends on the specified RO type, as indicated in <code class="docutils literal notranslate"><span class="pre">&quot;table_default_fitting_method.txt&quot;</span></code>.</p></li>
+<li><p>Details of the fitting methods are documented in the manual and the accompanying paper.</p></li>
+</ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
 </section>
 </section>
 
@@ -1102,6 +1264,11 @@ Wall time: 65.9 ms
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Load-library">Load library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RO-Parameter-Fitting-Usage">RO Parameter Fitting Usage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Input-T-and-h-Time-Series">Input T and h Time Series</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Specifiying-RO-Type">Specifiying RO Type</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Fitting-RO-to-the-observation/reanalysis">Fitting RO to the observation/reanalysis</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Load-observed-ENSO-timeseries-from-ORAS5">Load observed ENSO timeseries from ORAS5</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Type-Linear-White-Additive">Type Linear-White-Additive</a></li>
@@ -1118,6 +1285,7 @@ Wall time: 65.9 ms
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Red-noise-vs-White-noise">Red noise vs White noise</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Advanced-Usage-(optional)">Advanced Usage (optional)</a></li>
 </ul>
   </nav></div>
 

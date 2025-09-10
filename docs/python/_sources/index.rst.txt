@@ -78,7 +78,7 @@ Key Features
         The essential API.
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :hidden:
    :caption: User Guide
 
