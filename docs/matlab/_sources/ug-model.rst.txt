@@ -1,6 +1,6 @@
 Model
 ========================
-This section introduces the RO master equations, parameters and various variants
+This section introduces the RO master equations, parameters and various types
 
 .. toctree::
     :maxdepth: 1
