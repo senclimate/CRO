@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Installation &#8212; CLIVAR Working Group Community Recharge Oscillator (CRO) project  documentation</title>
+    <title>Installation &#8212; Project name not set  documentation</title>
   
   
   
@@ -130,11 +130,31 @@
       
     
     
-    <img src="_static/CRO_logo.png" class="logo__image only-light" alt="CLIVAR Working Group Community Recharge Oscillator (CRO) project  documentation - Home"/>
-    <img src="_static/CRO_logo.png" class="logo__image only-dark pst-js-only" alt="CLIVAR Working Group Community Recharge Oscillator (CRO) project  documentation - Home"/>
+    <img src="_static/CRO_logo.png" class="logo__image only-light" alt="Project name not set  documentation - Home"/>
+    <img src="_static/CRO_logo.png" class="logo__image only-dark pst-js-only" alt="Project name not set  documentation - Home"/>
   
   
 </a></div>
+    
+      <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
     
   </div>
   
@@ -216,25 +236,21 @@
         </div>
       
       
-        <div class="navbar-item">
-<div class="version-switcher__container dropdown pst-js-only">
-  <button id="pst-version-switcher-button-2"
-    type="button"
-    class="version-switcher__button btn btn-sm dropdown-toggle"
-    data-bs-toggle="dropdown"
-    aria-haspopup="listbox"
-    aria-controls="pst-version-switcher-list-2"
-    aria-label="Version switcher list"
-  >
-    Choose version  <!-- this text may get changed later by javascript -->
-    <span class="caret"></span>
-  </button>
-  <div id="pst-version-switcher-list-2"
-    class="version-switcher__menu dropdown-menu list-group-flush py-0"
-    role="listbox" aria-labelledby="pst-version-switcher-button-2">
-    <!-- dropdown will be populated by javascript on page load -->
-  </div>
-</div></div>
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/senclimate/CRO" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
       
     </div>
     
@@ -333,25 +349,21 @@
     
       <div class="sidebar-header-items__end">
         
-          <div class="navbar-item">
-<div class="version-switcher__container dropdown pst-js-only">
-  <button id="pst-version-switcher-button-3"
-    type="button"
-    class="version-switcher__button btn btn-sm dropdown-toggle"
-    data-bs-toggle="dropdown"
-    aria-haspopup="listbox"
-    aria-controls="pst-version-switcher-list-3"
-    aria-label="Version switcher list"
-  >
-    Choose version  <!-- this text may get changed later by javascript -->
-    <span class="caret"></span>
-  </button>
-  <div id="pst-version-switcher-list-3"
-    class="version-switcher__menu dropdown-menu list-group-flush py-0"
-    role="listbox" aria-labelledby="pst-version-switcher-button-3">
-    <!-- dropdown will be populated by javascript on page load -->
-  </div>
-</div></div>
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/senclimate/CRO" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
         
       </div>
     
@@ -420,71 +432,6 @@
                   
   <section id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h1>
-<section id="install-the-mamba-environment">
-<h2>Install the Mamba environment<a class="headerlink" href="#install-the-mamba-environment" title="Link to this heading">#</a></h2>
-<p>You may skip this step if your Mamba environment has been installed already.</p>
-<section id="step-1-download-the-installation-script-for-miniconda3">
-<h3>Step 1: Download the installation script for Miniconda3<a class="headerlink" href="#step-1-download-the-installation-script-for-miniconda3" title="Link to this heading">#</a></h3>
-<section id="macos-intel">
-<h4>macOS (Intel)<a class="headerlink" href="#macos-intel" title="Link to this heading">#</a></h4>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
-</pre></div>
-</div>
-</section>
-<section id="macos-apple-silicon">
-<h4>macOS (Apple Silicon)<a class="headerlink" href="#macos-apple-silicon" title="Link to this heading">#</a></h4>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh
-</pre></div>
-</div>
-</section>
-<section id="linux">
-<h4>Linux<a class="headerlink" href="#linux" title="Link to this heading">#</a></h4>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-</pre></div>
-</div>
-</section>
-</section>
-<section id="step-2-install-miniconda3">
-<h3>Step 2: Install Miniconda3<a class="headerlink" href="#step-2-install-miniconda3" title="Link to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>chmod<span class="w"> </span>+x<span class="w"> </span>Miniconda3-latest-*.sh<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>./Miniconda3-latest-*.sh
-</pre></div>
-</div>
-<p>During the installation, a path <code class="code docutils literal notranslate"><span class="pre">&lt;base-path&gt;</span></code> needs to be specified as the base location of the Python environment.
-After the installation is done, add the following lines into your shell environment (e.g., <code class="code docutils literal notranslate"><span class="pre">~/.bashrc</span></code> or <code class="code docutils literal notranslate"><span class="pre">~/.zshrc</span></code>) to enable the <code class="code docutils literal notranslate"><span class="pre">mamba</span></code> package manager (remember to replace <code class="code docutils literal notranslate"><span class="pre">&lt;base-path&gt;</span></code> with your actual installation path):</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;&lt;base-path&gt;/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
-.<span class="w"> </span>&lt;base-path&gt;/etc/profile.d/conda.sh
-</pre></div>
-</div>
-</section>
-<section id="step-3-test-your-installation">
-<h3>Step 3: Test your Installation<a class="headerlink" href="#step-3-test-your-installation" title="Link to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>~/.bashrc<span class="w">  </span><span class="c1"># assume you are using Bash shell</span>
-which<span class="w"> </span>python<span class="w">      </span><span class="c1"># should return a path under &lt;base-path&gt;</span>
-which<span class="w"> </span>mamba<span class="w">       </span><span class="c1"># should return a path under &lt;base-path&gt;</span>
-</pre></div>
-</div>
-</section>
-</section>
-<section id="install-python-version-of-cro">
-<h2>Install Python version of <cite>CRO</cite><a class="headerlink" href="#install-python-version-of-cro" title="Link to this heading">#</a></h2>
-<p>For a clean installation, first create a new environment named <code class="code docutils literal notranslate"><span class="pre">env_pyCRO</span></code> via <code class="code docutils literal notranslate"><span class="pre">mamba</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>env_pyCRO<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.13<span class="w">   </span><span class="c1"># supports Python 3.12 and 3.13</span>
-mamba<span class="w"> </span>activate<span class="w"> </span>env_pyCRO
-</pre></div>
-</div>
-<p>Then install required dependencies via <code class="code docutils literal notranslate"><span class="pre">mamba</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>numpy<span class="w"> </span>xarray<span class="w"> </span>statsmodels<span class="w"> </span>netcdf4
-</pre></div>
-</div>
-<p>Once the above dependencies are installed, simply install pyCRO via <code class="code docutils literal notranslate"><span class="pre">pip</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>pyCRO
-</pre></div>
-</div>
-<p>You are now ready to import pyCRO in Python:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pyCRO</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-</pre></div>
-</div>
-</section>
 <section id="install-matlab-version-of-cro">
 <h2>Install Matlab version of <cite>CRO</cite><a class="headerlink" href="#install-matlab-version-of-cro" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
@@ -545,30 +492,9 @@ mamba<span class="w"> </span>activate<span class="w"> </span>env_pyCRO
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-the-mamba-environment">Install the Mamba environment</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-download-the-installation-script-for-miniconda3">Step 1: Download the installation script for Miniconda3</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#macos-intel">macOS (Intel)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#macos-apple-silicon">macOS (Apple Silicon)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#linux">Linux</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-install-miniconda3">Step 2: Install Miniconda3</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-test-your-installation">Step 3: Test your Installation</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-python-version-of-cro">Install Python version of <cite>CRO</cite></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-matlab-version-of-cro">Install Matlab version of <cite>CRO</cite></a></li>
 </ul>
   </nav></div>
-
-  <div class="sidebar-secondary-item">
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/ug-installation.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div></div>
 
 </div></div>
               
@@ -593,24 +519,28 @@ mamba<span class="w"> </span>activate<span class="w"> </span>env_pyCRO
       
         <div class="footer-item">
 
-  <p class="copyright">
-    
-      © Copyright 2025.
-      <br/>
-    
-  </p>
-</div>
-      
-        <div class="footer-item">
-
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.3.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
     <br/>
   </p>
 </div>
       
     </div>
   
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, CLIVAR CRO Team (lead by Soong-Ki Kim and Sen Zhao).
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
   
   
     <div class="footer-items__end">

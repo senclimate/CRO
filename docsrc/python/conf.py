@@ -20,9 +20,9 @@ lexers['ipython3'] = PythonLexer()
 
 # -- Project information -----------------------------------------------------
 
-project = 'CLIVAR Working Group Community Recharge Oscillator (CRO) project'
-author  = 'CLIVAR CRO Team (lead by Soong-Ki Kim and Sen Zhao)'
-copyright = '2025'
+# project = 'CLIVAR Working Group Community Recharge Oscillator (CRO) project'
+# author  = 'CLIVAR CRO Team (lead by Soong-Ki Kim and Sen Zhao)'
+copyright = '2025, CLIVAR CRO Team (lead by Soong-Ki Kim and Sen Zhao)'
 
 
 # -- General configuration ---------------------------------------------------
@@ -86,20 +86,19 @@ html_theme = 'pydata_sphinx_theme'
 # html_theme = 'bootstrap'
 # html_theme = "sphinxawesome_theme"
 html_theme_options = {
-    'repository_url': 'https://github.com/senclimate/CRO',
-    # 'use_edit_page_button': True,
-    # 'use_repository_button': True,
-    # 'use_issues_button': True,
-    # 'use_fullscreen_button': True,
-     # "navbar_align": "left",
-    # 'footer_center': '<em>CLIVAR Working Group Community Recharge Oscillator (CRO) project</em>',
-    "navbar_end": ["version-switcher", "navbar-icon-links"],
+    "github_url": "https://github.com/senclimate/CRO",
+    "navbar_start": ["navbar-logo", "version-switcher", ],
+    "navbar_end": ["navbar-icon-links"],
+    "footer_start": ["sphinx-version"],
+    "footer_end": ["theme-version"],
+    "footer_center": ["copyright",], 
     "switcher": {
         "json_url": "../switcher.json",  # relative path from built docs
-        "version_match": "Python",       # or "Matlab" for the MATLAB conf.py
+        "version_match": "Python",       # or "Matlab" for the Matlab conf.py
     },
 }
 
+html_show_sourcelink = False
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,

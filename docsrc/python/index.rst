@@ -5,7 +5,7 @@ CRO: Community Recharge Oscillator
 What is CRO?
 ============
 
-The recharge oscillator (RO) model is one of the leading theories for the El Niño–Southern Oscillation (ENSO) :cite:`jin1997, jin2020, vialard2025`. While the literature contains many RO variants and implementations, :code:`CRO` is an open-source Python and MATLAB package for solving the RO equations, fitting parameters to observational or model data, and applying the model in teaching and research :cite:`kim2025`. 
+The recharge oscillator (RO) model is one of the leading theories for the El Niño–Southern Oscillation (ENSO) :cite:`jin1997, jin2020, vialard2025`. While the literature contains many RO variants and implementations, :code:`CRO` is an open-source Python and Matlab package for solving the RO equations, fitting parameters to observational or model data, and applying the model in teaching and research :cite:`kim2025`. 
 
 Key Features
 ------------

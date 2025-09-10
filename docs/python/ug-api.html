@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>API Reference &#8212; CLIVAR Working Group Community Recharge Oscillator (CRO) project  documentation</title>
+    <title>API Reference &#8212; Project name not set  documentation</title>
   
   
   
@@ -129,11 +129,31 @@
       
     
     
-    <img src="_static/CRO_logo.png" class="logo__image only-light" alt="CLIVAR Working Group Community Recharge Oscillator (CRO) project  documentation - Home"/>
-    <img src="_static/CRO_logo.png" class="logo__image only-dark pst-js-only" alt="CLIVAR Working Group Community Recharge Oscillator (CRO) project  documentation - Home"/>
+    <img src="_static/CRO_logo.png" class="logo__image only-light" alt="Project name not set  documentation - Home"/>
+    <img src="_static/CRO_logo.png" class="logo__image only-dark pst-js-only" alt="Project name not set  documentation - Home"/>
   
   
 </a></div>
+    
+      <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
     
   </div>
   
@@ -215,25 +235,21 @@
         </div>
       
       
-        <div class="navbar-item">
-<div class="version-switcher__container dropdown pst-js-only">
-  <button id="pst-version-switcher-button-2"
-    type="button"
-    class="version-switcher__button btn btn-sm dropdown-toggle"
-    data-bs-toggle="dropdown"
-    aria-haspopup="listbox"
-    aria-controls="pst-version-switcher-list-2"
-    aria-label="Version switcher list"
-  >
-    Choose version  <!-- this text may get changed later by javascript -->
-    <span class="caret"></span>
-  </button>
-  <div id="pst-version-switcher-list-2"
-    class="version-switcher__menu dropdown-menu list-group-flush py-0"
-    role="listbox" aria-labelledby="pst-version-switcher-button-2">
-    <!-- dropdown will be populated by javascript on page load -->
-  </div>
-</div></div>
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/senclimate/CRO" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
       
     </div>
     
@@ -332,25 +348,21 @@
     
       <div class="sidebar-header-items__end">
         
-          <div class="navbar-item">
-<div class="version-switcher__container dropdown pst-js-only">
-  <button id="pst-version-switcher-button-3"
-    type="button"
-    class="version-switcher__button btn btn-sm dropdown-toggle"
-    data-bs-toggle="dropdown"
-    aria-haspopup="listbox"
-    aria-controls="pst-version-switcher-list-3"
-    aria-label="Version switcher list"
-  >
-    Choose version  <!-- this text may get changed later by javascript -->
-    <span class="caret"></span>
-  </button>
-  <div id="pst-version-switcher-list-3"
-    class="version-switcher__menu dropdown-menu list-group-flush py-0"
-    role="listbox" aria-labelledby="pst-version-switcher-button-3">
-    <!-- dropdown will be populated by javascript on page load -->
-  </div>
-</div></div>
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/senclimate/CRO" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
         
       </div>
     
@@ -417,150 +429,9 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="module-pyCRO.solver">
-<span id="api-reference"></span><h1>API Reference<a class="headerlink" href="#module-pyCRO.solver" title="Link to this heading">#</a></h1>
+  <section id="module-pyCRO.analytic">
+<span id="api-reference"></span><h1>API Reference<a class="headerlink" href="#module-pyCRO.analytic" title="Link to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="pyCRO.solver.RO_solver">
-<span class="sig-prename descclassname"><span class="pre">pyCRO.solver.</span></span><span class="sig-name descname"><span class="pre">RO_solver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">par</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">IC</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NM</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'EH'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saveat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">savemethod</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sampling'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">EF</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_custom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCRO.solver.RO_solver" title="Link to this definition">#</a></dt>
-<dd><p>Numerical solution of the Recharge Oscillator (RO) model with stochastic forcing.</p>
-<p>This function integrates the Recharge Oscillator (RO) system numerically using
-either the Euler–Maruyama (EM) or Euler–Heun (EH) scheme. It includes
-deterministic dynamics, stochastic noise (white or red), and optional
-external forcing. Ensemble simulations are supported, with results returned
-at user-specified output intervals.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>par</strong> (<em>dict</em>) – <p>Dictionary of model parameters with the following keys (as 1-element arrays):</p>
-<ul>
-<li><dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">'R'</span></code><span class="classifier">float</span></dt><dd><p>Damping parameter.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">'F1'</span></code><span class="classifier">float</span></dt><dd><p>Feedback parameter relating thermocline depth to SST.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">'epsilon'</span></code><span class="classifier">float</span></dt><dd><p>Thermocline damping parameter.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">'F2'</span></code><span class="classifier">float</span></dt><dd><p>Feedback parameter relating SST to thermocline.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">'sigma_T'</span></code><span class="classifier">float</span></dt><dd><p>Noise amplitude for SST.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">'sigma_h'</span></code><span class="classifier">float</span></dt><dd><p>Noise amplitude for thermocline depth.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">'B'</span></code><span class="classifier">float</span></dt><dd><p>Multiplicative noise coefficient (used when <code class="docutils literal notranslate"><span class="pre">n_g</span></code> = 0 or 1).</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">'n_T'</span></code><span class="classifier">int</span></dt><dd><p>Noise type in SST equation (<code class="docutils literal notranslate"><span class="pre">1</span></code> = white noise, <code class="docutils literal notranslate"><span class="pre">0</span></code> = red noise).</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">'m_T'</span></code><span class="classifier">array-like</span></dt><dd><p>Memory kernel for red noise in SST equation (ignored if <code class="docutils literal notranslate"><span class="pre">n_T=1</span></code>).</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">'n_h'</span></code><span class="classifier">int</span></dt><dd><p>Noise type in thermocline equation (<code class="docutils literal notranslate"><span class="pre">1</span></code> = white noise, <code class="docutils literal notranslate"><span class="pre">0</span></code> = red noise).</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">'m_h'</span></code><span class="classifier">array-like</span></dt><dd><p>Memory kernel for red noise in thermocline equation (ignored if <code class="docutils literal notranslate"><span class="pre">n_h=1</span></code>).</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">'n_g'</span></code><span class="classifier">int</span></dt><dd><p>Noise structure in SST equation:
-<code class="docutils literal notranslate"><span class="pre">0</span></code> = multiplicative, <code class="docutils literal notranslate"><span class="pre">1</span></code> = multiplicative + Heaviside, <code class="docutils literal notranslate"><span class="pre">2</span></code> = additive.</p>
-</dd>
-</dl>
-</li>
-</ul>
-</p></li>
-<li><p><strong>IC</strong> (<em>tuple</em><em> of </em><em>float</em>) – <p>Initial condition <code class="docutils literal notranslate"><span class="pre">(T0,</span> <span class="pre">h0)</span></code>:</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">T0</span></code> : initial SST anomaly.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">h0</span></code> : initial thermocline depth anomaly.</p></li>
-</ul>
-</p></li>
-<li><p><strong>N</strong> (<em>float</em>) – Total simulation length (time units).</p></li>
-<li><p><strong>NE</strong> (<em>int</em>) – Number of ensemble members.</p></li>
-<li><p><strong>NM</strong> (<em>{'EM'</em><em>, </em><em>'EH'}</em><em>, </em><em>optional</em>) – Numerical integration method. Default is <code class="docutils literal notranslate"><span class="pre">'EH'</span></code> (Euler–Heun).</p></li>
-<li><p><strong>dt</strong> (<em>float</em><em>, </em><em>optional</em>) – Numerical integration time step. Default is <code class="docutils literal notranslate"><span class="pre">0.1</span></code>.</p></li>
-<li><p><strong>saveat</strong> (<em>float</em><em>, </em><em>optional</em>) – Output saving interval. Must be divisible by <code class="docutils literal notranslate"><span class="pre">dt</span></code>. Default is <code class="docutils literal notranslate"><span class="pre">1.0</span></code>.</p></li>
-<li><p><strong>savemethod</strong> (<em>{'sampling'</em><em>, </em><em>'mean'}</em><em>, </em><em>optional</em>) – <p>Method for saving results:</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">'sampling'</span></code> : store values every <code class="docutils literal notranslate"><span class="pre">saveat</span></code> steps (default).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">'mean'</span></code> : average values within each <code class="docutils literal notranslate"><span class="pre">saveat</span></code> interval.</p></li>
-</ul>
-</p></li>
-<li><p><strong>EF</strong> (<em>dict</em><em>, </em><em>optional</em>) – <p>External forcing with the following keys (as 1D arrays of length 5):</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">'E_T'</span></code> : SST forcing coefficients.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">'E_h'</span></code> : Thermocline forcing coefficients.</p></li>
-</ul>
-<p>If <code class="docutils literal notranslate"><span class="pre">None</span></code> (default), no external forcing is applied.</p>
-</p></li>
-<li><p><strong>noise_custom</strong> (<em>{None</em><em>, </em><em>int</em><em>, </em><em>ndarray}</em><em>, </em><em>optional</em>) – <p>Specification of stochastic noise:</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">None</span></code> (default): generate new Gaussian noise for each ensemble.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">int</span></code> : random seed for reproducible noise (same across ensembles).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ndarray</span></code> of shape (NT-1, 4, NE) : user-provided noise realizations.</p></li>
-</ul>
-</p></li>
-<li><p><strong>verbose</strong> (<em>bool</em><em>, </em><em>optional</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code> (default), print detailed setup and progress messages.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><strong>T_out</strong> (<em>ndarray of shape (N_out, NE)</em>) – SST anomalies from the numerical integration, after applying the saving scheme.</p></li>
-<li><p><strong>h_out</strong> (<em>ndarray of shape (N_out, NE)</em>) – Thermocline anomalies from the numerical integration, after applying the saving scheme.</p></li>
-<li><p><strong>noise_out</strong> (<em>ndarray of shape (NT-1, 4, NE)</em>) – Realizations of Gaussian noise used in the simulation.</p></li>
-</ul>
-</p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<ul class="simple">
-<li><p>White noise forcing corresponds to <code class="docutils literal notranslate"><span class="pre">n_T</span> <span class="pre">=</span> <span class="pre">1</span></code> or <code class="docutils literal notranslate"><span class="pre">n_h</span> <span class="pre">=</span> <span class="pre">1</span></code>.</p></li>
-<li><p>Red noise forcing (<code class="docutils literal notranslate"><span class="pre">n_T</span> <span class="pre">=</span> <span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">n_h</span> <span class="pre">=</span> <span class="pre">0</span></code>) requires a nonzero memory kernel <code class="docutils literal notranslate"><span class="pre">m_T</span></code> or <code class="docutils literal notranslate"><span class="pre">m_h</span></code>.</p></li>
-<li><p>For the Euler–Maruyama method (<code class="docutils literal notranslate"><span class="pre">NM</span> <span class="pre">=</span> <span class="pre">'EM'</span></code>) with multiplicative noise,
-an Ito-to-Stratonovich correction is applied automatically.</p></li>
-</ul>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">par</span> <span class="o">=</span> <span class="p">{</span>
-<span class="gp">... </span>    <span class="s1">&#39;R&#39;</span><span class="p">:[</span><span class="mf">0.5</span><span class="p">],</span> <span class="s1">&#39;F1&#39;</span><span class="p">:[</span><span class="mf">1.2</span><span class="p">],</span> <span class="s1">&#39;epsilon&#39;</span><span class="p">:[</span><span class="mf">0.3</span><span class="p">],</span> <span class="s1">&#39;F2&#39;</span><span class="p">:[</span><span class="mf">0.8</span><span class="p">],</span>
-<span class="gp">... </span>    <span class="s1">&#39;sigma_T&#39;</span><span class="p">:[</span><span class="mf">0.2</span><span class="p">],</span> <span class="s1">&#39;sigma_h&#39;</span><span class="p">:[</span><span class="mf">0.1</span><span class="p">],</span> <span class="s1">&#39;B&#39;</span><span class="p">:[</span><span class="mf">0.05</span><span class="p">],</span>
-<span class="gp">... </span>    <span class="s1">&#39;n_T&#39;</span><span class="p">:[</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;m_T&#39;</span><span class="p">:[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;n_h&#39;</span><span class="p">:[</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;m_h&#39;</span><span class="p">:[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;n_g&#39;</span><span class="p">:[</span><span class="mi">0</span><span class="p">]</span>
-<span class="gp">... </span><span class="p">}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">IC</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">T</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">noise</span> <span class="o">=</span> <span class="n">RO_solver</span><span class="p">(</span><span class="n">par</span><span class="p">,</span> <span class="n">IC</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">NE</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">saveat</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">T</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">h</span><span class="o">.</span><span class="n">shape</span>
-<span class="go">((51, 5), (51, 5))</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py function" id="module-pyCRO.analytic">
 <dt class="sig sig-object py" id="pyCRO.analytic.RO_analytic_solver">
 <span class="sig-prename descclassname"><span class="pre">pyCRO.analytic.</span></span><span class="sig-name descname"><span class="pre">RO_analytic_solver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">par</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">IC</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saveat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">savemethod</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sampling'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_custom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCRO.analytic.RO_analytic_solver" title="Link to this definition">#</a></dt>
 <dd><p>Analytical solution of the Recharge Oscillator (RO) model with deterministic and stochastic forcing.</p>
@@ -911,7 +782,6 @@ could be increased for accuracy).</p></li>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.solver.RO_solver"><code class="docutils literal notranslate"><span class="pre">RO_solver()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.analytic.RO_analytic_solver"><code class="docutils literal notranslate"><span class="pre">RO_analytic_solver()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.analytic.RO_analytic_std"><code class="docutils literal notranslate"><span class="pre">RO_analytic_std()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.fitting.RO_fitting"><code class="docutils literal notranslate"><span class="pre">RO_fitting()</span></code></a></li>
@@ -919,15 +789,6 @@ could be increased for accuracy).</p></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.fit_MLE.fit_MLE"><code class="docutils literal notranslate"><span class="pre">fit_MLE()</span></code></a></li>
 </ul>
   </nav></div>
-
-  <div class="sidebar-secondary-item">
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/ug-api.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div></div>
 
 </div></div>
               
@@ -952,24 +813,28 @@ could be increased for accuracy).</p></li>
       
         <div class="footer-item">
 
-  <p class="copyright">
-    
-      © Copyright 2025.
-      <br/>
-    
-  </p>
-</div>
-      
-        <div class="footer-item">
-
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.3.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
     <br/>
   </p>
 </div>
       
     </div>
   
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, CLIVAR CRO Team (lead by Soong-Ki Kim and Sen Zhao).
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
   
   
     <div class="footer-items__end">
