@@ -85,6 +85,7 @@ html_theme = 'pydata_sphinx_theme'
 # html_theme = 'sphinx_material'
 # html_theme = 'bootstrap'
 # html_theme = "sphinxawesome_theme"
+
 html_theme_options = {
     "github_url": "https://github.com/senclimate/CRO",
     "navbar_start": ["navbar-logo", "version-switcher", ],

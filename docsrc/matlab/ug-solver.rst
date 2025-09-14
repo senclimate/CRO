@@ -1,9 +1,7 @@
 Solver
 ========================
-This section illustrates the solver features of `pyCRO` 
+This section illustrates the solver features of `mCRO` 
 
 .. toctree::
     :maxdepth: 1
-
-    notebooks/solver
 

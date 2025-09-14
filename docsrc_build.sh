@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Build and prepare CRO docs for local or GitHub Pages
-# Usage: ./build_publish.sh [local|publish]
+# Usage: ./docsrc_build.sh [local|publish]
 
 set -e
 
