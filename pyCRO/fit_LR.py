@@ -6,7 +6,7 @@ from .fit_MAC import fit_MAC
 def fit_LR(T, h, par_option_T, par_option_h, par_option_noise, dt, 
            tend_option, fitting_option_B, fitting_option_red):
     """
-    Estimates Recharge Oscillator (RO) parameters with linear regression (LR) 
+    Estimates Recharge Oscillator (RO) parameters with linear regression (LR)
     given ENSO SST (T) and thermocline depth (h) anomaly time series.
 
     Parameters

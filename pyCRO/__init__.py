@@ -13,4 +13,4 @@ from .par_load import par_load
 from .fit_LR import fit_LR
 from .fit_MLE import fit_MLE
 
-from .visual import plot_RO_par
+from .visual import plot_RO_par, plot_ens_RO_par
