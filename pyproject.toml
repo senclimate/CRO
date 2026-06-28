@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "CRO"
+dynamic = ["version"]
+description = "Community Recharge Oscillator"
+readme = "docsrc/python/index.rst"
+license = { text = "CC-BY-4.0" }
+authors = [{ name = "CRO team led by Soong-Ki Kim and Sen Zhao"}]
+requires-python = ">=3.9"
+
+dependencies = [
+    "numpy>=1.20",
+    "xarray>=2023.1.0",
+    "matplotlib>=3.5",
+]
+
+[tool.setuptools.dynamic]
+version = {attr = "pyCRO.__version__"}
+
+[project.urls]
+Homepage = "https://github.com/senclimate/CRO"
+Documentation = "https://senclimate.github.io/CRO/python/"
+Repository = "https://github.com/senclimate/CRO"
+Issues = "https://github.com/senclimate/CRO/issues"
+
+[tool.setuptools]
+packages = ["pyCRO"]
+include-package-data = true
+
+[tool.setuptools.package-data]
+pyCRO = [
+    "table_default_fitting_method.txt",
+]
+
+[tool.setuptools.data-files]
+"pyCRO_data" = [
+    "data/CESM1_LENS_ENSO_timeseries.nc",
+    "data/CROdata_timeseries_CMIP6.nc",
+    "data/CROdata_timeseries_oras5.nc",
+    "data/CRO_parlib_v0.0.mat",
+    "data/XRO_indices_oras5.nc",
+    "data/CRO_logo.png",
+]
