@@ -27,7 +27,7 @@ Key methodological foundations are described in Kim et al. (2025).
 ## Installation
 
 ```bash
-pip install CRO
+pip install pythonCRO
 ```
 
 ---
