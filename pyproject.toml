@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "CRO"
 dynamic = ["version"]
 description = "Community Recharge Oscillator"
-readme = "docsrc/python/index.rst"
+readme = "README.md"
 license = { text = "CC-BY-4.0" }
 authors = [{ name = "CRO team led by Soong-Ki Kim and Sen Zhao"}]
 requires-python = ">=3.9"
