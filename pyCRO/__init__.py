@@ -1,6 +1,6 @@
 # __init__.py
 
-__version__ = "0.1.8"
+__version__ = "0.1.9"
 
 from .fitting import RO_fitting
 from .solver import RO_solver
