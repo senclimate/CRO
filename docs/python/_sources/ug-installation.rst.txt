@@ -21,7 +21,7 @@ Once the above dependencies are installed, simply install pyCRO via :code:`pip`:
 
 .. code-block:: bash
 
-    pip install pyCRO
+    pip install pythonCRO
 
 You are now ready to import pyCRO in Python:
 
