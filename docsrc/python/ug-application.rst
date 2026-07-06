@@ -1,7 +1,7 @@
 Application
 ========================
 
-This section illustrates the application features of `pyCRO` 
+This section illustrates the application features of `pyCRO`. 
 
 .. toctree::
     :maxdepth: 1

@@ -36,14 +36,7 @@ include-package-data = true
 [tool.setuptools.package-data]
 pyCRO = [
     "table_default_fitting_method.txt",
-]
-
-[tool.setuptools.data-files]
-"pyCRO_data" = [
-    "data/CESM1_LENS_ENSO_timeseries.nc",
-    "data/CROdata_timeseries_CMIP6.nc",
-    "data/CROdata_timeseries_oras5.nc",
-    "data/CRO_parlib_v0.0.mat",
-    "data/XRO_indices_oras5.nc",
-    "data/CRO_logo.png",
+    "data/*.mat",
+    "data/*.nc",
+    "data/*.png"
 ]

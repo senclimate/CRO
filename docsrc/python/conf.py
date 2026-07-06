@@ -22,7 +22,7 @@ lexers['ipython3'] = PythonLexer()
 
 # project = 'CLIVAR Working Group Community Recharge Oscillator (CRO) project'
 # author  = 'CLIVAR CRO Team (lead by Soong-Ki Kim and Sen Zhao)'
-copyright = '2025, CLIVAR CRO Team (lead by Soong-Ki Kim and Sen Zhao)'
+copyright = '2025-2026, CLIVAR CRO Team (lead by Soong-Ki Kim and Sen Zhao)'
 
 
 # -- General configuration ---------------------------------------------------
@@ -57,6 +57,7 @@ extensions = [
     # 'sphinx_copybutton',
     # 'sphinx_gallery.load_style',
 ]
+
 nbsphinx_allow_errors = True
 
 
@@ -70,6 +71,9 @@ bibtex_bibfiles = ["refs.bib"]
 # Optional: APA style
 bibtex_default_style = "apa"   # APA via citeproc-py
 bibtex_reference_style = "author_year"
+
+# bibtex_default_style = "alpha"
+# bibtex_reference_style = "author_year"
 
 # -- Options for HTML output -------------------------------------------------
 
@@ -90,6 +94,9 @@ html_theme_options = {
     "github_url": "https://github.com/senclimate/CRO",
     "navbar_start": ["navbar-logo", "version-switcher", ],
     "navbar_end": ["navbar-icon-links"],
+    "navbar_persistent": ["search-button", "theme-switcher"],
+    "header_links_before_dropdown": 7,  # show all 7 top-level menus, none collapsed into "More"
+    "navbar_align": "content",  # better spacing than "left"
     "footer_start": ["sphinx-version"],
     "footer_end": ["theme-version"],
     "footer_center": ["copyright",], 
@@ -97,6 +104,7 @@ html_theme_options = {
         "json_url": "../switcher.json",  # relative path from built docs
         "version_match": "Python",       # or "Matlab" for the Matlab conf.py
     },
+    "show_toc_level": 1,
 }
 
 html_show_sourcelink = False
