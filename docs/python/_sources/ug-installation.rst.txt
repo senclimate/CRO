@@ -27,14 +27,22 @@ You are now ready to import pyCRO in Python:
 
 .. code-block:: python
 
-    from pyCRO import *
+    import pyCRO
 
 
 
 Install the :code:`mamba` environment
 -------------------------------------
 
-You may skip this step if your :code:`mamba` environment has been installed already.
+You may skip this step if :code:`mamba` is already installed in your environment.
+
+If you already have :code:`conda` installed, you only need to install :code:`mamba` using:
+
+.. code-block:: bash
+
+    conda install -n base -c conda-forge mamba
+
+Otherwise, follow the three steps below.
 
 Step 1: Download the installation script for Miniconda3
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""

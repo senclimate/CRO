@@ -1,30 +1,17 @@
 API Reference
 =============
 
-Solver
---------------
+This section documents the public API of `pyCRO`, including the solver,
+parameter fitting utilities, visualization tools, and analytical methods.
 
-.. automodule:: pyCRO.solver
-   :members: RO_solver
+.. contents::
+   :local:
+   :depth: 2
 
-.. automodule:: pyCRO.analytic
-   :members: RO_analytic_solver, RO_analytic_std
+.. toctree::
+   :maxdepth: 1
 
-Fitting
---------------
-
-.. automodule:: pyCRO.fitting
-   :members: RO_fitting
-
-.. automodule:: pyCRO.fit_LR
-   :members: fit_LR
-
-.. automodule:: pyCRO.fit_MLE
-   :members: fit_MLE
-
-
-Visualization 
---------------
-
-.. automodule:: pyCRO.visual
-    :members: 
+   api/solver
+   api/fitting
+   api/visual
+   api/more

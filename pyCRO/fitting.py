@@ -99,22 +99,75 @@ def RO_fitting(T, h, par_option_T, par_option_h, par_option_noise, method_fittin
 
     Parameters
     ----------
-    T : ndarray
+    T : ndarray, shape (N,) or (N, 1)
         Time series of SST anomalies (1D array).
-    h : ndarray
+    h : ndarray, shape (N,) or (N, 1)
         Time series of thermocline anomalies (1D array).
     par_option_T : dict
         Prescribed options for SST equation parameters.
+            
+            Keys (R, F1, b_T, c_T, d_T):
+            
+            Each entry Xi ∈ {0, 1, 3, 5}:
+                0 : parameter not included
+                
+                1 : seasonally constant
+                
+                3 : annual cycle
+                
+                5 : annual + semiannual cycle
+                
     par_option_h : dict
         Prescribed options for thermocline equation parameters.
+            Keys (F2, epsilon, b_h):
+
+            Each entry Xi ∈ {0, 1, 3, 5}:
+                0 : parameter not included
+                
+                1 : seasonally constant
+                
+                3 : annual cycle
+                
+                5 : annual + semiannual cycle
+                
     par_option_noise : dict
-        Noise settings, e.g., {'T': 'red', 'h': 'red', 'T_type': 'multiplicative'}.
+        Configuration of stochastic noise forcing in the RO system.
+            Keys:
+                T : {"white", "red"}
+                    Noise type in SST equation.
+    
+                h : {"white", "red"}
+                    Noise type in thermocline equation (must be identical to T).
+    
+                T_type : {"additive", "multiplicative", "multiplicative-H"}
+                    Noise formulation:
+                        additive         : state-independent forcing
+                        
+                        multiplicative   : state-dependent forcing
+                        
+                        multiplicative-H : Heaviside-modulated multiplicative forcing
+            Notes:
+                - T and h must be identical.
+                
+                - Independent SST and thermocline noise structures are not supported.
+
     method_fitting : str, optional
-        Fitting method to use: 'LR-F', 'LR-C', 'LR-F-MAC', or 'MLE'. 
-        If None, the method is determined automatically.
-    dt : float, optional
-        Time step of the input time series. Default is 1.0 (months).
-    verbose : bool, optional
+        Parameter estimation method:
+
+            LR-F       : Linear regression (forward difference)
+            
+            LR-C       : Linear regression (central difference)
+            
+            LR-F-MAC   : LR-F with moment-adjusted correction for SST noise
+            
+            MLE        : Maximum likelihood estimation
+
+        If None, the method is selected automatically based on model configuration.
+        
+    dt : float, optional (default = 1.0)
+        Time step of input time series in months.
+
+    verbose : bool, optional (default=True)
         If True, prints fitting information and progress.
 
     Returns

@@ -3,9 +3,14 @@ import os
 import sys
 
 import numpy as np
+import xarray as xr
 
-script_dir = os.path.dirname(os.path.abspath(__file__))
-_MAT_FILENAME = os.path.join(script_dir, "../data/CRO_parlib_v0.0.mat")
+from importlib.resources import files
+
+_MAT_FILENAME = str(files("pyCRO").joinpath("data", "CRO_parlib_v0.0.mat"))
+_CESM1_FILENAME = files("pyCRO").joinpath("data", "CESM1_LENS_ENSO_timeseries.nc")
+_CMIP6_FILENAME = files("pyCRO").joinpath("data", "CROdata_timeseries_CMIP6.nc")
+_ORAS5_FILENAME = files("pyCRO").joinpath("data", "CROdata_timeseries_oras5.nc")
 
 def _try_load_mat(fname):
     """Load .mat (v7 via scipy; fallback to v7.3 via mat73)."""
@@ -61,12 +66,80 @@ def _as_col_cell(obj):
     # Anything else: treat as scalar and fail
     raise TypeError("Unexpected parameter cell content type")
 
+
 def par_load(data_name: str, ro_name: str):
     """
-    Load CRO parameters by (data_name, ro_name) from CRO_parlib_v0.0.mat.
-    - Exact match -> returns (16,1) object array
-    - If data_name endswith '-all' -> loads <base>-<number> (case-insensitive on base),
-      exact match on ro_name, sorts by number, returns (16,N) object array.
+    Load precomputed CRO parameters from `CRO_parlib_v0.0.mat`.
+
+    This function extracts parameter sets for different RO model configurations
+    and datasets (e.g., CMIP6 historical runs, ORAS5, etc.).
+
+    See details at `precomputed Library <../notebooks/model_library.html>`_
+
+    Parameters
+    ----------    
+    data_name : str
+        Dataset identifier. Supported options include:
+        
+            - "ORAS5"
+            
+            - "CMIP6-historical-1" ... "CMIP6-historical-48"
+            
+            - "CMIP6-historical-all" (returns all realizations)
+
+    ro_name : str
+        Recharge Oscillator model configuration. Supported options:
+        
+            - "Linear-White-Additive"
+            
+            - "Seasonal-Linear-White-Additive"
+            
+            - "Nonlinear-White-Additive"
+            
+            - "Seasonal-Nonlinear-White-Additive"
+            
+            - "Linear-White-Multiplicative"
+            
+            - "Seasonal-Linear-White-Multiplicative"
+            
+            - "Nonlinear-White-Multiplicative"
+            
+            - "Seasonal-Nonlinear-White-Multiplicative"
+
+    Returns
+    -------
+    dict or list of dict
+        If `data_name != "CMIP6-historical-all"`:
+            Returns a dictionary containing CRO parameters:
+                - R, F1, F2, epsilon, b_T, c_T, d_T, b_h
+                - sigma_T, sigma_h, B
+                - m_T, m_h, n_T, n_h, n_g
+
+            Each value is a list (to support scalar or ensemble formats).
+
+        If `data_name == "CMIP6-historical-all"`:
+            Returns a list of parameter dictionaries, one per CMIP6 realization.
+
+    Raises
+    ------
+    ValueError
+        If `ro_name` is not recognized or `data_name` is invalid.
+
+    Notes
+    -----
+    - The parameter library is stored in MATLAB file format (`.mat`).
+    - Internally, parameters are indexed as:
+        (RO configuration index, dataset index).
+    - This function automatically handles scalar, vector, and empty entries
+      from MATLAB cell arrays.
+
+    Examples
+    --------
+    >>> par = par_load("ORAS5", "Linear-White-Additive")
+    >>> par["R"]
+
+    >>> pars = par_load("CMIP6-historical-all", "Nonlinear-White-Additive")
+    >>> len(pars)
     """
     S = _try_load_mat(_MAT_FILENAME)
     par = S['par']
@@ -183,3 +256,69 @@ def par_load(data_name: str, ro_name: str):
         }
 
         return my_par
+
+
+def ROdata_load(name: str):
+    """
+    Load precomputed CRO dataset time series.
+
+    This function provides access to built-in ENSO-related datasets used in
+    the CRO (Coupled Recharge Oscillator) framework, including ORAS5 reanalysis,
+    CMIP6 historical simulations, and CESM1 LENS. 
+
+    Parameters
+    ----------
+    name : str
+        Name of the dataset to load.
+
+        Supported options:
+
+        - "CESM1_LENS"
+            CESM1 Large Ensemble Niño3.4 and thermocline time series.
+
+        - "CMIP6"
+            Preprocessed CMIP6 historical ENSO time series (multi-model mean or ensemble form).
+
+        - "ORAS5"
+            ORAS5 ocean reanalysis ENSO time series.
+
+    Returns
+    -------
+    str
+        Absolute file path to the requested NetCDF dataset.
+
+    Raises
+    ------
+    ValueError
+        If `data_name` is not one of the supported options.
+
+    Notes
+    -----
+    - Data are stored inside the `pyCRO.data` package directory.
+    - Files are in NetCDF format and should be opened using `xarray.open_dataset`.
+    - This function does not load the dataset into memory, only returns the path.
+
+    Examples
+    --------
+    Load CESM1 LENS data:
+
+    >>> ds = pyCRO.ROdata_load("CESM1_LENS")
+
+    Load ORAS5 reanalysis:
+
+    >>> ds = pyCRO.ROdata_load("ORAS5")
+    """
+
+    mapping = {
+        "CESM1_LENS": _CESM1_FILENAME,
+        "CMIP6": _CMIP6_FILENAME,
+        "ORAS5": _ORAS5_FILENAME,
+    }
+    
+    try:
+        return xr.open_dataset(mapping[name])
+    except KeyError:
+        raise ValueError(
+            f"Invalid dataname='{name}'. "
+            f"Choose from {list(mapping.keys())}."
+        )

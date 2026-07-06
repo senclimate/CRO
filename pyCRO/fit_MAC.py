@@ -2,6 +2,88 @@ import sys
 import numpy as np
 
 def fit_MAC(T, h, par):
+    """
+    Estimate the Recharge Oscillator (RO) model multiplicative noise parameters 
+    using Moment Analytical Constraint (MAC), specifically the SST noise
+    amplitude (sigma_T) and multiplicative coefficient (B).
+
+    MAC is a constraint-based estimation method that exploits analytical relationships
+    between model parameters and the higher-order statistical moments of the system.
+    In particular, it uses moment equations derived from the RO stochastic dynamics
+    to relate third- and fourth-order moments of SST (T) and thermocline (h) to the
+    unknown noise parameters.
+
+    Unlike purely statistical or correlation-based methods, MAC is derived from
+    exact or approximate analytical moment constraints of the governing stochastic
+    differential equations. It provides a physically consistent estimation of noise
+    parameters by enforcing agreement between observed and theoretical moment structures.
+
+    In the CRO/RO implementation, MAC is applied after deterministic parameters
+    are estimated (typically via linear regression), and assumes all non-noise
+    parameters are known.
+
+    Parameters
+    ----------
+    T : ndarray, shape (N,) or (N, 1)
+        SST anomaly time series.
+
+    h : ndarray, shape (N,) or (N, 1)
+        Thermocline depth anomaly time series.
+
+    par : ndarray
+        RO parameter matrix with previously estimated deterministic parameters.
+
+        Expected structure:
+
+        - par[0,0]  : R
+        - par[1,0]  : F1
+        - par[2,0]  : b_T
+        - par[3,0]  : c_T
+        - par[4,0]  : d_T
+        - par[5,0]  : epsilon
+        - par[6,0]  : F2
+        - par[8,0]  : sigma_T (updated by MAC)
+        - par[10,0] : B (updated by MAC)
+        - par[15,0] : n_g (noise structure flag)
+
+    Returns
+    -------
+    par_out : ndarray
+              Updated parameter matrix with MAC-estimated noise parameters.
+              
+                - sigma_T : SST noise amplitude
+                
+                - B       : multiplicative noise coefficient
+
+    Notes
+    -----
+    Moment Analytical Constraint (MAC):
+
+        - MAC is a moment-based analytical constraint method.
+        - It is NOT a correlation-based or regression-based estimator.
+        - It enforces consistency between empirical moments and
+          analytically derived moment equations from the RO system.
+
+        Specifically:
+        - Uses third- and fourth-order moments of T and h
+        - Matches empirical moments to theoretical RO moment expressions
+        - Solves resulting constraint equations for sigma_T and B
+
+    Methodology:
+        - Deterministic parameters are assumed known (from LR fitting)
+        - Empirical moments of T and h are computed
+        - Analytical moment constraints are solved for noise parameters
+
+    Noise regimes:
+        n_g = 0 : linear multiplicative noise
+        n_g = 1 : Heaviside-modulated multiplicative noise
+
+    Examples
+    --------
+    >>> par_updated = fit_MAC(T, h, par)
+    >>> sigma_T = par_updated[8, 0]
+    >>> B = par_updated[10, 0]
+    """
     # Extract annual mean values (first element from each parameter)
     R = par[0,0]
     F1 = par[1,0]

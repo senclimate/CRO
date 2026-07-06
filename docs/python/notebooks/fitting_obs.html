@@ -33,7 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/theme_overrides.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
-    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=c3144ee3" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=926fce9f" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -188,6 +188,13 @@ document.write(`
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-quickstart.html">
+    Quickstart
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../ug-model.html">
     Model
   </a>
@@ -214,21 +221,13 @@ document.write(`
   </a>
 </li>
 
-            <li class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
-                    More
-                </button>
-                <ul id="pst-nav-more-links" class="dropdown-menu">
-                    
-<li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../ug-api.html">
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-api.html">
     API Reference
   </a>
 </li>
 
-                </ul>
-            </li>
-            
   </ul>
 </nav></div>
       
@@ -240,15 +239,27 @@ document.write(`
         <div class="navbar-item navbar-persistent--container">
           
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
         </div>
       
       
@@ -275,15 +286,26 @@ document.write(`
   
     <div class="navbar-persistent--mobile">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+    <div class="navbar-persistent--mobile">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
     </div>
   
 
@@ -320,6 +342,13 @@ document.write(`
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../ug-installation.html">
     Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-quickstart.html">
+    Quickstart
   </a>
 </li>
 
@@ -457,10 +486,7 @@ document.write(`
   <section id="CRO-fitting-with-observation">
 <h1><code class="docutils literal notranslate"><span class="pre">CRO</span></code> fitting with observation<a class="headerlink" href="#CRO-fitting-with-observation" title="Link to this heading">#</a></h1>
 <p>This tutorial illustrates how to use the <code class="docutils literal notranslate"><span class="pre">pyCRO</span></code> to estimate RO parameters from the observations</p>
-<p>Contact:</p>
-<ul class="simple">
-<li><p>Sen Zhao (<a class="reference external" href="mailto:zhaos&#37;&#52;&#48;hawaii&#46;edu">zhaos<span>&#64;</span>hawaii<span>&#46;</span>edu</a>)</p></li>
-</ul>
+<p>This notebook was contributed by <a class="reference external" href="https://senzhao.netlify.app/">Sen Zhao</a>.</p>
 <section id="Load-library">
 <h2>Load library<a class="headerlink" href="#Load-library" title="Link to this heading">#</a></h2>
 <div class="nbinput nblast docutils container">
@@ -502,16 +528,16 @@ document.write(`
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 <span class="ansi-red-fg">Signature:</span>
-pyCRO.RO_fitting(
-    T,
-    h,
-    par_option_T,
-    par_option_h,
-    par_option_noise,
-    method_fitting=<span class="ansi-bold" style="color: rgb(0,135,0)">None</span>,
-    dt=<span class="ansi-bold" style="color: rgb(0,135,0)">None</span>,
-    verbose=<span class="ansi-bold" style="color: rgb(0,135,0)">True</span>,
-)
+pyCRO<span class="ansi-blue-fg">.</span>RO_fitting<span class="ansi-blue-fg">(</span>
+    T<span class="ansi-blue-fg">,</span>
+    h<span class="ansi-blue-fg">,</span>
+    par_option_T<span class="ansi-blue-fg">,</span>
+    par_option_h<span class="ansi-blue-fg">,</span>
+    par_option_noise<span class="ansi-blue-fg">,</span>
+    method_fitting<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span>
+    dt<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span>
+    verbose<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">True</span><span class="ansi-blue-fg">,</span>
+<span class="ansi-blue-fg">)</span>
 <span class="ansi-red-fg">Docstring:</span>
 Fit the Recharge Oscillator (RO) model parameters to T and h time series.
 
@@ -523,22 +549,75 @@ default fitting method based on parameter options.
 
 Parameters
 ----------
-T : ndarray
+T : ndarray, shape (N,) or (N, 1)
     Time series of SST anomalies (1D array).
-h : ndarray
+h : ndarray, shape (N,) or (N, 1)
     Time series of thermocline anomalies (1D array).
 par_option_T : dict
     Prescribed options for SST equation parameters.
+
+        Keys (R, F1, b_T, c_T, d_T):
+
+        Each entry Xi ∈ {0, 1, 3, 5}:
+            0 : parameter not included
+
+            1 : seasonally constant
+
+            3 : annual cycle
+
+            5 : annual + semiannual cycle
+
 par_option_h : dict
     Prescribed options for thermocline equation parameters.
+        Keys (F2, epsilon, b_h):
+
+        Each entry Xi ∈ {0, 1, 3, 5}:
+            0 : parameter not included
+
+            1 : seasonally constant
+
+            3 : annual cycle
+
+            5 : annual + semiannual cycle
+
 par_option_noise : dict
-    Noise settings, e.g., {&#39;T&#39;: &#39;red&#39;, &#39;h&#39;: &#39;red&#39;, &#39;T_type&#39;: &#39;multiplicative&#39;}.
+    Configuration of stochastic noise forcing in the RO system.
+        Keys:
+            T : {&#34;white&#34;, &#34;red&#34;}
+                Noise type in SST equation.
+
+            h : {&#34;white&#34;, &#34;red&#34;}
+                Noise type in thermocline equation (must be identical to T).
+
+            T_type : {&#34;additive&#34;, &#34;multiplicative&#34;, &#34;multiplicative-H&#34;}
+                Noise formulation:
+                    additive         : state-independent forcing
+
+                    multiplicative   : state-dependent forcing
+
+                    multiplicative-H : Heaviside-modulated multiplicative forcing
+        Notes:
+            - T and h must be identical.
+
+            - Independent SST and thermocline noise structures are not supported.
+
 method_fitting : str, optional
-    Fitting method to use: &#39;LR-F&#39;, &#39;LR-C&#39;, &#39;LR-F-MAC&#39;, or &#39;MLE&#39;.
-    If None, the method is determined automatically.
-dt : float, optional
-    Time step of the input time series. Default is 1.0 (months).
-verbose : bool, optional
+    Parameter estimation method:
+
+        LR-F       : Linear regression (forward difference)
+
+        LR-C       : Linear regression (central difference)
+
+        LR-F-MAC   : LR-F with moment-adjusted correction for SST noise
+
+        MLE        : Maximum likelihood estimation
+
+    If None, the method is selected automatically based on model configuration.
+
+dt : float, optional (default = 1.0)
+    Time step of input time series in months.
+
+verbose : bool, optional (default=True)
     If True, prints fitting information and progress.
 
 Returns
@@ -564,7 +643,7 @@ Examples
 &gt;&gt;&gt; par_option_noise = {&#39;T&#39;: &#39;red&#39;, &#39;h&#39;: &#39;red&#39;, &#39;T_type&#39;: &#39;multiplicative&#39;}
 &gt;&gt;&gt; fitted_params = RO_fitting(T, h, par_option_T, par_option_h, par_option_noise)
 &gt;&gt;&gt; print(fitted_params[&#39;sigma_T&#39;])
-<span class="ansi-red-fg">File:</span>      ~/codes/CRO/pyCRO/fitting.py
+<span class="ansi-red-fg">File:</span>      /export/epekema/zhaos/published/CRO/pyCRO/fitting.py
 <span class="ansi-red-fg">Type:</span>      function
 </pre></div></div>
 </div>
@@ -632,10 +711,11 @@ Examples
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load observations</span>
-<span class="n">file_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="s2">&quot;../../../data&quot;</span><span class="p">,</span> <span class="s2">&quot;XRO_indices_oras5.nc&quot;</span><span class="p">)</span>
-<span class="n">xr_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
-<span class="n">T_oras5</span> <span class="o">=</span> <span class="n">xr_ds</span><span class="p">[</span><span class="s1">&#39;Nino34&#39;</span><span class="p">][:]</span>  <span class="c1"># Nino 3.4 since 1979-01-01</span>
-<span class="n">h_oras5</span> <span class="o">=</span> <span class="n">xr_ds</span><span class="p">[</span><span class="s1">&#39;WWV&#39;</span><span class="p">][:]</span>     <span class="c1"># WWV since 1979-01-01</span>
+<span class="c1"># use Nino3.4 as ENSO T, equatorial Pacific mean D20 anomalies as ENSO h</span>
+<span class="n">xr_ds</span> <span class="o">=</span> <span class="n">pyCRO</span><span class="o">.</span><span class="n">ROdata_load</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;ORAS5&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s2">&quot;Nino34&quot;</span><span class="p">:</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="s2">&quot;Hm&quot;</span><span class="p">:</span> <span class="s2">&quot;h&quot;</span><span class="p">})</span>
+
+<span class="n">T_oras5</span> <span class="o">=</span> <span class="n">xr_ds</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">][:]</span>  <span class="c1"># Nino 3.4 since 1979-01-01</span>
+<span class="n">h_oras5</span> <span class="o">=</span> <span class="n">xr_ds</span><span class="p">[</span><span class="s1">&#39;h&#39;</span><span class="p">][:]</span>     <span class="c1"># WWV since 1979-01-01</span>
 <span class="n">time_oras5</span> <span class="o">=</span> <span class="n">xr_ds</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">][:]</span> <span class="c1"># Days since 1979-01-01</span>
 
 <span class="n">T_oras5</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
@@ -649,14 +729,14 @@ Examples
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[&lt;matplotlib.lines.Line2D at 0x15466d310&gt;]
+[&lt;matplotlib.lines.Line2D at 0x7f35bbc3a030&gt;]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/notebooks_fitting_obs_7_1.png" class="no-scaled-link" height="298" src="../_images/notebooks_fitting_obs_7_1.png" width="689" />
+<img alt="../_images/notebooks_fitting_obs_7_1.png" class="no-scaled-link" height="296" src="../_images/notebooks_fitting_obs_7_1.png" width="689" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -692,7 +772,7 @@ Examples
 Welcome to CRO Fitting! Your fitting setups:
 ---------------------------------------------------------------------------------
  - Data time step is not given, defaulting to: dt = 1.0 months.
- - Time series length: N = len(T)*dt = 552.0 months.
+ - Time series length: N = len(T)*dt = 756.0 months.
  - Prescribed terms: {&#39;R&#39;: 1, &#39;F1&#39;: 1, &#39;b_T&#39;: 0, &#39;c_T&#39;: 0, &#39;d_T&#39;: 0}.
                      {&#39;F2&#39;: 1, &#39;epsilon&#39;: 1, &#39;b_h&#39;: 0}.
    0 - Do not prescribe.
@@ -713,16 +793,16 @@ All steps are successfully completed!
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-{&#39;R&#39;: [-0.07438421424913766],
- &#39;F1&#39;: [0.01933022284607733],
- &#39;F2&#39;: [1.2506110930680376],
- &#39;epsilon&#39;: [0.005104133449149751],
+{&#39;R&#39;: [-0.07317026478704784],
+ &#39;F1&#39;: [0.017938268212681383],
+ &#39;F2&#39;: [1.2939079372638307],
+ &#39;epsilon&#39;: [0.008754185303737162],
  &#39;b_T&#39;: [],
  &#39;c_T&#39;: [],
  &#39;d_T&#39;: [],
  &#39;b_h&#39;: [],
- &#39;sigma_T&#39;: [0.22171941830446124],
- &#39;sigma_h&#39;: [1.6039500028588676],
+ &#39;sigma_T&#39;: [0.216845462713656],
+ &#39;sigma_h&#39;: [1.553752421021908],
  &#39;B&#39;: [],
  &#39;m_T&#39;: [],
  &#39;m_h&#39;: [],
@@ -757,7 +837,7 @@ All steps are successfully completed!
 Welcome to CRO Fitting! Your fitting setups:
 ---------------------------------------------------------------------------------
  - Data time step is not given, defaulting to: dt = 1.0 months.
- - Time series length: N = len(T)*dt = 552.0 months.
+ - Time series length: N = len(T)*dt = 756.0 months.
  - Prescribed terms: {&#39;R&#39;: 3, &#39;F1&#39;: 3, &#39;b_T&#39;: 0, &#39;c_T&#39;: 0, &#39;d_T&#39;: 0}.
                      {&#39;F2&#39;: 3, &#39;epsilon&#39;: 3, &#39;b_h&#39;: 0}.
    0 - Do not prescribe.
@@ -778,16 +858,16 @@ All steps are successfully completed!
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-{&#39;R&#39;: [-0.05593351982606123, 0.15313660361276363, -2.737173916414297],
- &#39;F1&#39;: [0.013718888027663807, 0.009846162690394499, -0.9042975099904762],
- &#39;F2&#39;: [1.1291210149159407, 0.8323142760801497, 1.061471770708532],
- &#39;epsilon&#39;: [0.023584768568800617, 0.03920999829130576, 0.2619998710028356],
+{&#39;R&#39;: [-0.05555720362184762, 0.15643266202992212, -2.724837018919836],
+ &#39;F1&#39;: [0.012192175238321966, 0.009135876491421108, -0.8561045072488227],
+ &#39;F2&#39;: [1.1422107431233532, 0.8755377037482505, 1.031621584884776],
+ &#39;epsilon&#39;: [0.02739028639693814, 0.020607408516221015, -0.07267958345686498],
  &#39;b_T&#39;: [],
  &#39;c_T&#39;: [],
  &#39;d_T&#39;: [],
  &#39;b_h&#39;: [],
- &#39;sigma_T&#39;: [0.2010388126198346],
- &#39;sigma_h&#39;: [1.5036959788770163],
+ &#39;sigma_T&#39;: [0.19760635529456444],
+ &#39;sigma_h&#39;: [1.4672243314685984],
  &#39;B&#39;: [],
  &#39;m_T&#39;: [],
  &#39;m_h&#39;: [],
@@ -822,7 +902,7 @@ All steps are successfully completed!
 Welcome to CRO Fitting! Your fitting setups:
 ---------------------------------------------------------------------------------
  - Data time step is not given, defaulting to: dt = 1.0 months.
- - Time series length: N = len(T)*dt = 552.0 months.
+ - Time series length: N = len(T)*dt = 756.0 months.
  - Prescribed terms: {&#39;R&#39;: 3, &#39;F1&#39;: 3, &#39;b_T&#39;: 3, &#39;c_T&#39;: 3, &#39;d_T&#39;: 3}.
                      {&#39;F2&#39;: 3, &#39;epsilon&#39;: 3, &#39;b_h&#39;: 3}.
    0 - Do not prescribe.
@@ -843,16 +923,16 @@ All steps are successfully completed!
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-{&#39;R&#39;: [-0.0382566265025694, 0.1527926109826267, -2.6649612100849693],
- &#39;F1&#39;: [0.014880562268928867, 0.009087329130650648, -1.0317328769740488],
- &#39;F2&#39;: [1.0869104940931082, 0.836138603016686, 0.9978616403641565],
- &#39;epsilon&#39;: [0.02686761171394466, 0.03811643856137869, 0.3515145112713374],
- &#39;b_T&#39;: [0.015496318456175271, 0.02172909602605961, 0.15331563818664037],
- &#39;c_T&#39;: [0.011128872374761921, 0.007610249369034017, -1.4816355854434864],
- &#39;d_T&#39;: [0.00836643586808151, 0.004079034223791854, -1.4009025018867796],
- &#39;b_h&#39;: [0.07951113081904435, 0.06548708161774483, 2.7744417360145204],
- &#39;sigma_T&#39;: [0.19385539074789102],
- &#39;sigma_h&#39;: [1.4970166742429747],
+{&#39;R&#39;: [-0.04982239524993874, 0.15941833773505582, -2.68406670815438],
+ &#39;F1&#39;: [0.012813901875247436, 0.008483053391420874, -0.8848228299417933],
+ &#39;F2&#39;: [1.109405382383028, 0.8871565988562565, 0.9790375541196866],
+ &#39;epsilon&#39;: [0.02982668378481908, 0.01894139468167164, 0.024198432485761742],
+ &#39;b_T&#39;: [0.016378631629563104, 0.03167545049759429, -0.214994699950533],
+ &#39;c_T&#39;: [0.002840643252726443, 0.003504250810615971, -1.8778412050005295],
+ &#39;d_T&#39;: [0.007069900423760925, 0.0031200796182681238, -1.4634303845234378],
+ &#39;b_h&#39;: [0.08014094748324661, 0.06393763800594855, 2.89072085365795],
+ &#39;sigma_T&#39;: [0.19328334336766495],
+ &#39;sigma_h&#39;: [1.4614523021246],
  &#39;B&#39;: [],
  &#39;m_T&#39;: [],
  &#39;m_h&#39;: [],
@@ -887,7 +967,7 @@ All steps are successfully completed!
 Welcome to CRO Fitting! Your fitting setups:
 ---------------------------------------------------------------------------------
  - Data time step is not given, defaulting to: dt = 1.0 months.
- - Time series length: N = len(T)*dt = 552.0 months.
+ - Time series length: N = len(T)*dt = 756.0 months.
  - Prescribed terms: {&#39;R&#39;: 3, &#39;F1&#39;: 3, &#39;b_T&#39;: 3, &#39;c_T&#39;: 3, &#39;d_T&#39;: 3}.
                      {&#39;F2&#39;: 3, &#39;epsilon&#39;: 3, &#39;b_h&#39;: 3}.
    0 - Do not prescribe.
@@ -911,19 +991,19 @@ All steps are successfully completed!
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-{&#39;R&#39;: [-0.0382566265025694, 0.1527926109826267, -2.6649612100849693],
- &#39;F1&#39;: [0.014880562268928867, 0.009087329130650648, -1.0317328769740488],
- &#39;F2&#39;: [1.0869104940931082, 0.836138603016686, 0.9978616403641565],
- &#39;epsilon&#39;: [0.02686761171394466, 0.03811643856137869, 0.3515145112713374],
- &#39;b_T&#39;: [0.015496318456175271, 0.02172909602605961, 0.15331563818664037],
- &#39;c_T&#39;: [0.011128872374761921, 0.007610249369034017, -1.4816355854434864],
- &#39;d_T&#39;: [0.00836643586808151, 0.004079034223791854, -1.4009025018867796],
- &#39;b_h&#39;: [0.07951113081904435, 0.06548708161774483, 2.7744417360145204],
- &#39;sigma_T&#39;: [0.19385539074789102],
- &#39;sigma_h&#39;: [1.4970166742429747],
+{&#39;R&#39;: [-0.04982239524993874, 0.15941833773505582, -2.68406670815438],
+ &#39;F1&#39;: [0.012813901875247436, 0.008483053391420874, -0.8848228299417933],
+ &#39;F2&#39;: [1.109405382383028, 0.8871565988562565, 0.9790375541196866],
+ &#39;epsilon&#39;: [0.02982668378481908, 0.01894139468167164, 0.024198432485761742],
+ &#39;b_T&#39;: [0.016378631629563104, 0.03167545049759429, -0.214994699950533],
+ &#39;c_T&#39;: [0.002840643252726443, 0.003504250810615971, -1.8778412050005295],
+ &#39;d_T&#39;: [0.007069900423760925, 0.0031200796182681238, -1.4634303845234378],
+ &#39;b_h&#39;: [0.08014094748324661, 0.06393763800594855, 2.89072085365795],
+ &#39;sigma_T&#39;: [0.19328334336766495],
+ &#39;sigma_h&#39;: [1.4614523021246],
  &#39;B&#39;: [],
- &#39;m_T&#39;: [1.7019681249729073],
- &#39;m_h&#39;: [1.6733758118727624],
+ &#39;m_T&#39;: [1.571262863353877],
+ &#39;m_h&#39;: [1.6319923920979642],
  &#39;n_T&#39;: [0],
  &#39;n_h&#39;: [0],
  &#39;n_g&#39;: [2]}
@@ -949,7 +1029,7 @@ All steps are successfully completed!
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.legend.Legend at 0x10977f560&gt;
+&lt;matplotlib.legend.Legend at 0x7f35bbae2d20&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -963,34 +1043,14 @@ All steps are successfully completed!
 </section>
 <section id="Simulating-ENSO-with-observed-RO-parameters">
 <h2>Simulating ENSO with observed RO parameters<a class="headerlink" href="#Simulating-ENSO-with-observed-RO-parameters" title="Link to this heading">#</a></h2>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">CRO_simulate</span><span class="p">(</span><span class="n">par</span><span class="p">,</span> <span class="n">IC</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">N</span><span class="o">=</span><span class="mi">12</span><span class="o">*</span><span class="mi">200</span><span class="p">,</span> <span class="n">NE</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        CRO simulation (solver) with defined parameters</span>
-
-<span class="sd">            default: 100 member with 200 yrs each member</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">T_out</span><span class="p">,</span> <span class="n">h_out</span><span class="p">,</span> <span class="n">noise_out</span> <span class="o">=</span> <span class="n">pyCRO</span><span class="o">.</span><span class="n">RO_solver</span><span class="p">(</span><span class="n">par</span><span class="p">,</span> <span class="n">IC</span><span class="o">=</span><span class="n">IC</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="n">N</span><span class="p">,</span> <span class="n">NE</span><span class="o">=</span><span class="n">NE</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
-    <span class="n">xtime</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;0001-01&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="n">N</span><span class="p">,</span> <span class="n">freq</span> <span class="o">=</span> <span class="s1">&#39;MS&#39;</span><span class="p">,</span> <span class="n">use_cftime</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">member</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">NE</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">T_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">T_out</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;member&#39;</span><span class="p">},</span> <span class="n">coords</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="n">xtime</span><span class="p">,</span> <span class="s1">&#39;member&#39;</span><span class="p">:</span> <span class="n">member</span><span class="p">})</span>
-    <span class="n">h_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">h_out</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;member&#39;</span><span class="p">},</span> <span class="n">coords</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="n">xtime</span><span class="p">,</span> <span class="s1">&#39;member&#39;</span><span class="p">:</span> <span class="n">member</span><span class="p">})</span>
-    <span class="n">RO_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">({</span><span class="s1">&#39;Nino34&#39;</span><span class="p">:</span> <span class="n">T_ds</span><span class="p">,</span> <span class="s1">&#39;WWV&#39;</span><span class="p">:</span> <span class="n">h_ds</span><span class="p">})</span>
-    <span class="k">return</span> <span class="n">RO_ds</span>
-<br/></pre></div>
-</div>
-</div>
 <section id="simulation-with-LWA-type">
 <h3>simulation with LWA type<a class="headerlink" href="#simulation-with-LWA-type" title="Link to this heading">#</a></h3>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">time</span>
-<span class="n">RO_obs_LWA</span> <span class="o">=</span> <span class="n">CRO_simulate</span><span class="p">(</span><span class="n">par_obs_LWA</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">RO_obs_LWA</span> <span class="o">=</span> <span class="n">pyCRO</span><span class="o">.</span><span class="n">CRO_simulate</span><span class="p">(</span><span class="n">par_obs_LWA</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1022,19 +1082,19 @@ Numerical integration starting:
 ---------------------------------------------------------------------------------
 All steps successfully completed!
 ---------------------------------------------------------------------------------
-CPU times: user 2.12 s, sys: 56.5 ms, total: 2.17 s
-Wall time: 2.18 s
+CPU times: user 4.34 s, sys: 54.9 ms, total: 4.39 s
+Wall time: 4.39 s
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">time</span>
 
-<span class="n">RO_obs_SLWA</span> <span class="o">=</span> <span class="n">CRO_simulate</span><span class="p">(</span><span class="n">par_obs_SLWA</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">RO_obs_SNWA</span> <span class="o">=</span> <span class="n">CRO_simulate</span><span class="p">(</span><span class="n">par_obs_SNWA</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">RO_obs_SNRA</span> <span class="o">=</span> <span class="n">CRO_simulate</span><span class="p">(</span><span class="n">par_obs_SNRA</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">RO_obs_SLWA</span> <span class="o">=</span> <span class="n">pyCRO</span><span class="o">.</span><span class="n">CRO_simulate</span><span class="p">(</span><span class="n">par_obs_SLWA</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">RO_obs_SNWA</span> <span class="o">=</span> <span class="n">pyCRO</span><span class="o">.</span><span class="n">CRO_simulate</span><span class="p">(</span><span class="n">par_obs_SNWA</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">RO_obs_SNRA</span> <span class="o">=</span> <span class="n">pyCRO</span><span class="o">.</span><span class="n">CRO_simulate</span><span class="p">(</span><span class="n">par_obs_SNRA</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <br/></pre></div>
 </div>
 </div>
@@ -1043,13 +1103,13 @@ Wall time: 2.18 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 6.62 s, sys: 69.3 ms, total: 6.69 s
-Wall time: 6.69 s
+CPU times: user 11.4 s, sys: 151 ms, total: 11.6 s
+Wall time: 11.6 s
 </pre></div></div>
 </div>
 <p>calculation of seasonal standard deivation</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">time</span>
@@ -1067,18 +1127,18 @@ Wall time: 6.69 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 55.1 ms, sys: 7.33 ms, total: 62.4 ms
-Wall time: 64.4 ms
+CPU times: user 93 ms, sys: 3.99 ms, total: 97 ms
+Wall time: 94.9 ms
 </pre></div></div>
 </div>
 </section>
 <section id="Effect-of-seasonal-cycle-of-RO-linear-parameters">
 <h3>Effect of seasonal cycle of RO linear parameters<a class="headerlink" href="#Effect-of-seasonal-cycle-of-RO-linear-parameters" title="Link to this heading">#</a></h3>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sel_var</span> <span class="o">=</span> <span class="s1">&#39;Nino34&#39;</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sel_var</span> <span class="o">=</span> <span class="s1">&#39;T&#39;</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 
@@ -1098,29 +1158,29 @@ Wall time: 64.4 ms
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.legend.Legend at 0x1546e30e0&gt;
+&lt;matplotlib.legend.Legend at 0x7f35b35441d0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/notebooks_fitting_obs_26_1.png" class="no-scaled-link" height="357" src="../_images/notebooks_fitting_obs_26_1.png" width="516" />
+<img alt="../_images/notebooks_fitting_obs_25_1.png" class="no-scaled-link" height="357" src="../_images/notebooks_fitting_obs_25_1.png" width="516" />
 </div>
 </div>
 </section>
 <section id="Effect-of-RO-nonlinear-parameters">
 <h3>Effect of RO nonlinear parameters<a class="headerlink" href="#Effect-of-RO-nonlinear-parameters" title="Link to this heading">#</a></h3>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sel_var</span> <span class="o">=</span> <span class="s1">&#39;Nino34&#39;</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sel_var</span> <span class="o">=</span> <span class="s1">&#39;T&#39;</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 
@@ -1140,29 +1200,29 @@ Wall time: 64.4 ms
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.legend.Legend at 0x157c72810&gt;
+&lt;matplotlib.legend.Legend at 0x7f35b2011280&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/notebooks_fitting_obs_28_1.png" class="no-scaled-link" height="357" src="../_images/notebooks_fitting_obs_28_1.png" width="516" />
+<img alt="../_images/notebooks_fitting_obs_27_1.png" class="no-scaled-link" height="357" src="../_images/notebooks_fitting_obs_27_1.png" width="516" />
 </div>
 </div>
 </section>
 <section id="Red-noise-vs-White-noise">
 <h3>Red noise vs White noise<a class="headerlink" href="#Red-noise-vs-White-noise" title="Link to this heading">#</a></h3>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sel_var</span> <span class="o">=</span> <span class="s1">&#39;Nino34&#39;</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sel_var</span> <span class="o">=</span> <span class="s1">&#39;T&#39;</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 
@@ -1182,19 +1242,19 @@ Wall time: 64.4 ms
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.legend.Legend at 0x157d08830&gt;
+&lt;matplotlib.legend.Legend at 0x7f35b35ff950&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/notebooks_fitting_obs_30_1.png" class="no-scaled-link" height="357" src="../_images/notebooks_fitting_obs_30_1.png" width="516" />
+<img alt="../_images/notebooks_fitting_obs_29_1.png" class="no-scaled-link" height="357" src="../_images/notebooks_fitting_obs_29_1.png" width="516" />
 </div>
 </div>
 </section>
@@ -1218,14 +1278,6 @@ Wall time: 64.4 ms
 <li><p>The default method depends on the specified RO type, as indicated in <code class="docutils literal notranslate"><span class="pre">&quot;table_default_fitting_method.txt&quot;</span></code>.</p></li>
 <li><p>Details of the fitting methods are documented in the manual and the accompanying paper.</p></li>
 </ul>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-</div>
 </section>
 </section>
 
@@ -1339,7 +1391,7 @@ Wall time: 64.4 ms
 
   <p class="copyright">
     
-      © Copyright 2025, CLIVAR CRO Team (lead by Soong-Ki Kim and Sen Zhao).
+      © Copyright 2025-2026, CLIVAR CRO Team (lead by Soong-Ki Kim and Sen Zhao).
       <br/>
     
   </p>

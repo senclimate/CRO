@@ -8,7 +8,7 @@ def _seasonal_cycle(param):
     
     Parameters
     ----------
-    param : array-like
+    param : ndarray
         - length 1: [R0]
         - length 3: [R0, R_A, R_pha]
         - length 5: [R0, R_A, R_pha, R_A2, R_pha2]
@@ -62,7 +62,7 @@ def plot_RO_par(par, ax=None, keys=None, ncol=4, label=None):
     par : dict
         Dictionary of fitted CRO parameters. Each key (e.g., 'R', 'F1', etc.)
         maps to an array of length 1, 3, or 5.
-    ax : matplotlib axis or array-like, optional
+    ax : matplotlib axis or ndarray, optional
         Axis or array of axes to plot on. If None, creates a new figure/axes.
     keys : list of str, optional
         Which parameters to plot. If None, uses a default set.

@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/theme_overrides.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=c3144ee3" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=926fce9f" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -56,7 +56,7 @@
     <link rel="icon" href="../_static/CRO_logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Solver" href="../ug-solver.html" />
+    <link rel="next" title="Precomputed Library" href="model_library.html" />
     <link rel="prev" title="RO Parameters" href="model_parameters.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -184,6 +184,13 @@ document.write(`
 </li>
 
 
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-quickstart.html">
+    Quickstart
+  </a>
+</li>
+
+
 <li class="nav-item current active">
   <a class="nav-link nav-internal" href="../ug-model.html">
     Model
@@ -211,21 +218,13 @@ document.write(`
   </a>
 </li>
 
-            <li class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
-                    More
-                </button>
-                <ul id="pst-nav-more-links" class="dropdown-menu">
-                    
-<li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../ug-api.html">
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-api.html">
     API Reference
   </a>
 </li>
 
-                </ul>
-            </li>
-            
   </ul>
 </nav></div>
       
@@ -237,15 +236,27 @@ document.write(`
         <div class="navbar-item navbar-persistent--container">
           
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
         </div>
       
       
@@ -272,18 +283,33 @@ document.write(`
   
     <div class="navbar-persistent--mobile">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+    <div class="navbar-persistent--mobile">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
     </div>
   
 
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
   
 </div>
 
@@ -313,6 +339,13 @@ document.write(`
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../ug-installation.html">
     Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-quickstart.html">
+    Quickstart
   </a>
 </li>
 
@@ -390,6 +423,7 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="model_equations.html">RO Master Equations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="model_parameters.html">RO Parameters</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">RO Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_library.html">Precomputed Library</a></li>
 </ul>
 </div>
 </nav></div>
@@ -449,8 +483,107 @@ document.write(`
                   
   <section id="RO-Types">
 <h1>RO Types<a class="headerlink" href="#RO-Types" title="Link to this heading">#</a></h1>
-<p>The different combinations of parameter choices above allow us to consider a total of 24 types of RO by varying the deterministic terms (linear or nonlinear), noise coefficient (additive or multiplicative), noise color (white or red), and inclusion of seasonality in parameters (fixed or seasonal).</p>
-<p>Placeholder a table of RO types (To be update)</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">CRO</span></code> framework supports a total of 24 model configurations, constructed by combining four key design choices:</p>
+<ul class="simple">
+<li><p>deterministic terms: linear or nonlinear dynamics</p></li>
+<li><p>noise coefficient: additive or multiplicative</p></li>
+<li><p>noise color: white or red noise</p></li>
+<li><p>seasonality: time-invariant or seasonally modulated parameters</p></li>
+</ul>
+<p>Together, these choices define a flexible hierarchy of RO model variants spanning increasing physical complexity. The default parameter estimation method depends on the selected RO formulation.</p>
+<section id="Default-fitting-methods-by-RO-type">
+<h2>Default fitting methods by RO type<a class="headerlink" href="#Default-fitting-methods-by-RO-type" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>RO Type</p></th>
+<th class="head"><p>Default Fitting Method</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Linear-White-Additive</p></td>
+<td><p>LR-F</p></td>
+</tr>
+<tr class="row-odd"><td><p>Linear-White-Multi</p></td>
+<td><p>MLE</p></td>
+</tr>
+<tr class="row-even"><td><p>Linear-White-Multi-H</p></td>
+<td><p>MLE</p></td>
+</tr>
+<tr class="row-odd"><td><p>Linear-Red-Additive</p></td>
+<td><p>LR-F</p></td>
+</tr>
+<tr class="row-even"><td><p>Linear-Red-Multi</p></td>
+<td><p>LR-F-MAC</p></td>
+</tr>
+<tr class="row-odd"><td><p>Linear-Red-Multi-H</p></td>
+<td><p>LR-F</p></td>
+</tr>
+<tr class="row-even"><td><p>Nonlinear-White-Additive</p></td>
+<td><p>LR-F</p></td>
+</tr>
+<tr class="row-odd"><td><p>Nonlinear-White-Multi</p></td>
+<td><p>LR-F-MAC</p></td>
+</tr>
+<tr class="row-even"><td><p>Nonlinear-White-Multi-H</p></td>
+<td><p>MLE</p></td>
+</tr>
+<tr class="row-odd"><td><p>Nonlinear-Red-Additive</p></td>
+<td><p>LR-F</p></td>
+</tr>
+<tr class="row-even"><td><p>Nonlinear-Red-Multi</p></td>
+<td><p>LR-F-MAC</p></td>
+</tr>
+<tr class="row-odd"><td><p>Nonlinear-Red-Multi-H</p></td>
+<td><p>LR-F</p></td>
+</tr>
+<tr class="row-even"><td><p>Seasonal-Linear-White-Additive</p></td>
+<td><p>LR-F</p></td>
+</tr>
+<tr class="row-odd"><td><p>Seasonal-Linear-White-Multi</p></td>
+<td><p>MLE</p></td>
+</tr>
+<tr class="row-even"><td><p>Seasonal-Linear-White-Multi-H</p></td>
+<td><p>MLE</p></td>
+</tr>
+<tr class="row-odd"><td><p>Seasonal-Linear-Red-Additive</p></td>
+<td><p>LR-F</p></td>
+</tr>
+<tr class="row-even"><td><p>Seasonal-Linear-Red-Multi</p></td>
+<td><p>LR-F-MAC</p></td>
+</tr>
+<tr class="row-odd"><td><p>Seasonal-Linear-Red-Multi-H</p></td>
+<td><p>LR-F</p></td>
+</tr>
+<tr class="row-even"><td><p>Seasonal-Nonlinear-White-Additive</p></td>
+<td><p>LR-F</p></td>
+</tr>
+<tr class="row-odd"><td><p>Seasonal-Nonlinear-White-Multi</p></td>
+<td><p>LR-F-MAC</p></td>
+</tr>
+<tr class="row-even"><td><p>Seasonal-Nonlinear-White-Multi-H</p></td>
+<td><p>MLE</p></td>
+</tr>
+<tr class="row-odd"><td><p>Seasonal-Nonlinear-Red-Additive</p></td>
+<td><p>LR-F</p></td>
+</tr>
+<tr class="row-even"><td><p>Seasonal-Nonlinear-Red-Multi</p></td>
+<td><p>LR-F-MAC</p></td>
+</tr>
+<tr class="row-odd"><td><p>Seasonal-Nonlinear-Red-Multi-H</p></td>
+<td><p>LR-F</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<div><p><strong>Note</strong></p>
+<ul class="simple">
+<li><p><strong>LR-F</strong>: Linear regression with forward differencing</p></li>
+<li><p><strong>MLE</strong>: Maximum likelihood estimation</p></li>
+<li><p><strong>LR-F-MAC</strong>: LR-F combined with Moment Analytical Constraint (MAC)</p></li>
+</ul>
+</div></blockquote>
+</section>
 </section>
 
 
@@ -473,11 +606,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="../ug-solver.html"
+       href="model_library.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Solver</p>
+        <p class="prev-next-title">Precomputed Library</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -487,6 +620,23 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Default-fitting-methods-by-RO-type">Default fitting methods by RO type</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
@@ -524,7 +674,7 @@ document.write(`
 
   <p class="copyright">
     
-      © Copyright 2025, CLIVAR CRO Team (lead by Soong-Ki Kim and Sen Zhao).
+      © Copyright 2025-2026, CLIVAR CRO Team (lead by Soong-Ki Kim and Sen Zhao).
       <br/>
     
   </p>

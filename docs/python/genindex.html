@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="_static/style.css?v=c3144ee3" />
+    <link rel="stylesheet" type="text/css" href="_static/style.css?v=926fce9f" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -182,6 +182,13 @@ document.write(`
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="ug-quickstart.html">
+    Quickstart
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="ug-model.html">
     Model
   </a>
@@ -208,21 +215,13 @@ document.write(`
   </a>
 </li>
 
-            <li class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
-                    More
-                </button>
-                <ul id="pst-nav-more-links" class="dropdown-menu">
-                    
-<li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="ug-api.html">
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="ug-api.html">
     API Reference
   </a>
 </li>
 
-                </ul>
-            </li>
-            
   </ul>
 </nav></div>
       
@@ -234,15 +233,27 @@ document.write(`
         <div class="navbar-item navbar-persistent--container">
           
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
         </div>
       
       
@@ -269,15 +280,26 @@ document.write(`
   
     <div class="navbar-persistent--mobile">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+    <div class="navbar-persistent--mobile">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
     </div>
   
 
@@ -312,6 +334,13 @@ document.write(`
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="ug-installation.html">
     Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="ug-quickstart.html">
+    Quickstart
   </a>
 </li>
 
@@ -407,20 +436,31 @@ document.write(`
 <h1 id="index">Index</h1>
 
 <div class="genindex-jumpbox">
- <a href="#F"><strong>F</strong></a>
+ <a href="#C"><strong>C</strong></a>
+ | <a href="#F"><strong>F</strong></a>
  | <a href="#M"><strong>M</strong></a>
  | <a href="#P"><strong>P</strong></a>
  | <a href="#R"><strong>R</strong></a>
  
 </div>
+<h2 id="C">C</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/solver.html#pyCRO.solver.CRO_simulate">CRO_simulate() (in module pyCRO.solver)</a>
+</li>
+  </ul></td>
+</tr></table>
+
 <h2 id="F">F</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="ug-api.html#pyCRO.fit_LR.fit_LR">fit_LR() (in module pyCRO.fit_LR)</a>
+      <li><a href="api/fitting.html#pyCRO.fit_LR.fit_LR">fit_LR() (in module pyCRO.fit_LR)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="ug-api.html#pyCRO.fit_MLE.fit_MLE">fit_MLE() (in module pyCRO.fit_MLE)</a>
+      <li><a href="api/fitting.html#pyCRO.fit_MAC.fit_MAC">fit_MAC() (in module pyCRO.fit_MAC)</a>
+</li>
+      <li><a href="api/fitting.html#pyCRO.fit_MLE.fit_MLE">fit_MLE() (in module pyCRO.fit_MLE)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -432,17 +472,21 @@ document.write(`
     module
 
       <ul>
-        <li><a href="ug-api.html#module-pyCRO.analytic">pyCRO.analytic</a>
+        <li><a href="api/more.html#module-pyCRO.analytic">pyCRO.analytic</a>
 </li>
-        <li><a href="ug-api.html#module-pyCRO.fit_LR">pyCRO.fit_LR</a>
+        <li><a href="api/more.html#module-pyCRO.data">pyCRO.data</a>
 </li>
-        <li><a href="ug-api.html#module-pyCRO.fit_MLE">pyCRO.fit_MLE</a>
+        <li><a href="api/fitting.html#module-pyCRO.fit_LR">pyCRO.fit_LR</a>
 </li>
-        <li><a href="ug-api.html#module-pyCRO.fitting">pyCRO.fitting</a>
+        <li><a href="api/fitting.html#module-pyCRO.fit_MAC">pyCRO.fit_MAC</a>
 </li>
-        <li><a href="ug-api.html#module-pyCRO.solver">pyCRO.solver</a>
+        <li><a href="api/fitting.html#module-pyCRO.fit_MLE">pyCRO.fit_MLE</a>
 </li>
-        <li><a href="ug-api.html#module-pyCRO.visual">pyCRO.visual</a>
+        <li><a href="api/fitting.html#module-pyCRO.fitting">pyCRO.fitting</a>
+</li>
+        <li><a href="api/solver.html#module-pyCRO.solver">pyCRO.solver</a>
+</li>
+        <li><a href="api/visual.html#module-pyCRO.visual">pyCRO.visual</a>
 </li>
       </ul></li>
   </ul></td>
@@ -451,52 +495,68 @@ document.write(`
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="ug-api.html#pyCRO.visual.plot_ens_RO_par">plot_ens_RO_par() (in module pyCRO.visual)</a>
+      <li><a href="api/more.html#pyCRO.data.par_load">par_load() (in module pyCRO.data)</a>
 </li>
-      <li><a href="ug-api.html#pyCRO.visual.plot_RO_par">plot_RO_par() (in module pyCRO.visual)</a>
+      <li><a href="api/visual.html#pyCRO.visual.plot_ens_RO_par">plot_ens_RO_par() (in module pyCRO.visual)</a>
+</li>
+      <li><a href="api/visual.html#pyCRO.visual.plot_RO_par">plot_RO_par() (in module pyCRO.visual)</a>
 </li>
       <li>
     pyCRO.analytic
 
       <ul>
-        <li><a href="ug-api.html#module-pyCRO.analytic">module</a>
+        <li><a href="api/more.html#module-pyCRO.analytic">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyCRO.data
+
+      <ul>
+        <li><a href="api/more.html#module-pyCRO.data">module</a>
 </li>
       </ul></li>
       <li>
     pyCRO.fit_LR
 
       <ul>
-        <li><a href="ug-api.html#module-pyCRO.fit_LR">module</a>
+        <li><a href="api/fitting.html#module-pyCRO.fit_LR">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    pyCRO.fit_MAC
+
+      <ul>
+        <li><a href="api/fitting.html#module-pyCRO.fit_MAC">module</a>
 </li>
       </ul></li>
       <li>
     pyCRO.fit_MLE
 
       <ul>
-        <li><a href="ug-api.html#module-pyCRO.fit_MLE">module</a>
+        <li><a href="api/fitting.html#module-pyCRO.fit_MLE">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     pyCRO.fitting
 
       <ul>
-        <li><a href="ug-api.html#module-pyCRO.fitting">module</a>
+        <li><a href="api/fitting.html#module-pyCRO.fitting">module</a>
 </li>
       </ul></li>
       <li>
     pyCRO.solver
 
       <ul>
-        <li><a href="ug-api.html#module-pyCRO.solver">module</a>
+        <li><a href="api/solver.html#module-pyCRO.solver">module</a>
 </li>
       </ul></li>
       <li>
     pyCRO.visual
 
       <ul>
-        <li><a href="ug-api.html#module-pyCRO.visual">module</a>
+        <li><a href="api/visual.html#module-pyCRO.visual">module</a>
 </li>
       </ul></li>
   </ul></td>
@@ -505,15 +565,19 @@ document.write(`
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="ug-api.html#pyCRO.analytic.RO_analytic_solver">RO_analytic_solver() (in module pyCRO.analytic)</a>
+      <li><a href="api/more.html#pyCRO.analytic.RO_analytic_solver">RO_analytic_solver() (in module pyCRO.analytic)</a>
 </li>
-      <li><a href="ug-api.html#pyCRO.analytic.RO_analytic_std">RO_analytic_std() (in module pyCRO.analytic)</a>
+      <li><a href="api/more.html#pyCRO.analytic.RO_analytic_std">RO_analytic_std() (in module pyCRO.analytic)</a>
+</li>
+      <li><a href="api/more.html#pyCRO.analytic.RO_BWJ">RO_BWJ() (in module pyCRO.analytic)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="ug-api.html#pyCRO.fitting.RO_fitting">RO_fitting() (in module pyCRO.fitting)</a>
+      <li><a href="api/fitting.html#pyCRO.fitting.RO_fitting">RO_fitting() (in module pyCRO.fitting)</a>
 </li>
-      <li><a href="ug-api.html#pyCRO.solver.RO_solver">RO_solver() (in module pyCRO.solver)</a>
+      <li><a href="api/solver.html#pyCRO.solver.RO_solver">RO_solver() (in module pyCRO.solver)</a>
+</li>
+      <li><a href="api/more.html#pyCRO.data.ROdata_load">ROdata_load() (in module pyCRO.data)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -572,7 +636,7 @@ document.write(`
 
   <p class="copyright">
     
-      © Copyright 2025, CLIVAR CRO Team (lead by Soong-Ki Kim and Sen Zhao).
+      © Copyright 2025-2026, CLIVAR CRO Team (lead by Soong-Ki Kim and Sen Zhao).
       <br/>
     
   </p>

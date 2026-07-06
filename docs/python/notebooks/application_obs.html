@@ -33,7 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/theme_overrides.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
-    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=c3144ee3" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=926fce9f" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -186,6 +186,13 @@ document.write(`
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-quickstart.html">
+    Quickstart
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../ug-model.html">
     Model
   </a>
@@ -212,21 +219,13 @@ document.write(`
   </a>
 </li>
 
-            <li class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
-                    More
-                </button>
-                <ul id="pst-nav-more-links" class="dropdown-menu">
-                    
-<li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../ug-api.html">
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-api.html">
     API Reference
   </a>
 </li>
 
-                </ul>
-            </li>
-            
   </ul>
 </nav></div>
       
@@ -238,15 +237,27 @@ document.write(`
         <div class="navbar-item navbar-persistent--container">
           
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
         </div>
       
       
@@ -273,15 +284,26 @@ document.write(`
   
     <div class="navbar-persistent--mobile">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+    <div class="navbar-persistent--mobile">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
     </div>
   
 
@@ -318,6 +340,13 @@ document.write(`
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../ug-installation.html">
     Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-quickstart.html">
+    Quickstart
   </a>
 </li>
 
@@ -463,6 +492,7 @@ document.write(`
 </ul>
 <p>Although the Recharge Oscillator is a highly idealized model, this example illustrates that it captures many of the essential features of observed ENSO.</p>
 <hr class="docutils" />
+<p>This notebook was contributed by <a class="reference external" href="https://senzhao.netlify.app/">Sen Zhao</a>.</p>
 <p>Contacts: Sen Zhao <a class="reference external" href="mailto:zhaos&#37;&#52;&#48;hawaii&#46;edu">zhaos<span>&#64;</span>hawaii<span>&#46;</span>edu</a>, Soong-Ki Kim <a class="reference external" href="mailto:soong-ki&#46;kim&#37;&#52;&#48;yale&#46;edu">soong-ki<span>&#46;</span>kim<span>&#64;</span>yale<span>&#46;</span>edu</a></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
@@ -505,8 +535,7 @@ document.write(`
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load observations</span>
-<span class="n">file_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="s2">&quot;../../../data&quot;</span><span class="p">,</span> <span class="s2">&quot;XRO_indices_oras5.nc&quot;</span><span class="p">)</span>
-<span class="n">obs_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+<span class="n">obs_ds</span> <span class="o">=</span> <span class="n">pyCRO</span><span class="o">.</span><span class="n">ROdata_load</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ORAS5&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s2">&quot;Hm&quot;</span><span class="p">:</span> <span class="s2">&quot;WWV&quot;</span><span class="p">})</span>
 <span class="n">T_oras5</span> <span class="o">=</span> <span class="n">obs_ds</span><span class="p">[</span><span class="s1">&#39;Nino34&#39;</span><span class="p">][:]</span>  <span class="c1"># Nino 3.4 since 1979-01-01</span>
 <span class="n">h_oras5</span> <span class="o">=</span> <span class="n">obs_ds</span><span class="p">[</span><span class="s1">&#39;WWV&#39;</span><span class="p">][:]</span>     <span class="c1"># WWV since 1979-01-01</span>
 <span class="n">time_oras5</span> <span class="o">=</span> <span class="n">obs_ds</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">][:]</span> <span class="c1"># Days since 1979-01-01</span>
@@ -570,7 +599,7 @@ Text(0.5, 1.0, &#39;WWV anomaly&#39;)
 Welcome to CRO Fitting! Your fitting setups:
 ---------------------------------------------------------------------------------
  - Data time step is not given, defaulting to: dt = 1.0 months.
- - Time series length: N = len(T)*dt = 552.0 months.
+ - Time series length: N = len(T)*dt = 756.0 months.
  - Prescribed terms: {&#39;R&#39;: 3, &#39;F1&#39;: 3, &#39;b_T&#39;: 3, &#39;c_T&#39;: 3, &#39;d_T&#39;: 3}.
                      {&#39;F2&#39;: 3, &#39;epsilon&#39;: 3, &#39;b_h&#39;: 3}.
    0 - Do not prescribe.
@@ -594,19 +623,19 @@ All steps are successfully completed!
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-{&#39;R&#39;: [-0.03825662645116978, 0.15279261078709938, -2.6649612108850858],
- &#39;F1&#39;: [0.014880562265427005, 0.009087329137276353, -1.0317328772337753],
- &#39;F2&#39;: [1.0869104940931087, 0.8361386030166872, 0.9978616403641568],
- &#39;epsilon&#39;: [0.02686761171394478, 0.03811643856137864, 0.3515145112713421],
- &#39;b_T&#39;: [0.015496318351061458, 0.021729096076101104, 0.15331564425037922],
- &#39;c_T&#39;: [0.011128872454926822, 0.0076102493370564525, -1.481635571893312],
- &#39;d_T&#39;: [0.008366435862437566, 0.00407903423721351, -1.4009025036331542],
- &#39;b_h&#39;: [0.07951113081904398, 0.06548708161774486, 2.7744417360145146],
- &#39;sigma_T&#39;: [0.19385539074958086],
- &#39;sigma_h&#39;: [1.4970166742429747],
+{&#39;R&#39;: [-0.04982239524993874, 0.15941833773505582, -2.68406670815438],
+ &#39;F1&#39;: [0.012813901875247436, 0.008483053391420874, -0.8848228299417933],
+ &#39;F2&#39;: [1.109405382383028, 0.8871565988562565, 0.9790375541196866],
+ &#39;epsilon&#39;: [0.02982668378481908, 0.01894139468167164, 0.024198432485761742],
+ &#39;b_T&#39;: [0.016378631629563104, 0.03167545049759429, -0.214994699950533],
+ &#39;c_T&#39;: [0.002840643252726443, 0.003504250810615971, -1.8778412050005295],
+ &#39;d_T&#39;: [0.007069900423760925, 0.0031200796182681238, -1.4634303845234378],
+ &#39;b_h&#39;: [0.08014094748324661, 0.06393763800594855, 2.89072085365795],
+ &#39;sigma_T&#39;: [0.19328334336766495],
+ &#39;sigma_h&#39;: [1.4614523021246],
  &#39;B&#39;: [],
- &#39;m_T&#39;: [1.7019681246492098],
- &#39;m_h&#39;: [1.673375811872759],
+ &#39;m_T&#39;: [1.571262863353877],
+ &#39;m_h&#39;: [1.6319923920979642],
  &#39;n_T&#39;: [0],
  &#39;n_h&#39;: [0],
  &#39;n_g&#39;: [2]}
@@ -621,23 +650,9 @@ All steps are successfully completed!
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">CRO_simulate</span><span class="p">(</span><span class="n">par</span><span class="p">,</span> <span class="n">IC</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">N</span><span class="o">=</span><span class="mi">12</span><span class="o">*</span><span class="mi">200</span><span class="p">,</span> <span class="n">NE</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        CRO simulation (solver) with defined parameters</span>
-
-<span class="sd">            default: 100 member with 200 yrs each member</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">T_out</span><span class="p">,</span> <span class="n">h_out</span><span class="p">,</span> <span class="n">noise_out</span> <span class="o">=</span> <span class="n">pyCRO</span><span class="o">.</span><span class="n">RO_solver</span><span class="p">(</span><span class="n">par</span><span class="p">,</span> <span class="n">IC</span><span class="o">=</span><span class="n">IC</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="n">N</span><span class="p">,</span> <span class="n">NE</span><span class="o">=</span><span class="n">NE</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
-
-    <span class="n">xtime</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;0001-01&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="n">N</span><span class="p">,</span> <span class="n">freq</span> <span class="o">=</span> <span class="s1">&#39;MS&#39;</span><span class="p">,</span> <span class="n">use_cftime</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">member</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">NE</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">T_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">T_out</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">,</span><span class="s2">&quot;member&quot;</span><span class="p">),</span> <span class="n">coords</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="n">xtime</span><span class="p">,</span> <span class="s1">&#39;member&#39;</span><span class="p">:</span> <span class="n">member</span><span class="p">})</span>
-    <span class="n">h_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">h_out</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">,</span><span class="s2">&quot;member&quot;</span><span class="p">),</span> <span class="n">coords</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="n">xtime</span><span class="p">,</span> <span class="s1">&#39;member&#39;</span><span class="p">:</span> <span class="n">member</span><span class="p">})</span>
-    <span class="n">RO_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">({</span><span class="s1">&#39;Nino34&#39;</span><span class="p">:</span> <span class="n">T_ds</span><span class="p">,</span> <span class="s1">&#39;WWV&#39;</span><span class="p">:</span> <span class="n">h_ds</span><span class="p">})</span>
-    <span class="k">return</span> <span class="n">RO_ds</span>
-
-
-<span class="n">RO_sim</span> <span class="o">=</span> <span class="n">CRO_simulate</span><span class="p">(</span><span class="n">par_obs_fit</span><span class="p">,</span> <span class="n">IC</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">N</span><span class="o">=</span><span class="mi">12</span><span class="o">*</span><span class="mi">200</span><span class="p">,</span> <span class="n">NE</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">RO_sim</span> <span class="o">=</span> <span class="n">pyCRO</span><span class="o">.</span><span class="n">CRO_simulate</span><span class="p">(</span><span class="n">par_obs_fit</span><span class="p">,</span> <span class="n">IC</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">N</span><span class="o">=</span><span class="mi">12</span><span class="o">*</span><span class="mi">200</span><span class="p">,</span> <span class="n">NE</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="c1"># rename back to same name with input ORAS5</span>
+<span class="n">RO_sim</span> <span class="o">=</span> <span class="n">RO_sim</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s1">&#39;T&#39;</span><span class="p">:</span> <span class="s1">&#39;Nino34&#39;</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">:</span> <span class="s1">&#39;WWV&#39;</span><span class="p">,</span> <span class="p">})</span>
 <span class="n">RO_sim</span>
 </pre></div>
 </div>
@@ -1093,61 +1108,56 @@ dl.xr-attrs {
 </style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt; Size: 4MB
 Dimensions:  (time: 2400, member: 100)
 Coordinates:
-  * time     (time) object 19kB 0001-01-01 00:00:00 ... 0200-12-01 00:00:00
+  * time     (time) datetime64[ns] 19kB 1900-01-01 1900-02-01 ... 2099-12-01
   * member   (member) int64 800B 0 1 2 3 4 5 6 7 8 ... 92 93 94 95 96 97 98 99
 Data variables:
-    Nino34   (time, member) float64 2MB 0.0 0.0 0.0 0.0 ... 0.1311 1.19 -0.5809
-    WWV      (time, member) float64 2MB 0.0 0.0 0.0 0.0 ... -8.547 -7.114 -8.508</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-bce13eaf-3cf0-4bec-88a6-c0d3ad70a414' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-bce13eaf-3cf0-4bec-88a6-c0d3ad70a414' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 2400</li><li><span class='xr-has-index'>member</span>: 100</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-3754d397-0533-4f19-a199-4ca29282814d' class='xr-section-summary-in' type='checkbox'  checked><label for='section-3754d397-0533-4f19-a199-4ca29282814d' class='xr-section-summary' >Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>object</div><div class='xr-var-preview xr-preview'>0001-01-01 00:00:00 ... 0200-12-...</div><input id='attrs-3af13942-c6a4-472d-8778-c7d036e824d2' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-3af13942-c6a4-472d-8778-c7d036e824d2' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a51f6e5a-77c6-4c5a-ac81-4f732c22f8a4' class='xr-var-data-in' type='checkbox'><label for='data-a51f6e5a-77c6-4c5a-ac81-4f732c22f8a4' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([cftime.DatetimeGregorian(1, 1, 1, 0, 0, 0, 0, has_year_zero=False),
-       cftime.DatetimeGregorian(1, 2, 1, 0, 0, 0, 0, has_year_zero=False),
-       cftime.DatetimeGregorian(1, 3, 1, 0, 0, 0, 0, has_year_zero=False), ...,
-       cftime.DatetimeGregorian(200, 10, 1, 0, 0, 0, 0, has_year_zero=False),
-       cftime.DatetimeGregorian(200, 11, 1, 0, 0, 0, 0, has_year_zero=False),
-       cftime.DatetimeGregorian(200, 12, 1, 0, 0, 0, 0, has_year_zero=False)],
-      shape=(2400,), dtype=object)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>member</span></div><div class='xr-var-dims'>(member)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0 1 2 3 4 5 6 ... 94 95 96 97 98 99</div><input id='attrs-cbe302ad-b1f7-4575-8489-522aa889ab13' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-cbe302ad-b1f7-4575-8489-522aa889ab13' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-df2f08be-688a-49ee-9f3d-c7752bc23e89' class='xr-var-data-in' type='checkbox'><label for='data-df2f08be-688a-49ee-9f3d-c7752bc23e89' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17,
+    Nino34   (time, member) float64 2MB 0.0 0.0 0.0 ... -0.1895 0.505 -0.3509
+    WWV      (time, member) float64 2MB 0.0 0.0 0.0 0.0 ... -4.748 7.835 2.663</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-9b9a15e8-0b41-421b-b742-823c08d488b8' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-9b9a15e8-0b41-421b-b742-823c08d488b8' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 2400</li><li><span class='xr-has-index'>member</span>: 100</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-52ce2cd4-d5b8-4305-ba08-d73ea8ed5030' class='xr-section-summary-in' type='checkbox'  checked><label for='section-52ce2cd4-d5b8-4305-ba08-d73ea8ed5030' class='xr-section-summary' >Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>1900-01-01 ... 2099-12-01</div><input id='attrs-e6fc9327-c66e-459d-9a9e-90f58aede85e' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-e6fc9327-c66e-459d-9a9e-90f58aede85e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-47fc5211-c71d-4e51-b501-e2c7f8309a7f' class='xr-var-data-in' type='checkbox'><label for='data-47fc5211-c71d-4e51-b501-e2c7f8309a7f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;1900-01-01T00:00:00.000000000&#x27;, &#x27;1900-02-01T00:00:00.000000000&#x27;,
+       &#x27;1900-03-01T00:00:00.000000000&#x27;, ..., &#x27;2099-10-01T00:00:00.000000000&#x27;,
+       &#x27;2099-11-01T00:00:00.000000000&#x27;, &#x27;2099-12-01T00:00:00.000000000&#x27;],
+      shape=(2400,), dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>member</span></div><div class='xr-var-dims'>(member)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0 1 2 3 4 5 6 ... 94 95 96 97 98 99</div><input id='attrs-5015e733-8740-4930-8669-5d1221590058' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-5015e733-8740-4930-8669-5d1221590058' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c3c74e11-cbf7-40e3-9399-2a10c1848131' class='xr-var-data-in' type='checkbox'><label for='data-c3c74e11-cbf7-40e3-9399-2a10c1848131' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17,
        18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35,
        36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53,
        54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71,
        72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89,
-       90, 91, 92, 93, 94, 95, 96, 97, 98, 99])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-44fbe3d9-70b1-4034-bf12-1fecae1f8bd9' class='xr-section-summary-in' type='checkbox'  checked><label for='section-44fbe3d9-70b1-4034-bf12-1fecae1f8bd9' class='xr-section-summary' >Data variables: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>Nino34</span></div><div class='xr-var-dims'>(time, member)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0 0.0 0.0 ... 0.1311 1.19 -0.5809</div><input id='attrs-e8202a7a-aecd-47df-8eb3-49832c86a2ec' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-e8202a7a-aecd-47df-8eb3-49832c86a2ec' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b2ea3118-7420-4610-aa3f-29d6eb695be1' class='xr-var-data-in' type='checkbox'><label for='data-b2ea3118-7420-4610-aa3f-29d6eb695be1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([[ 0.        ,  0.        ,  0.        , ...,  0.        ,
+       90, 91, 92, 93, 94, 95, 96, 97, 98, 99])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-01e6f4e3-7dcb-48cf-a162-b4b0695c8a54' class='xr-section-summary-in' type='checkbox'  checked><label for='section-01e6f4e3-7dcb-48cf-a162-b4b0695c8a54' class='xr-section-summary' >Data variables: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>Nino34</span></div><div class='xr-var-dims'>(time, member)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0 0.0 0.0 ... 0.505 -0.3509</div><input id='attrs-284cb4d4-0c5b-4e05-a27a-c9e9c00c5983' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-284cb4d4-0c5b-4e05-a27a-c9e9c00c5983' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e4746f6c-5ff7-449c-a387-554355901051' class='xr-var-data-in' type='checkbox'><label for='data-e4746f6c-5ff7-449c-a387-554355901051' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([[ 0.        ,  0.        ,  0.        , ...,  0.        ,
          0.        ,  0.        ],
-       [-0.02301787,  0.08111883, -0.01109708, ..., -0.13094943,
-         0.09365561,  0.00146583],
-       [-0.1954531 ,  0.24810674,  0.05284886, ..., -0.06345765,
-         0.24169738,  0.06622383],
+       [-0.25075302,  0.09763451, -0.03120117, ...,  0.06207305,
+        -0.14136598, -0.16992203],
+       [-0.42730907,  0.19012412, -0.03383319, ...,  0.10876245,
+        -0.33611781,  0.05748998],
        ...,
-       [-0.04724372, -0.94365102, -0.79528526, ...,  0.43656655,
-         1.18006247, -0.40904454],
-       [ 0.03349291, -0.86305038, -0.85557393, ...,  0.13869905,
-         1.29359967, -0.51749483],
-       [ 0.08587388, -0.6006784 , -0.80410037, ...,  0.13109579,
-         1.18994402, -0.58091072]], shape=(2400, 100))</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>WWV</span></div><div class='xr-var-dims'>(time, member)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0 0.0 0.0 ... -7.114 -8.508</div><input id='attrs-6aa6fe0f-7a94-4cd9-b40a-064c30f86982' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-6aa6fe0f-7a94-4cd9-b40a-064c30f86982' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b873d6f5-3005-421c-b823-a11616844b6a' class='xr-var-data-in' type='checkbox'><label for='data-b873d6f5-3005-421c-b823-a11616844b6a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([[  0.        ,   0.        ,   0.        , ...,   0.        ,
-          0.        ,   0.        ],
-       [  1.07877165,  -1.22773619,  -0.66571106, ...,  -0.03773128,
-          0.06769559,   0.75424286],
-       [  2.03607143,  -1.6234507 ,  -0.38459102, ...,  -0.43517592,
-          0.51236919,   1.21220483],
+       [ 1.23406525, -0.13178339, -0.15477489, ..., -0.18712245,
+         0.20406511, -0.04353489],
+       [ 1.32368546, -0.15220947, -0.37195667, ..., -0.12495571,
+         0.33548997, -0.20968213],
+       [ 1.26988804,  0.14487064, -0.55948595, ..., -0.18946103,
+         0.50503546, -0.35085849]], shape=(2400, 100))</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>WWV</span></div><div class='xr-var-dims'>(time, member)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0 0.0 0.0 ... -4.748 7.835 2.663</div><input id='attrs-fc4d635c-189a-496f-8f25-6f94b4939cb8' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-fc4d635c-189a-496f-8f25-6f94b4939cb8' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4987503f-bcdf-4365-b17d-1ae11495301b' class='xr-var-data-in' type='checkbox'><label for='data-4987503f-bcdf-4365-b17d-1ae11495301b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([[ 0.        ,  0.        ,  0.        , ...,  0.        ,
+         0.        ,  0.        ],
+       [ 0.76245585,  0.39142139,  1.21467218, ..., -1.09399644,
+         0.80977013,  0.15685828],
+       [ 2.16975329, -0.41840321,  2.02099719, ..., -2.1234417 ,
+         1.180721  ,  0.43924682],
        ...,
-       [-11.12372859,  -2.12132551, -18.67096069, ...,  -6.92925884,
-         -2.27370355,  -8.79829239],
-       [ -9.89979193,  -0.08211757, -16.09474369, ...,  -8.29577016,
-         -3.77256621,  -7.81512043],
-       [-10.4301616 ,   0.14925636, -14.20106415, ...,  -8.5469075 ,
-         -7.11433287,  -8.50834305]], shape=(2400, 100))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-1b54655d-dbbe-420e-a827-0a209727a23e' class='xr-section-summary-in' type='checkbox'  ><label for='section-1b54655d-dbbe-420e-a827-0a209727a23e' class='xr-section-summary' >Indexes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-b76af77c-d991-4de4-b324-1eadd886fc34' class='xr-index-data-in' type='checkbox'/><label for='index-b76af77c-d991-4de4-b324-1eadd886fc34' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(CFTimeIndex([0001-01-01 00:00:00, 0001-02-01 00:00:00, 0001-03-01 00:00:00,
-             0001-04-01 00:00:00, 0001-05-01 00:00:00, 0001-06-01 00:00:00,
-             0001-07-01 00:00:00, 0001-08-01 00:00:00, 0001-09-01 00:00:00,
-             0001-10-01 00:00:00,
-             ...
-             0200-03-01 00:00:00, 0200-04-01 00:00:00, 0200-05-01 00:00:00,
-             0200-06-01 00:00:00, 0200-07-01 00:00:00, 0200-08-01 00:00:00,
-             0200-09-01 00:00:00, 0200-10-01 00:00:00, 0200-11-01 00:00:00,
-             0200-12-01 00:00:00],
-            dtype=&#x27;object&#x27;, length=2400, calendar=&#x27;standard&#x27;, freq=&#x27;MS&#x27;))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>member</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-3e8995b8-6663-414a-8c1a-864973a20a41' class='xr-index-data-in' type='checkbox'/><label for='index-3e8995b8-6663-414a-8c1a-864973a20a41' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17,
+       [ 9.79904501,  5.72165453, -2.06895834, ..., -4.4536562 ,
+        10.82573103,  1.30250361],
+       [ 7.54654754,  6.84948436, -1.75886155, ..., -4.85157239,
+         8.97360194,  0.74597151],
+       [ 7.20142434,  7.27709931, -0.92763286, ..., -4.74838075,
+         7.83520891,  2.66346325]], shape=(2400, 100))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-c5143a06-5892-4f51-9c2d-9c93e79e6d6e' class='xr-section-summary-in' type='checkbox'  ><label for='section-c5143a06-5892-4f51-9c2d-9c93e79e6d6e' class='xr-section-summary' >Indexes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-85513937-89d0-44d2-8993-bef126d4db01' class='xr-index-data-in' type='checkbox'/><label for='index-85513937-89d0-44d2-8993-bef126d4db01' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(DatetimeIndex([&#x27;1900-01-01&#x27;, &#x27;1900-02-01&#x27;, &#x27;1900-03-01&#x27;, &#x27;1900-04-01&#x27;,
+               &#x27;1900-05-01&#x27;, &#x27;1900-06-01&#x27;, &#x27;1900-07-01&#x27;, &#x27;1900-08-01&#x27;,
+               &#x27;1900-09-01&#x27;, &#x27;1900-10-01&#x27;,
+               ...
+               &#x27;2099-03-01&#x27;, &#x27;2099-04-01&#x27;, &#x27;2099-05-01&#x27;, &#x27;2099-06-01&#x27;,
+               &#x27;2099-07-01&#x27;, &#x27;2099-08-01&#x27;, &#x27;2099-09-01&#x27;, &#x27;2099-10-01&#x27;,
+               &#x27;2099-11-01&#x27;, &#x27;2099-12-01&#x27;],
+              dtype=&#x27;datetime64[ns]&#x27;, name=&#x27;time&#x27;, length=2400, freq=&#x27;MS&#x27;))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>member</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-e01b20b3-685a-488a-9032-e28ccd3a7cd1' class='xr-index-data-in' type='checkbox'/><label for='index-e01b20b3-685a-488a-9032-e28ccd3a7cd1' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17,
        18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35,
        36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53,
        54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71,
        72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89,
        90, 91, 92, 93, 94, 95, 96, 97, 98, 99],
-      dtype=&#x27;int64&#x27;, name=&#x27;member&#x27;))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-5dc3dee5-80c9-4b1a-af4c-db3c4d398721' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-5dc3dee5-80c9-4b1a-af4c-db3c4d398721' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div>
+      dtype=&#x27;int64&#x27;, name=&#x27;member&#x27;))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-7a79989c-dcfd-407c-885d-a0501b56b314' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-7a79989c-dcfd-407c-885d-a0501b56b314' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div>
 </div>
 </section>
 <section id="Seasonal-varying-standard-deviation">
@@ -1228,7 +1238,7 @@ Text(0.5, 1.0, &#39;CRO simulates ENSO SST skewness&#39;)
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/notebooks_application_obs_11_1.png" class="no-scaled-link" height="392" src="../_images/notebooks_application_obs_11_1.png" width="547" />
+<img alt="../_images/notebooks_application_obs_11_1.png" class="no-scaled-link" height="392" src="../_images/notebooks_application_obs_11_1.png" width="556" />
 </div>
 </div>
 </section>
@@ -1288,7 +1298,7 @@ Text(0.5, 1.0, &#39;CRO simulates ENSO SST skewness&#39;)
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.legend.Legend at 0x7f9d99386090&gt;
+&lt;matplotlib.legend.Legend at 0x7f787d82a9c0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -1404,6 +1414,14 @@ efficient way to understand the mechanisms controlling ENSO dynamics and to test
 </pre></div>
 </div>
 </div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
 </section>
 </section>
 
@@ -1502,7 +1520,7 @@ efficient way to understand the mechanisms controlling ENSO dynamics and to test
 
   <p class="copyright">
     
-      © Copyright 2025, CLIVAR CRO Team (lead by Soong-Ki Kim and Sen Zhao).
+      © Copyright 2025-2026, CLIVAR CRO Team (lead by Soong-Ki Kim and Sen Zhao).
       <br/>
     
   </p>

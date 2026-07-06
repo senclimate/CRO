@@ -1,6 +1,8 @@
 import sys
 import numpy as np
 
+import xarray as xr
+
 #############################
 ### Euler-Maruyama scheme ###
 
@@ -174,7 +176,6 @@ def RO_integral(par, EF, NM, NT, dt, T0, h0, noise_all):
             h[i+1], _ = EM_scheme(h[i], 0.5*(f_h+f_h_s), 0.5*(g_h+g_h_s), dt, noise_out[i,1])
             xi_T[i+1], _ = EM_scheme(xi_T[i], 0.5*(f_xi_T+f_xi_T_s), 0.5*(g_xi_T+g_xi_T_s), dt, noise_out[i,2])
             xi_h[i+1], _ = EM_scheme(xi_h[i], 0.5*(f_xi_h+f_xi_h_s), 0.5*(g_xi_h+g_xi_h_s), dt, noise_out[i,3])
-
     return T, h, noise_out
 #####################################################
 #####################################################
@@ -245,11 +246,11 @@ def RO_solver(par, IC, N, NE, NM="EH", dt=0.1, saveat=1.0, savemethod="sampling"
             Multiplicative noise coefficient (used when ``n_g`` = 0 or 1).
         - ``'n_T'`` : int
             Noise type in SST equation (``1`` = white noise, ``0`` = red noise).
-        - ``'m_T'`` : array-like
+        - ``'m_T'`` : ndarray
             Memory kernel for red noise in SST equation (ignored if ``n_T=1``).
         - ``'n_h'`` : int
             Noise type in thermocline equation (``1`` = white noise, ``0`` = red noise).
-        - ``'m_h'`` : array-like
+        - ``'m_h'`` : ndarray
             Memory kernel for red noise in thermocline equation (ignored if ``n_h=1``).
         - ``'n_g'`` : int
             Noise structure in SST equation:
@@ -486,3 +487,135 @@ def RO_solver(par, IC, N, NE, NM="EH", dt=0.1, saveat=1.0, savemethod="sampling"
 
 #################
 #################
+
+
+def CRO_simulate(par, IC=[0, 0], N=12*200, NE=100, NM="EH", 
+                 dt=0.1, saveat=1.0, savemethod="sampling", 
+                 freq = "MS", use_cftime = False, start=None,
+                 EF=None, noise_custom=None, verbose=False):
+    """
+    Run CRO ensemble simulation (same as RO_solver) and return results as an xarray Dataset.
+
+    This function wraps the low-level RO solver (`RO_solver`) and converts the output
+    into a structured `xarray.Dataset`, including time and ensemble dimensions.
+
+    The CRO model simulates coupled SST (T) and thermocline (h) dynamics under
+    stochastic forcing and optional external forcing.
+
+    Parameters
+    ----------
+    par : dict
+        CRO parameter dictionary (output of `par_load`), containing:
+
+        - Linear and nonlinear deterministic parameters (R, F1, F2, epsilon, etc.)
+        - Noise parameters (sigma_T, sigma_h, B)
+        - Noise configuration (n_T, n_h, n_g, m_T, m_h)
+
+    IC : array-like of shape (2,), optional
+        Initial conditions:
+
+        - IC[0] : initial SST anomaly (T0)
+        - IC[1] : initial thermocline anomaly (h0)
+
+        Default is `[0, 0]`.
+
+    N : float, optional
+        Total simulation length in months.
+
+        Default = `12 * 200` (200 years).
+
+    NE : int, optional
+        Number of ensemble members.
+
+        Default = `100`.
+
+    NM : {"EM", "EH"}, optional
+        Numerical integration scheme:
+
+        - "EM" : Euler–Maruyama method
+        - "EH" : Euler–Heun method (default)
+
+    dt : float, optional
+        Time step (months). Default = 0.1.
+
+    saveat : float, optional
+        Output saving interval (months). Must be a multiple of `dt`.
+
+        Default = 1.0.
+
+    savemethod : {"sampling", "mean"}, optional
+        Method for temporal aggregation:
+
+        - "sampling" : subsample at `saveat` interval (default)
+        
+        - "mean" : block-average over each interval
+    
+    freq : str, optional
+        Time step frequency. Default is "MS" (month start).
+    
+    use_cftime : bool, optional
+        If True, return time axis as CFTime objects; otherwise use standard datetime objects.
+        Default is False.
+
+    EF : dict, optional
+        External forcing dictionary with keys:
+
+        - "E_T" : SST forcing time series
+        - "E_h" : thermocline forcing time series
+
+        If None, zero forcing is used.
+
+    noise_custom : None, int, or ndarray, optional
+        Custom stochastic forcing:
+
+        - None : internally generated Gaussian noise
+        - int : random seed for reproducibility
+        - ndarray : pre-generated noise with shape (NT-1, 4, NE)
+
+    verbose : bool, optional
+        If True, prints simulation configuration and progress.
+
+    Returns
+    -------
+    xarray.Dataset
+        CRO simulation output with:
+
+        - **Nino34** : SST anomaly (T) [time × member]
+        - **WWV** : thermocline depth anomaly (h) [time × member]
+
+        Coordinates:
+        - time : monthly time index starting from year 0001
+        - member : ensemble member index
+
+    Notes
+    -----
+    - Time axis is generated using `xarray.date_range(..., freq="MS")`
+      and uses CF-compatible time format.
+    - Ensemble dimension corresponds to independent stochastic realizations.
+    - Output is already aligned with climate-model-style diagnostics.
+
+    Examples
+    --------
+    >>> par = pyCRO.par_load("ORAS5", "Linear-White-Additive")
+    >>> ds = pyCRO.CRO_simulate(par, NE=10, N=120)
+    >>> ds
+
+    Access variables:
+
+    >>> ds["T"]
+    >>> ds["h"]
+    """
+    
+    T_out, h_out, noise_out = RO_solver(par, IC=IC, N=N, NE=NE, NM=NM, dt=dt, 
+                                        saveat=saveat, savemethod=savemethod,
+                                        EF = EF, noise_custom=noise_custom,
+                                        verbose=verbose)
+    member = np.arange(0, NE, step=1)
+    if start is None:
+        start = "0001-01" if use_cftime else "1900-01"
+    
+    xtime = xr.date_range(start, periods=N, freq = freq, use_cftime=use_cftime)
+    T_ds = xr.DataArray(T_out, dims=('time', 'member'), coords={'time': xtime, 'member': member})
+    h_ds = xr.DataArray(h_out, dims=('time', 'member'), coords={'time': xtime, 'member': member})
+    RO_ds = xr.Dataset({'T': T_ds, 'h': h_ds})
+    return RO_ds
