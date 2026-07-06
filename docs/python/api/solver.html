@@ -422,6 +422,7 @@
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Solver API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fitting.html">Fitting API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">Data API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="visual.html">Visualization API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="more.html">More API</a></li>
 </ul>
@@ -584,6 +585,106 @@ and uses CF-compatible time format.</p></li>
 <p>Access variables:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span><span class="p">[</span><span class="s2">&quot;T&quot;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span><span class="p">[</span><span class="s2">&quot;h&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyCRO.solver.RO_analytic_solver">
+<span class="sig-prename descclassname"><span class="pre">pyCRO.solver.</span></span><span class="sig-name descname"><span class="pre">RO_analytic_solver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">par</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">IC</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saveat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">savemethod</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sampling'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_custom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCRO.solver.RO_analytic_solver" title="Link to this definition">#</a></dt>
+<dd><p>Analytical solution of the Recharge Oscillator (RO) model with deterministic and stochastic forcing.
+ONLY for linear RO model with white noise (annual mean parameters only)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>par</strong> (<em>dict</em>) – <p>Dictionary of model parameters, each as at least a one-element array:</p>
+<ul>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">'R'</span></code><span class="classifier">float</span></dt><dd><p>Damping parameter.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">'F1'</span></code><span class="classifier">float</span></dt><dd><p>Feedback parameter relating thermocline depth to SST.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">'epsilon'</span></code><span class="classifier">float</span></dt><dd><p>Thermocline damping parameter.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">'F2'</span></code><span class="classifier">float</span></dt><dd><p>Feedback parameter relating SST to thermocline.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">'sigma_T'</span></code><span class="classifier">float</span></dt><dd><p>Noise amplitude for SST.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">'sigma_h'</span></code><span class="classifier">float</span></dt><dd><p>Noise amplitude for thermocline depth.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</p></li>
+<li><p><strong>IC</strong> (<em>tuple</em><em> of </em><em>float</em>) – <p>Initial condition <code class="docutils literal notranslate"><span class="pre">(To,</span> <span class="pre">ho)</span></code>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">To</span></code> : initial SST anomaly.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ho</span></code> : initial thermocline depth anomaly.</p></li>
+</ul>
+</p></li>
+<li><p><strong>N</strong> (<em>float</em>) – Total simulation length (time units).</p></li>
+<li><p><strong>NE</strong> (<em>int</em>) – Number of ensemble members.</p></li>
+<li><p><strong>dt</strong> (<em>float</em><em>, </em><em>optional</em>) – Numerical integration time step. Default is <code class="docutils literal notranslate"><span class="pre">0.1</span></code>.</p></li>
+<li><p><strong>saveat</strong> (<em>float</em><em>, </em><em>optional</em>) – Output saving interval. Must be divisible by <code class="docutils literal notranslate"><span class="pre">dt</span></code>. Default is <code class="docutils literal notranslate"><span class="pre">1.0</span></code>.</p></li>
+<li><p><strong>savemethod</strong> (<em>{'sampling'</em><em>, </em><em>'mean'}</em><em>, </em><em>optional</em>) – <p>Method for saving results:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">'sampling'</span></code> : take samples every <code class="docutils literal notranslate"><span class="pre">saveat</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'mean'</span></code> : average values over each <code class="docutils literal notranslate"><span class="pre">saveat</span></code> interval.</p></li>
+</ul>
+</p></li>
+<li><p><strong>noise_custom</strong> (<em>{None</em><em>, </em><em>int</em><em>, </em><em>ndarray}</em><em>, </em><em>optional</em>) – <p>Specification of stochastic noise:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">None</span></code> (default): new Gaussian noise is generated for each ensemble.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int</span></code> : seed for reproducible noise (same across ensembles).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ndarray</span></code> of shape <code class="docutils literal notranslate"><span class="pre">(NT-1,</span> <span class="pre">4)</span></code> : user-provided noise, repeated across ensembles.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ndarray</span></code> of shape <code class="docutils literal notranslate"><span class="pre">(NT-1,</span> <span class="pre">4,</span> <span class="pre">NE)</span></code> : user-provided noise for each ensemble.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>T_anal_out</strong> (<em>ndarray of shape (N_out, NE)</em>) – SST anomalies including deterministic and stochastic forcing,
+after applying the saving scheme. The final row is NaN-padded
+for dimensional consistency.</p></li>
+<li><p><strong>h_anal_out</strong> (<em>ndarray of shape (N_out, NE)</em>) – Thermocline anomalies including deterministic and stochastic forcing,
+after applying the saving scheme. The final row is NaN-padded.</p></li>
+<li><p><strong>noise_array</strong> (<em>ndarray of shape (NT-1, 4, NE)</em>) – Realizations of Gaussian noise used in the simulation.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The analytical solution consists of:</p>
+<ul class="simple">
+<li><p>Deterministic part: exponential-sinusoidal functions of time.</p></li>
+<li><p>Stochastic part: weighted sums (discrete convolutions) of noise
+with exponential and sinusoidal kernels.</p></li>
+</ul>
+<p>Ensemble members are evaluated simultaneously using vectorized
+NumPy broadcasting, avoiding explicit Python loops.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">par</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;R&#39;</span><span class="p">:[</span><span class="mf">0.5</span><span class="p">],</span> <span class="s1">&#39;F1&#39;</span><span class="p">:[</span><span class="mf">1.2</span><span class="p">],</span> <span class="s1">&#39;epsilon&#39;</span><span class="p">:[</span><span class="mf">0.3</span><span class="p">],</span> <span class="s1">&#39;F2&#39;</span><span class="p">:[</span><span class="mf">0.8</span><span class="p">],</span>
+<span class="gp">... </span>       <span class="s1">&#39;sigma_T&#39;</span><span class="p">:[</span><span class="mf">0.2</span><span class="p">],</span> <span class="s1">&#39;sigma_h&#39;</span><span class="p">:[</span><span class="mf">0.1</span><span class="p">]}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">IC</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">T</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">noise</span> <span class="o">=</span> <span class="n">RO_solver_analytic</span><span class="p">(</span><span class="n">par</span><span class="p">,</span> <span class="n">IC</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">NE</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">saveat</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">T</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">h</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">((51, 10), (51, 10))</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -779,6 +880,7 @@ an Ito-to-Stratonovich correction is applied automatically.</p></li>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.solver.CRO_simulate"><code class="docutils literal notranslate"><span class="pre">CRO_simulate()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.solver.RO_analytic_solver"><code class="docutils literal notranslate"><span class="pre">RO_analytic_solver()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.solver.RO_solver"><code class="docutils literal notranslate"><span class="pre">RO_solver()</span></code></a></li>
 </ul>
   </nav></div>

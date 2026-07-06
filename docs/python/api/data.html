@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Visualization API &#8212; Project name not set  documentation</title>
+    <title>Data API &#8212; Project name not set  documentation</title>
   
   
   
@@ -49,7 +49,7 @@
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'api/visual';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/data';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.19.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = '../switcher.json';
@@ -61,8 +61,8 @@
     <link rel="icon" href="../_static/CRO_logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="More API" href="more.html" />
-    <link rel="prev" title="Data API" href="data.html" />
+    <link rel="next" title="Visualization API" href="visual.html" />
+    <link rel="prev" title="Fitting API" href="fitting.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -422,8 +422,8 @@
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="solver.html">Solver API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fitting.html">Fitting API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="data.html">Data API</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Visualization API</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Data API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visual.html">Visualization API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="more.html">More API</a></li>
 </ul>
 </div>
@@ -468,7 +468,7 @@
     
     <li class="breadcrumb-item"><a href="../ug-api.html" class="nav-link">API Reference</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Visualization API</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Data API</span></li>
   </ul>
 </nav>
 </div>
@@ -485,47 +485,240 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="module-pyCRO.visual">
-<span id="visualization-api"></span><h1>Visualization API<a class="headerlink" href="#module-pyCRO.visual" title="Link to this heading">#</a></h1>
+  <section id="module-pyCRO.data">
+<span id="data-api"></span><h1>Data API<a class="headerlink" href="#module-pyCRO.data" title="Link to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="pyCRO.visual.plot_RO_par">
-<span class="sig-prename descclassname"><span class="pre">pyCRO.visual.</span></span><span class="sig-name descname"><span class="pre">plot_RO_par</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">par</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCRO.visual.plot_RO_par" title="Link to this definition">#</a></dt>
-<dd><p>Plot deterministic RO parameter seasonal cycles.</p>
+<dt class="sig sig-object py" id="pyCRO.data.ROdata_calc">
+<span class="sig-prename descclassname"><span class="pre">pyCRO.data.</span></span><span class="sig-name descname"><span class="pre">ROdata_calc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sst_a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataArray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h_a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataArray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sst_regions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h_regions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span></span></span><a class="headerlink" href="#pyCRO.data.ROdata_calc" title="Link to this definition">#</a></dt>
+<dd><p>Compute Recharge Oscillator SST and thermocline/heat-content indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>par</strong> (<em>dict</em>) – Dictionary of fitted CRO parameters. Each key (e.g., ‘R’, ‘F1’, etc.)
-maps to an array of length 1, 3, or 5.</p></li>
-<li><p><strong>ax</strong> (<em>matplotlib axis</em><em> or </em><em>ndarray</em><em>, </em><em>optional</em>) – Axis or array of axes to plot on. If None, creates a new figure/axes.</p></li>
-<li><p><strong>keys</strong> (<em>list</em><em> of </em><em>str</em><em>, </em><em>optional</em>) – Which parameters to plot. If None, uses a default set.</p></li>
-<li><p><strong>ncol</strong> (<em>int</em><em>, </em><em>default=4</em>) – Number of columns for subplot layout.</p></li>
+<li><p><strong>sst_a</strong> (<em>xr.DataArray</em>) – Sea surface temperature with dimensions <code class="docutils literal notranslate"><span class="pre">(time,</span> <span class="pre">lat,</span> <span class="pre">lon)</span></code>.</p></li>
+<li><p><strong>h_a</strong> (<em>xr.DataArray</em>) – Thermocline depth, heat content, SSH, or another recharge proxy with
+dimensions <code class="docutils literal notranslate"><span class="pre">(time,</span> <span class="pre">lat,</span> <span class="pre">lon)</span></code>.</p></li>
+<li><p><strong>sst_regions</strong> (<em>list</em><em> of </em><em>str</em><em> or </em><em>dict</em><em>, </em><em>optional</em>) – <p>SST regions to compute.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">None</span></code> (default): compute all predefined SST regions.</p></li>
+<li><p>list of str: predefined region names (e.g., <code class="docutils literal notranslate"><span class="pre">[&quot;Nino34&quot;,</span> <span class="pre">&quot;Nino3&quot;]</span></code>).</p></li>
+<li><p>dict: mapping from output names to custom region definitions.</p></li>
 </ul>
+</p></li>
+<li><p><strong>h_regions</strong> (<em>list</em><em> of </em><em>str</em><em> or </em><em>dict</em><em>, </em><em>optional</em>) – <p>Thermocline/heat-content regions to compute.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">None</span></code> (default): compute all predefined thermocline regions.</p></li>
+<li><p>list of str: predefined region names.</p></li>
+<li><p>dict: mapping from output names to custom region definitions.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dataset containing the requested SST and thermocline indices.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xr.Dataset</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Compute all predefined SST and thermocline indices:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">ROdata_calc</span><span class="p">(</span><span class="n">sst</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Compute only the Niño-3.4 SST index:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">ROdata_calc</span><span class="p">(</span><span class="n">sst</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">sst_regions</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Nino34&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Compute selected thermocline indices:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">ROdata_calc</span><span class="p">(</span><span class="n">sst</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">h_regions</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Hw&quot;</span><span class="p">,</span> <span class="s2">&quot;He&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Define a custom SST region:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">ROdata_calc</span><span class="p">(</span>
+    <span class="n">sst</span><span class="p">,</span>
+    <span class="n">h</span><span class="p">,</span>
+    <span class="n">sst_regions</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;CP&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;latS&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span>
+            <span class="s2">&quot;latN&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+            <span class="s2">&quot;lonW&quot;</span><span class="p">:</span> <span class="mi">170</span><span class="p">,</span>
+            <span class="s2">&quot;lonE&quot;</span><span class="p">:</span> <span class="mi">220</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyCRO.data.ROdata_load">
+<span class="sig-prename descclassname"><span class="pre">pyCRO.data.</span></span><span class="sig-name descname"><span class="pre">ROdata_load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCRO.data.ROdata_load" title="Link to this definition">#</a></dt>
+<dd><p>Load precomputed CRO dataset time series.</p>
+<p>This function provides access to built-in ENSO-related datasets used in
+the CRO (Coupled Recharge Oscillator) framework, including ORAS5 reanalysis,
+CMIP6 historical simulations, and CESM1 LENS.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – <p>Name of the dataset to load.</p>
+<p>Supported options:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>”CESM1_LENS”</dt><dd><p>CESM1 Large Ensemble Niño3.4 and thermocline time series.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>”CMIP6”</dt><dd><p>Preprocessed CMIP6 historical ENSO time series (multi-model mean or ensemble form).</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>”ORAS5”</dt><dd><p>ORAS5 ocean reanalysis ENSO time series.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Absolute file path to the requested NetCDF dataset.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If <cite>data_name</cite> is not one of the supported options.</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>Data are stored inside the <cite>pyCRO.data</cite> package directory.</p></li>
+<li><p>Files are in NetCDF format and should be opened using <cite>xarray.open_dataset</cite>.</p></li>
+<li><p>This function does not load the dataset into memory, only returns the path.</p></li>
+</ul>
+<p class="rubric">Examples</p>
+<p>Load CESM1 LENS data:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span> <span class="o">=</span> <span class="n">pyCRO</span><span class="o">.</span><span class="n">ROdata_load</span><span class="p">(</span><span class="s2">&quot;CESM1_LENS&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Load ORAS5 reanalysis:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span> <span class="o">=</span> <span class="n">pyCRO</span><span class="o">.</span><span class="n">ROdata_load</span><span class="p">(</span><span class="s2">&quot;ORAS5&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyCRO.data.area_average_regions">
+<span class="sig-prename descclassname"><span class="pre">pyCRO.data.</span></span><span class="sig-name descname"><span class="pre">area_average_regions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regions</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCRO.data.area_average_regions" title="Link to this definition">#</a></dt>
+<dd><p>Compute cosine-weighted regional averages.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>xr.DataArray</em>) – Input field.</p></li>
+<li><p><strong>regions</strong> (<em>list</em><em> of </em><em>str</em><em> or </em><em>dict</em>) – <p>Regions to average.</p>
+<ul>
+<li><dl class="simple">
+<dt>list of str</dt><dd><p>Predefined region names.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>dict</dt><dd><p>Mapping from output variable names to region definitions.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dataset containing one variable per region.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xr.Dataset</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="pyCRO.visual.plot_ens_RO_par">
-<span class="sig-prename descclassname"><span class="pre">pyCRO.visual.</span></span><span class="sig-name descname"><span class="pre">plot_ens_RO_par</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">par</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spread</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_members</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">member_alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.08</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCRO.visual.plot_ens_RO_par" title="Link to this definition">#</a></dt>
-<dd><p>Plot ensemble RO parameters.</p>
+<dt class="sig sig-object py" id="pyCRO.data.par_load">
+<span class="sig-prename descclassname"><span class="pre">pyCRO.data.</span></span><span class="sig-name descname"><span class="pre">par_load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ro_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCRO.data.par_load" title="Link to this definition">#</a></dt>
+<dd><p>Load precomputed CRO parameters from <cite>CRO_parlib_v0.0.mat</cite>.</p>
+<p>This function extracts parameter sets for different RO model configurations
+and datasets (e.g., CMIP6 historical runs, ORAS5, etc.).</p>
+<p>See details at <a class="reference external" href="../notebooks/model_library.html">precomputed Library</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>par</strong> (<em>dict</em><em> or </em><em>list</em><em> of </em><em>dict</em>) – <p>Either</p>
-<ul>
-<li><p>fitted parameter dictionary (single fit)</p></li>
+<li><p><strong>data_name</strong> (<em>str</em>) – <p>Dataset identifier. Supported options include:</p>
+<blockquote>
+<div><ul>
+<li><p>”ORAS5”</p></li>
+<li><p>”CMIP6-historical-1” … “CMIP6-historical-48”</p></li>
+<li><p>”CMIP6-historical-all” (returns all realizations)</p></li>
 </ul>
-<p>or</p>
-<ul>
-<li><p>list of fitted parameter dictionaries returned by multiple
-<code class="docutils literal notranslate"><span class="pre">RO_fitting</span></code> calls.</p></li>
-</ul>
+</div></blockquote>
 </p></li>
-<li><p><strong>spread</strong> (<em>{None</em><em>, </em><em>&quot;std&quot;</em><em>, </em><em>&quot;q10_q90&quot;</em><em>, </em><em>&quot;iqr&quot;}</em><em>, </em><em>optional</em>) – Ensemble spread to plot.</p></li>
-<li><p><strong>show_members</strong> (<em>bool</em>) – Plot all ensemble members.</p></li>
+<li><p><strong>ro_name</strong> (<em>str</em>) – <p>Recharge Oscillator model configuration. Supported options:</p>
+<blockquote>
+<div><ul>
+<li><p>”Linear-White-Additive”</p></li>
+<li><p>”Seasonal-Linear-White-Additive”</p></li>
+<li><p>”Nonlinear-White-Additive”</p></li>
+<li><p>”Seasonal-Nonlinear-White-Additive”</p></li>
+<li><p>”Linear-White-Multiplicative”</p></li>
+<li><p>”Seasonal-Linear-White-Multiplicative”</p></li>
+<li><p>”Nonlinear-White-Multiplicative”</p></li>
+<li><p>”Seasonal-Nonlinear-White-Multiplicative”</p></li>
+</ul>
+</div></blockquote>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl>
+<dt>If <cite>data_name != “CMIP6-historical-all”</cite>:</dt><dd><dl class="simple">
+<dt>Returns a dictionary containing CRO parameters:</dt><dd><ul class="simple">
+<li><p>R, F1, F2, epsilon, b_T, c_T, d_T, b_h</p></li>
+<li><p>sigma_T, sigma_h, B</p></li>
+<li><p>m_T, m_h, n_T, n_h, n_g</p></li>
 </ul>
 </dd>
 </dl>
+<p>Each value is a list (to support scalar or ensemble formats).</p>
+</dd>
+<dt>If <cite>data_name == “CMIP6-historical-all”</cite>:</dt><dd><p>Returns a list of parameter dictionaries, one per CMIP6 realization.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict or list of dict</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If <cite>ro_name</cite> is not recognized or <cite>data_name</cite> is invalid.</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>The parameter library is stored in MATLAB file format (<cite>.mat</cite>).</p></li>
+<li><dl class="simple">
+<dt>Internally, parameters are indexed as:</dt><dd><p>(RO configuration index, dataset index).</p>
+</dd>
+</dl>
+</li>
+<li><p>This function automatically handles scalar, vector, and empty entries
+from MATLAB cell arrays.</p></li>
+</ul>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">par</span> <span class="o">=</span> <span class="n">par_load</span><span class="p">(</span><span class="s2">&quot;ORAS5&quot;</span><span class="p">,</span> <span class="s2">&quot;Linear-White-Additive&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">par</span><span class="p">[</span><span class="s2">&quot;R&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pars</span> <span class="o">=</span> <span class="n">par_load</span><span class="p">(</span><span class="s2">&quot;CMIP6-historical-all&quot;</span><span class="p">,</span> <span class="s2">&quot;Nonlinear-White-Additive&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">pars</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </section>
@@ -541,20 +734,20 @@ maps to an array of length 1, 3, or 5.</p></li>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="data.html"
+       href="fitting.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Data API</p>
+        <p class="prev-next-title">Fitting API</p>
       </div>
     </a>
     <a class="right-next"
-       href="more.html"
+       href="visual.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">More API</p>
+        <p class="prev-next-title">Visualization API</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -577,8 +770,10 @@ maps to an array of length 1, 3, or 5.</p></li>
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.visual.plot_RO_par"><code class="docutils literal notranslate"><span class="pre">plot_RO_par()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.visual.plot_ens_RO_par"><code class="docutils literal notranslate"><span class="pre">plot_ens_RO_par()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.data.ROdata_calc"><code class="docutils literal notranslate"><span class="pre">ROdata_calc()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.data.ROdata_load"><code class="docutils literal notranslate"><span class="pre">ROdata_load()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.data.area_average_regions"><code class="docutils literal notranslate"><span class="pre">area_average_regions()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.data.par_load"><code class="docutils literal notranslate"><span class="pre">par_load()</span></code></a></li>
 </ul>
   </nav></div>
 

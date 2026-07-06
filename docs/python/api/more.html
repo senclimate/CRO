@@ -423,6 +423,7 @@
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="solver.html">Solver API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fitting.html">Fitting API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">Data API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="visual.html">Visualization API</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">More API</a></li>
 </ul>
@@ -485,147 +486,9 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="module-pyCRO.data">
-<span id="more-api"></span><h1>More API<a class="headerlink" href="#module-pyCRO.data" title="Link to this heading">#</a></h1>
+  <section id="module-pyCRO.analytic">
+<span id="more-api"></span><h1>More API<a class="headerlink" href="#module-pyCRO.analytic" title="Link to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="pyCRO.data.ROdata_load">
-<span class="sig-prename descclassname"><span class="pre">pyCRO.data.</span></span><span class="sig-name descname"><span class="pre">ROdata_load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCRO.data.ROdata_load" title="Link to this definition">#</a></dt>
-<dd><p>Load precomputed CRO dataset time series.</p>
-<p>This function provides access to built-in ENSO-related datasets used in
-the CRO (Coupled Recharge Oscillator) framework, including ORAS5 reanalysis,
-CMIP6 historical simulations, and CESM1 LENS.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – <p>Name of the dataset to load.</p>
-<p>Supported options:</p>
-<ul class="simple">
-<li><dl class="simple">
-<dt>”CESM1_LENS”</dt><dd><p>CESM1 Large Ensemble Niño3.4 and thermocline time series.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>”CMIP6”</dt><dd><p>Preprocessed CMIP6 historical ENSO time series (multi-model mean or ensemble form).</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>”ORAS5”</dt><dd><p>ORAS5 ocean reanalysis ENSO time series.</p>
-</dd>
-</dl>
-</li>
-</ul>
-</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Absolute file path to the requested NetCDF dataset.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>str</p>
-</dd>
-<dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>ValueError</strong> – If <cite>data_name</cite> is not one of the supported options.</p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<ul class="simple">
-<li><p>Data are stored inside the <cite>pyCRO.data</cite> package directory.</p></li>
-<li><p>Files are in NetCDF format and should be opened using <cite>xarray.open_dataset</cite>.</p></li>
-<li><p>This function does not load the dataset into memory, only returns the path.</p></li>
-</ul>
-<p class="rubric">Examples</p>
-<p>Load CESM1 LENS data:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span> <span class="o">=</span> <span class="n">pyCRO</span><span class="o">.</span><span class="n">ROdata_load</span><span class="p">(</span><span class="s2">&quot;CESM1_LENS&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Load ORAS5 reanalysis:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span> <span class="o">=</span> <span class="n">pyCRO</span><span class="o">.</span><span class="n">ROdata_load</span><span class="p">(</span><span class="s2">&quot;ORAS5&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="pyCRO.data.par_load">
-<span class="sig-prename descclassname"><span class="pre">pyCRO.data.</span></span><span class="sig-name descname"><span class="pre">par_load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ro_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCRO.data.par_load" title="Link to this definition">#</a></dt>
-<dd><p>Load precomputed CRO parameters from <cite>CRO_parlib_v0.0.mat</cite>.</p>
-<p>This function extracts parameter sets for different RO model configurations
-and datasets (e.g., CMIP6 historical runs, ORAS5, etc.).</p>
-<p>See details at <a class="reference external" href="../notebooks/model_library.html">precomputed Library</a></p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data_name</strong> (<em>str</em>) – <p>Dataset identifier. Supported options include:</p>
-<blockquote>
-<div><ul>
-<li><p>”ORAS5”</p></li>
-<li><p>”CMIP6-historical-1” … “CMIP6-historical-48”</p></li>
-<li><p>”CMIP6-historical-all” (returns all realizations)</p></li>
-</ul>
-</div></blockquote>
-</p></li>
-<li><p><strong>ro_name</strong> (<em>str</em>) – <p>Recharge Oscillator model configuration. Supported options:</p>
-<blockquote>
-<div><ul>
-<li><p>”Linear-White-Additive”</p></li>
-<li><p>”Seasonal-Linear-White-Additive”</p></li>
-<li><p>”Nonlinear-White-Additive”</p></li>
-<li><p>”Seasonal-Nonlinear-White-Additive”</p></li>
-<li><p>”Linear-White-Multiplicative”</p></li>
-<li><p>”Seasonal-Linear-White-Multiplicative”</p></li>
-<li><p>”Nonlinear-White-Multiplicative”</p></li>
-<li><p>”Seasonal-Nonlinear-White-Multiplicative”</p></li>
-</ul>
-</div></blockquote>
-</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><dl>
-<dt>If <cite>data_name != “CMIP6-historical-all”</cite>:</dt><dd><dl class="simple">
-<dt>Returns a dictionary containing CRO parameters:</dt><dd><ul class="simple">
-<li><p>R, F1, F2, epsilon, b_T, c_T, d_T, b_h</p></li>
-<li><p>sigma_T, sigma_h, B</p></li>
-<li><p>m_T, m_h, n_T, n_h, n_g</p></li>
-</ul>
-</dd>
-</dl>
-<p>Each value is a list (to support scalar or ensemble formats).</p>
-</dd>
-<dt>If <cite>data_name == “CMIP6-historical-all”</cite>:</dt><dd><p>Returns a list of parameter dictionaries, one per CMIP6 realization.</p>
-</dd>
-</dl>
-</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>dict or list of dict</p>
-</dd>
-<dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>ValueError</strong> – If <cite>ro_name</cite> is not recognized or <cite>data_name</cite> is invalid.</p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<ul class="simple">
-<li><p>The parameter library is stored in MATLAB file format (<cite>.mat</cite>).</p></li>
-<li><dl class="simple">
-<dt>Internally, parameters are indexed as:</dt><dd><p>(RO configuration index, dataset index).</p>
-</dd>
-</dl>
-</li>
-<li><p>This function automatically handles scalar, vector, and empty entries
-from MATLAB cell arrays.</p></li>
-</ul>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">par</span> <span class="o">=</span> <span class="n">par_load</span><span class="p">(</span><span class="s2">&quot;ORAS5&quot;</span><span class="p">,</span> <span class="s2">&quot;Linear-White-Additive&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">par</span><span class="p">[</span><span class="s2">&quot;R&quot;</span><span class="p">]</span>
-</pre></div>
-</div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pars</span> <span class="o">=</span> <span class="n">par_load</span><span class="p">(</span><span class="s2">&quot;CMIP6-historical-all&quot;</span><span class="p">,</span> <span class="s2">&quot;Nonlinear-White-Additive&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">pars</span><span class="p">)</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py function" id="module-pyCRO.analytic">
 <dt class="sig sig-object py" id="pyCRO.analytic.RO_BWJ">
 <span class="sig-prename descclassname"><span class="pre">pyCRO.analytic.</span></span><span class="sig-name descname"><span class="pre">RO_BWJ</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">par</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCRO.analytic.RO_BWJ" title="Link to this definition">#</a></dt>
 <dd><p>Compute the Recharge Oscillator Bjerknes–Wyrtki–Jin (BWJ) indices
@@ -694,106 +557,6 @@ oscillation frequency.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="pyCRO.analytic.RO_analytic_solver">
-<span class="sig-prename descclassname"><span class="pre">pyCRO.analytic.</span></span><span class="sig-name descname"><span class="pre">RO_analytic_solver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">par</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">IC</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saveat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">savemethod</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sampling'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_custom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCRO.analytic.RO_analytic_solver" title="Link to this definition">#</a></dt>
-<dd><p>Analytical solution of the Recharge Oscillator (RO) model with deterministic and stochastic forcing.
-ONLY for linear RO model with white noise (annual mean parameters only)</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>par</strong> (<em>dict</em>) – <p>Dictionary of model parameters, each as at least a one-element array:</p>
-<ul>
-<li><dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">'R'</span></code><span class="classifier">float</span></dt><dd><p>Damping parameter.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">'F1'</span></code><span class="classifier">float</span></dt><dd><p>Feedback parameter relating thermocline depth to SST.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">'epsilon'</span></code><span class="classifier">float</span></dt><dd><p>Thermocline damping parameter.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">'F2'</span></code><span class="classifier">float</span></dt><dd><p>Feedback parameter relating SST to thermocline.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">'sigma_T'</span></code><span class="classifier">float</span></dt><dd><p>Noise amplitude for SST.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">'sigma_h'</span></code><span class="classifier">float</span></dt><dd><p>Noise amplitude for thermocline depth.</p>
-</dd>
-</dl>
-</li>
-</ul>
-</p></li>
-<li><p><strong>IC</strong> (<em>tuple</em><em> of </em><em>float</em>) – <p>Initial condition <code class="docutils literal notranslate"><span class="pre">(To,</span> <span class="pre">ho)</span></code>:</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">To</span></code> : initial SST anomaly.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ho</span></code> : initial thermocline depth anomaly.</p></li>
-</ul>
-</p></li>
-<li><p><strong>N</strong> (<em>float</em>) – Total simulation length (time units).</p></li>
-<li><p><strong>NE</strong> (<em>int</em>) – Number of ensemble members.</p></li>
-<li><p><strong>dt</strong> (<em>float</em><em>, </em><em>optional</em>) – Numerical integration time step. Default is <code class="docutils literal notranslate"><span class="pre">0.1</span></code>.</p></li>
-<li><p><strong>saveat</strong> (<em>float</em><em>, </em><em>optional</em>) – Output saving interval. Must be divisible by <code class="docutils literal notranslate"><span class="pre">dt</span></code>. Default is <code class="docutils literal notranslate"><span class="pre">1.0</span></code>.</p></li>
-<li><p><strong>savemethod</strong> (<em>{'sampling'</em><em>, </em><em>'mean'}</em><em>, </em><em>optional</em>) – <p>Method for saving results:</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">'sampling'</span></code> : take samples every <code class="docutils literal notranslate"><span class="pre">saveat</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">'mean'</span></code> : average values over each <code class="docutils literal notranslate"><span class="pre">saveat</span></code> interval.</p></li>
-</ul>
-</p></li>
-<li><p><strong>noise_custom</strong> (<em>{None</em><em>, </em><em>int</em><em>, </em><em>ndarray}</em><em>, </em><em>optional</em>) – <p>Specification of stochastic noise:</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">None</span></code> (default): new Gaussian noise is generated for each ensemble.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">int</span></code> : seed for reproducible noise (same across ensembles).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ndarray</span></code> of shape <code class="docutils literal notranslate"><span class="pre">(NT-1,</span> <span class="pre">4)</span></code> : user-provided noise, repeated across ensembles.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ndarray</span></code> of shape <code class="docutils literal notranslate"><span class="pre">(NT-1,</span> <span class="pre">4,</span> <span class="pre">NE)</span></code> : user-provided noise for each ensemble.</p></li>
-</ul>
-</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><strong>T_anal_out</strong> (<em>ndarray of shape (N_out, NE)</em>) – SST anomalies including deterministic and stochastic forcing,
-after applying the saving scheme. The final row is NaN-padded
-for dimensional consistency.</p></li>
-<li><p><strong>h_anal_out</strong> (<em>ndarray of shape (N_out, NE)</em>) – Thermocline anomalies including deterministic and stochastic forcing,
-after applying the saving scheme. The final row is NaN-padded.</p></li>
-<li><p><strong>noise_array</strong> (<em>ndarray of shape (NT-1, 4, NE)</em>) – Realizations of Gaussian noise used in the simulation.</p></li>
-</ul>
-</p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>The analytical solution consists of:</p>
-<ul class="simple">
-<li><p>Deterministic part: exponential-sinusoidal functions of time.</p></li>
-<li><p>Stochastic part: weighted sums (discrete convolutions) of noise
-with exponential and sinusoidal kernels.</p></li>
-</ul>
-<p>Ensemble members are evaluated simultaneously using vectorized
-NumPy broadcasting, avoiding explicit Python loops.</p>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">par</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;R&#39;</span><span class="p">:[</span><span class="mf">0.5</span><span class="p">],</span> <span class="s1">&#39;F1&#39;</span><span class="p">:[</span><span class="mf">1.2</span><span class="p">],</span> <span class="s1">&#39;epsilon&#39;</span><span class="p">:[</span><span class="mf">0.3</span><span class="p">],</span> <span class="s1">&#39;F2&#39;</span><span class="p">:[</span><span class="mf">0.8</span><span class="p">],</span>
-<span class="gp">... </span>       <span class="s1">&#39;sigma_T&#39;</span><span class="p">:[</span><span class="mf">0.2</span><span class="p">],</span> <span class="s1">&#39;sigma_h&#39;</span><span class="p">:[</span><span class="mf">0.1</span><span class="p">]}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">IC</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">T</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">noise</span> <span class="o">=</span> <span class="n">RO_solver_analytic</span><span class="p">(</span><span class="n">par</span><span class="p">,</span> <span class="n">IC</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">NE</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">saveat</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">T</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">h</span><span class="o">.</span><span class="n">shape</span>
-<span class="go">((51, 10), (51, 10))</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py function">
 <dt class="sig sig-object py" id="pyCRO.analytic.RO_analytic_std">
 <span class="sig-prename descclassname"><span class="pre">pyCRO.analytic.</span></span><span class="sig-name descname"><span class="pre">RO_analytic_std</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">par</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCRO.analytic.RO_analytic_std" title="Link to this definition">#</a></dt>
 <dd><p>Compute analytical standard deviation of T and h for the Recharge Oscillator (RO) model.
@@ -853,10 +616,7 @@ ONLY for linear RO model with white noise (annual mean parameters only)</p>
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.data.ROdata_load"><code class="docutils literal notranslate"><span class="pre">ROdata_load()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.data.par_load"><code class="docutils literal notranslate"><span class="pre">par_load()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.analytic.RO_BWJ"><code class="docutils literal notranslate"><span class="pre">RO_BWJ()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.analytic.RO_analytic_solver"><code class="docutils literal notranslate"><span class="pre">RO_analytic_solver()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyCRO.analytic.RO_analytic_std"><code class="docutils literal notranslate"><span class="pre">RO_analytic_std()</span></code></a></li>
 </ul>
   </nav></div>

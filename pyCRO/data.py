@@ -322,3 +322,230 @@ def ROdata_load(name: str):
             f"Invalid dataname='{name}'. "
             f"Choose from {list(mapping.keys())}."
         )
+
+
+##################################################################################
+
+def ROdata_calc(
+    sst_a: xr.DataArray,
+    h_a: xr.DataArray,
+    sst_regions=None,
+    h_regions=None,
+) -> xr.Dataset:
+    """
+    Compute Recharge Oscillator SST and thermocline/heat-content indices.
+
+    Parameters
+    ----------
+    sst_a : xr.DataArray
+        Sea surface temperature with dimensions ``(time, lat, lon)``.
+
+    h_a : xr.DataArray
+        Thermocline depth, heat content, SSH, or another recharge proxy with
+        dimensions ``(time, lat, lon)``.
+
+    sst_regions : list of str or dict, optional
+        SST regions to compute.
+
+        * ``None`` (default): compute all predefined SST regions.
+        * list of str: predefined region names (e.g., ``["Nino34", "Nino3"]``).
+        * dict: mapping from output names to custom region definitions.
+
+    h_regions : list of str or dict, optional
+        Thermocline/heat-content regions to compute.
+
+        * ``None`` (default): compute all predefined thermocline regions.
+        * list of str: predefined region names.
+        * dict: mapping from output names to custom region definitions.
+
+    Returns
+    -------
+    xr.Dataset
+        Dataset containing the requested SST and thermocline indices.
+
+    Examples
+    --------
+    Compute all predefined SST and thermocline indices::
+
+        ds = ROdata_calc(sst, h)
+
+    Compute only the Niño-3.4 SST index::
+
+        ds = ROdata_calc(sst, h, sst_regions=["Nino34"])
+
+    Compute selected thermocline indices::
+
+        ds = ROdata_calc(sst, h, h_regions=["Hw", "He"])
+
+    Define a custom SST region::
+
+        ds = ROdata_calc(
+            sst,
+            h,
+            sst_regions={
+                "CP": {
+                    "latS": -5,
+                    "latN": 5,
+                    "lonW": 170,
+                    "lonE": 220,
+                }
+            },
+        )
+    """
+    DEFAULT_SST_REGIONS = ["Nino34", "Nino3", "Nino4", "Nino12", "ColdTongue",]
+    DEFAULT_H_REGIONS = ["Hm", "Hw", "He", "Hw1", "He1", "Hw2", "He2",]
+
+    if sst_regions is None:
+        sst_regions = DEFAULT_SST_REGIONS
+
+    if h_regions is None:
+        h_regions = DEFAULT_H_REGIONS
+
+    # -----------------------------------------------------
+    # Area-mean SST indices
+    # -----------------------------------------------------
+    ssti = area_average_regions(sst_a, sst_regions)
+
+    # -----------------------------------------------------
+    # Area-mean thermocline/heat content indices
+    # -----------------------------------------------------
+    hi = area_average_regions(h_a, h_regions)
+
+    # -----------------------------------------------------
+    # Align time
+    # -----------------------------------------------------
+    ssti, hi = xr.align(ssti, hi, join="inner")
+
+    return xr.merge([ssti, hi])
+
+
+##################################################################################
+
+def area_average(x, region=None):
+    '''
+        cos-weighted area averaged fields
+    '''
+    if region is None:
+        x_subset = x
+    else:
+        x_subset = _select_region(x, region)
+
+    w = np.cos(np.deg2rad(x_subset.lat))
+    w = w.broadcast_like(x_subset)
+    aave = (x_subset * w).mean(dim=('lat', 'lon'))/w.mean(dim=('lat', 'lon'))
+
+    if isinstance(region, dict):
+        region_name = region.get('name') or region.get('long_name')
+        if region_name:
+            aave.attrs['long_name'] = region_name
+    return aave
+
+
+def area_average_regions(x, regions):
+    """
+    Compute cosine-weighted regional averages.
+
+    Parameters
+    ----------
+    x : xr.DataArray
+        Input field.
+
+    regions : list of str or dict
+        Regions to average.
+
+        * list of str
+            Predefined region names.
+
+        * dict
+            Mapping from output variable names to region definitions.
+
+    Returns
+    -------
+    xr.Dataset
+        Dataset containing one variable per region.
+    """
+    if isinstance(regions, (list, tuple)):
+        region_dict = {name: name for name in regions}
+
+    elif isinstance(regions, dict):
+        region_dict = regions
+
+    else:
+        raise TypeError(
+            "regions must be a list of region names or a dictionary."
+        )
+
+    out = []
+
+    for name, region in region_dict.items():
+        da = area_average(x, region)
+        da.name = name
+        out.append(da.to_dataset())
+
+    return xr.merge(out)
+
+
+def _select_region(x, region):
+    '''
+        select region boxes
+    '''
+    if isinstance(region, str):
+        try:
+            Rbox = _box_region_array(region)
+            R_latS = Rbox['latS']
+            R_latN = Rbox['latN']
+            R_lonW = Rbox['lonW']
+            R_lonE = Rbox['lonE']
+            x_sel = x.sel(lat=slice(R_latS, R_latN), lon=slice(R_lonW, R_lonE))
+
+        except ValueError:
+            print("box_region_array error: undefined region string!")
+
+    elif isinstance(region, dict) and len(region)>=4:
+        R_latS = region['latS']
+        R_latN = region['latN']
+        R_lonW = region['lonW']
+        R_lonE = region['lonE']
+        x_sel = x.sel(lat=slice(R_latS, R_latN), lon=slice(R_lonW, R_lonE))
+
+    elif isinstance(region, (list, tuple))  and len(region)>=4:
+        R_lonW = region[0]
+        R_lonE = region[1]
+        R_latS = region[2]
+        R_latN = region[3]
+        x_sel = x.sel(lat=slice(R_latS, R_latN), lon=slice(R_lonW, R_lonE))
+    else:
+
+        raise ValueError('error in select_region: unsupported region type!')
+
+    return x_sel
+
+def _box_region_array(Rstr = 'Nino34'):
+    '''
+        return box region array of latS, latN, lonW, lonE
+    '''
+    region = {}
+
+    ## ENSO SST indices
+    region['Nino34']  = {'latS': -5, 'latN': 5, 'lonW': 190, 'lonE': 240, 'name': 'Niño3.4 (5°S-5°N, 170°W-120°W)'}
+    region['Nino3']   = {'latS': -5, 'latN': 5, 'lonW': 210, 'lonE': 270, 'name': 'Niño3 (5°S-5°N, 150°W-90°W)'}
+    region['Nino4']   = {'latS': -5, 'latN': 5, 'lonW': 160, 'lonE': 210, 'name': 'Niño4 (5°S-5°N, 160°E-150°W)'}
+    region['Nino12']  = {'latS': -10, 'latN': 0, 'lonW': 270, 'lonE': 280, 'name': 'Niño1+2 (10°S-0°, 90°W-80°W)'}
+    region['ColdTongue'] = {'latS': -6, 'latN': 6, 'lonW': 180, 'lonE': 270, 'name': 'ColdTongue (6°S-6°N, 180°-90°W)'}
+
+    ## ENSO thermcline/heat content indices regions
+    region['Hm'] = {'latS': -5, 'latN': 5, 'lonW': 120, 'lonE': 280, 'name': 'Hm (5°S-5°N, 120°E-80°W)'}
+
+    ## origioanl defintion: https://www.pmel.noaa.gov/elnino/upper-ocean-heat-content-and-enso
+    region['Hw'] = {'latS': -5, 'latN': 5, 'lonW': 120, 'lonE': 205, 'name': 'Hw (5°S-5°N, 120°E-155°W)'}
+    region['He'] = {'latS': -5, 'latN': 5, 'lonW': 205, 'lonE': 280, 'name': 'He (5°S-5°N, 155°W-80°W)'}
+
+    ## defintion in Zhao et al. (2021), west and east are the same size http://onlinelibrary.wiley.com/doi/abs/10.1029/2021GL094366
+    region['Hw1'] = {'latS': -5, 'latN': 5, 'lonW': 120, 'lonE': 200, 'name': 'Hw1 (5°S-5°N, 120°E-160°W)'}
+    region['He1'] = {'latS': -5, 'latN': 5, 'lonW': 200, 'lonE': 280, 'name': 'He1 (5°S-5°N, 160°W-80°W)'}
+
+    ## this defintion may works for SSH data, see details in Zhao et al. (2021)
+    region['Hw2'] = {'latS': -5, 'latN': 5, 'lonW': 120, 'lonE': 180, 'name': 'Hw2 (5°S-5°N, 120°E-180°)'}
+    region['He2'] = {'latS': -5, 'latN': 5, 'lonW': 180, 'lonE': 280, 'name': 'He2 (5°S-5°N, 180°-80°W)'}
+
+    return region.get(Rstr, "nothing")

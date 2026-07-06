@@ -13,5 +13,6 @@ parameter fitting utilities, visualization tools, and analytical methods.
 
    api/solver
    api/fitting
+   api/data
    api/visual
    api/more
