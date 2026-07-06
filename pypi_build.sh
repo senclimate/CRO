@@ -32,7 +32,7 @@ elif [ "$MODE" = "pypi" ]; then
     echo "📤 Uploading to PyPI..."
     twine upload dist/*
     echo "✅ Uploaded to PyPI. Install with:"
-    echo "    pip install XRO"
+    echo "    pip install pythonCRO"
 else
     echo "❌ Unknown mode: $MODE"
     echo "Usage: ./build.sh [local|test|pypi]"

@@ -70,7 +70,7 @@ def RO_BWJ(par):
     >>> RO_BWJ(par)
     (-0.04+0.11j)
     """
-    
+
     # Extract annual mean values
     R_value = par['R'][0]
     F1_value = par['F1'][0]
