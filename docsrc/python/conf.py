@@ -94,7 +94,7 @@ html_theme_options = {
     "github_url": "https://github.com/senclimate/CRO",
     "navbar_start": ["navbar-logo", "version-switcher", ],
     "navbar_end": ["navbar-icon-links"],
-    "navbar_persistent": ["search-button", "theme-switcher"],
+    # "navbar_persistent": ["search-button", "theme-switcher"],
     "header_links_before_dropdown": 7,  # show all 7 top-level menus, none collapsed into "More"
     "navbar_align": "content",  # better spacing than "left"
     "footer_start": ["sphinx-version"],
