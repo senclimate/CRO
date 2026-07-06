@@ -18,12 +18,3 @@
     overflow: hidden;       /* prevents text wrapping under the image */
     padding-top: 4px;       /* optional: spacing from top of card */
 }
-
-/* Hide sphinxcontrib-bibtex citation backreference links */
-.backrefs {
-  font-size: 0;
-}
-.backrefs:after {
-  font-size: initial;
-  content: "\00a0";
-}

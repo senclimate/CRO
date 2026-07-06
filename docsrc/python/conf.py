@@ -69,11 +69,11 @@ html_favicon = 'CRO_logo.png'
 bibtex_bibfiles = ["refs.bib"]
 
 # Optional: APA style
-bibtex_default_style = "apa"   # APA via citeproc-py
-bibtex_reference_style = "author_year"
-
-# bibtex_default_style = "alpha"
+# bibtex_default_style = "apa"   # APA via citeproc-py
 # bibtex_reference_style = "author_year"
+
+bibtex_default_style = "alpha"
+bibtex_reference_style = "author_year"
 
 # -- Options for HTML output -------------------------------------------------
 
@@ -94,9 +94,9 @@ html_theme_options = {
     "github_url": "https://github.com/senclimate/CRO",
     "navbar_start": ["navbar-logo", "version-switcher", ],
     "navbar_end": ["navbar-icon-links"],
-    # "navbar_persistent": ["search-button", "theme-switcher"],
+    "navbar_persistent": ["search-button", "theme-switcher"],
     "header_links_before_dropdown": 7,  # show all 7 top-level menus, none collapsed into "More"
-    "navbar_align": "content",  # better spacing than "left"
+    # "navbar_align": "content",  # better spacing than "left"
     "footer_start": ["sphinx-version"],
     "footer_end": ["theme-version"],
     "footer_center": ["copyright",], 

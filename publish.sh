@@ -18,7 +18,7 @@ if [ "$MODE" = "local" ]; then
     make serve
 else
     echo "📦 Committing and pushing documentation to GitHub..."
-    git add docs pyCRO mCRO
+    git add docs docsrc pyCRO mCRO
     git commit -m "$COMMIT_MSG"
     git push
 fi
