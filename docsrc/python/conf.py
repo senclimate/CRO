@@ -105,9 +105,21 @@ html_theme_options = {
         "version_match": "Python",       # or "Matlab" for the Matlab conf.py
     },
     "show_toc_level": 1,
+    "navigation_depth": 1,
+    "show_nav_level": 1,
+    "back_to_top_button": True,
 }
 
-html_show_sourcelink = False
+
+html_sidebars = {
+    "**": [
+        "sidebar-collapse",
+        "sidebar-nav-bs",
+    ],
+}
+
+
+html_show_sourcelink = True
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,

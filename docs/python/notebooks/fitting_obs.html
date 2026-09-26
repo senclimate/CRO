@@ -224,6 +224,13 @@
   </a>
 </li>
 
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-contributors.html">
+    Contributors
+  </a>
+</li>
+
   </ul>
 </nav></div>
       
@@ -381,6 +388,13 @@
   </a>
 </li>
 
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-contributors.html">
+    Contributors
+  </a>
+</li>
+
   </ul>
 </nav></div>
           
@@ -423,7 +437,7 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">CRO</span></code> fitting with observation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">CRO fitting with observation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fitting_cesm2.html"><code class="docutils literal notranslate"><span class="pre">CRO</span></code> fitting with CESM2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fitting_cmip6.html"><code class="docutils literal notranslate"><span class="pre">CRO</span></code> fitting with CMIP6 models</a></li>
 </ul>
@@ -469,7 +483,7 @@
     
     <li class="breadcrumb-item"><a href="../ug-fitting.html" class="nav-link">Fitting</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis"><code class="docutils literal notranslate"><span class="pre">CRO</span></code> fitting with observation</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">CRO fitting with observation</span></li>
   </ul>
 </nav>
 </div>
@@ -487,8 +501,8 @@
                 <article class="bd-article">
                   
   <section id="CRO-fitting-with-observation">
-<h1><code class="docutils literal notranslate"><span class="pre">CRO</span></code> fitting with observation<a class="headerlink" href="#CRO-fitting-with-observation" title="Link to this heading">#</a></h1>
-<p>This tutorial illustrates how to use the <code class="docutils literal notranslate"><span class="pre">pyCRO</span></code> to estimate RO parameters from the observations</p>
+<h1>CRO fitting with observation<a class="headerlink" href="#CRO-fitting-with-observation" title="Link to this heading">#</a></h1>
+<p>This tutorial illustrates how to use the pyCRO to estimate RO parameters from the observations</p>
 <p>This notebook was contributed by <a class="reference external" href="https://senzhao.netlify.app/">Sen Zhao</a>.</p>
 <section id="Load-library">
 <h2>Load library<a class="headerlink" href="#Load-library" title="Link to this heading">#</a></h2>
@@ -653,7 +667,7 @@ Examples
 </section>
 <section id="RO-Parameter-Fitting-Usage">
 <h2>RO Parameter Fitting Usage<a class="headerlink" href="#RO-Parameter-Fitting-Usage" title="Link to this heading">#</a></h2>
-<p><strong>``par_fitted = pyCRO.RO_fitting(T, h, par_option_T, par_option_h, par_option_noise)``</strong></p>
+<p><strong>par_fitted = pyCRO.RO_fitting(T, h, par_option_T, par_option_h, par_option_noise)</strong></p>
 <section id="Input-T-and-h-Time-Series">
 <h3>Input T and h Time Series<a class="headerlink" href="#Input-T-and-h-Time-Series" title="Link to this heading">#</a></h3>
 <ul class="simple">
@@ -669,37 +683,31 @@ Examples
 <li><p><strong>par_option_h</strong> specifies the linear and nonlinear terms in dh/dt</p></li>
 <li><p><strong>par_option_noise</strong> specifies the noise type</p></li>
 </ul>
-<p>The following example shows how to set the RO type as linear-white-additive RO for the fitting.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">par_option_T</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;R&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;F1&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;b_T&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;c_T&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;d_T&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
-<span class="n">par_option_h</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;F2&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;epsilon&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;b_h&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
-</pre></div>
-</div>
+<p>The following example shows how to set the RO type as linear-white-additive RO for the fitting. python par_option_T = {“R”: 1, “F1”: 1, “b_T”: 0, “c_T”: 0, “d_T”: 0} par_option_h = {“F2”: 1, “epsilon”: 1, “b_h”: 0}</p>
 <ul class="simple">
-<li><p>For keys in <code class="docutils literal notranslate"><span class="pre">par_option_T</span></code> and <code class="docutils literal notranslate"><span class="pre">par_option_h</span></code>, allowed values are:</p>
+<li><p>For keys in par_option_T and par_option_h, allowed values are:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> — Do not estimate</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">1</span></code> — Estimate only the annual mean</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">3</span></code> — Estimate annual mean + annual seasonality</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">5</span></code> — Estimate annual mean + annual + semi-annual seasonality</p></li>
+<li><p>0 — Do not estimate</p></li>
+<li><p>1 — Estimate only the annual mean</p></li>
+<li><p>3 — Estimate annual mean + annual seasonality</p></li>
+<li><p>5 — Estimate annual mean + annual + semi-annual seasonality</p></li>
 </ul>
 </li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">par_option_noise</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;T&quot;</span><span class="p">:</span> <span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="s2">&quot;h&quot;</span><span class="p">:</span> <span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="s2">&quot;T_type&quot;</span><span class="p">:</span> <span class="s2">&quot;multiplicative&quot;</span><span class="p">}</span>
-</pre></div>
-</div>
+<p>python par_option_noise = {“T”: “white”, “h”: “white”, “T_type”: “multiplicative”}</p>
 <ul class="simple">
 <li><p>Valid options for <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(h\)</span> are:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">&quot;white&quot;</span></code>: white noise forcing</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&quot;red&quot;</span></code>: red noise forcing</p></li>
+<li><p>“white”: white noise forcing</p></li>
+<li><p>“red”: red noise forcing</p></li>
 </ul>
 </li>
 <li><p>Both <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(h\)</span> <strong>must use the same noise type</strong>; otherwise, an error is raised.</p></li>
-<li><p>Valid options for <code class="docutils literal notranslate"><span class="pre">T-type</span></code> (noise structure for <span class="math notranslate nohighlight">\(T\)</span>) are:</p>
+<li><p>Valid options for T-type (noise structure for <span class="math notranslate nohighlight">\(T\)</span>) are:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">&quot;additive&quot;</span></code>: T noise forcing is additive</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&quot;multiplicative&quot;</span></code>: T noise forcing is multiplicative</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&quot;multiplicative-H&quot;</span></code>: T noise forcing is Heaviside based-multiplicative noise</p></li>
+<li><p>“additive”: T noise forcing is additive</p></li>
+<li><p>“multiplicative”: T noise forcing is multiplicative</p></li>
+<li><p>“multiplicative-H”: T noise forcing is Heaviside based-multiplicative noise</p></li>
 </ul>
 </li>
 </ul>
@@ -752,6 +760,8 @@ Examples
 </section>
 <section id="Type-Linear-White-Additive">
 <h3>Type Linear-White-Additive<a class="headerlink" href="#Type-Linear-White-Additive" title="Link to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(\displaystyle \frac{dT}{dt}=RT+F_1h+\sigma_Tw_T\)</span></p>
+<p><span class="math notranslate nohighlight">\(\displaystyle \frac{dh}{dt}=-F_2T-\varepsilon h+\sigma_hw_h\)</span></p>
 <p>Fit linear RO with white and additive noise</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
@@ -817,6 +827,8 @@ All steps are successfully completed!
 </section>
 <section id="Type-Seasonal-Linear-White-Additive">
 <h3>Type Seasonal-Linear-White-Additive<a class="headerlink" href="#Type-Seasonal-Linear-White-Additive" title="Link to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(\displaystyle \frac{dT}{dt}=(R+R_a\sin(\omega t+\phi_{R}))T+(F_1+F_{1a}\sin(\omega t+\phi_{F_1}))h+\sigma_Tw_T\)</span></p>
+<p><span class="math notranslate nohighlight">\(\displaystyle \frac{dh}{dt}=-(F_2+F_{2a}\sin(\omega t+\phi_{F_2}))T- (\varepsilon+\varepsilon_a\sin(\omega t+\phi_{\varepsilon})) h+\sigma_hw_h\)</span></p>
 <p>Fit seasonal linear RO with white and additive noise</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
@@ -882,7 +894,10 @@ All steps are successfully completed!
 </section>
 <section id="Type-Seasonal-Nonlinear-White-Additive">
 <h3>Type Seasonal-Nonlinear-White-Additive<a class="headerlink" href="#Type-Seasonal-Nonlinear-White-Additive" title="Link to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(\displaystyle \frac{dT}{dt}=R T+F_1h+b_TT^2-c_TT^3+d_TTh+\sigma_Tw_T\)</span></p>
+<p><span class="math notranslate nohighlight">\(\displaystyle \frac{dh}{dt}=-F_2T-\varepsilon h-b_hT^2+\sigma_hw_h\)</span></p>
 <p>Fit seasonal nonlinear RO with white and additive noise</p>
+<p>** here we include seasonal cycle in all determintic linear and nonlinear parameters</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
@@ -1264,23 +1279,31 @@ Wall time: 94.9 ms
 </section>
 <section id="Advanced-Usage-(optional)">
 <h2>Advanced Usage (optional)<a class="headerlink" href="#Advanced-Usage-(optional)" title="Link to this heading">#</a></h2>
-<p><strong>``par_fitted = pyCRO.RO_fitting(T, h, par_option_T, par_option_h, par_option_noise, method_fitting)``</strong></p>
-<p><strong>``par_fitted = pyCRO.RO_fitting(T, h, par_option_T, par_option_h, par_option_noise, method_fitting, dt)``</strong></p>
+<p><strong>par_fitted = pyCRO.RO_fitting(T, h, par_option_T, par_option_h, par_option_noise, method_fitting)</strong></p>
+<p><strong>par_fitted = pyCRO.RO_fitting(T, h, par_option_T, par_option_h, par_option_noise, method_fitting, dt)</strong></p>
 <ul class="simple">
 <li><p>The following block sets additional <strong>optional settings</strong> for the RO parameter fitting.</p></li>
 <li><p>The user may skip specifying these options. If the user doesn’t specify these options, the RO parameter fitting runs with the default settings.</p></li>
 <li><p>method_fitting specifies the parameter fitting method:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">&quot;LR-F&quot;</span></code>: Linear regression (tendency with forward differencing scheme)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&quot;LR-C&quot;</span></code>: Linear regression (tendency with central differencing scheme)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&quot;LR-F-MAC&quot;</span></code>: Linear regression (tendency with forward differencing scheme) with Moments Analytical Constraints estimation for T noise parameters</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&quot;MLE&quot;</span></code>: Maximum Likelihood Estimation (tendency with forward differencing scheme)</p></li>
+<li><p>“LR-F”: Linear regression (tendency with forward differencing scheme)</p></li>
+<li><p>“LR-C”: Linear regression (tendency with central differencing scheme)</p></li>
+<li><p>“LR-F-MAC”: Linear regression (tendency with forward differencing scheme) with Moments Analytical Constraints estimation for T noise parameters</p></li>
+<li><p>“MLE”: Maximum Likelihood Estimation (tendency with forward differencing scheme)</p></li>
 </ul>
 </li>
 <li><p>dt specifies time interval of input T and h time series in month (default = 1.0).</p></li>
-<li><p>The default method depends on the specified RO type, as indicated in <code class="docutils literal notranslate"><span class="pre">&quot;table_default_fitting_method.txt&quot;</span></code>.</p></li>
+<li><p>The default method depends on the specified RO type, as indicated in “table_default_fitting_method.txt”.</p></li>
 <li><p>Details of the fitting methods are documented in the manual and the accompanying paper.</p></li>
 </ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
 </section>
 </section>
 
@@ -1356,6 +1379,15 @@ Wall time: 94.9 ms
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Advanced-Usage-(optional)">Advanced Usage (optional)</a></li>
 </ul>
   </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/notebooks/fitting_obs.ipynb.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
 
 </div></div>
               

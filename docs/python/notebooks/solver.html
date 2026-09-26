@@ -224,6 +224,13 @@
   </a>
 </li>
 
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-contributors.html">
+    Contributors
+  </a>
+</li>
+
   </ul>
 </nav></div>
       
@@ -378,6 +385,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../ug-api.html">
     API Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-contributors.html">
+    Contributors
   </a>
 </li>
 
@@ -747,7 +761,7 @@ Examples
 <h2>RO Simulations<a class="headerlink" href="#RO-Simulations" title="Link to this heading">#</a></h2>
 <section id="Basic-Usage">
 <h3>Basic Usage<a class="headerlink" href="#Basic-Usage" title="Link to this heading">#</a></h3>
-<p><strong>``T_ro, h_ro, _ = pyCRO.RO_solver(par, IC, N, NE)``</strong></p>
+<p><strong>T_ro, h_ro, _ = pyCRO.RO_solver(par, IC, N, NE)</strong></p>
 <p>This is the simplest setup:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">T_ro</span></code> and <code class="docutils literal notranslate"><span class="pre">h_ro</span></code> are arrays with shape <code class="docutils literal notranslate"><span class="pre">(N,</span> <span class="pre">NE)</span></code>, where <code class="docutils literal notranslate"><span class="pre">N</span></code> is the number of time steps and <code class="docutils literal notranslate"><span class="pre">NE</span></code> is the number of ensemble members.</p></li>
@@ -813,12 +827,12 @@ All steps successfully completed!
 </section>
 <section id="Advanced-Usage">
 <h3>Advanced Usage<a class="headerlink" href="#Advanced-Usage" title="Link to this heading">#</a></h3>
-<p><strong>``T_ro, h_ro, _ = pyCRO.RO_solver(par, IC, N, NE, NM)``</strong></p>
-<p><strong>``T_ro, h_ro, _ = pyCRO.RO_solver(par, IC, N, NE, NM, dt)``</strong></p>
-<p><strong>``T_ro, h_ro, _ = pyCRO.RO_solver(par, IC, N, NE, NM, dt, saveat)``</strong></p>
-<p><strong>``T_ro, h_ro, _ = pyCRO.RO_solver(par, IC, N, NE, NM, dt, saveat, savemethod)``</strong></p>
-<p><strong>``T_ro, h_ro, _ = pyCRO.RO_solver(par, IC, N, NE, NM, dt, saveat, savemethod, EF)``</strong></p>
-<p><strong>``T_ro, h_ro, _ = pyCRO.RO_solver(par, IC, N, NE, NM, dt, saveat, savemethod, EF, noise_custom)``</strong></p>
+<p><strong>T_ro, h_ro, _ = pyCRO.RO_solver(par, IC, N, NE, NM)</strong></p>
+<p><strong>T_ro, h_ro, _ = pyCRO.RO_solver(par, IC, N, NE, NM, dt)</strong></p>
+<p><strong>T_ro, h_ro, _ = pyCRO.RO_solver(par, IC, N, NE, NM, dt, saveat)</strong></p>
+<p><strong>T_ro, h_ro, _ = pyCRO.RO_solver(par, IC, N, NE, NM, dt, saveat, savemethod)</strong></p>
+<p><strong>T_ro, h_ro, _ = pyCRO.RO_solver(par, IC, N, NE, NM, dt, saveat, savemethod, EF)</strong></p>
+<p><strong>T_ro, h_ro, _ = pyCRO.RO_solver(par, IC, N, NE, NM, dt, saveat, savemethod, EF, noise_custom)</strong></p>
 <ul class="simple">
 <li><p>Optional arguments allow for more control.</p></li>
 <li><p>Each additional argument gives more precise control over the solver.</p></li>
@@ -881,11 +895,11 @@ All steps successfully completed!
 <img alt="../_images/notebooks_solver_12_1.png" class="no-scaled-link" height="375" src="../_images/notebooks_solver_12_1.png" width="689" />
 </div>
 </div>
-<p><strong>``pyCRO.RO_analytic_std(par)``</strong></p>
+<p><strong>pyCRO.RO_analytic_std(par)</strong></p>
 <ul class="simple">
-<li><p>It returns the <strong>theoretical standard deviations</strong> for the <strong>linear-white-additive</strong> configuration based on the given parameter dictionary <code class="docutils literal notranslate"><span class="pre">par</span></code>.</p></li>
+<li><p>It returns the <strong>theoretical standard deviations</strong> for the <strong>linear-white-additive</strong> configuration based on the given parameter dictionary par.</p></li>
 </ul>
-<p><strong>``BWJ = pyCRO.RO_BWJ(par)``</strong></p>
+<p><strong>BWJ = pyCRO.RO_BWJ(par)`</strong></p>
 <ul class="simple">
 <li><p>It computes the expected <strong>BJ</strong> and <strong>Wyrtki</strong> indices, where the real part (<code class="docutils literal notranslate"><span class="pre">{BWJ.real}</span></code>) corresponds to the BJ index and the imaginary part (<code class="docutils literal notranslate"><span class="pre">{BWJ.imag}</span></code>) corresponds to the Wyrtki index, based on the given parameter dictionary <code class="docutils literal notranslate"><span class="pre">par</span></code>.</p></li>
 </ul>
@@ -1017,6 +1031,15 @@ Wyrtki index: 0.134 [1/month]. This corresponds to a periodicity of 46.963 month
 </li>
 </ul>
   </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/notebooks/solver.ipynb.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
 
 </div></div>
               

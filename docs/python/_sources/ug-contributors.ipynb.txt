@@ -1,0 +1,73 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "981289d4-c970-4959-ac0f-f954d3201563",
+   "metadata": {},
+   "source": [
+    "Contributors\n",
+    "============\n",
+    "CRO is a community-driven ENSO modeling project. We gratefully acknowledge the following contributors to the development, scientific advancement, and application of CRO.\n",
+    "\n",
+    "To be edited!\n",
+    "\n",
+    "- [Soong-Ki Kim](https://csd.postech.ac.kr/professor), Pohang University of Science and Technology (POSTECH), [soongkim@postech.ac.kr](mailto:soongkim@postech.ac.kr)\n",
+    "- [Sen Zhao](https://senzhao.netlify.app/), University of Hawaiʻi at Mānoa, [zhaos@hawaii.edu](mailto:zhaos@hawaii.edu)\n",
+    "- [Bastien Pagli](https://scholar.google.com/scholar?q=Bastien+Pagli), [bastien.pagli@gmail.com](mailto:bastien.pagli@gmail.com)\n",
+    "- [Takeshi Izumo](https://scholar.google.com/scholar?q=Takeshi+Izumo), Institut de Recherche pour le Développement (IRD), [takeshi.izumo@ird.fr](mailto:takeshi.izumo@ird.fr)\n",
+    "- [Cristian Martinez-Villalobos](https://www.uai.cl/), Universidad Adolfo Ibáñez (UAI), [cristian.martinez.v@uai.cl](mailto:cristian.martinez.v@uai.cl)\n",
+    "- [Nan Chen](https://people.math.wisc.edu/~nchen29/), University of Wisconsin–Madison, [chennan@math.wisc.edu](mailto:chennan@math.wisc.edu)\n",
+    "- [Soon-Il An](https://yatmos.github.io/eng/people/soonilan/), Yonsei University, [sian@yonsei.ac.kr](mailto:sian@yonsei.ac.kr)\n",
+    "- [Licheng Geng](https://scholar.google.com/scholar?q=Licheng+Geng+University+of+Hawaii), University of Hawaiʻi at Mānoa, [lgeng@hawaii.edu](mailto:lgeng@hawaii.edu)\n",
+    "- [Dietmar Dommenget](https://research.monash.edu/en/persons/dietmar-dommenget/), Monash University, [dietmar.dommenget@monash.edu](mailto:dietmar.dommenget@monash.edu)\n",
+    "- [Malte Stuecker](https://www.soest.hawaii.edu/iprc/users/stuecker/), University of Hawaiʻi at Mānoa, [stuecker@hawaii.edu](mailto:stuecker@hawaii.edu)\n",
+    "- [Xianghui Fang](https://scholar.google.com/scholar?q=Xianghui+Fang+Fudan), Fudan University, [fangxh@fudan.edu.cn](mailto:fangxh@fudan.edu.cn)\n",
+    "- [Fei-Fei Jin](https://iprc.soest.hawaii.edu/people/jff.php), University of Hawaiʻi at Mānoa, [jff@hawaii.edu](mailto:jff@hawaii.edu)\n",
+    "- [Chunzai Wang](https://scholar.google.com/scholar?q=Chunzai+Wang), South China Sea Institute of Oceanology, Chinese Academy of Sciences, [cwang@scsio.ac.cn](mailto:cwang@scsio.ac.cn)\n",
+    "- [Andrew Wittenberg](https://www.gfdl.noaa.gov/andrew-wittenberg-homepage/), NOAA Geophysical Fluid Dynamics Laboratory (GFDL), [andrew.wittenberg@noaa.gov](mailto:andrew.wittenberg@noaa.gov)\n",
+    "- [Samantha Stevenson](https://www.samanthalstevenson.com/), University of California, Santa Barbara, [stevenson@bren.ucsb.edu](mailto:stevenson@bren.ucsb.edu)\n",
+    "- [Alexey Fedorov](https://earth.yale.edu/profile/alexey-fedorov), Yale University, [alexey.fedorov@yale.edu](mailto:alexey.fedorov@yale.edu)\n",
+    "- [Jong-Seong Kug](https://scholar.google.com/scholar?q=Jong-Seong+Kug), Seoul National University, [jskug1@gmail.com](mailto:jskug1@gmail.com)\n",
+    "- [Priyamvada Priya](https://orcid.org/0000-0002-1285-8093), Monash University, [priyamvada.priya@monash.edu](mailto:priyamvada.priya@monash.edu)\n",
+    "- [Antonietta Capotondi](https://psl.noaa.gov/people/antonietta.capotondi/), NOAA Physical Sciences Laboratory, [antonietta.capotondi@noaa.gov](mailto:antonietta.capotondi@noaa.gov)\n",
+    "- [Jérôme Vialard](https://scholar.google.com/scholar?q=Jérôme+Vialard), Institut de Recherche pour le Développement (IRD), [jerome.vialard@ird.fr](mailto:jerome.vialard@ird.fr)\n",
+    "- [Charlotte Moser](https://scholar.google.com/scholar?q=Charlotte+Moser+ENSO), [char.rosemoser@gmail.com](mailto:char.rosemoser@gmail.com)\n",
+    "- [Sooman Han](https://earth.yale.edu/profile/sooman-han), Yale University, [sooman.han@yale.edu](mailto:sooman.han@yale.edu)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "722f1e56-5709-4fb4-af1e-12e26117bea6",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "jupytext": {
+   "cell_metadata_filter": "-all",
+   "main_language": "python",
+   "notebook_metadata_filter": "-all"
+  },
+  "kernelspec": {
+   "display_name": "Python 3 (geodata)",
+   "language": "python",
+   "name": "env_geodata"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.12.13"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

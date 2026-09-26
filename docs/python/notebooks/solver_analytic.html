@@ -224,6 +224,13 @@
   </a>
 </li>
 
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-contributors.html">
+    Contributors
+  </a>
+</li>
+
   </ul>
 </nav></div>
       
@@ -381,6 +388,13 @@
   </a>
 </li>
 
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-contributors.html">
+    Contributors
+  </a>
+</li>
+
   </ul>
 </nav></div>
           
@@ -487,7 +501,7 @@
                   
   <section id="Analytical-Solutions-of-the-RO-Model-and-Comparison-with-Numerical-Solutions">
 <h1>Analytical Solutions of the RO Model and Comparison with Numerical Solutions<a class="headerlink" href="#Analytical-Solutions-of-the-RO-Model-and-Comparison-with-Numerical-Solutions" title="Link to this heading">#</a></h1>
-<p>This tutorial illustrates how to use the <code class="docutils literal notranslate"><span class="pre">pyCRO</span></code> to solve the RO model analytically. In Appendix B of CRO paper (Kim et al. in preparation), we derive the analytical solutions for the <strong>linear RO model with additive white noise</strong>. The system is:</p>
+<p>This tutorial illustrates how to use the pyCRO to solve the RO model analytically. In Appendix B of CRO paper (Kim et al. in preparation), we derive the analytical solutions for the <strong>linear RO model with additive white noise</strong>. The system is:</p>
 <div class="math notranslate nohighlight">
 \[\frac{dT}{dt} = RT + F_1 h + \sigma_T w_T\]</div>
 <div class="math notranslate nohighlight">
@@ -569,7 +583,7 @@ F_2^2 \sigma_T^2
 <h2>Notes<a class="headerlink" href="#Notes" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>The system behaves as a damped stochastic oscillator when (4F_1F_2 &gt; (R+:nbsphinx-math:<cite>varepsilon</cite>)^2).</p></li>
-<li><p>These analytical expressions provide benchmarks for validating numerical RO solvers in <strong>``pyCRO``</strong>.</p></li>
+<li><p>These analytical expressions provide benchmarks for validating numerical RO solvers in <strong>pyCRO</strong>.</p></li>
 <li><p>In practice, stochastic integrals are evaluated using ensemble simulations.</p></li>
 </ul>
 <hr class="docutils" />
@@ -664,18 +678,18 @@ F_2^2 \sigma_T^2
 </section>
 <section id="Analytic-Solutions-of-Linear-RO-With-White-Noise">
 <h2>Analytic Solutions of Linear RO With White Noise<a class="headerlink" href="#Analytic-Solutions-of-Linear-RO-With-White-Noise" title="Link to this heading">#</a></h2>
-<p><strong>``T_ref, h_ref, _ = pyCRO.RO_analytic_solver(par, IC, N, NE)``</strong></p>
-<p><strong>``T_ref, h_ref, _ = pyCRO.RO_analytic_solver(par, IC, N, NE, dt)``</strong></p>
-<p><strong>``T_ref, h_ref, _ = pyCRO.RO_analytic_solver(par, IC, N, NE, dt, saveat)``</strong></p>
-<p><strong>``T_ref, h_ref, _ = pyCRO.RO_analytic_solver(par, IC, N, NE, dt, saveat, savemethod)``</strong></p>
-<p><strong>``T_ref, h_ref, _ = pyCRO.RO_analytic_solver(par, IC, N, NE, dt, saveat, savemethod, noise_custom)``</strong></p>
+<p><strong>T_ref, h_ref, _ = pyCRO.RO_analytic_solver(par, IC, N, NE)</strong></p>
+<p><strong>T_ref, h_ref, _ = pyCRO.RO_analytic_solver(par, IC, N, NE, dt)</strong></p>
+<p><strong>T_ref, h_ref, _ = pyCRO.RO_analytic_solver(par, IC, N, NE, dt, saveat)</strong></p>
+<p><strong>T_ref, h_ref, _ = pyCRO.RO_analytic_solver(par, IC, N, NE, dt, saveat, savemethod)</strong></p>
+<p><strong>T_ref, h_ref, _ = pyCRO.RO_analytic_solver(par, IC, N, NE, dt, saveat, savemethod, noise_custom)</strong></p>
 <ul>
 <li><div class="line-block">
 <div class="line">This function returns the <strong>analytical solution</strong> for the <strong>linear RO system</strong> without seasonality, using <strong>white additive noise</strong>.</div>
-<div class="line">Its usage is structurally similar to <code class="docutils literal notranslate"><span class="pre">RO_solver</span></code>, but with the following key differences: <code class="docutils literal notranslate"><span class="pre">'NM'</span></code> (numerical method) and <code class="docutils literal notranslate"><span class="pre">'EF'</span></code> (external forcing) are <strong>not required or accepted</strong>.</div>
+<div class="line">Its usage is structurally similar to RO_solver, but with the following key differences: ‘NM’ (numerical method) and ‘EF’ (external forcing) are <strong>not required or accepted</strong>.</div>
 </div>
 </li>
-<li><p>To ensure a <strong>meaningful comparison</strong> with the numerical solution from <code class="docutils literal notranslate"><span class="pre">RO_solver</span></code>, use the <strong>same seed</strong> for <code class="docutils literal notranslate"><span class="pre">noise_custom</span></code> in both simulations.</p></li>
+<li><p>To ensure a <strong>meaningful comparison</strong> with the numerical solution from RO_solver, use the <strong>same seed</strong> for noise_custom in both simulations.</p></li>
 </ul>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
@@ -747,13 +761,13 @@ All steps are successfully completed!
 </section>
 <section id="Analytic-Amplitude-of-RO">
 <h2>Analytic Amplitude of RO<a class="headerlink" href="#Analytic-Amplitude-of-RO" title="Link to this heading">#</a></h2>
-<p><strong>``pyCRO.RO_analytic_std(par)``</strong></p>
+<p><strong>pyCRO.RO_analytic_std(par)</strong></p>
 <ul class="simple">
-<li><p>It returns the <strong>theoretical standard deviations</strong> for the <strong>linear-white-additive</strong> configuration based on the given parameter dictionary <code class="docutils literal notranslate"><span class="pre">par</span></code>.</p></li>
+<li><p>It returns the <strong>theoretical standard deviations</strong> for the <strong>linear-white-additive</strong> configuration based on the given parameter dictionary par.</p></li>
 </ul>
-<p><strong>``BWJ = pyCRO.RO_BWJ(par)``</strong></p>
+<p><strong>BWJ = pyCRO.RO_BWJ(par)</strong></p>
 <ul class="simple">
-<li><p>It computes the expected <strong>BJ</strong> and <strong>Wyrtki</strong> indices, where the real part (<code class="docutils literal notranslate"><span class="pre">{BWJ.real}</span></code>) corresponds to the BJ index and the imaginary part (<code class="docutils literal notranslate"><span class="pre">{BWJ.imag}</span></code>) corresponds to the Wyrtki index, based on the given parameter dictionary <code class="docutils literal notranslate"><span class="pre">par</span></code>.</p></li>
+<li><p>It computes the expected <strong>BJ</strong> and <strong>Wyrtki</strong> indices, where the real part ({BWJ.real}) corresponds to the BJ index and the imaginary part ({BWJ.imag}) corresponds to the Wyrtki index, based on the given parameter dictionary par.</p></li>
 </ul>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
@@ -897,6 +911,15 @@ Wyrtki index: 0.134 [1/month]. This corresponds to a periodicity of 46.963 month
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Analytic-Amplitude-of-RO">Analytic Amplitude of RO</a></li>
 </ul>
   </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/notebooks/solver_analytic.ipynb.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
 
 </div></div>
               

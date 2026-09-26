@@ -7,7 +7,7 @@
    "source": [
     "# Analytical Solutions of the RO Model and Comparison with Numerical Solutions\n",
     "\n",
-    "This tutorial illustrates how to use the `pyCRO` to solve the RO model analytically. In Appendix B of CRO paper (Kim et al. in preparation), we derive the analytical solutions for the **linear RO model with additive white noise**. The system is:\n",
+    "This tutorial illustrates how to use the pyCRO to solve the RO model analytically. In Appendix B of CRO paper (Kim et al. in preparation), we derive the analytical solutions for the **linear RO model with additive white noise**. The system is:\n",
     "\n",
     "$$\n",
     "\\frac{dT}{dt} = RT + F_1 h + \\sigma_T w_T\n",
@@ -113,7 +113,7 @@
     "## Notes\n",
     "\n",
     "- The system behaves as a damped stochastic oscillator when \\(4F_1F_2 > (R+\\varepsilon)^2\\).\n",
-    "- These analytical expressions provide benchmarks for validating numerical RO solvers in **`pyCRO`**.\n",
+    "- These analytical expressions provide benchmarks for validating numerical RO solvers in **pyCRO**.\n",
     "- In practice, stochastic integrals are evaluated using ensemble simulations.\n",
     "\n",
     "---\n",
@@ -241,20 +241,20 @@
    "source": [
     "## Analytic Solutions of Linear RO With White Noise\t\t\t\t\t\t\t\t\t\t\t\t  \n",
     "\n",
-    "**`T_ref, h_ref, _ = pyCRO.RO_analytic_solver(par, IC, N, NE)`**\n",
+    "**T_ref, h_ref, _ = pyCRO.RO_analytic_solver(par, IC, N, NE)**\n",
     "\n",
-    "**`T_ref, h_ref, _ = pyCRO.RO_analytic_solver(par, IC, N, NE, dt)`**               \n",
+    "**T_ref, h_ref, _ = pyCRO.RO_analytic_solver(par, IC, N, NE, dt)**               \n",
     "\n",
-    "**`T_ref, h_ref, _ = pyCRO.RO_analytic_solver(par, IC, N, NE, dt, saveat)`**       \n",
+    "**T_ref, h_ref, _ = pyCRO.RO_analytic_solver(par, IC, N, NE, dt, saveat)**       \n",
     "\n",
-    "**`T_ref, h_ref, _ = pyCRO.RO_analytic_solver(par, IC, N, NE, dt, saveat, savemethod)`**                       \n",
+    "**T_ref, h_ref, _ = pyCRO.RO_analytic_solver(par, IC, N, NE, dt, saveat, savemethod)**                       \n",
     "\n",
-    "**`T_ref, h_ref, _ = pyCRO.RO_analytic_solver(par, IC, N, NE, dt, saveat, savemethod, noise_custom)`**  \n",
+    "**T_ref, h_ref, _ = pyCRO.RO_analytic_solver(par, IC, N, NE, dt, saveat, savemethod, noise_custom)**  \n",
     "\n",
     "- This function returns the **analytical solution** for the **linear RO system** without seasonality, using **white additive noise**.  \n",
-    "  Its usage is structurally similar to `RO_solver`, but with the following key differences: `'NM'` (numerical method) and `'EF'` (external forcing) are **not required or accepted**.\n",
+    "  Its usage is structurally similar to RO_solver, but with the following key differences: 'NM' (numerical method) and 'EF' (external forcing) are **not required or accepted**.\n",
     "\n",
-    "- To ensure a **meaningful comparison** with the numerical solution from `RO_solver`, use the **same seed** for `noise_custom` in both simulations."
+    "- To ensure a **meaningful comparison** with the numerical solution from RO_solver, use the **same seed** for noise_custom in both simulations."
    ]
   },
   {
@@ -360,13 +360,13 @@
     "cell_marker": "\"\"\""
    },
    "source": [
-    "**`pyCRO.RO_analytic_std(par)`**\n",
+    "**pyCRO.RO_analytic_std(par)**\n",
     "\n",
-    "- It returns the **theoretical standard deviations** for the **linear-white-additive** configuration based on the given parameter dictionary `par`.\n",
+    "- It returns the **theoretical standard deviations** for the **linear-white-additive** configuration based on the given parameter dictionary par.\n",
     "\n",
-    "**`BWJ = pyCRO.RO_BWJ(par)`**\n",
+    "**BWJ = pyCRO.RO_BWJ(par)**\n",
     "\n",
-    "- It computes the expected **BJ** and **Wyrtki** indices, where the real part (`{BWJ.real}`) corresponds to the BJ index and the imaginary part (`{BWJ.imag}`) corresponds to the Wyrtki index, based on the given parameter dictionary `par`.\n",
+    "- It computes the expected **BJ** and **Wyrtki** indices, where the real part ({BWJ.real}) corresponds to the BJ index and the imaginary part ({BWJ.imag}) corresponds to the Wyrtki index, based on the given parameter dictionary par.\n",
     "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t  "
    ]
   },
