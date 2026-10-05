@@ -8,3 +8,4 @@ This section introduces the RO master equations, parameters and various types
     notebooks/model_equations
     notebooks/model_parameters
     notebooks/model_types
+    notebooks/model_library

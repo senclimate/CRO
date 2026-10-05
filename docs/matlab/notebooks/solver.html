@@ -1,0 +1,802 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>RO simulations using CRO solver &#8212; Project name not set  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/theme_overrides.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=17aa32d1" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=a95f357e85573c9b56d5"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
+
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/solver';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.19.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = '../switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'Matlab';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="icon" href="../_static/CRO_logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Analytical Solutions of the RO Model and Comparison with Numerical Solutions" href="solver_analytic.html" />
+    <link rel="prev" title="Solver" href="../ug-solver.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/CRO_logo.png" class="logo__image only-light" alt="Project name not set  documentation - Home"/>
+    <img src="../_static/CRO_logo.png" class="logo__image only-dark pst-js-only" alt="Project name not set  documentation - Home"/>
+  
+  
+</a></div>
+    
+      <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-quickstart.html">
+    Quickstart
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-model.html">
+    Model
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../ug-solver.html">
+    Solver
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-fitting.html">
+    Fitting
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-application.html">
+    Application
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-api.html">
+    API Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-contributors.html">
+    Contributors
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+        </div>
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/senclimate/CRO" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+    </div>
+  
+    <div class="navbar-persistent--mobile">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-quickstart.html">
+    Quickstart
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-model.html">
+    Model
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../ug-solver.html">
+    Solver
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-fitting.html">
+    Fitting
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-application.html">
+    Application
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-api.html">
+    API Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ug-contributors.html">
+    Contributors
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/senclimate/CRO" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">RO simulations using <code class="docutils literal notranslate"><span class="pre">CRO</span></code> solver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="solver_analytic.html">Analytical Solutions of the RO Model and Comparison with Numerical Solutions</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../ug-solver.html" class="nav-link">Solver</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">RO simulations using <code class="docutils literal notranslate"><span class="pre">CRO</span></code> solver</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="RO-simulations-using-CRO-solver">
+<h1>RO simulations using <code class="docutils literal notranslate"><span class="pre">CRO</span></code> solver<a class="headerlink" href="#RO-simulations-using-CRO-solver" title="Link to this heading">#</a></h1>
+<p>This tutorial illustrates how to use the <code class="docutils literal notranslate"><span class="pre">mCRO</span></code> to solve the RO model.</p>
+<p>This notebook was contributed by <a class="reference external" href="https://csd.postech.ac.kr/professor">Soong-Ki Kim</a>.</p>
+<section id="RO-Simulation-Setup">
+<h2>RO Simulation Setup<a class="headerlink" href="#RO-Simulation-Setup" title="Link to this heading">#</a></h2>
+<p>This is the simplest configuration for the RO model, using:</p>
+<ul class="simple">
+<li><p><strong>White noise</strong>: <code class="docutils literal notranslate"><span class="pre">n_T</span> <span class="pre">=</span> <span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">n_h</span> <span class="pre">=</span> <span class="pre">1</span></code>.</p></li>
+<li><p><strong>Linear system</strong>: nonlinear terms (<code class="docutils literal notranslate"><span class="pre">b_T</span></code>, <code class="docutils literal notranslate"><span class="pre">c_T</span></code>, <code class="docutils literal notranslate"><span class="pre">d_T</span></code>, <code class="docutils literal notranslate"><span class="pre">b_h</span></code>) are zero.</p></li>
+<li><p><strong>Additive noise only</strong>: no multiplicative component (<code class="docutils literal notranslate"><span class="pre">n_g</span> <span class="pre">=</span> <span class="pre">2</span></code>).</p></li>
+</ul>
+<p>The RO equation is written as:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\displaystyle \frac{dT}{dt} = RT + F_{1}h + \sigma_{T}w_{T}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\displaystyle \frac{dh}{dt} = −\varepsilon{h} − F_{2}T + \sigma_{h}w_{h}\)</span></p></li>
+</ul>
+<p>The following block sets parameters for the RO simulation.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">R</span><span class="p">=</span><span class="o">-</span><span class="mf">0.05</span><span class="p">;</span><span class="w">       </span><span class="c">% dT/dt=R*T (month^-1)</span>
+<span class="n">F1</span><span class="p">=</span><span class="mf">0.02</span><span class="p">;</span><span class="w">       </span><span class="c">% dT/dt=F1*h (K m^-1 month^-1)</span>
+<span class="n">F2</span><span class="p">=</span><span class="mf">0.9</span><span class="p">;</span><span class="w">        </span><span class="c">% dh/dt=-F2*T (m K^-1 month^-1)</span>
+<span class="n">epsilon</span><span class="p">=</span><span class="mf">0.03</span><span class="p">;</span><span class="w">  </span><span class="c">% dh/dt=-epsilon*h (month^-1)</span>
+
+<span class="n">b_T</span><span class="p">=</span><span class="mf">0.0</span><span class="p">;</span><span class="w">      </span><span class="c">% dT/dt=b_T*T^2 (K^-1 month^-1)</span>
+<span class="n">c_T</span><span class="p">=</span><span class="mf">0.0</span><span class="p">;</span><span class="w">      </span><span class="c">% dT/dt=-c_T*T^3 (K^-2 month^-1)</span>
+<span class="n">d_T</span><span class="p">=</span><span class="mf">0.0</span><span class="p">;</span><span class="w">      </span><span class="c">% dT/dt=d_T*T*h (m^-1 month^-1)</span>
+<span class="n">b_h</span><span class="p">=</span><span class="mf">0.0</span><span class="p">;</span><span class="w">      </span><span class="c">% dh/dt=-b_h*T^2 (K^-2 m month^-1)</span>
+
+<span class="n">sigma_T</span><span class="p">=</span><span class="mf">0.2</span><span class="p">;</span><span class="w">  </span><span class="c">% T-noise amplitude</span>
+<span class="n">sigma_h</span><span class="p">=</span><span class="mf">1.2</span><span class="p">;</span><span class="w">  </span><span class="c">% h-noise amplitude</span>
+<span class="n">B</span><span class="p">=</span><span class="mf">0.0</span><span class="p">;</span><span class="w">        </span><span class="c">% multiplicative-noise coefficient; unused for additive noise</span>
+<span class="n">m_T</span><span class="p">=</span><span class="mf">1.0</span><span class="p">;</span><span class="w">      </span><span class="c">% red-noise damping; unused for white noise</span>
+<span class="n">m_h</span><span class="p">=</span><span class="mf">1.0</span><span class="p">;</span><span class="w">      </span><span class="c">% red-noise damping; unused for white noise</span>
+
+<span class="n">n_T</span><span class="p">=</span><span class="mi">1</span><span class="p">;</span><span class="w">        </span><span class="c">% 0: red noise, 1: white noise</span>
+<span class="n">n_h</span><span class="p">=</span><span class="mi">1</span><span class="p">;</span><span class="w">        </span><span class="c">% 0: red noise, 1: white noise</span>
+<span class="n">n_g</span><span class="p">=</span><span class="mi">2</span><span class="p">;</span><span class="w">        </span><span class="c">% 0: multiplicative, 1: multiplicative-H, 2: additive</span>
+
+<span class="n">par</span><span class="p">={</span><span class="n">R</span><span class="p">;</span><span class="n">F1</span><span class="p">;</span><span class="n">F2</span><span class="p">;</span><span class="n">epsilon</span><span class="p">;</span><span class="n">b_T</span><span class="p">;</span><span class="n">c_T</span><span class="p">;</span><span class="n">d_T</span><span class="p">;</span><span class="n">b_h</span><span class="p">;</span><span class="w"> </span><span class="k">...</span>
+<span class="w">     </span><span class="n">sigma_T</span><span class="p">;</span><span class="n">sigma_h</span><span class="p">;</span><span class="n">B</span><span class="p">;</span><span class="n">m_T</span><span class="p">;</span><span class="n">m_h</span><span class="p">;</span><span class="n">n_T</span><span class="p">;</span><span class="n">n_h</span><span class="p">;</span><span class="n">n_g</span><span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>The following block sets additional options for the RO simulation.</p></li>
+</ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">IC</span><span class="p">=[</span><span class="mf">1.0</span><span class="p">;</span><span class="mf">0.0</span><span class="p">];</span><span class="w">  </span><span class="c">% Initial conditions for T and h</span>
+<span class="n">N</span><span class="p">=</span><span class="mi">12</span><span class="o">*</span><span class="mi">100</span><span class="p">;</span><span class="w">     </span><span class="c">% Simulation length in months (100 years)</span>
+<span class="n">NE</span><span class="p">=</span><span class="mi">2</span><span class="p">;</span><span class="w">         </span><span class="c">% Number of ensemble members</span>
+</pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>The RO simulation can be run by setting four settings set above: par, IC, N, and NE.</p></li>
+<li><p>The following block sets additional <strong>optional settings</strong> for the RO simulation.</p></li>
+<li><p>The user may skip specifying these options. If the user doesn’t specify these options, the RO simulation runs with the default settings.</p></li>
+</ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">NM</span><span class="p">=</span><span class="s">&quot;EH&quot;</span><span class="p">;</span><span class="w">                    </span><span class="c">% &quot;EH&quot; (Euler-Heun, default) or &quot;EM&quot; (Euler-Maruyama)</span>
+<span class="n">dt</span><span class="p">=</span><span class="mf">0.1</span><span class="p">;</span><span class="w">                     </span><span class="c">% Numerical time step in months (default = 0.1)</span>
+<span class="n">saveat</span><span class="p">=</span><span class="mf">1.0</span><span class="p">;</span><span class="w">                 </span><span class="c">% Output interval in months (default = 1.0)</span>
+<span class="n">savemethod</span><span class="p">=</span><span class="s">&quot;sampling&quot;</span><span class="p">;</span><span class="w">      </span><span class="c">% &quot;sampling&quot; (default) or &quot;mean&quot;</span>
+<span class="n">EF</span><span class="p">={</span><span class="mf">0.0</span><span class="p">;</span><span class="mf">0.0</span><span class="p">};</span><span class="w">               </span><span class="c">% External forcing {E_T; E_h}; default is zero forcing</span>
+<span class="n">noise_custom</span><span class="p">=</span><span class="mi">999</span><span class="p">;</span><span class="w">           </span><span class="c">% Custom noise specification / random seed</span>
+
+<span class="c">% noise_custom=[] uses internally generated noise.</span>
+<span class="c">% A scalar is used as a random seed for reproducible noise.</span>
+<span class="c">% A user-supplied matrix must have size (round(N/dt)-1) x 4.</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="RO-Simulations">
+<h2>RO Simulations<a class="headerlink" href="#RO-Simulations" title="Link to this heading">#</a></h2>
+<section id="Basic-Usage">
+<h3>Basic Usage<a class="headerlink" href="#Basic-Usage" title="Link to this heading">#</a></h3>
+<p>The simplest solver call uses only par, IC, N, and NE:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">T_ro</span><span class="p">,</span><span class="n">h_ro</span><span class="p">,</span><span class="n">noise</span><span class="p">]=</span><span class="n">RO_solver</span><span class="p">(</span><span class="n">par</span><span class="p">,</span><span class="n">IC</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="n">NE</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<p>T_ro and h_ro have shape [time × ensemble]. The third output contains the noise time series used by the integration.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Example 3-1. Solve RO with default settings</span>
+<span class="p">[</span><span class="n">T_ro</span><span class="p">,</span><span class="n">h_ro</span><span class="p">,</span><span class="n">noise</span><span class="p">]=</span><span class="n">RO_solver</span><span class="p">(</span><span class="n">par</span><span class="p">,</span><span class="n">IC</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="n">NE</span><span class="p">);</span>
+
+<span class="n">time_axis</span><span class="p">=</span><span class="mi">0</span><span class="p">:(</span><span class="nb">size</span><span class="p">(</span><span class="n">T_ro</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">num_en</span><span class="p">=</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c">% first ensemble member</span>
+
+<span class="nb">figure</span><span class="p">;</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">time_axis</span><span class="p">,</span><span class="n">T_ro</span><span class="p">(:,</span><span class="n">num_en</span><span class="p">),</span><span class="s">&#39;LineWidth&#39;</span><span class="p">,</span><span class="mf">1.2</span><span class="p">,</span><span class="w"> </span><span class="k">...</span>
+<span class="w">    </span><span class="s">&#39;DisplayName&#39;</span><span class="p">,</span><span class="s">&#39;Numerical sampling&#39;</span><span class="p">)</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Time (months)&#39;</span><span class="p">)</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;T&#39;</span><span class="p">)</span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&#39;Location&#39;</span><span class="p">,</span><span class="s">&#39;best&#39;</span><span class="p">)</span>
+<span class="nb">grid</span><span class="w"> </span><span class="n">on</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_solver_12_0.png" src="../_images/notebooks_solver_12_0.png" />
+</div>
+</div>
+</section>
+<section id="Advanced-Usage">
+<h3>Advanced Usage<a class="headerlink" href="#Advanced-Usage" title="Link to this heading">#</a></h3>
+<p>Optional arguments can be added sequentially for more control over the numerical integration:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">T_ro</span><span class="p">,</span><span class="n">h_ro</span><span class="p">,</span><span class="n">noise</span><span class="p">]=</span><span class="n">RO_solver</span><span class="p">(</span><span class="n">par</span><span class="p">,</span><span class="n">IC</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="n">NE</span><span class="p">,</span><span class="n">NM</span><span class="p">);</span>
+<span class="p">[</span><span class="n">T_ro</span><span class="p">,</span><span class="n">h_ro</span><span class="p">,</span><span class="n">noise</span><span class="p">]=</span><span class="n">RO_solver</span><span class="p">(</span><span class="n">par</span><span class="p">,</span><span class="n">IC</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="n">NE</span><span class="p">,</span><span class="n">NM</span><span class="p">,</span><span class="n">dt</span><span class="p">);</span>
+<span class="p">[</span><span class="n">T_ro</span><span class="p">,</span><span class="n">h_ro</span><span class="p">,</span><span class="n">noise</span><span class="p">]=</span><span class="n">RO_solver</span><span class="p">(</span><span class="n">par</span><span class="p">,</span><span class="n">IC</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="n">NE</span><span class="p">,</span><span class="n">NM</span><span class="p">,</span><span class="n">dt</span><span class="p">,</span><span class="n">saveat</span><span class="p">);</span>
+<span class="p">[</span><span class="n">T_ro</span><span class="p">,</span><span class="n">h_ro</span><span class="p">,</span><span class="n">noise</span><span class="p">]=</span><span class="n">RO_solver</span><span class="p">(</span><span class="n">par</span><span class="p">,</span><span class="n">IC</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="n">NE</span><span class="p">,</span><span class="n">NM</span><span class="p">,</span><span class="n">dt</span><span class="p">,</span><span class="n">saveat</span><span class="p">,</span><span class="n">savemethod</span><span class="p">);</span>
+<span class="p">[</span><span class="n">T_ro</span><span class="p">,</span><span class="n">h_ro</span><span class="p">,</span><span class="n">noise</span><span class="p">]=</span><span class="n">RO_solver</span><span class="p">(</span><span class="n">par</span><span class="p">,</span><span class="n">IC</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="n">NE</span><span class="p">,</span><span class="n">NM</span><span class="p">,</span><span class="n">dt</span><span class="p">,</span><span class="n">saveat</span><span class="p">,</span><span class="n">savemethod</span><span class="p">,</span><span class="n">EF</span><span class="p">);</span>
+<span class="p">[</span><span class="n">T_ro</span><span class="p">,</span><span class="n">h_ro</span><span class="p">,</span><span class="n">noise</span><span class="p">]=</span><span class="n">RO_solver</span><span class="p">(</span><span class="n">par</span><span class="p">,</span><span class="n">IC</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="n">NE</span><span class="p">,</span><span class="n">NM</span><span class="p">,</span><span class="n">dt</span><span class="p">,</span><span class="n">saveat</span><span class="p">,</span><span class="n">savemethod</span><span class="p">,</span><span class="n">EF</span><span class="p">,</span><span class="n">noise_custom</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<p>Refer to the setup section above for the meaning of each optional argument.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Example 3-2. Solve RO with user-specified settings</span>
+<span class="p">[</span><span class="n">T_ro</span><span class="p">,</span><span class="n">h_ro</span><span class="p">,</span><span class="n">noise</span><span class="p">]=</span><span class="n">RO_solver</span><span class="p">(</span><span class="w"> </span><span class="k">...</span>
+<span class="w">    </span><span class="n">par</span><span class="p">,</span><span class="n">IC</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="n">NE</span><span class="p">,</span><span class="n">NM</span><span class="p">,</span><span class="n">dt</span><span class="p">,</span><span class="n">saveat</span><span class="p">,</span><span class="n">savemethod</span><span class="p">,</span><span class="n">EF</span><span class="p">,</span><span class="n">noise_custom</span><span class="p">);</span>
+
+<span class="n">time_axis</span><span class="p">=</span><span class="mi">0</span><span class="p">:</span><span class="n">saveat</span><span class="p">:(</span><span class="nb">round</span><span class="p">(</span><span class="n">N</span><span class="o">/</span><span class="n">saveat</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">saveat</span><span class="p">;</span>
+<span class="n">num_en</span><span class="p">=</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c">% first ensemble member</span>
+
+<span class="nb">figure</span><span class="p">;</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">time_axis</span><span class="p">,</span><span class="n">T_ro</span><span class="p">(:,</span><span class="n">num_en</span><span class="p">),</span><span class="s">&#39;LineWidth&#39;</span><span class="p">,</span><span class="mf">1.2</span><span class="p">,</span><span class="w"> </span><span class="k">...</span>
+<span class="w">    </span><span class="s">&#39;DisplayName&#39;</span><span class="p">,</span><span class="s">&#39;Numerical sampling&#39;</span><span class="p">)</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Time (months)&#39;</span><span class="p">)</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;T&#39;</span><span class="p">)</span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&#39;Location&#39;</span><span class="p">,</span><span class="s">&#39;best&#39;</span><span class="p">)</span>
+<span class="nb">grid</span><span class="w"> </span><span class="n">on</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_solver_17_0.png" src="../_images/notebooks_solver_17_0.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../ug-solver.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Solver</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="solver_analytic.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Analytical Solutions of the RO Model and Comparison with Numerical Solutions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RO-Simulation-Setup">RO Simulation Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RO-Simulations">RO Simulations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Basic-Usage">Basic Usage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Advanced-Usage">Advanced Usage</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/notebooks/solver.ipynb.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.0.4.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025-2026, CLIVAR CRO Team (lead by Soong-Ki Kim and Sen Zhao).
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.19.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

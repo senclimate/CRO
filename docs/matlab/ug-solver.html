@@ -61,8 +61,8 @@
     <link rel="icon" href="_static/CRO_logo.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Fitting" href="ug-fitting.html" />
-    <link rel="prev" title="RO Types" href="notebooks/model_types.html" />
+    <link rel="next" title="RO simulations using CRO solver" href="notebooks/solver.html" />
+    <link rel="prev" title="Precomputed Parameter Library" href="notebooks/model_library.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -181,6 +181,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="ug-quickstart.html">
+    Quickstart
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="ug-model.html">
     Model
   </a>
@@ -214,6 +221,13 @@
   </a>
 </li>
 
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="ug-contributors.html">
+    Contributors
+  </a>
+</li>
+
   </ul>
 </nav></div>
       
@@ -225,11 +239,26 @@
         <div class="navbar-item navbar-persistent--container">
           
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
+        </div>
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div>
         </div>
       
       
@@ -255,14 +284,32 @@
   
     <div class="navbar-persistent--mobile">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
     </div>
   
+    <div class="navbar-persistent--mobile">
 
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
   
 </div>
 
@@ -298,6 +345,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="ug-quickstart.html">
+    Quickstart
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="ug-model.html">
     Model
   </a>
@@ -328,6 +382,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="ug-api.html">
     API Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="ug-contributors.html">
+    Contributors
   </a>
 </li>
 
@@ -372,7 +433,11 @@
 <nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
-  <div class="bd-toc-item navbar-nav"></div>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="notebooks/solver.html">RO simulations using <code class="docutils literal notranslate"><span class="pre">CRO</span></code> solver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/solver_analytic.html">Analytical Solutions of the RO Model and Comparison with Numerical Solutions</a></li>
+</ul>
+</div>
 </nav></div>
     </div>
   
@@ -430,8 +495,14 @@
                   
   <section id="solver">
 <h1>Solver<a class="headerlink" href="#solver" title="Link to this heading">#</a></h1>
-<p>This section illustrates the solver features of <cite>mCRO</cite></p>
+<p>This section illustrates the solver features of <cite>mCRO</cite>. Detailed tutorial is
+provided below, while the key API documentation is available in
+<a class="reference internal" href="notebooks/api_solver.html"><span class="doc">Solver API</span></a>.</p>
 <div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/solver.html">RO simulations using <code class="docutils literal notranslate"><span class="pre">CRO</span></code> solver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/solver_analytic.html">Analytical Solutions of the RO Model and Comparison with Numerical Solutions</a></li>
+</ul>
 </div>
 </section>
 
@@ -446,20 +517,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="notebooks/model_types.html"
+       href="notebooks/model_library.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">RO Types</p>
+        <p class="prev-next-title">Precomputed Parameter Library</p>
       </div>
     </a>
     <a class="right-next"
-       href="ug-fitting.html"
+       href="notebooks/solver.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Fitting</p>
+        <p class="prev-next-title">RO simulations using <code class="docutils literal notranslate"><span class="pre">CRO</span></code> solver</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -469,6 +540,21 @@
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="_sources/ug-solver.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
               
             
           </div>
@@ -506,7 +592,7 @@
 
   <p class="copyright">
     
-      © Copyright 2025, CLIVAR CRO Team (lead by Soong-Ki Kim and Sen Zhao).
+      © Copyright 2025-2026, CLIVAR CRO Team (lead by Soong-Ki Kim and Sen Zhao).
       <br/>
     
   </p>

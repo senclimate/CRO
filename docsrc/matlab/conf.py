@@ -22,7 +22,7 @@ lexers['ipython3'] = PythonLexer()
 
 # project = 'CLIVAR Working Group Community Recharge Oscillator (CRO) project'
 # author  = 'CLIVAR CRO Team (lead by Soong-Ki Kim and Sen Zhao)'
-copyright = '2025, CLIVAR CRO Team (lead by Soong-Ki Kim and Sen Zhao)'
+copyright = '2025-2026, CLIVAR CRO Team (lead by Soong-Ki Kim and Sen Zhao)'
 
 
 # -- General configuration ---------------------------------------------------
@@ -57,6 +57,7 @@ extensions = [
     # 'sphinx_copybutton',
     # 'sphinx_gallery.load_style',
 ]
+
 nbsphinx_allow_errors = True
 
 
@@ -68,7 +69,10 @@ html_favicon = 'CRO_logo.png'
 bibtex_bibfiles = ["refs.bib"]
 
 # Optional: APA style
-bibtex_default_style = "apa"   # APA via citeproc-py
+# bibtex_default_style = "apa"   # APA via citeproc-py
+# bibtex_reference_style = "author_year"
+
+bibtex_default_style = "alpha"
 bibtex_reference_style = "author_year"
 
 # -- Options for HTML output -------------------------------------------------
@@ -85,25 +89,38 @@ html_theme = 'pydata_sphinx_theme'
 # html_theme = 'sphinx_material'
 # html_theme = 'bootstrap'
 # html_theme = "sphinxawesome_theme"
+
 html_theme_options = {
-    'github_url': 'https://github.com/senclimate/CRO',
-    # 'use_edit_page_button': True,
-    # 'use_repository_button': True,
-    # 'use_issues_button': True,
-    # 'use_fullscreen_button': True,
-    # 'footer_center': '<em>CLIVAR Working Group Community Recharge Oscillator (CRO) project</em>',
+    "github_url": "https://github.com/senclimate/CRO",
     "navbar_start": ["navbar-logo", "version-switcher", ],
     "navbar_end": ["navbar-icon-links"],
+    "navbar_persistent": ["search-button", "theme-switcher"],
+    "header_links_before_dropdown": 7,  # show all 7 top-level menus, none collapsed into "More"
+    # "navbar_align": "content",  # better spacing than "left"
     "footer_start": ["sphinx-version"],
     "footer_end": ["theme-version"],
     "footer_center": ["copyright",], 
     "switcher": {
         "json_url": "../switcher.json",  # relative path from built docs
-        "version_match": "Matlab",       # or "Python" for the Python conf.py
+        "version_match": "Matlab",       # or "Matlab" for the Matlab conf.py
     },
+    "show_toc_level": 1,
+    "navigation_depth": 1,
+    "show_nav_level": 1,
+    "back_to_top_button": True,
 }
-html_show_sourcelink = False
 
+
+html_sidebars = {
+    "**": [
+        "sidebar-collapse",
+        "sidebar-nav-bs",
+    ],
+}
+
+
+html_show_sourcelink = True
+nbsphinx_execute = 'never'
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".

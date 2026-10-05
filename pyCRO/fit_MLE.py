@@ -276,7 +276,7 @@ def fit_MLE_red(T, h, par_option_T, par_option_h, par_option_noise, dt):
     print("-------------------------------------------------------------------")
     print("Hang tight — red noise MLE fitting can take a bit!")
     print("-------------------------------------------------------------------")
-    niter = 10 #100
+    niter = 100 #100
     for _ in range(niter): 
         print(f"{_ + 1} out of {niter} iterations")
         # Setting CGNS Matrix
